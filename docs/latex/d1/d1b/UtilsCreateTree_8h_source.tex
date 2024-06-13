@@ -1,0 +1,48 @@
+\doxysection{Utils\+Create\+Tree.\+h}
+\hypertarget{UtilsCreateTree_8h_source}{}\label{UtilsCreateTree_8h_source}\index{CMEPDA-\/GLAST/CreateTree/UtilsCreateTree.h@{CMEPDA-\/GLAST/CreateTree/UtilsCreateTree.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Evento_8h}{Evento.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <TMath.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}TROOT.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}TH2F.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}TGraphErrors.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}TRandom.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}TCanvas.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}TFrame.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}TDatime.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}TStopwatch.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_a2e3c33f3b2a5ed69f4aee9756d4b9608}{FindMutedStrips}}(\textcolor{keyword}{const}\ std::string\ \&file,\ \textcolor{keywordtype}{int}\ \&NHit,\ \textcolor{keywordtype}{int}\ \&ciclo,\ std::vector<int>\ \&stringa,\ \ std::map<std::string,\ int>\ \&mapping,\ std::map<\textcolor{keywordtype}{int},\ std::vector<int>>\ \&MapDeiVettoriMutati);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_a043a2af0e9309627b8a609ef0dbdf941}{CheckForFlagTwo}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ \textcolor{keywordtype}{int}\ \&NCluster);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_aeeb1cdab7bd20e0a279049b369a2f4b6}{CheckForFlagOne}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::map<\textcolor{keywordtype}{int},\ std::vector<int>>\ \&MapDeiVettoriMutati,\ std::vector<int>\ \&StripLayer,\ \textcolor{keywordtype}{int}\ \&LengthCluster,\textcolor{keywordtype}{int}\ \&layer,\ \ \textcolor{keywordtype}{int}\ j\ );}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_a210da059f308fac2de4e31917b1cb320}{CheckForFlagThree}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::map<int,int>\ \&MapClusterPerPiano,\ \textcolor{keywordtype}{int}\ \&aaaax,\ \textcolor{keywordtype}{int}\ \&aaaay,\ std::vector<int>\ \&LayersID);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_aca6b17a669149b56998741e92d84bca8}{FlushPlaceholder}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::map<int,\ int>\ \&MapHitPerPiano,\ std::map<int,int>\ \&MapClusterPerPiano,\ std::vector<int>\ \&VettoreDifferenzeStripConsecutive,\ std::vector<int>\ \&StripLayer,\ std::vector<int>\ \&LayersID,\ \textcolor{keywordtype}{int}\ \&Nx,\ \textcolor{keywordtype}{int}\ \&Ny);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_ae6621827442b50675c4d3f28ae9db3e4}{FillStripLayer}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::vector<int>\ \&StripLayer,\ std::map<int,int>\ \&MapHitPerPiano,\ \textcolor{keywordtype}{int}\ \&Layer);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{double}\ StripCoordinate(\textcolor{keywordtype}{int}\ Strip);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+
+\end{DoxyCode}

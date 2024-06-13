@@ -1,0 +1,698 @@
+\doxysection{Class\+Evento.\+h}
+\hypertarget{CreateTree_2ClassEvento_8h_source}{}\label{CreateTree_2ClassEvento_8h_source}\index{CMEPDA-\/GLAST/CreateTree/ClassEvento.h@{CMEPDA-\/GLAST/CreateTree/ClassEvento.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <TMath.h>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}TROOT.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}TH2F.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}TGraphErrors.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}TRandom.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}TCanvas.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}TFrame.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}TDatime.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}TStopwatch.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEvento}{Evento}}}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEvento_a67ceeffab359005a849c20f67d163273}{NEventi}};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEvento_a169ad3427525c72d5918a2fc2633221b}{NHit}};}
+\DoxyCodeLine{00028\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classEvento_a9de86ffa6f19665a46ce28a13bba89dc}{Strip}};}
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classEvento_a7fccb33803cd3011683208797a87bf6f}{Layer}};}
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classEvento_af62a7e19f53d2219ee0edcca6422b89a}{ClusterDimension}};}
+\DoxyCodeLine{00031\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classEvento_aa3a57c61c9ce04f5be3c165c68504eab}{InitialStrip}};}
+\DoxyCodeLine{00032\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}};}
+\DoxyCodeLine{00033\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classEvento_afda5f0350ebf953b407647222c2093a3}{ClusterPosizione}};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEvento_a80ddbae091a43674ddf98ee0b76adaf3}{Flags}}[3]\ =\ \{1,1,1,1\};}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00038\ \textcolor{comment}{extern\ std::map<int,double>\ Zmap;}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//std::map<int,\ double>\ Zmap;\ //questa\ cosa\ è\ altamente\ inefficiente:\ ogni\ volta\ che\ chiamo\ la\ funzione\ ne\ crea\ una\ nuova\ di\ mappa.}}
+\DoxyCodeLine{00040\ \textcolor{comment}{extern\ std::vector<int>\ XLayers;}}
+\DoxyCodeLine{00041\ \textcolor{comment}{Zmap.insert(std::make\_pair(10,\ 3.1\ -\/\ shift[0]));}}
+\DoxyCodeLine{00042\ \textcolor{comment}{Zmap.insert(std::make\_pair(11,\ 6.3\ -\/\ shift[1]));}}
+\DoxyCodeLine{00043\ \textcolor{comment}{Zmap.insert(std::make\_pair(12,16.9\ -\/\ shift[2]));}}
+\DoxyCodeLine{00044\ \textcolor{comment}{Zmap.insert(std::make\_pair(13,20.1\ -\/\ shift[3]));}}
+\DoxyCodeLine{00045\ \textcolor{comment}{Zmap.insert(std::make\_pair(14,31.2\ -\/\ shift[4]));}}
+\DoxyCodeLine{00046\ \textcolor{comment}{Zmap.insert(std::make\_pair(20,-\/1.0\ -\/\ shift[5]));}}
+\DoxyCodeLine{00047\ \textcolor{comment}{Zmap.insert(std::make\_pair(21,10.1\ -\/\ shift[6]));}}
+\DoxyCodeLine{00048\ \textcolor{comment}{Zmap.insert(std::make\_pair(22,13.3\ -\/\ shift[7]));}}
+\DoxyCodeLine{00049\ \textcolor{comment}{Zmap.insert(std::make\_pair(23,24.6\ -\/\ shift[8]));}}
+\DoxyCodeLine{00050\ \textcolor{comment}{Zmap.insert(std::make\_pair(24,27.8\ -\/\ shift[9]));}}
+\DoxyCodeLine{00051\ \textcolor{comment}{}}
+\DoxyCodeLine{00052\ \textcolor{comment}{extern\ std::map<int,int>\ mapLayers;}}
+\DoxyCodeLine{00053\ \textcolor{comment}{mapLayers.insert(std::make\_pair(14,13));}}
+\DoxyCodeLine{00054\ \textcolor{comment}{mapLayers.insert(std::make\_pair(10,11));}}
+\DoxyCodeLine{00055\ \textcolor{comment}{mapLayers.insert(std::make\_pair(20,11));}}
+\DoxyCodeLine{00056\ \textcolor{comment}{mapLayers.insert(std::make\_pair(24,13));}}
+\DoxyCodeLine{00057\ \textcolor{comment}{}}
+\DoxyCodeLine{00058\ \textcolor{comment}{}}
+\DoxyCodeLine{00059\ \textcolor{comment}{extern\ std::vector<int>\ XLayers\ =\ \{10,\ 11,\ 12,\ 13,\ 14\};}}
+\DoxyCodeLine{00060\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{comment}{//std::map<int,double>\ Zmap;}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{comment}{//std::vector<int>\ XLayers\ =\ \{10,\ 11,\ 12,\ 13,\ 14\};}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{comment}{//std::map<int,int>\ mapLayers;}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTrack}{Track}}}
+\DoxyCodeLine{00076\ \{}
+\DoxyCodeLine{00077\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00078\ \ \ \ \ std::vector<double>\ Fit;\ \textcolor{comment}{//\ [q,\ m,\ chi2,\ chi2Att,\ chi2n]}}
+\DoxyCodeLine{00079\ \ \ \ \ std::vector<double>\ Error\ ;}
+\DoxyCodeLine{00080\ \ \ \ \ std::vector<double>\ ClusterPosition;}
+\DoxyCodeLine{00081\ \ \ \ \ std::vector<int>\ Layer;}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ NCluster()\{\textcolor{keywordflow}{return}\ ClusterPosition.size();\}}
+\DoxyCodeLine{00083\ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ operator==(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ b)\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ N\ =\ 0;\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<\ a.ClusterPosition.size();\ i++)\{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j<\ b.ClusterPosition.size();\ j++)\{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(((a.ClusterPosition[i]\ -\/\ b.ClusterPosition[j])<0.02)\&\&(a.Layer[i]\ ==\ b.Layer[j]))\{N++;\}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((N>=2));\textcolor{comment}{//||(((a.Fit[1]-\/b.Fit[1])<0.4)\&\&((a.Fit[0]\ -\/\ b.Fit[0]))<0.5));}}
+\DoxyCodeLine{00093\ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ operator<(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ b)\{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a.ClusterPosition.size()\ <\ b.ClusterPosition.size();}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ operator>(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ b)\{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(a<b);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEventoTrack}{EventoTrack}}}
+\DoxyCodeLine{00108\ \{}
+\DoxyCodeLine{00109\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00110\ \ \ \ \ std::vector<Track>\ TrackX;}
+\DoxyCodeLine{00111\ \ \ \ \ std::vector<Track>\ TrackY;}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{int}\ Nx()\{\textcolor{keywordflow}{return}\ TrackX.size();\}}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{int}\ Ny()\{\textcolor{keywordflow}{return}\ TrackY.size();\}}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{int}\ NEvento;}
+\DoxyCodeLine{00115\ \ \ \ \ }
+\DoxyCodeLine{00116\ \};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{keywordtype}{double}\ Theta(\mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ e,\ \textcolor{keywordtype}{int}\ i)\{}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//questa\ funzione\ ritorna\ l'angolo\ theta\ di\ una\ traccia\ i-\/esima.}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordflow}{return}\ atan(sqrt(e.TrackX[i].Fit[1]*e.TrackX[i].Fit[1]+\ e.TrackY[i].Fit[1]*e.TrackY[i].Fit[1]))*180/3.14;}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{keywordtype}{double}\ Phi(\mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ e,\ \textcolor{keywordtype}{int}\ i)\{}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{return}\ atan2(e.TrackY[i].Fit[1],e.TrackX[i].Fit[1])*180/3.14;}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \textcolor{keywordtype}{double}\ Angle(\mbox{\hyperlink{classTrack}{Track}}\ a,\ \mbox{\hyperlink{classTrack}{Track}}\ b,\ \mbox{\hyperlink{classTrack}{Track}}\ c,\ \mbox{\hyperlink{classTrack}{Track}}\ d)\{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \textcolor{keywordflow}{return}\ (a.Fit[1]*c.Fit[1]\ +b.Fit[1]*d.Fit[1]\ +\ 1)/((sqrt(a.Fit[1]*a.Fit[1]+b.Fit[1]*b.Fit[1])+1)*(sqrt(c.Fit[1]*c.Fit[1]+d.Fit[1]*d.Fit[1])+1));}
+\DoxyCodeLine{00138\ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00143\ \textcolor{comment}{class\ MyException\ :\ public\ exception\ }}
+\DoxyCodeLine{00144\ \textcolor{comment}{\{\ }}
+\DoxyCodeLine{00145\ \textcolor{comment}{private:\ }}
+\DoxyCodeLine{00146\ \textcolor{comment}{\ \ \ \ std::string\ message;\ }}
+\DoxyCodeLine{00147\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00148\ \textcolor{comment}{public:\ }}
+\DoxyCodeLine{00149\ \textcolor{comment}{\ \ \ \ //\ Constructor\ accepts\ a\ const\ char*\ that\ is\ used\ to\ set\ }}
+\DoxyCodeLine{00150\ \textcolor{comment}{\ \ \ \ //\ the\ exception\ message\ }}
+\DoxyCodeLine{00151\ \textcolor{comment}{\ \ \ \ MyException(const\ char*\ msg)\ }}
+\DoxyCodeLine{00152\ \textcolor{comment}{\ \ \ \ \ \ \ \ :\ message(msg)\ }}
+\DoxyCodeLine{00153\ \textcolor{comment}{\ \ \ \ \{\ }}
+\DoxyCodeLine{00154\ \textcolor{comment}{\ \ \ \ \}\ }}
+\DoxyCodeLine{00155\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00156\ \textcolor{comment}{\ \ \ \ //\ Override\ the\ what()\ method\ to\ return\ our\ message\ }}
+\DoxyCodeLine{00157\ \textcolor{comment}{\ \ \ \ const\ char*\ what()\ const\ throw()\ }}
+\DoxyCodeLine{00158\ \textcolor{comment}{\ \ \ \ \{\ }}
+\DoxyCodeLine{00159\ \textcolor{comment}{\ \ \ \ \ \ \ \ return\ message.c\_str();\ }}
+\DoxyCodeLine{00160\ \textcolor{comment}{\ \ \ \ \}\ }}
+\DoxyCodeLine{00161\ \textcolor{comment}{\};\ }}
+\DoxyCodeLine{00162\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \textcolor{keywordtype}{double}\ StripCoordinate(\textcolor{keywordtype}{int}\ Strip)\{}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ StripPitch\ =\ 0.0228;\ \textcolor{comment}{//cm}}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ EdgeWidth\ =\ 0.1;\ \textcolor{comment}{//cm}}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ LadderSeparation\ =\ 0.02;\ \textcolor{comment}{//cm}}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordtype}{double}\ coordinate\ =\ EdgeWidth\ +\ StripPitch*int(Strip)\ +\ (LadderSeparation\ +\ 2*EdgeWidth\ -\/\ StripPitch)*\textcolor{keywordtype}{int}(Strip/384);\ \textcolor{comment}{//formula\ sbagliata:\ non\ funziona...}}
+\DoxyCodeLine{00170\ \textcolor{keywordflow}{return}\ coordinate;\};}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \textcolor{keywordtype}{double}\ LayerCoordinate(\textcolor{keywordtype}{int}\ numero)}
+\DoxyCodeLine{00176\ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordtype}{double}\ shift[10]\ =\ \{0,\ 0.3631,\ -\/0.3683,\ 0,\ -\/0.2463,\ 0.6223,\ 0,\ 0.3241,\ -\/0.3331,\ 0\};\ \textcolor{comment}{//Fissando\ i\ layer\ X0,X3,\ Y1,Y4}}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{comment}{//double\ shift[10]\ =\ \{0.\};}}
+\DoxyCodeLine{00179\ \ \ \ \ std::map<int,\ double>\ Zmap;}
+\DoxyCodeLine{00180\ \ \ \ \ Zmap.insert(std::make\_pair(10,\ 3.1\ -\/\ shift[0]));}
+\DoxyCodeLine{00181\ \ \ \ \ Zmap.insert(std::make\_pair(11,\ 6.3\ -\/\ shift[1]));}
+\DoxyCodeLine{00182\ \ \ \ \ Zmap.insert(std::make\_pair(12,16.9\ -\/\ shift[2]));}
+\DoxyCodeLine{00183\ \ \ \ \ Zmap.insert(std::make\_pair(13,20.1\ -\/\ shift[3]));}
+\DoxyCodeLine{00184\ \ \ \ \ Zmap.insert(std::make\_pair(14,31.2\ -\/\ shift[4]));}
+\DoxyCodeLine{00185\ \ \ \ \ Zmap.insert(std::make\_pair(20,-\/1.0\ -\/\ shift[5]));}
+\DoxyCodeLine{00186\ \ \ \ \ Zmap.insert(std::make\_pair(21,10.1\ -\/\ shift[6]));}
+\DoxyCodeLine{00187\ \ \ \ \ Zmap.insert(std::make\_pair(22,13.3\ -\/\ shift[7]));}
+\DoxyCodeLine{00188\ \ \ \ \ Zmap.insert(std::make\_pair(23,24.6\ -\/\ shift[8]));}
+\DoxyCodeLine{00189\ \ \ \ \ Zmap.insert(std::make\_pair(24,27.8\ -\/\ shift[9]));}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{double}\ posizione\ =\ Zmap[numero];}
+\DoxyCodeLine{00192\ \textcolor{keywordflow}{return}\ posizione;}
+\DoxyCodeLine{00193\ \}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \textcolor{keywordtype}{double}\ ClusterCoordinate(\mbox{\hyperlink{classEvento}{Evento}}\ e,\ \textcolor{keywordtype}{int}\ indice,\ \textcolor{keywordtype}{int}\ layer)\{}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordtype}{double}\ shift[10]\ =\ \{0,\ -\/0.0081,\ -\/0.0099,\ 0,\ 0.0632,\ -\/0.0717,\ 0,\ 0.0178,\ 0.0003,\ 0\};\ \textcolor{comment}{//Questo\ shift\ è\ fatto\ con\ riferimenti\ X0,\ X3,\ Y1,\ Y4}}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{comment}{//double\ shift[10]\ =\ \{0.\};}}
+\DoxyCodeLine{00198\ \ \ \ \ }
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordtype}{int}\ stringa[10]\ =\ \{10,11,12,13,14,20,21,22,23,24\};}
+\DoxyCodeLine{00200\ \ \ \ \ std::map<int,\ double>\ MapShift;}
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<10;i++)}
+\DoxyCodeLine{00202\ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ MapShift.insert(std::make\_pair(stringa[i],shift[i]));}
+\DoxyCodeLine{00204\ \ \ \ \ \}}
+\DoxyCodeLine{00205\ \textcolor{keywordflow}{return}\ e.\mbox{\hyperlink{classEvento_afda5f0350ebf953b407647222c2093a3}{ClusterPosizione}}[indice]\ -\/\ MapShift[layer];}
+\DoxyCodeLine{00206\ \}}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \textcolor{keywordtype}{double}\ AngleCorrectionCal(\textcolor{keywordtype}{int}\ layer,\ \textcolor{keywordtype}{double}\ mx,\ \textcolor{keywordtype}{double}\ qx,\ \textcolor{keywordtype}{double}\ my,\ \textcolor{keywordtype}{double}\ qy,\ \textcolor{keywordtype}{double}\ alpha[10],\ \textcolor{keywordtype}{double}\ l[10])\{\textcolor{comment}{//m\ e\ q\ sono\ i\ parametri\ della\ retta\ dell'altro\ piano}}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{comment}{//questo\ SERVE\ SOLO\ PER\ LA\ CALIBRAZIONE!!!!!!!!}}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{double}\ Pos;}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordflow}{if}(layer<15)}
+\DoxyCodeLine{00218\ \ \ \ \ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ Pos\ =\ my*LayerCoordinate(layer)+qy;}
+\DoxyCodeLine{00220\ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordflow}{if}(layer>15)}
+\DoxyCodeLine{00222\ \ \ \ \ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ Pos\ =\ mx*LayerCoordinate(layer)+qx;}
+\DoxyCodeLine{00224\ \ \ \ \ \}}
+\DoxyCodeLine{00225\ \ \ \ \ }
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keywordtype}{int}\ stringa[10]\ =\ \{10,11,12,13,14,20,21,22,23,24\};\ \ }
+\DoxyCodeLine{00227\ \ \ \ \ std::map<int,\ double>\ MapAngle;}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=0;j<10;j++)}
+\DoxyCodeLine{00229\ \ \ \ \ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ MapAngle.insert(std::make\_pair(stringa[j],\ (alpha[j]*Pos+l[j])));}
+\DoxyCodeLine{00231\ \ \ \ \ \}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \textcolor{keywordflow}{return}\ MapAngle[layer];}
+\DoxyCodeLine{00234\ \}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \textcolor{keywordtype}{double}\ AngleCorrection(\textcolor{keywordtype}{int}\ layer,\ \textcolor{keywordtype}{double}\ mx,\ \textcolor{keywordtype}{double}\ qx,\ \textcolor{keywordtype}{double}\ my,\ \textcolor{keywordtype}{double}\ qy)\{\textcolor{comment}{//m\ e\ q\ sono\ i\ parametri\ della\ retta\ dell'altro\ piano}}
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{comment}{//ad\ ogni\ punto,\ quando\ rifaccio\ il\ fit\ devo\ sottrarre\ questa\ funzione\ con\ i\ dati\ del\ primo\ fit\ }}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordtype}{double}\ alpha[10]\ =\ \{-\/0.00092,\ -\/0.00064,\ 0.00176,\ 0.00188,\ -\/0.00161,\ 0.00246,\ 0.00032,\ 0.00010,\ 0.00145,\ 0.00125\};\ \textcolor{comment}{//Step\ 50,\ con\ correzione\ XY\ precedente}}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordtype}{double}\ l[10]\ =\ \{0.0415,\ 0.0303,\ -\/0.0341,\ -\/0.0429,\ -\/0.0047,\ -\/0.0146,\ 0.0130,\ 0.0143,\ -\/0.0174,\ -\/0.0184\};\ \textcolor{comment}{//Step\ 50,\ con\ correzione\ XY\ precedente}}
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{comment}{//double\ alpha[10]\ =\ \{-\/0.00084,\ -\/0.00055,\ 0.00178,\ 0.00185,\ -\/0.00169,\ 0.00218,\ -\/0.00001,\ -\/0.00024,\ 0.00119,\ 0.00123\};\ //Step\ 25,\ con\ correzione\ XY\ precedente}}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{comment}{//double\ l[10]\ =\ \{0.0269,\ 0.0176,\ -\/0.0342,\ -\/0.0390,\ 0.0122,\ -\/0.0250,\ 0.0097,\ 0.0123,\ -\/0.0167,\ -\/0.0227\};\ //Step\ 25,\ con\ correzione\ XY\ precedente}}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{comment}{//double\ alpha[10]\ =\ \{-\/0.001144,\ -\/0.000966,\ 0.001478,\ 0.001559,\ -\/0.002237,\ 0.002114,\ -\/0.000227,\ -\/0.000442,\ 0.001008,\ 0.001190\};\ //Step\ 15,\ con\ correzione\ XY\ precedente}}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{comment}{//double\ l[10]\ =\ \{0.02735,\ 0.02172,\ -\/0.02778,\ -\/0.03184,\ 0.02892,\ -\/0.03055,\ 0.00962,\ 0.01273,\ -\/0.01482,\ -\/0.02335\};\ //Step\ 15,\ con\ correzione\ XY\ precedente}}
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keywordtype}{double}\ Pos;}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordflow}{if}(layer<15)}
+\DoxyCodeLine{00248\ \ \ \ \ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ Pos\ =\ my*LayerCoordinate(layer)+qy;}
+\DoxyCodeLine{00250\ \ \ \ \ \}}
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keywordflow}{if}(layer>15)}
+\DoxyCodeLine{00252\ \ \ \ \ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ Pos\ =\ mx*LayerCoordinate(layer)+qx;}
+\DoxyCodeLine{00254\ \ \ \ \ \}}
+\DoxyCodeLine{00255\ \ \ \ \ }
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordtype}{int}\ stringa[10]\ =\ \{10,11,12,13,14,20,21,22,23,24\};\ \ }
+\DoxyCodeLine{00257\ \ \ \ \ std::map<int,\ double>\ MapAngle;}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=0;j<10;j++)}
+\DoxyCodeLine{00259\ \ \ \ \ \{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ MapAngle.insert(std::make\_pair(stringa[j],\ (alpha[j]*Pos+l[j])));}
+\DoxyCodeLine{00261\ \ \ \ \ \}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \textcolor{keywordflow}{return}\ MapAngle[layer];}
+\DoxyCodeLine{00264\ \}}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00270\ \textcolor{keywordtype}{double}\ ErrorXYZ(\textcolor{keywordtype}{int}\ Layer)\{}
+\DoxyCodeLine{00271\ \ \ \ \ std::map<int,\ double>\ Ambaraba;}
+\DoxyCodeLine{00272\ \ \ \ \ Ambaraba.insert(std::make\_pair(10,\ 0.0254795));}
+\DoxyCodeLine{00273\ \ \ \ \ Ambaraba.insert(std::make\_pair(11,\ 0.0182482));}
+\DoxyCodeLine{00274\ \ \ \ \ Ambaraba.insert(std::make\_pair(12,\ 0.0242299));}
+\DoxyCodeLine{00275\ \ \ \ \ Ambaraba.insert(std::make\_pair(13,\ 0.0239926));}
+\DoxyCodeLine{00276\ \ \ \ \ Ambaraba.insert(std::make\_pair(14,\ 0.0698908));}
+\DoxyCodeLine{00277\ \ \ \ \ Ambaraba.insert(std::make\_pair(20,\ 0.0536476));}
+\DoxyCodeLine{00278\ \ \ \ \ Ambaraba.insert(std::make\_pair(21,\ 0.019532));}
+\DoxyCodeLine{00279\ \ \ \ \ Ambaraba.insert(std::make\_pair(22,\ 0.0216202));}
+\DoxyCodeLine{00280\ \ \ \ \ Ambaraba.insert(std::make\_pair(23,\ 0.0177527));}
+\DoxyCodeLine{00281\ \ \ \ \ Ambaraba.insert(std::make\_pair(24,\ 0.022226));}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \ \ \ \ \textcolor{keywordflow}{return}\ Ambaraba[Layer];}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ \}}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00287\ \textcolor{keywordtype}{double}\ ErrorXYAngoloZ(\textcolor{keywordtype}{int}\ Layer)\{}
+\DoxyCodeLine{00288\ \ \ \ \ std::map<int,\ double>\ Ambaraba;}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{comment}{//correzione\ fatta\ su\ retina}}
+\DoxyCodeLine{00291\ \ \ \ \ \textcolor{comment}{/*Ambaraba.insert(std::make\_pair(10,\ 0.0231989));}}
+\DoxyCodeLine{00292\ \textcolor{comment}{\ \ \ \ Ambaraba.insert(std::make\_pair(11,\ 0.0175281));}}
+\DoxyCodeLine{00293\ \textcolor{comment}{\ \ \ \ Ambaraba.insert(std::make\_pair(12,\ 0.0184174));}}
+\DoxyCodeLine{00294\ \textcolor{comment}{\ \ \ \ Ambaraba.insert(std::make\_pair(13,\ 0.0170521));}}
+\DoxyCodeLine{00295\ \textcolor{comment}{\ \ \ \ Ambaraba.insert(std::make\_pair(14,\ 0.0414208));}}
+\DoxyCodeLine{00296\ \textcolor{comment}{\ \ \ \ Ambaraba.insert(std::make\_pair(20,\ 0.0411782));}}
+\DoxyCodeLine{00297\ \textcolor{comment}{\ \ \ \ Ambaraba.insert(std::make\_pair(21,\ 0.0172039));}}
+\DoxyCodeLine{00298\ \textcolor{comment}{\ \ \ \ Ambaraba.insert(std::make\_pair(22,\ 0.0184462));}}
+\DoxyCodeLine{00299\ \textcolor{comment}{\ \ \ \ Ambaraba.insert(std::make\_pair(23,\ 0.0241886));}}
+\DoxyCodeLine{00300\ \textcolor{comment}{\ \ \ \ Ambaraba.insert(std::make\_pair(24,\ 0.0244736));*/}}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{comment}{//correzione\ fatta\ su\ lobster}}
+\DoxyCodeLine{00303\ \ \ \ \ Ambaraba.insert(std::make\_pair(10,\ 0.0132882));}
+\DoxyCodeLine{00304\ \ \ \ \ Ambaraba.insert(std::make\_pair(11,\ 0.0101872));}
+\DoxyCodeLine{00305\ \ \ \ \ Ambaraba.insert(std::make\_pair(12,\ 0.0110667));}
+\DoxyCodeLine{00306\ \ \ \ \ Ambaraba.insert(std::make\_pair(13,\ 0.0111949));}
+\DoxyCodeLine{00307\ \ \ \ \ Ambaraba.insert(std::make\_pair(14,\ 0.0321004));}
+\DoxyCodeLine{00308\ \ \ \ \ Ambaraba.insert(std::make\_pair(20,\ 0.0317406));}
+\DoxyCodeLine{00309\ \ \ \ \ Ambaraba.insert(std::make\_pair(21,\ 0.011021));}
+\DoxyCodeLine{00310\ \ \ \ \ Ambaraba.insert(std::make\_pair(22,\ 0.0112294));}
+\DoxyCodeLine{00311\ \ \ \ \ Ambaraba.insert(std::make\_pair(23,\ 0.0106568));}
+\DoxyCodeLine{00312\ \ \ \ \ Ambaraba.insert(std::make\_pair(24,\ 0.0130159));}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \ \ \ \ \textcolor{keywordflow}{return}\ Ambaraba[Layer];}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00316\ \}}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \textcolor{keywordtype}{double}\ Error(\textcolor{keywordtype}{int}\ StripIn,\ \textcolor{keywordtype}{int}\ Dimension)\{}
+\DoxyCodeLine{00321\ \ \ \ \ \textcolor{keywordtype}{int}\ StripFin\ =\ StripIn\ +\ Dimension;}
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordtype}{double}\ error\ =\ (StripCoordinate(StripFin)-\/StripCoordinate(StripIn))/(sqrt(12.));}
+\DoxyCodeLine{00323\ \ \ \ \ \textcolor{keywordflow}{if}(Dimension==1)}
+\DoxyCodeLine{00324\ \ \ \ \ \{}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ error\ =\ 0.0228/sqrt(12.);}
+\DoxyCodeLine{00326\ \ \ \ \ \}}
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keywordflow}{return}\ error;\ }
+\DoxyCodeLine{00328\ \}}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00332\ }
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00336\ \textcolor{keywordtype}{int}\ IndiceVettore(std::vector<int>\ vettore,\ \textcolor{keywordtype}{int}\ numero)}
+\DoxyCodeLine{00337\ \{}
+\DoxyCodeLine{00338\ \ \ \ \ \textcolor{keywordtype}{int}\ indice;}
+\DoxyCodeLine{00339\ \ \ \ \ \textcolor{comment}{//\ Cerca\ il\ numero\ nel\ vettore}}
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keyword}{auto}\ trovato\ =\ std::find(vettore.begin(),\ vettore.end(),\ numero);}
+\DoxyCodeLine{00341\ \ \ \ \ \textcolor{comment}{//\ Verifica\ se\ il\ numero\ è\ stato\ trovato}}
+\DoxyCodeLine{00342\ \ \ \ \ \textcolor{keywordflow}{if}\ (trovato\ !=\ vettore.end())\ }
+\DoxyCodeLine{00343\ \ \ \ \ \{}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ indice\ =\ std::distance(vettore.begin(),\ trovato);}
+\DoxyCodeLine{00345\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{00346\ \ \ \ \ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ indice\ =\ -\/1;}
+\DoxyCodeLine{00348\ \ \ \ \ \}}
+\DoxyCodeLine{00349\ \ \ \ \ \textcolor{keywordflow}{return}\ indice;}
+\DoxyCodeLine{00350\ \}}
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \textcolor{keywordtype}{void}\ TrackXZ(\mbox{\hyperlink{classEvento}{Evento}}\ e,\ TGraphErrors\ *Graph)\{}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00357\ \textcolor{keywordtype}{double}\ xpos;}
+\DoxyCodeLine{00358\ \textcolor{keywordtype}{double}\ zpos;}
+\DoxyCodeLine{00359\ \textcolor{keywordtype}{double}\ error;}
+\DoxyCodeLine{00360\ \textcolor{keywordtype}{double}\ errorz\ =\ 0.;\ \textcolor{comment}{//cm}}
+\DoxyCodeLine{00361\ \textcolor{keywordtype}{int}\ n\ =\ 0;}
+\DoxyCodeLine{00362\ Graph-\/>SetTitle(\textcolor{stringliteral}{"{}Track\ XZ;\ X\ [cm];\ Z\ [cm]"{}});}
+\DoxyCodeLine{00363\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}.size();\ i++)\{}
+\DoxyCodeLine{00364\ \ \ \ \ \textcolor{keywordflow}{if}(e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]<15)}
+\DoxyCodeLine{00365\ \ \ \ \ \{}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ xpos\ =\ e.\mbox{\hyperlink{classEvento_afda5f0350ebf953b407647222c2093a3}{ClusterPosizione}}[i];}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ zpos\ =\ LayerCoordinate(e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]);}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ n\ =\ Graph-\/>GetN();}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ error\ =\ Error(e.\mbox{\hyperlink{classEvento_aa3a57c61c9ce04f5be3c165c68504eab}{InitialStrip}}[i],\ e.\mbox{\hyperlink{classEvento_af62a7e19f53d2219ee0edcca6422b89a}{ClusterDimension}}[i]);}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \textcolor{comment}{//errorz\ =\ sqrt(0.01+\ error*m*m*error);}}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ Graph-\/>SetPoint(n,xpos,\ zpos);}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ Graph-\/>SetPointError(n,error,errorz);}
+\DoxyCodeLine{00373\ \ \ \ \ \}}
+\DoxyCodeLine{00374\ \}}
+\DoxyCodeLine{00375\ \}}
+\DoxyCodeLine{00376\ }
+\DoxyCodeLine{00377\ \textcolor{keywordtype}{void}\ TrackYZ(\mbox{\hyperlink{classEvento}{Evento}}\ e,\ TGraphErrors\ *Graph)\{}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00379\ \textcolor{keywordtype}{double}\ ypos;}
+\DoxyCodeLine{00380\ \textcolor{keywordtype}{double}\ zpos;}
+\DoxyCodeLine{00381\ \textcolor{keywordtype}{double}\ error;}
+\DoxyCodeLine{00382\ \textcolor{keywordtype}{double}\ errorz\ =\ 0.;\ \textcolor{comment}{//cm}}
+\DoxyCodeLine{00383\ \textcolor{keywordtype}{int}\ n\ =\ 0;}
+\DoxyCodeLine{00384\ Graph-\/>SetTitle(\textcolor{stringliteral}{"{}Track\ YZ;\ Y\ [cm];\ Z\ [cm]"{}});}
+\DoxyCodeLine{00385\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}.size();\ i++)\{}
+\DoxyCodeLine{00386\ \ \ \ \ \textcolor{keywordflow}{if}(e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]>15)}
+\DoxyCodeLine{00387\ \ \ \ \ \{}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ ypos\ =\ e.\mbox{\hyperlink{classEvento_afda5f0350ebf953b407647222c2093a3}{ClusterPosizione}}[i];}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ zpos\ =\ LayerCoordinate(e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]);}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ n\ =\ Graph-\/>GetN();}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ error\ =\ Error(e.\mbox{\hyperlink{classEvento_aa3a57c61c9ce04f5be3c165c68504eab}{InitialStrip}}[i],\ e.\mbox{\hyperlink{classEvento_af62a7e19f53d2219ee0edcca6422b89a}{ClusterDimension}}[i]);}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \textcolor{comment}{//errorz\ =\ sqrt(0.01+\ error*m*m*error);}}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ Graph-\/>SetPoint(n,ypos,\ zpos);}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ Graph-\/>SetPointError(n,error,errorz);}
+\DoxyCodeLine{00395\ \ \ \ \ \}}
+\DoxyCodeLine{00396\ \}}
+\DoxyCodeLine{00397\ }
+\DoxyCodeLine{00398\ \}}
+\DoxyCodeLine{00399\ }
+\DoxyCodeLine{00400\ \textcolor{keywordtype}{void}\ TrackFitXZ(\mbox{\hyperlink{classEvento}{Evento}}\ e,\ TGraphErrors\ *Graph,std::map<int,double>\ Zmap,\ \textcolor{keywordtype}{int}\ layerveto\ =\ -\/1,\ std::vector<double>\ shift\ =\ \{0,0,0,0,0,0,0,0,0,0\})\{\ \textcolor{comment}{//inverte\ gli\ assi}}
+\DoxyCodeLine{00401\ }
+\DoxyCodeLine{00402\ \textcolor{keywordtype}{double}\ xpos;}
+\DoxyCodeLine{00403\ \textcolor{keywordtype}{double}\ zpos;}
+\DoxyCodeLine{00404\ \textcolor{keywordtype}{double}\ error;}
+\DoxyCodeLine{00405\ \textcolor{keywordtype}{double}\ errorz\ =\ 0.;\ \textcolor{comment}{//cm}}
+\DoxyCodeLine{00406\ \textcolor{keywordtype}{int}\ s\ =\ 0;}
+\DoxyCodeLine{00407\ Graph-\/>SetTitle(\textcolor{stringliteral}{"{}Track\ XZ;\ Z\ [cm];\ X\ [cm]"{}});}
+\DoxyCodeLine{00408\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}.size();\ i++)\{\ }
+\DoxyCodeLine{00409\ \ \ \ \ \textcolor{keywordflow}{if}((e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]<15)\&(e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]!=\ layerveto))}
+\DoxyCodeLine{00410\ \ \ \ \ \{}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ xpos\ =\ ClusterCoordinate(e,\ i,\ e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]);}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \textcolor{comment}{//xpos\ =\ e.ClusterPosizione[i];}}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ zpos\ =\ LayerCoordinate(e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]);}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \textcolor{comment}{//cout<<xpos<<endl;}}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \textcolor{comment}{//cout<<zpos<<endl;}}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ s\ =\ Graph-\/>GetN();}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ error\ =\ Error(e.\mbox{\hyperlink{classEvento_aa3a57c61c9ce04f5be3c165c68504eab}{InitialStrip}}[i],\ e.\mbox{\hyperlink{classEvento_af62a7e19f53d2219ee0edcca6422b89a}{ClusterDimension}}[i]);}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \textcolor{comment}{//errorz\ =\ sqrt(0.01+\ error*m*m*error);}}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ Graph-\/>SetPoint(s,zpos,\ xpos);}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ Graph-\/>SetPointError(s,errorz,error);}
+\DoxyCodeLine{00421\ \ \ \ \ \}}
+\DoxyCodeLine{00422\ \}}
+\DoxyCodeLine{00423\ }
+\DoxyCodeLine{00424\ \}}
+\DoxyCodeLine{00425\ }
+\DoxyCodeLine{00426\ \textcolor{keywordtype}{void}\ TrackFitYZ(\mbox{\hyperlink{classEvento}{Evento}}\ e,\ TGraphErrors\ *Graph,\ std::map<int,double>\ Zmap,\textcolor{keywordtype}{int}\ layerveto\ =\ -\/1,\ std::vector<double>\ shift\ =\ \{0,0,0,0,0,0,0,0,0,0\}\ )\{\ \textcolor{comment}{//inverte\ gli\ assi}}
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00428\ \textcolor{keywordtype}{double}\ ypos;}
+\DoxyCodeLine{00429\ \textcolor{keywordtype}{double}\ zpos;}
+\DoxyCodeLine{00430\ \textcolor{keywordtype}{double}\ error;}
+\DoxyCodeLine{00431\ \textcolor{keywordtype}{double}\ errorz\ =\ 0.;\ \textcolor{comment}{//cm}}
+\DoxyCodeLine{00432\ \textcolor{keywordtype}{int}\ s\ =\ 0;}
+\DoxyCodeLine{00433\ Graph-\/>SetTitle(\textcolor{stringliteral}{"{}Track\ YZ;\ Z\ [cm];\ Y\ [cm]"{}});}
+\DoxyCodeLine{00434\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}.size();\ i++)\{}
+\DoxyCodeLine{00435\ \ \ \ \ \textcolor{keywordflow}{if}((e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]>15)\&(e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]!=\ layerveto))}
+\DoxyCodeLine{00436\ \ \ \ \ \{}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ ypos\ =\ ClusterCoordinate(e,\ i,\ e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]);}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ypos\ =\ e.ClusterPosizione[i];}}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ zpos\ =\ LayerCoordinate(e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]);}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ s\ =\ Graph-\/>GetN();}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ error\ =\ Error(e.\mbox{\hyperlink{classEvento_aa3a57c61c9ce04f5be3c165c68504eab}{InitialStrip}}[i],\ e.\mbox{\hyperlink{classEvento_af62a7e19f53d2219ee0edcca6422b89a}{ClusterDimension}}[i]);}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \textcolor{comment}{//errorz\ =\ sqrt(0.01+\ error*m*m*error);}}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ Graph-\/>SetPoint(s,zpos,\ ypos);}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ Graph-\/>SetPointError(s,errorz,error);}
+\DoxyCodeLine{00445\ \ \ \ \ \}}
+\DoxyCodeLine{00446\ \}}
+\DoxyCodeLine{00447\ }
+\DoxyCodeLine{00448\ \}}
+\DoxyCodeLine{00449\ }
+\DoxyCodeLine{00450\ }
+\DoxyCodeLine{00451\ }
+\DoxyCodeLine{00452\ }
+\DoxyCodeLine{00453\ }
+\DoxyCodeLine{00454\ \textcolor{keywordtype}{void}\ TrackFitXZVec(TGraphErrors\ *Graph,\ std::vector<int>\ Layers,\ std::vector<double>\ Clusters,\ std::vector<double>\ Errors)\{\ \textcolor{comment}{//inverte\ gli\ assi}}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00456\ \textcolor{keywordtype}{double}\ xpos;}
+\DoxyCodeLine{00457\ \textcolor{keywordtype}{double}\ zpos;}
+\DoxyCodeLine{00458\ \textcolor{keywordtype}{double}\ error;}
+\DoxyCodeLine{00459\ \textcolor{keywordtype}{double}\ errorz\ =\ 0.;\ \textcolor{comment}{//cm}}
+\DoxyCodeLine{00460\ \textcolor{keywordtype}{int}\ s\ =\ 0;}
+\DoxyCodeLine{00461\ Graph-\/>SetTitle(\textcolor{stringliteral}{"{}Track\ XZ;\ Z\ [cm];\ X\ [cm]"{}});}
+\DoxyCodeLine{00462\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<Layers.size();\ i++)}
+\DoxyCodeLine{00463\ \ \ \ \ \{}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ xpos\ =\ Clusters[i];}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ zpos\ =\ LayerCoordinate(Layers[i]);}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ error\ =\ Errors[i];}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ s\ =\ Graph-\/>GetN();}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ Graph-\/>SetPoint(s,zpos,\ xpos);}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ Graph-\/>SetPointError(s,0,error);}
+\DoxyCodeLine{00471\ \ \ \ \ \}}
+\DoxyCodeLine{00472\ \}}
+\DoxyCodeLine{00473\ }
+\DoxyCodeLine{00474\ \textcolor{keywordtype}{void}\ TrackFitYZVec(TGraphErrors\ *Graph,\ std::vector<int>\ Layers,\ std::vector<double>\ Clusters,\ std::vector<double>\ Errors)\{\ \textcolor{comment}{//inverte\ gli\ assi}}
+\DoxyCodeLine{00475\ }
+\DoxyCodeLine{00476\ \textcolor{keywordtype}{double}\ xpos;}
+\DoxyCodeLine{00477\ \textcolor{keywordtype}{double}\ zpos;}
+\DoxyCodeLine{00478\ \textcolor{keywordtype}{double}\ error;}
+\DoxyCodeLine{00479\ \textcolor{keywordtype}{double}\ errorz\ =\ 0.;\ \textcolor{comment}{//cm}}
+\DoxyCodeLine{00480\ \textcolor{keywordtype}{int}\ n\ =\ 0;}
+\DoxyCodeLine{00481\ Graph-\/>SetTitle(\textcolor{stringliteral}{"{}Track\ YZ;\ Z\ [cm];\ X\ [cm]"{}});}
+\DoxyCodeLine{00482\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<Layers.size();\ i++)}
+\DoxyCodeLine{00483\ \ \ \ \ \{}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ xpos\ =\ Clusters[i];}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ zpos\ =\ LayerCoordinate(Layers[i]);}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ error\ =\ Errors[i];}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ n\ =\ Graph-\/>GetN();}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ Graph-\/>SetPoint(n,zpos,\ xpos);}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ Graph-\/>SetPointError(n,0,error);}
+\DoxyCodeLine{00490\ \ \ \ \ \}}
+\DoxyCodeLine{00491\ \}}
+\DoxyCodeLine{00492\ }
+\DoxyCodeLine{00493\ }
+\DoxyCodeLine{00494\ }
+\DoxyCodeLine{00495\ }
+\DoxyCodeLine{00496\ }
+\DoxyCodeLine{00497\ \textcolor{keywordtype}{void}\ ClusterManualTest(\mbox{\hyperlink{classEvento}{Evento}}\ e)\{}
+\DoxyCodeLine{00498\ }
+\DoxyCodeLine{00499\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ x:e.ClusterDimension)\{}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Elenco\ le\ dimensioni\ dei\ cluster"{}}<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ std::cout<<\ x\ <<\textcolor{charliteral}{'\(\backslash\)n'};\ \ \ }
+\DoxyCodeLine{00502\ \ \ \ \ \}}
+\DoxyCodeLine{00503\ }
+\DoxyCodeLine{00504\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ x\ :e.Strip)\{}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Elenco\ tutte\ le\ strip\ dell'evento\ "{}}<<\ x<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00506\ }
+\DoxyCodeLine{00507\ \ \ \ \ \}}
+\DoxyCodeLine{00508\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ x\ :e.Layer)\{}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Elenco\ tutte\ i\ layer\ rispettivi\ dell'evento\ "{}}<<x<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00510\ }
+\DoxyCodeLine{00511\ \ \ \ \ \}}
+\DoxyCodeLine{00512\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ x:e.InitialStrip)\{}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Elenco\ le\ strip\ iniziali\ dei\ cluster\ "{}}<<\ x<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00514\ }
+\DoxyCodeLine{00515\ \ \ \ \ \}}
+\DoxyCodeLine{00516\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ x:e.ClusterLayer)\{}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Ora\ scrivo\ i\ layer\ delle\ prime\ strip\ dei\ cluster\ "{}}\ <<\ x\ <<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00518\ }
+\DoxyCodeLine{00519\ }
+\DoxyCodeLine{00520\ \ \ \ \ \}}
+\DoxyCodeLine{00521\ \ \ \ \ \textcolor{comment}{//Ora,\ se\ hai\ fatto\ il\ lavoro\ bene\ a\ monte,\ dovresti\ verificare\ che\ i\ layer\ associati\ ai\ cluster\ siano\ effettivamente\ \ quelli\ giusti...}}
+\DoxyCodeLine{00522\ }
+\DoxyCodeLine{00523\ }
+\DoxyCodeLine{00524\ }
+\DoxyCodeLine{00525\ \};}
+\DoxyCodeLine{00526\ }
+\DoxyCodeLine{00527\ }
+\DoxyCodeLine{00528\ }
+\DoxyCodeLine{00529\ }
+\DoxyCodeLine{00530\ \textcolor{keywordtype}{void}\ Potential2TrackXZFinder(\mbox{\hyperlink{classEvento}{Evento}}\ e)\{}
+\DoxyCodeLine{00531\ \ \ \ \ std::vector<double>\ TrackOne;}
+\DoxyCodeLine{00532\ \ \ \ \ std::vector<double>\ TrackTwo;}
+\DoxyCodeLine{00533\ \ \ \ \ std::vector<double>\ FirstLayer;}
+\DoxyCodeLine{00534\ \ \ \ \ std::vector<double>\ PositionXFirst;}
+\DoxyCodeLine{00535\ \ \ \ \ std::vector<double>\ PositionXSecond;}
+\DoxyCodeLine{00536\ \ \ \ \ \textcolor{keywordtype}{int}\ StartingLayer;}
+\DoxyCodeLine{00537\ }
+\DoxyCodeLine{00538\ \ \ \ \ }
+\DoxyCodeLine{00539\ std::map<int,\ double>\ Zmap;\ }
+\DoxyCodeLine{00540\ }
+\DoxyCodeLine{00541\ Zmap.insert(std::make\_pair(10,\ 3.1\ ));}
+\DoxyCodeLine{00542\ Zmap.insert(std::make\_pair(11,\ 6.3));}
+\DoxyCodeLine{00543\ Zmap.insert(std::make\_pair(12,16.9));}
+\DoxyCodeLine{00544\ Zmap.insert(std::make\_pair(13,20.1));}
+\DoxyCodeLine{00545\ Zmap.insert(std::make\_pair(14,31.2));}
+\DoxyCodeLine{00546\ Zmap.insert(std::make\_pair(20,-\/1.0));}
+\DoxyCodeLine{00547\ Zmap.insert(std::make\_pair(21,10.1));}
+\DoxyCodeLine{00548\ Zmap.insert(std::make\_pair(22,13.3));}
+\DoxyCodeLine{00549\ Zmap.insert(std::make\_pair(23,24.6));}
+\DoxyCodeLine{00550\ Zmap.insert(std::make\_pair(24,27.8));}
+\DoxyCodeLine{00551\ }
+\DoxyCodeLine{00552\ }
+\DoxyCodeLine{00553\ std::map<int,int>\ mapLayers;}
+\DoxyCodeLine{00554\ mapLayers.insert(std::make\_pair(14,13));}
+\DoxyCodeLine{00555\ mapLayers.insert(std::make\_pair(10,11));}
+\DoxyCodeLine{00556\ mapLayers.insert(std::make\_pair(20,11));}
+\DoxyCodeLine{00557\ mapLayers.insert(std::make\_pair(24,13));}
+\DoxyCodeLine{00558\ }
+\DoxyCodeLine{00559\ }
+\DoxyCodeLine{00560\ std::vector<int>\ XLayers\ =\ \{10,\ 11,\ 12,\ 13,\ 14\};}
+\DoxyCodeLine{00561\ }
+\DoxyCodeLine{00562\ }
+\DoxyCodeLine{00563\ }
+\DoxyCodeLine{00564\ }
+\DoxyCodeLine{00565\ }
+\DoxyCodeLine{00566\ }
+\DoxyCodeLine{00567\ \ \ \ \ }
+\DoxyCodeLine{00568\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ x:e.ClusterLayer)\{}
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x==14)\{}
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \ \ PositionXFirst.push\_back(x);\ \ }
+\DoxyCodeLine{00571\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00572\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x\ ==10)\{}
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \ \ \ \ PositionXSecond.push\_back(x);}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00576\ \ \ \ \ \}}
+\DoxyCodeLine{00577\ \ \ \ \ }
+\DoxyCodeLine{00578\ \ \ \ \ \textcolor{keywordflow}{if}(abs(PositionXSecond[0]-\/\ PositionXSecond[1])\ <\ abs(PositionXFirst[0]-\/\ PositionXFirst[1]))\{}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ StartingLayer\ =\ \ 14;}
+\DoxyCodeLine{00580\ \ \ \ \ }
+\DoxyCodeLine{00581\ \ \ \ \ \}}
+\DoxyCodeLine{00582\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ StartingLayer\ =\ 10;}
+\DoxyCodeLine{00584\ \ \ \ \ \}}
+\DoxyCodeLine{00585\ \ \ \ \ }
+\DoxyCodeLine{00586\ \ \ \ \ }
+\DoxyCodeLine{00587\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<\ e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}.size();\ i++)\{}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]\ ==\ StartingLayer)\{}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \ \ FirstLayer.push\_back(e.\mbox{\hyperlink{classEvento_afda5f0350ebf953b407647222c2093a3}{ClusterPosizione}}[i]);}
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00591\ \ \ \ \ \}}
+\DoxyCodeLine{00592\ \ \ \ \ \textcolor{keywordflow}{if}\ (FirstLayer.size()\ ==2)\{\ \textcolor{comment}{//questo\ if\ non\ è\ necessario.}}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ TrackOne.push\_back(FirstLayer[0]);}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ TrackTwo.push\_back(FirstLayer[1]);}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;j\ <\ e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}.size();\ j++)\{}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[j]\ ==\ \ mapLayers[StartingLayer])\{}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(abs(TrackOne[0]\ -\/\ e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[j])\ <abs(TrackOne[0]\ -\/\ e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[j]))\{\ \textcolor{comment}{//qua\ chiedo\ se\ è\ più\ vicino\ al\ punto\ 0...}}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackOne.push\_back(e.\mbox{\hyperlink{classEvento_afda5f0350ebf953b407647222c2093a3}{ClusterPosizione}}[j]);}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackTwo.push\_back(e.\mbox{\hyperlink{classEvento_afda5f0350ebf953b407647222c2093a3}{ClusterPosizione}}[j]);}
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ \}\ \textcolor{comment}{//ok,\ dopo\ aver\ fatto\ questo\ ho\ creato\ due\ track\ potenziali,\ ora\ quello\ che\ devo\ fare\ è\ prendere\ i\ punti\ che\ distano\ il\ minimo\ dalle\ rette\ create.}}
+\DoxyCodeLine{00606\ \ \ \ \ \}}
+\DoxyCodeLine{00607\ \ \ \ \ \textcolor{keywordtype}{int}\ mFirst\ =\ (TrackOne[0]-\/TrackOne[1])/(Zmap[StartingLayer]\ -\/\ Zmap[mapLayers[StartingLayer]]);\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//sarebbe\ punto\ x4\ -\/x3\ o\ punto\ x0-\/x1}}
+\DoxyCodeLine{00608\ \ \ \ \ \textcolor{keywordtype}{int}\ mSecond\ =\ (TrackTwo[0]-\/TrackTwo[1])/(Zmap[StartingLayer]\ -\/\ Zmap[mapLayers[StartingLayer]]);}
+\DoxyCodeLine{00609\ \ \ \ \ \textcolor{keywordtype}{int}\ qFirst\ =\ TrackOne[0]\ -\/\ mFirst*Zmap[StartingLayer];\ }
+\DoxyCodeLine{00610\ \ \ \ \ \textcolor{keywordtype}{int}\ qSecond\ =\ TrackTwo[0]\ -\/\ mSecond*Zmap[StartingLayer];}
+\DoxyCodeLine{00611\ \ \ \ \ }
+\DoxyCodeLine{00612\ \ \ \ \ TrackOne.clear();}
+\DoxyCodeLine{00613\ \ \ \ \ TrackTwo.clear();}
+\DoxyCodeLine{00614\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ x:XLayers)\{\ \textcolor{comment}{//ok,\ ora\ devo\ trovare\ per\ ogni\ layer\ il\ punto\ più\ vicino\ alle\ due\ tracce\ trovate.}}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}.size();i++)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]\ ==\ x)\&((abs(e.\mbox{\hyperlink{classEvento_afda5f0350ebf953b407647222c2093a3}{ClusterPosizione}}[i]*mFirst\ -\/Zmap[e.\mbox{\hyperlink{classEvento_a23ff02acef8a83388727aedde9f29446}{ClusterLayer}}[i]]\ +\ qFirst)/sqrt(1+mFirst*mFirst))<0.2))}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackOne.push\_back(e.\mbox{\hyperlink{classEvento_afda5f0350ebf953b407647222c2093a3}{ClusterPosizione}}[i]);}
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00621\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackTwo.push\_back(e.\mbox{\hyperlink{classEvento_afda5f0350ebf953b407647222c2093a3}{ClusterPosizione}}[i]);}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00625\ \ \ \ \ }
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{00627\ \ \ \ \ \}}
+\DoxyCodeLine{00628\ \ \ \ \ \textcolor{comment}{//Ok,\ ora\ hai\ le\ tracce\ candidate...gli\ eventi\ devono\ avere\ due\ punti\ per\ layer.}}
+\DoxyCodeLine{00629\ \}}
+\DoxyCodeLine{00630\ }
+\DoxyCodeLine{00631\ }
+\DoxyCodeLine{00632\ }
+\DoxyCodeLine{00633\ }
+\DoxyCodeLine{00634\ }
+\DoxyCodeLine{00635\ }
+\DoxyCodeLine{00636\ }
+\DoxyCodeLine{00637\ }
+\DoxyCodeLine{00638\ }
+\DoxyCodeLine{00639\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00640\ \textcolor{comment}{void\ UniTestCluster(Evento\ e)\{}}
+\DoxyCodeLine{00641\ \textcolor{comment}{\ \ \ \ int\ position=0;}}
+\DoxyCodeLine{00642\ \textcolor{comment}{}}
+\DoxyCodeLine{00643\ \textcolor{comment}{}}
+\DoxyCodeLine{00644\ \textcolor{comment}{\ \ \ \ for(int\ i\ =\ 0;\ i\ <\ e.ClusterDimension.size();i++)\{}}
+\DoxyCodeLine{00645\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(e.ClusterLayer[i]\ !=e.Layer[i+position])\{}}
+\DoxyCodeLine{00646\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ try\{}}
+\DoxyCodeLine{00647\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ throw\ MyException("{}Fratm\ il\ codice\ non\ funziona"{});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00648\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00649\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ catch\ (MyException\&\ exc)\ \{\ }}
+\DoxyCodeLine{00650\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Catch\ and\ handle\ our\ custom\ exception\ }}
+\DoxyCodeLine{00651\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ "{}Caught\ an\ exception:\ "{}\ <<\ exc.what()\ <<\ endl;\ }}
+\DoxyCodeLine{00652\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ e.ClusterLayer[i]<<\ "{}\ "{}\ <<e.Layer[i]<<\ "{}\ "{}<<i\ <<'\(\backslash\)n';}}
+\DoxyCodeLine{00653\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }}
+\DoxyCodeLine{00654\ \textcolor{comment}{\ \ \ \ \ \ \ \ exit(0);}}
+\DoxyCodeLine{00655\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00656\ \textcolor{comment}{}}
+\DoxyCodeLine{00657\ \textcolor{comment}{\ \ \ \ \ \ \ \ position\ +=\ e.ClusterDimension[i]-\/1;}}
+\DoxyCodeLine{00658\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00659\ \textcolor{comment}{}}
+\DoxyCodeLine{00660\ \textcolor{comment}{\ \ \ \ for(auto\ x:e.ClusterDimension)\{}}
+\DoxyCodeLine{00661\ \textcolor{comment}{\ \ \ \ \ \ \ \ position\ +=\ x;}}
+\DoxyCodeLine{00662\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00663\ \textcolor{comment}{\ \ \ \ if(e.NHit\ ==\ position)\{}}
+\DoxyCodeLine{00664\ \textcolor{comment}{\ \ \ \ std::cout<<"{}Test\ Passed:\ La\ somma\ delle\ dimensioni\ dei\ cluster\ e\ il\ numero\ degli\ hit\ coincidono."{}<<'\(\backslash\)n';}}
+\DoxyCodeLine{00665\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00666\ \textcolor{comment}{\ \ \ \ else\{}}
+\DoxyCodeLine{00667\ \textcolor{comment}{\ \ \ \ \ \ \ \ try\{}}
+\DoxyCodeLine{00668\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ throw\ MyException("{}La\ somma\ delle\ dimensioni\ dei\ cluster\ ed\ il\ numero\ di\ Hit\ non\ coincidono.\ Error"{});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00669\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00670\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ catch\ (MyException\&\ exc)\ \{\ }}
+\DoxyCodeLine{00671\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Catch\ and\ handle\ our\ custom\ exception\ }}
+\DoxyCodeLine{00672\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}Caught\ an\ exception:\ "{}\ <<\ exc.what()\ <<\ std::endl;\ }}
+\DoxyCodeLine{00673\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout<<position\ <<\ "{}\ "{}<<e.NHit<<'\(\backslash\)n';}}
+\DoxyCodeLine{00674\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }}
+\DoxyCodeLine{00675\ \textcolor{comment}{\ \ \ \ exit(0);}}
+\DoxyCodeLine{00676\ \textcolor{comment}{}}
+\DoxyCodeLine{00677\ \textcolor{comment}{}}
+\DoxyCodeLine{00678\ \textcolor{comment}{}}
+\DoxyCodeLine{00679\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00680\ \textcolor{comment}{\ \ \ \ std::cout<<position\ <<\ "{}\ "{}<<e.NHit<<'\(\backslash\)n';}}
+\DoxyCodeLine{00681\ \textcolor{comment}{}}
+\DoxyCodeLine{00682\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00683\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00684\ }
+\DoxyCodeLine{00685\ }
+\DoxyCodeLine{00686\ }
+\DoxyCodeLine{00687\ }
+\DoxyCodeLine{00688\ }
+\DoxyCodeLine{00689\ }
+\DoxyCodeLine{00690\ }
+\DoxyCodeLine{00691\ }
+\DoxyCodeLine{00692\ }
+
+\end{DoxyCode}

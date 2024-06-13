@@ -1,0 +1,35 @@
+\doxysection{CMEPDA-\/\+GLAST/\+Create\+Tree/\+Create\+Tree.cpp File Reference}
+\hypertarget{CreateTree_8cpp}{}\label{CreateTree_8cpp}\index{CMEPDA-\/GLAST/CreateTree/CreateTree.cpp@{CMEPDA-\/GLAST/CreateTree/CreateTree.cpp}}
+{\ttfamily \#include "{}Utils\+Create\+Tree.\+h"{}}\newline
+{\ttfamily \#include "{}General\+Utils.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{CreateTree_8cpp_a2fe5984273d03a4c917f106fc23ab5b6}{Create\+Tree}} (const std\+::string \&fileinput, TString fileoutput)
+\begin{DoxyCompactList}\small\item\em This macro takes the raw data .lif file and produces a .root file containing a tree of instances of the object \doxylink{classEvento}{Evento}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+\begin{DoxyItemize}
+\item This cpp macro takes as input a raw data file and returns a .root file with a tree. It performs a first abstraction of the data 
+\end{DoxyItemize}
+
+\doxysubsection{Function Documentation}
+\Hypertarget{CreateTree_8cpp_a2fe5984273d03a4c917f106fc23ab5b6}\label{CreateTree_8cpp_a2fe5984273d03a4c917f106fc23ab5b6} 
+\index{CreateTree.cpp@{CreateTree.cpp}!CreateTree@{CreateTree}}
+\index{CreateTree@{CreateTree}!CreateTree.cpp@{CreateTree.cpp}}
+\doxysubsubsection{\texorpdfstring{CreateTree()}{CreateTree()}}
+{\footnotesize\ttfamily void Create\+Tree (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{fileinput,  }\item[{TString}]{fileoutput }\end{DoxyParamCaption})}
+
+
+
+This macro takes the raw data .lif file and produces a .root file containing a tree of instances of the object \doxylink{classEvento}{Evento}. 
+
+Muted and dead strips are found, clustering is made. 
+\begin{DoxyParams}{Parameters}
+{\em fileinput} & The name of the input .lif file\\
+\hline
+{\em fileoutput} & The name of the output .root file \\
+\hline
+\end{DoxyParams}

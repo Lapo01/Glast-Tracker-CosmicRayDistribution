@@ -1,0 +1,207 @@
+\doxysection{CMEPDA-\/\+GLAST/\+Create\+Tree/\+Utils\+Create\+Tree.cpp File Reference}
+\hypertarget{UtilsCreateTree_8cpp}{}\label{UtilsCreateTree_8cpp}\index{CMEPDA-\/GLAST/CreateTree/UtilsCreateTree.cpp@{CMEPDA-\/GLAST/CreateTree/UtilsCreateTree.cpp}}
+{\ttfamily \#include "{}Utils\+Create\+Tree.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{UtilsCreateTree_8cpp_a2e3c33f3b2a5ed69f4aee9756d4b9608}{Find\+Muted\+Strips}} (const std\+::string \&file, int \&NHit, int \&ciclo, std\+::vector$<$ int $>$ \&Layers\+ID, std\+::map$<$ std\+::string, int $>$ \&mapping, std\+::map$<$ int, std\+::vector$<$ int $>$ $>$ \&Map\+Dei\+Vettori\+Mutati)
+\begin{DoxyCompactList}\small\item\em This function finds dead and muted strips in the tracker, which one can safely assume to be equal to the set of strips that have never been hit if the data sample is big enough. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{UtilsCreateTree_8cpp_aca6b17a669149b56998741e92d84bca8}{Flush\+Placeholder}} (\mbox{\hyperlink{classEvento}{Evento}} \&e, std\+::map$<$ int, int $>$ \&Map\+Hit\+Per\+Piano, std\+::map$<$ int, int $>$ \&Map\+Cluster\+Per\+Piano, std\+::vector$<$ int $>$ \&Vettore\+Differenze\+Strip\+Consecutive, std\+::vector$<$ int $>$ \&Strip\+Layer, std\+::vector$<$ int $>$ \&Layers\+ID, int \&Nx, int \&Ny)
+\begin{DoxyCompactList}\small\item\em This function clears all the vectors in a object \doxylink{classEvento}{Evento} and sets all its flags to a default value of 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{UtilsCreateTree_8cpp_aeeb1cdab7bd20e0a279049b369a2f4b6}{Check\+For\+Flag\+One}} (\mbox{\hyperlink{classEvento}{Evento}} \&e, std\+::map$<$ int, std\+::vector$<$ int $>$ $>$ \&Map\+Dei\+Vettori\+Mutati, std\+::vector$<$ int $>$ \&Strip\+Layer, int \&layer, int \&Length\+Cluster, int j)
+\begin{DoxyCompactList}\small\item\em This function checks if the external strip of a cluster are adjacent to a dead/muted strips\+: if so the event is flagged and not used for tracking. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{UtilsCreateTree_8cpp_a043a2af0e9309627b8a609ef0dbdf941}{Check\+For\+Flag\+Two}} (\mbox{\hyperlink{classEvento}{Evento}} \&e, int \&NCluster)
+\begin{DoxyCompactList}\small\item\em The function itself is made in order to make the main code more comprehensible, it checks if the number of cluster in a layer is at maximum 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{UtilsCreateTree_8cpp_a210da059f308fac2de4e31917b1cb320}{Check\+For\+Flag\+Three}} (\mbox{\hyperlink{classEvento}{Evento}} \&e, std\+::map$<$ int, int $>$ \&Map\+Cluster\+Per\+Piano, int \&NLayer\+XZWith\+More\+Than2\+Cluster, int \&NLayer\+YZWith\+More\+Than2\+Cluster, std\+::vector$<$ int $>$ \&Layers\+ID)
+\begin{DoxyCompactList}\small\item\em This function checks if the event satisfy Flag number four declared in the ~\newline
+ object evento. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{UtilsCreateTree_8cpp_ae6621827442b50675c4d3f28ae9db3e4}{Fill\+Strip\+Layer}} (\mbox{\hyperlink{classEvento}{Evento}} \&e, std\+::vector$<$ int $>$ \&Strip\+Layer, std\+::map$<$ int, int $>$ \&Map\+Hit\+Per\+Piano, int \&Layer)
+\begin{DoxyCompactList}\small\item\em This function fills a placeholder vector with the hits of the same layer on the event. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{UtilsCreateTree_8cpp_a100c62543a890246b20d112b2242817e}{Strip\+Coordinate}} (int Strip)
+\begin{DoxyCompactList}\small\item\em This function calculate given the strip number its position in cm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+\begin{DoxyItemize}
+\item Questo file contiene funzioni utili per la prima fase di astrazione dei dati, prende il format di oggetto .lif e restituisce un file .root con un tree. 
+\end{DoxyItemize}
+
+\doxysubsection{Function Documentation}
+\Hypertarget{UtilsCreateTree_8cpp_aeeb1cdab7bd20e0a279049b369a2f4b6}\label{UtilsCreateTree_8cpp_aeeb1cdab7bd20e0a279049b369a2f4b6} 
+\index{UtilsCreateTree.cpp@{UtilsCreateTree.cpp}!CheckForFlagOne@{CheckForFlagOne}}
+\index{CheckForFlagOne@{CheckForFlagOne}!UtilsCreateTree.cpp@{UtilsCreateTree.cpp}}
+\doxysubsubsection{\texorpdfstring{CheckForFlagOne()}{CheckForFlagOne()}}
+{\footnotesize\ttfamily void Check\+For\+Flag\+One (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvento}{Evento}} \&}]{e,  }\item[{std\+::map$<$ int, std\+::vector$<$ int $>$ $>$ \&}]{Map\+Dei\+Vettori\+Mutati,  }\item[{std\+::vector$<$ int $>$ \&}]{Strip\+Layer,  }\item[{int \&}]{layer,  }\item[{int \&}]{Length\+Cluster,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+
+
+This function checks if the external strip of a cluster are adjacent to a dead/muted strips\+: if so the event is flagged and not used for tracking. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Instance of analyzed object passed by reference.\\
+\hline
+{\em Map\+Dei\+Vettori\+Mutati} & Maps layer\textquotesingle{}s ID to its muted strips containers\\
+\hline
+{\em Strip\+Layer} & The vector containing the hitten strips in the layer in ascending order\\
+\hline
+{\em layer} & The considered layer ID\\
+\hline
+{\em Length\+Cluster} & THe length of the cluster, used to find external strips.\\
+\hline
+{\em j} & Integer of a for loop in the main code \doxylink{CreateTree_8cpp}{Create\+Tree.\+cpp}, essential to reconstruct position of the external strips. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{UtilsCreateTree_8cpp_a210da059f308fac2de4e31917b1cb320}\label{UtilsCreateTree_8cpp_a210da059f308fac2de4e31917b1cb320} 
+\index{UtilsCreateTree.cpp@{UtilsCreateTree.cpp}!CheckForFlagThree@{CheckForFlagThree}}
+\index{CheckForFlagThree@{CheckForFlagThree}!UtilsCreateTree.cpp@{UtilsCreateTree.cpp}}
+\doxysubsubsection{\texorpdfstring{CheckForFlagThree()}{CheckForFlagThree()}}
+{\footnotesize\ttfamily void Check\+For\+Flag\+Three (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvento}{Evento}} \&}]{e,  }\item[{std\+::map$<$ int, int $>$ \&}]{Map\+Cluster\+Per\+Piano,  }\item[{int \&}]{NLayer\+XZWith\+More\+Than2\+Cluster,  }\item[{int \&}]{NLayer\+YZWith\+More\+Than2\+Cluster,  }\item[{std\+::vector$<$ int $>$ \&}]{Layers\+ID }\end{DoxyParamCaption})}
+
+
+
+This function checks if the event satisfy Flag number four declared in the ~\newline
+ object evento. 
+
+The chosen criteria is the following\+: if in the event there are more than two layers with more than two clusters, the Flag is set to False. ~\newline
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Instance of the object to be analyzed passed by reference\\
+\hline
+{\em Map\+Cluster\+Per\+Piano} & Maps layer\textquotesingle{}s ID to the number of clusters in the layer\\
+\hline
+{\em NLayer\+XZWith\+More\+Than2\+Cluster} & Number of layers on the XZ vision with more than two clusters\\
+\hline
+{\em NLayer\+YZWith\+More\+Than2\+Cluster} & Number of layers on the YZ vision with more than two clusters\\
+\hline
+{\em Layers\+ID} & Layer\textquotesingle{}s ID vector passed by reference for convenience. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{UtilsCreateTree_8cpp_a043a2af0e9309627b8a609ef0dbdf941}\label{UtilsCreateTree_8cpp_a043a2af0e9309627b8a609ef0dbdf941} 
+\index{UtilsCreateTree.cpp@{UtilsCreateTree.cpp}!CheckForFlagTwo@{CheckForFlagTwo}}
+\index{CheckForFlagTwo@{CheckForFlagTwo}!UtilsCreateTree.cpp@{UtilsCreateTree.cpp}}
+\doxysubsubsection{\texorpdfstring{CheckForFlagTwo()}{CheckForFlagTwo()}}
+{\footnotesize\ttfamily void Check\+For\+Flag\+Two (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvento}{Evento}} \&}]{e,  }\item[{int \&}]{NCluster }\end{DoxyParamCaption})}
+
+
+
+The function itself is made in order to make the main code more comprehensible, it checks if the number of cluster in a layer is at maximum 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Instance of the object passed by reference.\\
+\hline
+{\em NCluster} & the number of clusters in the layer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{UtilsCreateTree_8cpp_ae6621827442b50675c4d3f28ae9db3e4}\label{UtilsCreateTree_8cpp_ae6621827442b50675c4d3f28ae9db3e4} 
+\index{UtilsCreateTree.cpp@{UtilsCreateTree.cpp}!FillStripLayer@{FillStripLayer}}
+\index{FillStripLayer@{FillStripLayer}!UtilsCreateTree.cpp@{UtilsCreateTree.cpp}}
+\doxysubsubsection{\texorpdfstring{FillStripLayer()}{FillStripLayer()}}
+{\footnotesize\ttfamily void Fill\+Strip\+Layer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvento}{Evento}} \&}]{e,  }\item[{std\+::vector$<$ int $>$ \&}]{Strip\+Layer,  }\item[{std\+::map$<$ int, int $>$ \&}]{Map\+Hit\+Per\+Piano,  }\item[{int \&}]{Layer }\end{DoxyParamCaption})}
+
+
+
+This function fills a placeholder vector with the hits of the same layer on the event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Instance of the object to be copied passed by reference\\
+\hline
+{\em Strip\+Layer} & Instance of the object to be copied passed by reference\\
+\hline
+{\em Map\+Hit\+Per\+Piano} & Maps layer ID to its TH1\+F\texorpdfstring{$\ast$}{*} container of hits\\
+\hline
+{\em Layer} & ID of the\+Layer that is being considered \\
+\hline
+\end{DoxyParams}
+\Hypertarget{UtilsCreateTree_8cpp_a2e3c33f3b2a5ed69f4aee9756d4b9608}\label{UtilsCreateTree_8cpp_a2e3c33f3b2a5ed69f4aee9756d4b9608} 
+\index{UtilsCreateTree.cpp@{UtilsCreateTree.cpp}!FindMutedStrips@{FindMutedStrips}}
+\index{FindMutedStrips@{FindMutedStrips}!UtilsCreateTree.cpp@{UtilsCreateTree.cpp}}
+\doxysubsubsection{\texorpdfstring{FindMutedStrips()}{FindMutedStrips()}}
+{\footnotesize\ttfamily void Find\+Muted\+Strips (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file,  }\item[{int \&}]{NHit,  }\item[{int \&}]{ciclo,  }\item[{std\+::vector$<$ int $>$ \&}]{Layers\+ID,  }\item[{std\+::map$<$ std\+::string, int $>$ \&}]{mapping,  }\item[{std\+::map$<$ int, std\+::vector$<$ int $>$ $>$ \&}]{Map\+Dei\+Vettori\+Mutati }\end{DoxyParamCaption})}
+
+
+
+This function finds dead and muted strips in the tracker, which one can safely assume to be equal to the set of strips that have never been hit if the data sample is big enough. 
+
+All variable are referenced from the maincode and most of those are inserted as inputs only to avoid allocating new memory inside this function. 
+\begin{DoxyParams}{Parameters}
+{\em file} & The input file given by the User in the \doxylink{CreateTree_8cpp}{Create\+Tree.\+cpp} code\\
+\hline
+{\em NHit} & Variable given by reference from the maincode\+: used to read the file\\
+\hline
+{\em ciclo} & Utility variable used to keep count of the while iteration during the file reading\\
+\hline
+{\em Layers\+ID} & Contains the ID\textquotesingle{}s of the layers of the tracker\\
+\hline
+{\em mapping} & It maps raw string info of the layers to the int ID\textquotesingle{}s\\
+\hline
+{\em Map\+Dei\+Vettori\+Mutati} & It maps the layer ID\textquotesingle{}s to the vectors containing the dead strips \\
+\hline
+\end{DoxyParams}
+It is used for reading the file, it is used in fact as a placeholder for each file line using the command getline() ~\newline
+
+
+Vector containing the TH1F pointers of the histograms of hits for the Layers\+: those histograms have 1536 bins which is equal to the number of strips in each layers
+
+Maps Layer\textquotesingle{}s ID to its histogram pointer ~\newline
+
+
+In this for loop we create the TH1F pointers and we fill the Hit\+Counts vector and link layers\textquotesingle{} ID to its histogram.
+
+In this for-\/loop we check for each layer the counts of hits for each strip, if the count is 0 then the strip is added to the list of dead/muted strips
+
+Push back the strip ID into the vector corresponding to the layer\textquotesingle{}s ID
+
+Close file
+
+Delete pointers\Hypertarget{UtilsCreateTree_8cpp_aca6b17a669149b56998741e92d84bca8}\label{UtilsCreateTree_8cpp_aca6b17a669149b56998741e92d84bca8} 
+\index{UtilsCreateTree.cpp@{UtilsCreateTree.cpp}!FlushPlaceholder@{FlushPlaceholder}}
+\index{FlushPlaceholder@{FlushPlaceholder}!UtilsCreateTree.cpp@{UtilsCreateTree.cpp}}
+\doxysubsubsection{\texorpdfstring{FlushPlaceholder()}{FlushPlaceholder()}}
+{\footnotesize\ttfamily void Flush\+Placeholder (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvento}{Evento}} \&}]{e,  }\item[{std\+::map$<$ int, int $>$ \&}]{Map\+Hit\+Per\+Piano,  }\item[{std\+::map$<$ int, int $>$ \&}]{Map\+Cluster\+Per\+Piano,  }\item[{std\+::vector$<$ int $>$ \&}]{Vettore\+Differenze\+Strip\+Consecutive,  }\item[{std\+::vector$<$ int $>$ \&}]{Strip\+Layer,  }\item[{std\+::vector$<$ int $>$ \&}]{Layers\+ID,  }\item[{int \&}]{Nx,  }\item[{int \&}]{Ny }\end{DoxyParamCaption})}
+
+
+
+This function clears all the vectors in a object \doxylink{classEvento}{Evento} and sets all its flags to a default value of 1. 
+
+It also clears other containers used in the loop to use them up for the next event to be abstracted.
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Instance of the object to be flused\\
+\hline
+{\em Map\+Hit\+Per\+Piano} & Maps layer ID to its TH1\+F\texorpdfstring{$\ast$}{*} container of hits\\
+\hline
+{\em Map\+Cluster\+Per\+Piano} & Maps layer\textquotesingle{}s ID to the number of clusters in the layer\\
+\hline
+{\em Vettore\+Differenze\+Strip\+Consecutive} & Vector used to see the difference between strips of the same layer in order to reconstruct clusters.\\
+\hline
+{\em Strip\+Layer} & Vector containing the strips of a certain layer.\\
+\hline
+{\em Layers\+ID} & Layer\textquotesingle{}s ID vector passed by reference for convenience.\\
+\hline
+{\em Nx} & Number of hits on XZ vision.\\
+\hline
+{\em Ny} & Number of hits on YZ vision. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{UtilsCreateTree_8cpp_a100c62543a890246b20d112b2242817e}\label{UtilsCreateTree_8cpp_a100c62543a890246b20d112b2242817e} 
+\index{UtilsCreateTree.cpp@{UtilsCreateTree.cpp}!StripCoordinate@{StripCoordinate}}
+\index{StripCoordinate@{StripCoordinate}!UtilsCreateTree.cpp@{UtilsCreateTree.cpp}}
+\doxysubsubsection{\texorpdfstring{StripCoordinate()}{StripCoordinate()}}
+{\footnotesize\ttfamily double Strip\+Coordinate (\begin{DoxyParamCaption}\item[{int}]{Strip }\end{DoxyParamCaption})}
+
+
+
+This function calculate given the strip number its position in cm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Strip} & It is the strip number ID (goes from 1 to 1536) \\
+\hline
+\end{DoxyParams}

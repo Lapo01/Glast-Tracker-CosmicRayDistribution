@@ -1,0 +1,40 @@
+\doxysection{Evento Class Reference}
+\hypertarget{classEvento}{}\label{classEvento}\index{Evento@{Evento}}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classEvento_a67ceeffab359005a849c20f67d163273}\label{classEvento_a67ceeffab359005a849c20f67d163273} 
+int {\bfseries NEventi}
+\begin{DoxyCompactList}\small\item\em ID dell\textquotesingle{}evento. \end{DoxyCompactList}\item 
+\Hypertarget{classEvento_a169ad3427525c72d5918a2fc2633221b}\label{classEvento_a169ad3427525c72d5918a2fc2633221b} 
+int {\bfseries NHit}
+\begin{DoxyCompactList}\small\item\em Numero di strip colpite ~\newline
+ \end{DoxyCompactList}\item 
+\Hypertarget{classEvento_a9de86ffa6f19665a46ce28a13bba89dc}\label{classEvento_a9de86ffa6f19665a46ce28a13bba89dc} 
+std\+::vector$<$ int $>$ {\bfseries Strip}
+\begin{DoxyCompactList}\small\item\em Vettore contenente il numero della strip colpita 1. \end{DoxyCompactList}\item 
+\Hypertarget{classEvento_a7fccb33803cd3011683208797a87bf6f}\label{classEvento_a7fccb33803cd3011683208797a87bf6f} 
+std\+::vector$<$ int $>$ {\bfseries Layer}
+\begin{DoxyCompactList}\small\item\em Vettore contenente l\textquotesingle{}ID dei layer delle strip colpite. \end{DoxyCompactList}\item 
+\Hypertarget{classEvento_af62a7e19f53d2219ee0edcca6422b89a}\label{classEvento_af62a7e19f53d2219ee0edcca6422b89a} 
+std\+::vector$<$ int $>$ {\bfseries Cluster\+Dimension}
+\begin{DoxyCompactList}\small\item\em Vettore contenente la dimensione dei cluster. \end{DoxyCompactList}\item 
+\Hypertarget{classEvento_aa3a57c61c9ce04f5be3c165c68504eab}\label{classEvento_aa3a57c61c9ce04f5be3c165c68504eab} 
+std\+::vector$<$ int $>$ {\bfseries Initial\+Strip}
+\begin{DoxyCompactList}\small\item\em Vettore contenente la strip iniziale dei cluster. \end{DoxyCompactList}\item 
+\Hypertarget{classEvento_a23ff02acef8a83388727aedde9f29446}\label{classEvento_a23ff02acef8a83388727aedde9f29446} 
+std\+::vector$<$ int $>$ {\bfseries Cluster\+Layer}
+\begin{DoxyCompactList}\small\item\em Vettore contenente l\textquotesingle{}ID dei layer dei cluster. \end{DoxyCompactList}\item 
+\Hypertarget{classEvento_afda5f0350ebf953b407647222c2093a3}\label{classEvento_afda5f0350ebf953b407647222c2093a3} 
+std\+::vector$<$ double $>$ {\bfseries Cluster\+Posizione}
+\begin{DoxyCompactList}\small\item\em Vettore contente la posizione del cluster. \end{DoxyCompactList}\item 
+\Hypertarget{classEvento_a80ddbae091a43674ddf98ee0b76adaf3}\label{classEvento_a80ddbae091a43674ddf98ee0b76adaf3} 
+bool {\bfseries Flags} \mbox{[}3\mbox{]} = \{1,1,1,1\}
+\begin{DoxyCompactList}\small\item\em Vettore contenente Flags utili per categorizzare eventi\+: Prima Flag indica evento con cluster analizzabile, seconda flag indica la presenza di cluster di dimensione maggiore di 1 strip ,Terza Flag indica potenziale evento ad una traccia per visione, Quarta Flag indica potenziale evento a due tracce per visione ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+CMEPDA-\/\+GLAST/Class\+Evento.\+h\item 
+CMEPDA-\/\+GLAST/\mbox{\hyperlink{Evento_8h}{Evento.\+h}}\end{DoxyCompactItemize}

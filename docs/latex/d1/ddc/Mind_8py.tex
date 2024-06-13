@@ -1,0 +1,29 @@
+\doxysection{CMEPDA-\/\+GLAST/\+Tracking\+Retina/\+Mind.py File Reference}
+\hypertarget{Mind_8py}{}\label{Mind_8py}\index{CMEPDA-\/GLAST/TrackingRetina/Mind.py@{CMEPDA-\/GLAST/TrackingRetina/Mind.py}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{Mind_8py_a0cb020762876bf6786cc5b3599f2a349}\label{Mind_8py_a0cb020762876bf6786cc5b3599f2a349} 
+{\bfseries Mind.\+function} (j)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{Mind_8py_ae19df51278163450d573c7662bd40956}\label{Mind_8py_ae19df51278163450d573c7662bd40956} 
+{\bfseries Mind.\+t1} = time.\+time()
+\item 
+\Hypertarget{Mind_8py_acf68b528e25eba8e1ed09266b381a7b2}\label{Mind_8py_acf68b528e25eba8e1ed09266b381a7b2} 
+{\bfseries Mind.\+iterations} = range(os.\+cpu\+\_\+count())
+\item 
+\Hypertarget{Mind_8py_ac9e4ccfb7294540070c8522e73d5c82c}\label{Mind_8py_ac9e4ccfb7294540070c8522e73d5c82c} 
+{\bfseries Mind.\+pool} = mp.\+Pool(processes = os.\+cpu\+\_\+count())
+\item 
+\Hypertarget{Mind_8py_a15520a649441a373971278c2fadef933}\label{Mind_8py_a15520a649441a373971278c2fadef933} 
+{\bfseries Mind.\+results} = pool.\+map\+\_\+async(function,iterations)
+\item 
+\Hypertarget{Mind_8py_ad3a3cc7c5a6be67bf93ec76e6e0e2a2f}\label{Mind_8py_ad3a3cc7c5a6be67bf93ec76e6e0e2a2f} 
+list {\bfseries Mind.\+c} = \mbox{[}None\mbox{]}\texorpdfstring{$\ast$}{*}os.\+cpu\+\_\+count()
+\item 
+\Hypertarget{Mind_8py_aec213d5ef0e2a308ff2208557c26532d}\label{Mind_8py_aec213d5ef0e2a308ff2208557c26532d} 
+{\bfseries Mind.\+t2} = time.\+time()
+\end{DoxyCompactItemize}
