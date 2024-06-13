@@ -13,38 +13,18 @@
 #include<sstream>
 #include"ClassEvento.h"
 
-double Distance(double q, double m, double xpos, double zpos){
-	
-	return abs(xpos - m*zpos - q)/sqrt(1+m*m);
-	
-	
-	}
 
 
-void Retina2(const std::string file, const std::string fileoutput, int iteration){
+void Retina(const std::string file, const std::string fileoutput, int iteration){
 	//////////////////////////////////////////////////////////////	
 	//Qui costruiamo la retina del nostro algoritmo di tracking //
 	//////////////////////////////////////////////////////////////	
-	std::vector<std::vector<std::pair<double, double> > > ColumnVector;
+
+
+	std::vector<std::vector<std::pair<double, double> > > Grid 
+	BuildGrid(Grid);
 	
-	double m_in = -4;
-	double m_fin = 4;
-	double q_in = -30 ;
-	int strip = 1536;
-	double q_fin = 65;
-	std::vector<std::pair<double, double>> Column;
-	double N = 200; //detta il passo dello spazio delle fasi lungo 
-	double M = 400;
 	
-	for(int i = 0; i<N; i++){
-		
-		for(int j = 0; j<M ; j++){
-			Column.push_back(std::make_pair(m_in + (m_fin-m_in)*i/N, q_in + (q_fin-q_in)*j/M));
-			
-			}
-		ColumnVector.push_back(Column);
-		Column.clear();
-		} 
 		
 	//////////////////////////////////////////////////////////////	
 	// Ora capiamo come leggere i dati senza far esplodere il pc//  	
@@ -97,7 +77,6 @@ void Retina2(const std::string file, const std::string fileoutput, int iteration
 	Zmap.insert(std::make_pair(24,27.8));
 	
 	
-	EventoTrack etrack;
 	TString FileName= file;
 	Evento e; 
 	Evento *p = &e;
@@ -107,7 +86,7 @@ void Retina2(const std::string file, const std::string fileoutput, int iteration
 	int entries = tree->GetEntries();
 	
 	
-	
+	EventoTrack etrack;	
 	TString FileOutput= fileoutput;
 	TFile *output = new TFile(FileOutput,"recreate");
 	TTree *treetrack = new TTree("treetrack", "treetrack");
@@ -150,10 +129,13 @@ void Retina2(const std::string file, const std::string fileoutput, int iteration
 		etrack.TrackY.clear();
 		etrack.TrackX.clear();
 		
-		for(auto ColumnElement: ColumnVector){
+		for(auto ColumnElement: Grid){
 			  
 		
 			for(auto element:ColumnElement){
+
+
+				// Clear function + setup
 				trackyplaceholder.Fit.clear();
 				trackyplaceholder.Error.clear();
 				trackyplaceholder.ClusterPosition.clear();
@@ -179,7 +161,10 @@ void Retina2(const std::string file, const std::string fileoutput, int iteration
 				lineX->SetParameters(1, mx);
 				lineY->SetParameters(0, qy);
 				lineY->SetParameters(1, my);
+				//
 
+
+				// Check for closest point function for each layer
 				for(auto l:LayerX){
 				for(int j = 0; j<e.ClusterPosizione.size(); j++){
 					if((e.ClusterLayer[j] == l)&&(Distance(qx, mx ,e.ClusterPosizione[j], Zmap[l])<0.5)){
@@ -220,7 +205,7 @@ void Retina2(const std::string file, const std::string fileoutput, int iteration
 					}
 					
 				}
-					
+				//	
 					
 						
 					if((XZ->GetN()>=3)){
@@ -252,7 +237,7 @@ void Retina2(const std::string file, const std::string fileoutput, int iteration
 
 				
 				////////////////////////////////////////////////////////
-				// A questo punti reiteriamo il processo              //
+				// A questo punto reiteriamo il processo              //
 				////////////////////////////////////////////////////////
 				
 				
@@ -268,6 +253,7 @@ void Retina2(const std::string file, const std::string fileoutput, int iteration
 
 	int count2 = 0;
 
+	//Remove Duplicates
 	if(multipleTracksX.size()>0){
 	CopiaVettore = multipleTracksX;
 	while(CopiaVettore.size()!=0){
@@ -333,7 +319,7 @@ void Retina2(const std::string file, const std::string fileoutput, int iteration
 
 
 	}
-	
+	//
 	
 	
 	
