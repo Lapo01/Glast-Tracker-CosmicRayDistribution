@@ -1,7 +1,8 @@
+#pragma once
 #include <vector>
 /**
  *  * \file Evento.h
- *	This cpp macro takes as input a raw data file and returns a .root file with a tree. It performs a first abstraction of the data
+ *	Header file for the object Evento
  *
  * 
  *

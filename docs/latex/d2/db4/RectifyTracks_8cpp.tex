@@ -1,0 +1,21 @@
+\doxysection{CMEPDA-\/\+GLAST/\+Core/\+Tracking\+Retina/\+Rectify\+Tracks.cpp File Reference}
+\hypertarget{RectifyTracks_8cpp}{}\label{RectifyTracks_8cpp}\index{CMEPDA-\/GLAST/Core/TrackingRetina/RectifyTracks.cpp@{CMEPDA-\/GLAST/Core/TrackingRetina/RectifyTracks.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include "{}General\+Utils.\+h"{}}\newline
+{\ttfamily \#include "{}Utils\+Rectify\+Tracks.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{RectifyTracks_8cpp_a3926338d4a9e26172b33e8621c66aba8}\label{RectifyTracks_8cpp_a3926338d4a9e26172b33e8621c66aba8} 
+void {\bfseries Rectify\+Tracks} (TString file, TString fileoutput)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+\begin{DoxyItemize}
+\item This cpp macro takes as input a .root data file with a tree and returns a .root file with a tree. It takes the found potential tracks from the Retina algorithm and corrects the positions on each vision with the shifts calculated, and if there is only one projection per vision than a correction in angle can be applied as there is no ambiguity in the 3D reconstruction (if there are more than 1 projections for at least one vision then there is ambiguity.) After correcting the shifts, a cut in chisquare is made a 95\% of the NOMINAL INTEGRAL for a chisquare distribution with 1,2,3 dof. 
+\end{DoxyItemize}

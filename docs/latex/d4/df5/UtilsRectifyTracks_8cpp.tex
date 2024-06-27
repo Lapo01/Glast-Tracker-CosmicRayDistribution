@@ -1,0 +1,141 @@
+\doxysection{CMEPDA-\/\+GLAST/\+Core/\+Libraries\+Sources/\+Utils\+Rectify\+Tracks.cpp File Reference}
+\hypertarget{UtilsRectifyTracks_8cpp}{}\label{UtilsRectifyTracks_8cpp}\index{CMEPDA-\/GLAST/Core/LibrariesSources/UtilsRectifyTracks.cpp@{CMEPDA-\/GLAST/Core/LibrariesSources/UtilsRectifyTracks.cpp}}
+
+
+Source code for the library that contains utils for the Rectify\+Tracks macro.  
+
+
+{\ttfamily \#include "{}Utils\+Rectify\+Tracks.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{UtilsRectifyTracks_8cpp_a84e55be38b776611ae78cd78e781086b}{Angle\+Correction}} (int \&layer, double \&mx, double \&qx, double \&my, double \&qy)
+\begin{DoxyCompactList}\small\item\em This function corrects relative rotations for events that have one projection for each vision. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{UtilsRectifyTracks_8cpp_acffc27d6fb0042eb7add499570dff692}{Error\+XYZ}}
+\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{UtilsRectifyTracks_8cpp_a83a10e0dd3374e63580b952dae32df3e}{Error\+XYAngoloZ}}
+\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{UtilsRectifyTracks_8cpp_af993d034cccc6fd64ca9fe07a8ebf345}{Map\+Shift}}
+\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{UtilsRectifyTracks_8cpp_a3846c37be4bb2fde612d0ebedb11607c}{Soglie\+Chi\+Mappa}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source code for the library that contains utils for the Rectify\+Tracks macro. 
+
+A function called Layercoordinate that corrects shifts along z direction is in the General\+Utils library. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{UtilsRectifyTracks_8cpp_a84e55be38b776611ae78cd78e781086b}\label{UtilsRectifyTracks_8cpp_a84e55be38b776611ae78cd78e781086b} 
+\index{UtilsRectifyTracks.cpp@{UtilsRectifyTracks.cpp}!AngleCorrection@{AngleCorrection}}
+\index{AngleCorrection@{AngleCorrection}!UtilsRectifyTracks.cpp@{UtilsRectifyTracks.cpp}}
+\doxysubsubsection{\texorpdfstring{AngleCorrection()}{AngleCorrection()}}
+{\footnotesize\ttfamily double Angle\+Correction (\begin{DoxyParamCaption}\item[{int \&}]{layer,  }\item[{double \&}]{mx,  }\item[{double \&}]{qx,  }\item[{double \&}]{my,  }\item[{double \&}]{qy }\end{DoxyParamCaption})}
+
+
+
+This function corrects relative rotations for events that have one projection for each vision. 
+
+3D info is needed for this correction.
+
+
+\begin{DoxyParams}{Parameters}
+{\em layer} & Layer ID\\
+\hline
+{\em mx} & Angular coefficient of track on XZ vision\\
+\hline
+{\em qx} & Intercept of track on XZ vision\\
+\hline
+{\em my} & Angular coefficient of track on YZ vision\\
+\hline
+{\em qy} & Intercept of track on YZ vision \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{UtilsRectifyTracks_8cpp_a83a10e0dd3374e63580b952dae32df3e}\label{UtilsRectifyTracks_8cpp_a83a10e0dd3374e63580b952dae32df3e} 
+\index{UtilsRectifyTracks.cpp@{UtilsRectifyTracks.cpp}!ErrorXYAngoloZ@{ErrorXYAngoloZ}}
+\index{ErrorXYAngoloZ@{ErrorXYAngoloZ}!UtilsRectifyTracks.cpp@{UtilsRectifyTracks.cpp}}
+\doxysubsubsection{\texorpdfstring{ErrorXYAngoloZ}{ErrorXYAngoloZ}}
+{\footnotesize\ttfamily std\+::map$<$int, double$>$ Error\+XYAngoloZ}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ }
+\DoxyCodeLine{\ \ \ \ \{10,\ 0.0132882\},}
+\DoxyCodeLine{\ \ \ \ \{11,\ 0.0101872\},}
+\DoxyCodeLine{\ \ \ \ \{12,\ 0.0110667\},}
+\DoxyCodeLine{\ \ \ \ \{13,\ 0.0111949\},}
+\DoxyCodeLine{\ \ \ \ \{14,\ 0.0321004\},}
+\DoxyCodeLine{\ \ \ \ \{20,\ 0.0317406\},}
+\DoxyCodeLine{\ \ \ \ \{21,\ 0.011021\ \},}
+\DoxyCodeLine{\ \ \ \ \{22,\ 0.0112294\},}
+\DoxyCodeLine{\ \ \ \ \{23,\ 0.0106568\},}
+\DoxyCodeLine{\ \ \ \ \{24,\ 0.0130159\},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{UtilsRectifyTracks_8cpp_acffc27d6fb0042eb7add499570dff692}\label{UtilsRectifyTracks_8cpp_acffc27d6fb0042eb7add499570dff692} 
+\index{UtilsRectifyTracks.cpp@{UtilsRectifyTracks.cpp}!ErrorXYZ@{ErrorXYZ}}
+\index{ErrorXYZ@{ErrorXYZ}!UtilsRectifyTracks.cpp@{UtilsRectifyTracks.cpp}}
+\doxysubsubsection{\texorpdfstring{ErrorXYZ}{ErrorXYZ}}
+{\footnotesize\ttfamily std\+::map$<$int, double$>$ Error\+XYZ}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ }
+\DoxyCodeLine{\ \ \ \ \{10,\ 0.0254795\},}
+\DoxyCodeLine{\ \ \ \ \{11,0.0182482\},}
+\DoxyCodeLine{\ \ \ \ \{12,\ 0.0242299\},}
+\DoxyCodeLine{\ \ \ \ \{13,\ 0.0239926\},}
+\DoxyCodeLine{\ \ \ \ \{14,\ 0.0698908\},}
+\DoxyCodeLine{\ \ \ \ \{20,\ 0.0536476\},}
+\DoxyCodeLine{\ \ \ \ \{21,\ 0.019532\ \},}
+\DoxyCodeLine{\ \ \ \ \{22,\ 0.0216202\},}
+\DoxyCodeLine{\ \ \ \ \{23,\ 0.0177527\},}
+\DoxyCodeLine{\ \ \ \ \{24,\ 0.022226\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{UtilsRectifyTracks_8cpp_af993d034cccc6fd64ca9fe07a8ebf345}\label{UtilsRectifyTracks_8cpp_af993d034cccc6fd64ca9fe07a8ebf345} 
+\index{UtilsRectifyTracks.cpp@{UtilsRectifyTracks.cpp}!MapShift@{MapShift}}
+\index{MapShift@{MapShift}!UtilsRectifyTracks.cpp@{UtilsRectifyTracks.cpp}}
+\doxysubsubsection{\texorpdfstring{MapShift}{MapShift}}
+{\footnotesize\ttfamily std\+::map$<$int, double$>$ Map\+Shift}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ }
+\DoxyCodeLine{\ \ \ \ \{10,\ 0.\},}
+\DoxyCodeLine{\ \ \ \ \{11,\ 0.0081\},}
+\DoxyCodeLine{\ \ \ \ \{12,\ 0.0099\},}
+\DoxyCodeLine{\ \ \ \ \{13,\ 0.\},}
+\DoxyCodeLine{\ \ \ \ \{14,\ 0.0632\},}
+\DoxyCodeLine{\ \ \ \ \{20,\ 0.0717\},}
+\DoxyCodeLine{\ \ \ \ \{21,\ 0.\ \},}
+\DoxyCodeLine{\ \ \ \ \{22,\ 0.0178\},}
+\DoxyCodeLine{\ \ \ \ \{23,\ 0.0003\},}
+\DoxyCodeLine{\ \ \ \ \{24,\ 0.\}\ \ \ \ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{UtilsRectifyTracks_8cpp_a3846c37be4bb2fde612d0ebedb11607c}\label{UtilsRectifyTracks_8cpp_a3846c37be4bb2fde612d0ebedb11607c} 
+\index{UtilsRectifyTracks.cpp@{UtilsRectifyTracks.cpp}!SoglieChiMappa@{SoglieChiMappa}}
+\index{SoglieChiMappa@{SoglieChiMappa}!UtilsRectifyTracks.cpp@{UtilsRectifyTracks.cpp}}
+\doxysubsubsection{\texorpdfstring{SoglieChiMappa}{SoglieChiMappa}}
+{\footnotesize\ttfamily std\+::map$<$int, double$>$ Soglie\+Chi\+Mappa}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ }
+\DoxyCodeLine{\ \ \ \ \{1,\ 3.841\},}
+\DoxyCodeLine{\ \ \ \ \{2,\ 5.991\},}
+\DoxyCodeLine{\ \ \ \ \{3,7.815\ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

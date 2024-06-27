@@ -1,0 +1,147 @@
+\doxysection{Class\+Evento.\+h}
+\hypertarget{ClassEvento_8h_source}{}\label{ClassEvento_8h_source}\index{CMEPDA-\/GLAST/Core/Headers/ClassEvento.h@{CMEPDA-\/GLAST/Core/Headers/ClassEvento.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <TMath.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{Evento_8h}{Evento.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{EventoTrack_8h}{EventoTrack.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}TROOT.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}TH2F.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}TGraphErrors.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}TRandom.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}TCanvas.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}TFrame.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}TDatime.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}TStopwatch.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{double}\ Theta(\mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ \&e,\ \textcolor{keywordtype}{int}\ \&i)\{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//questa\ funzione\ ritorna\ l'angolo\ theta\ di\ una\ traccia\ i-\/esima.}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{return}\ atan(sqrt(e.TrackX[i].Fit[1]*e.TrackX[i].Fit[1]+\ e.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[i].Fit[1]*e.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[i].Fit[1]))*180/3.14;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{double}\ Phi(\mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ \&e,\ \textcolor{keywordtype}{int}\ \&i)\{}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ atan2(e.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[i].Fit[1],e.TrackX[i].Fit[1])*180/3.14;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{double}\ Angle(\mbox{\hyperlink{classTrack}{Track}}\ \&a,\ \mbox{\hyperlink{classTrack}{Track}}\ \&b,\ \mbox{\hyperlink{classTrack}{Track}}\ \&c,\ \mbox{\hyperlink{classTrack}{Track}}\ \&d)\{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \textcolor{keywordflow}{return}\ (a.Fit[1]*c.Fit[1]\ +b.Fit[1]*d.Fit[1]\ +\ 1)/((sqrt(a.Fit[1]*a.Fit[1]+b.Fit[1]*b.Fit[1])+1)*(sqrt(c.Fit[1]*c.Fit[1]+d.Fit[1]*d.Fit[1])+1));}
+\DoxyCodeLine{00041\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}\ TrackXZ(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ TGraphErrors\ *Graph)\{}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{double}\ xpos;}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{double}\ zpos;}
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{double}\ error;}
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{double}\ errorz\ =\ 0.;\ \textcolor{comment}{//cm}}
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{int}\ n\ =\ 0;}
+\DoxyCodeLine{00053\ Graph-\/>SetTitle(\textcolor{stringliteral}{"{}Track\ XZ;\ X\ [cm];\ Z\ [cm]"{}});}
+\DoxyCodeLine{00054\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i<e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}.size();\ i++)\{}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{if}(e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}[i]<15)}
+\DoxyCodeLine{00056\ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ xpos\ =\ e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}[i];}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ zpos\ =\ \mbox{\hyperlink{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}{LayerCoordinate}}(e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}[i]);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ n\ =\ Graph-\/>GetN();}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ error\ =\ \mbox{\hyperlink{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582}{Error}}(e.\mbox{\hyperlink{classEvento_a06a9c21fec9646ee71e2d6139fe82655}{InitialStrip}}[i],\ e.\mbox{\hyperlink{classEvento_ab088b412620cb1c3a80dca0ca56ab720}{ClusterDimension}}[i]);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//errorz\ =\ sqrt(0.01+\ error*m*m*error);}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ Graph-\/>SetPoint(n,xpos,\ zpos);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ Graph-\/>SetPointError(n,error,errorz);}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \}}
+\DoxyCodeLine{00066\ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{void}\ TrackYZ(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ TGraphErrors\ *Graph)\{}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{double}\ ypos;}
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{double}\ zpos;}
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{double}\ error;}
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{double}\ errorz\ =\ 0.;\ \textcolor{comment}{//cm}}
+\DoxyCodeLine{00074\ \textcolor{keywordtype}{int}\ n\ =\ 0;}
+\DoxyCodeLine{00075\ Graph-\/>SetTitle(\textcolor{stringliteral}{"{}Track\ YZ;\ Y\ [cm];\ Z\ [cm]"{}});}
+\DoxyCodeLine{00076\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i<e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}.size();\ i++)\{}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{if}(e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}[i]>15)}
+\DoxyCodeLine{00078\ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ ypos\ =\ e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}[i];}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ zpos\ =\ \mbox{\hyperlink{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}{LayerCoordinate}}(e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}[i]);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ n\ =\ Graph-\/>GetN();}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ error\ =\ \mbox{\hyperlink{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582}{Error}}(e.\mbox{\hyperlink{classEvento_a06a9c21fec9646ee71e2d6139fe82655}{InitialStrip}}[i],\ e.\mbox{\hyperlink{classEvento_ab088b412620cb1c3a80dca0ca56ab720}{ClusterDimension}}[i]);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//errorz\ =\ sqrt(0.01+\ error*m*m*error);}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ Graph-\/>SetPoint(n,ypos,\ zpos);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ Graph-\/>SetPointError(n,error,errorz);}
+\DoxyCodeLine{00086\ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{void}\ ClusterManualTest(\mbox{\hyperlink{classEvento}{Evento}}\ \&e)\{}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ x:e.ClusterDimension)\{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Elenco\ le\ dimensioni\ dei\ cluster"{}}<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ std::cout<<\ x\ <<\textcolor{charliteral}{'\(\backslash\)n'};\ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ x\ :e.Strip)\{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Elenco\ tutte\ le\ strip\ dell'evento\ "{}}<<\ x<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ x\ :e.Layer)\{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Elenco\ tutte\ i\ layer\ rispettivi\ dell'evento\ "{}}<<x<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ x:e.InitialStrip)\{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Elenco\ le\ strip\ iniziali\ dei\ cluster\ "{}}<<\ x<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ x:e.ClusterLayer)\{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Ora\ scrivo\ i\ layer\ delle\ prime\ strip\ dei\ cluster\ "{}}\ <<\ x\ <<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ }
+
+\end{DoxyCode}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['generalutils_2ecpp_0',['GeneralUtils.cpp',['../dc/d43/GeneralUtils_8cpp.html',1,'']]]
+  ['distance_0',['Distance',['../d0/d75/UtilsRetina_8cpp.html#adfa6f23c52f3224aab128855089de982',1,'UtilsRetina.cpp']]]
 ];

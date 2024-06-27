@@ -28,6 +28,79 @@ std::map<std::string, int> MapLayerToID/** It maps raw string to the layer's ID*
 
 
 
-//std::map<int, double> Zmap{}
 
+
+std::map<int, double> Zmap{ /** Maps Layer's ID to its height in centimeters */
+    {10, 3.1},
+    {11, 6.3},
+    {12, 16.9},
+    {13, 20.1},
+    {14, 31.2},
+    {20, -1.0},
+    {21, 10.1},
+    {22, 13.3},
+    {23, 24.6},
+    {24, 27.8}
+};
+
+
+std::vector<int> LayerX= {10,11,12,13,14}/** ID of XZ Layers */;
+std::vector<int> LayerY={20,21,22,23,24}/** ID of XZ Layers */;
+
+
+
+/*******************************************************************************
+ *This function returns the strip position in centimeters.
+ *@param Strip The strip for which the coordinate has to be calculated
+ *
+ *
+ ******************************************************************************/
+double StripCoordinate(int &Strip){
+	const double StripPitch = 0.0228; //cm
+	const double EdgeWidth = 0.1; //cm
+	const double LadderSeparation = 0.02; //cm
+	double coordinate = EdgeWidth + StripPitch*int(Strip) + (LadderSeparation + 2*EdgeWidth - StripPitch)*int(Strip/384);
+return coordinate;};
+
+
+
+
+
+/*******************************************************************************
+ * This function corrects shifts along the Z directions given the layer.
+ *@param ID The layer ID
+ *
+ *
+ ******************************************************************************/
+double LayerCoordinate(int &ID){
+	double posizione;
+	double shift[10] = {0, 0.3631, -0.3683, 0, -0.2463, 0.6223, 0, 0.3241, -0.3331, 0}; //Fissando i layer X0,X3, Y1,Y4
+    
+    if(ID>15){
+	    posizione = Zmap[ID] - shift[ID-10];
+    }
+    if(ID<15){
+        posizione = Zmap[ID] - shift[ID-15];
+    }
+return posizione;
+};
+
+
+
+/*******************************************************************************
+ * This function returns the error on the position of a cluster assuming a uniform 
+ * distribution between the position of the initial strip and the last strip of the cluster.
+ *@param StripIn Initial strip of the cluster
+ *@param Dimension Dimension of the cluster
+ *
+ ******************************************************************************/
+double Error(int &StripIn, int &Dimension){
+	int StripFin = StripIn + Dimension;
+	double error = (StripCoordinate(StripFin)-StripCoordinate(StripIn))/(sqrt(12.));
+	if(Dimension==1)
+	{
+		error = 0.0228/sqrt(12.);
+	}
+	return error; 
+};
 	

@@ -1,6 +1,15 @@
-\doxysection{CMEPDA-\/\+GLAST/\+Create\+Tree/\+General\+Utils.cpp File Reference}
-\hypertarget{GeneralUtils_8cpp}{}\label{GeneralUtils_8cpp}\index{CMEPDA-\/GLAST/CreateTree/GeneralUtils.cpp@{CMEPDA-\/GLAST/CreateTree/GeneralUtils.cpp}}
+\doxysection{CMEPDA-\/\+GLAST/\+Core/\+Libraries\+Sources/\+General\+Utils.cpp File Reference}
+\hypertarget{GeneralUtils_8cpp}{}\label{GeneralUtils_8cpp}\index{CMEPDA-\/GLAST/Core/LibrariesSources/GeneralUtils.cpp@{CMEPDA-\/GLAST/Core/LibrariesSources/GeneralUtils.cpp}}
 {\ttfamily \#include "{}General\+Utils.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{GeneralUtils_8cpp_a8ec746fda3279c1893692177030e7875}{Strip\+Coordinate}} (int \&Strip)
+\begin{DoxyCompactList}\small\item\em This function returns the strip position in centimeters. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}{Layer\+Coordinate}} (int \&ID)
+\begin{DoxyCompactList}\small\item\em This function corrects shifts along the Z directions given the layer. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582}{Error}} (int \&Strip\+In, int \&Dimension)
+\begin{DoxyCompactList}\small\item\em This function returns the error on the position of a cluster assuming a uniform distribution between the position of the initial strip and the last strip of the cluster. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -8,7 +17,15 @@
 std\+::vector$<$ int $>$ {\bfseries Layers\+ID} = \{10,11,12,13,14,20,21,22,23,24\}
 \item 
 std\+::map$<$ std\+::string, int $>$ \mbox{\hyperlink{GeneralUtils_8cpp_a776b960425b2324caf6190ae1d733df1}{Map\+Layer\+To\+ID}}
-\begin{DoxyCompactList}\small\item\em Container of the layer\textquotesingle{}s ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Container of the layer\textquotesingle{}s ID. \end{DoxyCompactList}\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}
+\begin{DoxyCompactList}\small\item\em It maps raw string to the layer\textquotesingle{}s ID. \end{DoxyCompactList}\item 
+\Hypertarget{GeneralUtils_8cpp_afd05718b9dab72b2255b3cda29b196ff}\label{GeneralUtils_8cpp_afd05718b9dab72b2255b3cda29b196ff} 
+std\+::vector$<$ int $>$ {\bfseries LayerX} = \{10,11,12,13,14\}
+\item 
+\Hypertarget{GeneralUtils_8cpp_a9d236f40a51f26bb4eb5b4bba0d19e92}\label{GeneralUtils_8cpp_a9d236f40a51f26bb4eb5b4bba0d19e92} 
+std\+::vector$<$ int $>$ {\bfseries LayerY} =\{20,21,22,23,24\}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -16,6 +33,56 @@ std\+::map$<$ std\+::string, int $>$ \mbox{\hyperlink{GeneralUtils_8cpp_a776b960
 \begin{DoxyItemize}
 \item Questo file contiene mappe usate globalmente in tutti i codici. 
 \end{DoxyItemize}
+
+\doxysubsection{Function Documentation}
+\Hypertarget{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582}\label{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582} 
+\index{GeneralUtils.cpp@{GeneralUtils.cpp}!Error@{Error}}
+\index{Error@{Error}!GeneralUtils.cpp@{GeneralUtils.cpp}}
+\doxysubsubsection{\texorpdfstring{Error()}{Error()}}
+{\footnotesize\ttfamily double Error (\begin{DoxyParamCaption}\item[{int \&}]{Strip\+In,  }\item[{int \&}]{Dimension }\end{DoxyParamCaption})}
+
+
+
+This function returns the error on the position of a cluster assuming a uniform distribution between the position of the initial strip and the last strip of the cluster. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Strip\+In} & Initial strip of the cluster \\
+\hline
+{\em Dimension} & Dimension of the cluster \\
+\hline
+\end{DoxyParams}
+\Hypertarget{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}\label{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f} 
+\index{GeneralUtils.cpp@{GeneralUtils.cpp}!LayerCoordinate@{LayerCoordinate}}
+\index{LayerCoordinate@{LayerCoordinate}!GeneralUtils.cpp@{GeneralUtils.cpp}}
+\doxysubsubsection{\texorpdfstring{LayerCoordinate()}{LayerCoordinate()}}
+{\footnotesize\ttfamily double Layer\+Coordinate (\begin{DoxyParamCaption}\item[{int \&}]{ID }\end{DoxyParamCaption})}
+
+
+
+This function corrects shifts along the Z directions given the layer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ID} & The layer ID \\
+\hline
+\end{DoxyParams}
+\Hypertarget{GeneralUtils_8cpp_a8ec746fda3279c1893692177030e7875}\label{GeneralUtils_8cpp_a8ec746fda3279c1893692177030e7875} 
+\index{GeneralUtils.cpp@{GeneralUtils.cpp}!StripCoordinate@{StripCoordinate}}
+\index{StripCoordinate@{StripCoordinate}!GeneralUtils.cpp@{GeneralUtils.cpp}}
+\doxysubsubsection{\texorpdfstring{StripCoordinate()}{StripCoordinate()}}
+{\footnotesize\ttfamily double Strip\+Coordinate (\begin{DoxyParamCaption}\item[{int \&}]{Strip }\end{DoxyParamCaption})}
+
+
+
+This function returns the strip position in centimeters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Strip} & The strip for which the coordinate has to be calculated \\
+\hline
+\end{DoxyParams}
+
 
 \doxysubsection{Variable Documentation}
 \Hypertarget{GeneralUtils_8cpp_a776b960425b2324caf6190ae1d733df1}\label{GeneralUtils_8cpp_a776b960425b2324caf6190ae1d733df1} 
@@ -44,4 +111,29 @@ std\+::map$<$ std\+::string, int $>$ \mbox{\hyperlink{GeneralUtils_8cpp_a776b960
 
 Container of the layer\textquotesingle{}s ID. 
 
-It maps raw string to the layer\textquotesingle{}s ID 
+It maps raw string to the layer\textquotesingle{}s ID \Hypertarget{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}\label{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5} 
+\index{GeneralUtils.cpp@{GeneralUtils.cpp}!Zmap@{Zmap}}
+\index{Zmap@{Zmap}!GeneralUtils.cpp@{GeneralUtils.cpp}}
+\doxysubsubsection{\texorpdfstring{Zmap}{Zmap}}
+{\footnotesize\ttfamily std\+::map$<$int, double$>$ Zmap}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ }
+\DoxyCodeLine{\ \ \ \ \{10,\ 3.1\},}
+\DoxyCodeLine{\ \ \ \ \{11,\ 6.3\},}
+\DoxyCodeLine{\ \ \ \ \{12,\ 16.9\},}
+\DoxyCodeLine{\ \ \ \ \{13,\ 20.1\},}
+\DoxyCodeLine{\ \ \ \ \{14,\ 31.2\},}
+\DoxyCodeLine{\ \ \ \ \{20,\ -\/1.0\},}
+\DoxyCodeLine{\ \ \ \ \{21,\ 10.1\},}
+\DoxyCodeLine{\ \ \ \ \{22,\ 13.3\},}
+\DoxyCodeLine{\ \ \ \ \{23,\ 24.6\},}
+\DoxyCodeLine{\ \ \ \ \{24,\ 27.8\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+It maps raw string to the layer\textquotesingle{}s ID. 
+

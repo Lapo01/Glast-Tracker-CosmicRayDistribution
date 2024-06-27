@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>FERMI-GLAST TRACKER PROJECT: CMEPDA-GLAST/TrackingRetina/Retina.cpp File Reference</title>
+<title>FERMI-GLAST TRACKER PROJECT: CMEPDA-GLAST/Core/TrackingRetina/Retina.cpp File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -72,7 +72,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="../../dir_0d7e5adfc904a6a8d9d4631aa268d26d.html">CMEPDA-GLAST</a></li><li class="navelem"><a class="el" href="../../dir_06d2c05543f841c4b2417d98c503297b.html">TrackingRetina</a></li>  </ul>
+<li class="navelem"><a class="el" href="../../dir_0d7e5adfc904a6a8d9d4631aa268d26d.html">CMEPDA-GLAST</a></li><li class="navelem"><a class="el" href="../../dir_1a05c4abcf6d810326156485d47a50ae.html">Core</a></li><li class="navelem"><a class="el" href="../../dir_2fb8f0199ae5bef9b2cba70d296e4502.html">TrackingRetina</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -84,17 +84,20 @@ $(function() {
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
 <code>#include &quot;UtilsRetina.h&quot;</code><br />
+<code>#include &quot;GeneralUtils.h&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af3fc3a35d227bd850914bc8e19b96053" id="r_af3fc3a35d227bd850914bc8e19b96053"><td class="memItemLeft" align="right" valign="top"><a id="af3fc3a35d227bd850914bc8e19b96053" name="af3fc3a35d227bd850914bc8e19b96053"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Retina</b> (const std::string file, const std::string fileoutput, int iteration)</td></tr>
-<tr class="separator:af3fc3a35d227bd850914bc8e19b96053"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42678008e6b094e63dbf255e957526d4" id="r_a42678008e6b094e63dbf255e957526d4"><td class="memItemLeft" align="right" valign="top"><a id="a42678008e6b094e63dbf255e957526d4" name="a42678008e6b094e63dbf255e957526d4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Retina</b> (TString file, TString fileoutput, int iteration, int numcores)</td></tr>
+<tr class="separator:a42678008e6b094e63dbf255e957526d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><ul>
-<li>This cpp macro takes as input a raw data file and returns a .root file with a tree. It performs a first abstraction of the data </li>
+<li>This cpp macro takes as input a raw data file and returns a .root file with a tree. It performs the second abstraction of the data from clusters to potential tracks. However, the tracks found have to be later corrected with systematics error from relative disalignment and rotations between layers of the apparatus. <br  />
+ The code is subdivided in three sections: The first section consists in the creation of placeholders, utils variables and the trees to be read and filled in the code. A phase space in (m, q) is created The second section checks for all the cells in the phase space for potential tracks, potential tracks are found if they consists of more than 2 points. The third section filters all equal tracks, by equal we mean those that have more than 1 point in common, and choose among the groups of equal tracks those that are "greater", by greater we mean the one that has the greater number of points. </li>
 </ul>
 </div></div><!-- contents -->
 <!-- start footer part -->

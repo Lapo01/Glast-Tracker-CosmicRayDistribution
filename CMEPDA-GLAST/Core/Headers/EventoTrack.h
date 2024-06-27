@@ -1,3 +1,10 @@
+/**
+ *  \file EventoTrack.h
+ * Header file for the object EventoTrack
+ */
+
+
+#pragma once
 #include <TMath.h>
 #include"Track.h"
 #include "TROOT.h"
@@ -23,10 +30,12 @@
 class EventoTrack
 {
 public:
-	std::vector<Track> TrackX;
-	std::vector<Track> TrackY;
-	int Nx(){return TrackX.size();}
-	int Ny(){return TrackY.size();}
-	int NEvento;
+	std::vector<Track> TrackX; /** Container of the projection on the vision XZ */
+	std::vector<Track> TrackY; /** Container of the projection on the vision YZ */
+	int Nx()/** Method that returns the number of tracks on the vision XZ */
+	{return TrackX.size();}
+	int Ny()/** Method that returns the number of tracks on the vision YZ */
+	{return TrackY.size();}
+	int NEvento; /** Event ID */
 	
 };

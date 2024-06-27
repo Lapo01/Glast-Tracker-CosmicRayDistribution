@@ -1,4 +1,4 @@
-
+#pragma once
 #include "Evento.h"
 #include <iostream>
 #include <map>

@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named UtilsRectifyTracks
+
+# Build rule for target.
+UtilsRectifyTracks: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UtilsRectifyTracks
+.PHONY : UtilsRectifyTracks
+
+# fast build rule for target.
+UtilsRectifyTracks/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UtilsRectifyTracks.dir/build.make CMakeFiles/UtilsRectifyTracks.dir/build
+.PHONY : UtilsRectifyTracks/fast
+
+#=============================================================================
 # Target rules for targets named GeneralUtils
 
 # Build rule for target.
@@ -203,6 +216,30 @@ LibrariesSources/UtilsCreateTree.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/UtilsCreateTree.dir/build.make CMakeFiles/UtilsCreateTree.dir/LibrariesSources/UtilsCreateTree.cpp.s
 .PHONY : LibrariesSources/UtilsCreateTree.cpp.s
 
+LibrariesSources/UtilsRectifyTracks.o: LibrariesSources/UtilsRectifyTracks.cpp.o
+.PHONY : LibrariesSources/UtilsRectifyTracks.o
+
+# target to build an object file
+LibrariesSources/UtilsRectifyTracks.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UtilsRectifyTracks.dir/build.make CMakeFiles/UtilsRectifyTracks.dir/LibrariesSources/UtilsRectifyTracks.cpp.o
+.PHONY : LibrariesSources/UtilsRectifyTracks.cpp.o
+
+LibrariesSources/UtilsRectifyTracks.i: LibrariesSources/UtilsRectifyTracks.cpp.i
+.PHONY : LibrariesSources/UtilsRectifyTracks.i
+
+# target to preprocess a source file
+LibrariesSources/UtilsRectifyTracks.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UtilsRectifyTracks.dir/build.make CMakeFiles/UtilsRectifyTracks.dir/LibrariesSources/UtilsRectifyTracks.cpp.i
+.PHONY : LibrariesSources/UtilsRectifyTracks.cpp.i
+
+LibrariesSources/UtilsRectifyTracks.s: LibrariesSources/UtilsRectifyTracks.cpp.s
+.PHONY : LibrariesSources/UtilsRectifyTracks.s
+
+# target to generate assembly for a file
+LibrariesSources/UtilsRectifyTracks.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UtilsRectifyTracks.dir/build.make CMakeFiles/UtilsRectifyTracks.dir/LibrariesSources/UtilsRectifyTracks.cpp.s
+.PHONY : LibrariesSources/UtilsRectifyTracks.cpp.s
+
 LibrariesSources/UtilsRetina.o: LibrariesSources/UtilsRetina.cpp.o
 .PHONY : LibrariesSources/UtilsRetina.o
 
@@ -237,6 +274,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... GeneralUtils"
 	@echo "... UtilsCreateTree"
+	@echo "... UtilsRectifyTracks"
 	@echo "... UtilsRetina"
 	@echo "... LibrariesSources/GeneralUtils.o"
 	@echo "... LibrariesSources/GeneralUtils.i"
@@ -244,6 +282,9 @@ help:
 	@echo "... LibrariesSources/UtilsCreateTree.o"
 	@echo "... LibrariesSources/UtilsCreateTree.i"
 	@echo "... LibrariesSources/UtilsCreateTree.s"
+	@echo "... LibrariesSources/UtilsRectifyTracks.o"
+	@echo "... LibrariesSources/UtilsRectifyTracks.i"
+	@echo "... LibrariesSources/UtilsRectifyTracks.s"
 	@echo "... LibrariesSources/UtilsRetina.o"
 	@echo "... LibrariesSources/UtilsRetina.i"
 	@echo "... LibrariesSources/UtilsRetina.s"

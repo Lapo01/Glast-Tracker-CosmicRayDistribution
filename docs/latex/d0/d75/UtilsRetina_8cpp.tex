@@ -1,0 +1,121 @@
+\doxysection{CMEPDA-\/\+GLAST/\+Core/\+Libraries\+Sources/\+Utils\+Retina.cpp File Reference}
+\hypertarget{UtilsRetina_8cpp}{}\label{UtilsRetina_8cpp}\index{CMEPDA-\/GLAST/Core/LibrariesSources/UtilsRetina.cpp@{CMEPDA-\/GLAST/Core/LibrariesSources/UtilsRetina.cpp}}
+{\ttfamily \#include "{}Utils\+Retina.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{UtilsRetina_8cpp_adfa6f23c52f3224aab128855089de982}{Distance}} (double q, double m, double xpos, double zpos)
+\begin{DoxyCompactList}\small\item\em This function returns the distance between a straight line and a cluster. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{UtilsRetina_8cpp_a8b12c5c900d0b5c81b6fa6fd886f94f3}{Build\+Grid}} (std\+::vector$<$ std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ $>$ \&Grid)
+\begin{DoxyCompactList}\small\item\em This function takes a grid and builds up a phase space of 100x200 cells. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{UtilsRetina_8cpp_a827b2eb07e679ae746ca8d42188aa0ad}{Event\+Reset}} (std\+::vector$<$ \mbox{\hyperlink{classTrack}{Track}} $>$ \&multiple\+TracksY, std\+::vector$<$ \mbox{\hyperlink{classTrack}{Track}} $>$ \&multiple\+TracksX, \mbox{\hyperlink{classEventoTrack}{Evento\+Track}} \&etrack, std\+::vector$<$ \mbox{\hyperlink{classTrack}{Track}} $>$ \&Copia\+Vettore, std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{classTrack}{Track}} $>$ $>$ \&Vettore\+Tracce\+Uniche, std\+::vector$<$ \mbox{\hyperlink{classTrack}{Track}} $>$ \&Final\+Filtered\+TracksX, std\+::vector$<$ \mbox{\hyperlink{classTrack}{Track}} $>$ \&Final\+Filtered\+TracksY)
+\begin{DoxyCompactList}\small\item\em This function resets all utils variables for the event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{UtilsRetina_8cpp_aaef05d644e2949001fec9f4d0f52349c}{Cell\+Reset}} (std\+::pair$<$ double, double $>$ \&element, \mbox{\hyperlink{classTrack}{Track}} \&TrackX, \mbox{\hyperlink{classTrack}{Track}} \&TrackY, std\+::vector$<$ int $>$ \&Vec\+Index, std\+::vector$<$ double $>$ \&Vec, double \&qx, double \&qy, double \&mx, double \&my, TF1 \texorpdfstring{$\ast$}{*}lineX, TF1 \texorpdfstring{$\ast$}{*}lineY)
+\begin{DoxyCompactList}\small\item\em This function resets all utils variable used in the single cell analysis. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+\begin{DoxyItemize}
+\item This cpp macro takes as input a raw data file and returns a .root file with a tree. It performs a first abstraction of the data 
+\end{DoxyItemize}
+
+\doxysubsection{Function Documentation}
+\Hypertarget{UtilsRetina_8cpp_a8b12c5c900d0b5c81b6fa6fd886f94f3}\label{UtilsRetina_8cpp_a8b12c5c900d0b5c81b6fa6fd886f94f3} 
+\index{UtilsRetina.cpp@{UtilsRetina.cpp}!BuildGrid@{BuildGrid}}
+\index{BuildGrid@{BuildGrid}!UtilsRetina.cpp@{UtilsRetina.cpp}}
+\doxysubsubsection{\texorpdfstring{BuildGrid()}{BuildGrid()}}
+{\footnotesize\ttfamily void Build\+Grid (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ $>$ \&}]{Grid }\end{DoxyParamCaption})}
+
+
+
+This function takes a grid and builds up a phase space of 100x200 cells. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Grid} & Grid to be created \\
+\hline
+\end{DoxyParams}
+\Hypertarget{UtilsRetina_8cpp_aaef05d644e2949001fec9f4d0f52349c}\label{UtilsRetina_8cpp_aaef05d644e2949001fec9f4d0f52349c} 
+\index{UtilsRetina.cpp@{UtilsRetina.cpp}!CellReset@{CellReset}}
+\index{CellReset@{CellReset}!UtilsRetina.cpp@{UtilsRetina.cpp}}
+\doxysubsubsection{\texorpdfstring{CellReset()}{CellReset()}}
+{\footnotesize\ttfamily void Cell\+Reset (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$ \&}]{element,  }\item[{\mbox{\hyperlink{classTrack}{Track}} \&}]{TrackX,  }\item[{\mbox{\hyperlink{classTrack}{Track}} \&}]{TrackY,  }\item[{std\+::vector$<$ int $>$ \&}]{Vec\+Index,  }\item[{std\+::vector$<$ double $>$ \&}]{Vec,  }\item[{double \&}]{qx,  }\item[{double \&}]{qy,  }\item[{double \&}]{mx,  }\item[{double \&}]{my,  }\item[{TF1 \texorpdfstring{$\ast$}{*}}]{lineX,  }\item[{TF1 \texorpdfstring{$\ast$}{*}}]{lineY }\end{DoxyParamCaption})}
+
+
+
+This function resets all utils variable used in the single cell analysis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & pair containing the (q,m) info, it is the cell\\
+\hline
+{\em TrackX} & \doxylink{classTrack}{Track} object containing the info on the potential track on the considered cell in the vision XZ\\
+\hline
+{\em TrackY} & \doxylink{classTrack}{Track} object containing the info on the potential track on the considered cell in the vision YZ\\
+\hline
+{\em Vec\+Index} & Indexes of the elements that are close by 0.\+5 cm from the track of the member Cluster\+Posizione in the object \doxylink{classEvento}{Evento}.\\
+\hline
+{\em Vec} & Vector filled with the distances of all points in a layer that are close by 0.\+5 cm from the track identified by the phase space cell\\
+\hline
+{\em qx} & Value of intercept for the chosen cell on XZ vision\\
+\hline
+{\em qy} & Value of intercept for the chosen cell on YZ vision\\
+\hline
+{\em mx} & Value of angular coefficient for the chosen cell on XZ vision\\
+\hline
+{\em my} & Value of angular coefficient for the chosen cell on YZ vision\\
+\hline
+{\em lineX} & linear function for fitting\\
+\hline
+{\em lineY} & linear function for fitting \\
+\hline
+\end{DoxyParams}
+\Hypertarget{UtilsRetina_8cpp_adfa6f23c52f3224aab128855089de982}\label{UtilsRetina_8cpp_adfa6f23c52f3224aab128855089de982} 
+\index{UtilsRetina.cpp@{UtilsRetina.cpp}!Distance@{Distance}}
+\index{Distance@{Distance}!UtilsRetina.cpp@{UtilsRetina.cpp}}
+\doxysubsubsection{\texorpdfstring{Distance()}{Distance()}}
+{\footnotesize\ttfamily double Distance (\begin{DoxyParamCaption}\item[{double}]{q,  }\item[{double}]{m,  }\item[{double}]{xpos,  }\item[{double}]{zpos }\end{DoxyParamCaption})}
+
+
+
+This function returns the distance between a straight line and a cluster. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & Intercept of the rect\\
+\hline
+{\em m} & Angular coefficient of the rect\\
+\hline
+{\em xpos} & X or Y position of the cluster\\
+\hline
+{\em zpos} & Z position of the cluster \\
+\hline
+\end{DoxyParams}
+\Hypertarget{UtilsRetina_8cpp_a827b2eb07e679ae746ca8d42188aa0ad}\label{UtilsRetina_8cpp_a827b2eb07e679ae746ca8d42188aa0ad} 
+\index{UtilsRetina.cpp@{UtilsRetina.cpp}!EventReset@{EventReset}}
+\index{EventReset@{EventReset}!UtilsRetina.cpp@{UtilsRetina.cpp}}
+\doxysubsubsection{\texorpdfstring{EventReset()}{EventReset()}}
+{\footnotesize\ttfamily void Event\+Reset (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classTrack}{Track}} $>$ \&}]{multiple\+TracksY,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classTrack}{Track}} $>$ \&}]{multiple\+TracksX,  }\item[{\mbox{\hyperlink{classEventoTrack}{Evento\+Track}} \&}]{etrack,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classTrack}{Track}} $>$ \&}]{Copia\+Vettore,  }\item[{std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{classTrack}{Track}} $>$ $>$ \&}]{Vettore\+Tracce\+Uniche,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classTrack}{Track}} $>$ \&}]{Final\+Filtered\+TracksX,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classTrack}{Track}} $>$ \&}]{Final\+Filtered\+TracksY }\end{DoxyParamCaption})}
+
+
+
+This function resets all utils variables for the event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em multiple\+TracksY} & Util variable that contains all potential tracks found on the grid for the vision YZ\\
+\hline
+{\em multiple\+TracksX} & Util variable that contains all potential tracks found on the grid for the vision XZ\\
+\hline
+{\em etrack} & Instance of \doxylink{classEventoTrack}{Evento\+Track}, it\textquotesingle{}s the instance that is going to be written on the tree. Must be reset at each event\\
+\hline
+{\em Copiavettore} & Util variable\\
+\hline
+{\em Vettore\+Tracce\+Uniche} & Container of containers of equal tracks\\
+\hline
+{\em Final\+Filtered\+TracksX} & Container of filtered tracks\\
+\hline
+{\em Final\+Filtered\+TracksY} & Container of filtered tracks \\
+\hline
+\end{DoxyParams}

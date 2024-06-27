@@ -3,51 +3,51 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classTrack_abe1778db3b958fc481ea9d187c2cf763}\label{classTrack_abe1778db3b958fc481ea9d187c2cf763} 
-int {\bfseries NCluster} ()
-\item 
-\Hypertarget{classTrack_abe1778db3b958fc481ea9d187c2cf763}\label{classTrack_abe1778db3b958fc481ea9d187c2cf763} 
-int {\bfseries NCluster} ()
-\end{DoxyCompactItemize}
+int \mbox{\hyperlink{classTrack_abe1778db3b958fc481ea9d187c2cf763}{NCluster}} ()
+\begin{DoxyCompactList}\small\item\em Container of the cluster layers ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classTrack_abab3bc01d65dee1152d0be3a7181c45d}\label{classTrack_abab3bc01d65dee1152d0be3a7181c45d} 
+\Hypertarget{classTrack_a30aab41e69db16a9359a5c47f639df03}\label{classTrack_a30aab41e69db16a9359a5c47f639df03} 
 std\+::vector$<$ double $>$ {\bfseries Fit}
 \item 
-\Hypertarget{classTrack_a8e95e1bc4f4cbe8dfa92596799c925e1}\label{classTrack_a8e95e1bc4f4cbe8dfa92596799c925e1} 
+\Hypertarget{classTrack_ad66743e1981db57ee2fb84b7d98985e5}\label{classTrack_ad66743e1981db57ee2fb84b7d98985e5} 
 std\+::vector$<$ double $>$ {\bfseries Error}
-\item 
-\Hypertarget{classTrack_a5259411eb7ff9389eaa17a0ba3fb7c33}\label{classTrack_a5259411eb7ff9389eaa17a0ba3fb7c33} 
+\begin{DoxyCompactList}\small\item\em Container for fit useful variable q, m, chi2, chi2\+Att, chi2n is the order in which the variables are inserted. \end{DoxyCompactList}\item 
+\Hypertarget{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}\label{classTrack_a034d262fffa4a451b4c2ada2e2afcabf} 
 std\+::vector$<$ double $>$ {\bfseries Cluster\+Position}
-\item 
-\Hypertarget{classTrack_a9e70b2a41510418fc0f7e2ee054e1c22}\label{classTrack_a9e70b2a41510418fc0f7e2ee054e1c22} 
+\begin{DoxyCompactList}\small\item\em Container of the error for the position of each cluster. \end{DoxyCompactList}\item 
+\Hypertarget{classTrack_accce27ec07d1ad7f6f872a96d35806c9}\label{classTrack_accce27ec07d1ad7f6f872a96d35806c9} 
 std\+::vector$<$ int $>$ {\bfseries Layer}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Container of the cluster positions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{classTrack_af7bff7aa97c36e2b257144a1b870124a}\label{classTrack_af7bff7aa97c36e2b257144a1b870124a} 
 bool {\bfseries operator==} (const \mbox{\hyperlink{classTrack}{Track}} \&a, const \mbox{\hyperlink{classTrack}{Track}} \&b)
-\item 
+\begin{DoxyCompactList}\small\item\em Equal operator for tracks\+: tracks are equal if more than 1 point is in common. \end{DoxyCompactList}\item 
 \Hypertarget{classTrack_a9ebdd1266943912711b14e778cd2a511}\label{classTrack_a9ebdd1266943912711b14e778cd2a511} 
 bool {\bfseries operator$<$} (const \mbox{\hyperlink{classTrack}{Track}} \&a, const \mbox{\hyperlink{classTrack}{Track}} \&b)
-\item 
+\begin{DoxyCompactList}\small\item\em Less operator for tracks\+: a track is less than another if it has less clusters. \end{DoxyCompactList}\item 
 \Hypertarget{classTrack_af20f843c616809d72c66a6bce3bec59b}\label{classTrack_af20f843c616809d72c66a6bce3bec59b} 
 bool {\bfseries operator$>$} (const \mbox{\hyperlink{classTrack}{Track}} \&a, const \mbox{\hyperlink{classTrack}{Track}} \&b)
-\item 
-\Hypertarget{classTrack_af7bff7aa97c36e2b257144a1b870124a}\label{classTrack_af7bff7aa97c36e2b257144a1b870124a} 
-bool {\bfseries operator==} (const \mbox{\hyperlink{classTrack}{Track}} \&a, const \mbox{\hyperlink{classTrack}{Track}} \&b)
-\item 
-\Hypertarget{classTrack_a9ebdd1266943912711b14e778cd2a511}\label{classTrack_a9ebdd1266943912711b14e778cd2a511} 
-bool {\bfseries operator$<$} (const \mbox{\hyperlink{classTrack}{Track}} \&a, const \mbox{\hyperlink{classTrack}{Track}} \&b)
-\item 
-\Hypertarget{classTrack_af20f843c616809d72c66a6bce3bec59b}\label{classTrack_af20f843c616809d72c66a6bce3bec59b} 
-bool {\bfseries operator$>$} (const \mbox{\hyperlink{classTrack}{Track}} \&a, const \mbox{\hyperlink{classTrack}{Track}} \&b)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Greater operator for tracks\+: based on less operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTrack_abe1778db3b958fc481ea9d187c2cf763}\label{classTrack_abe1778db3b958fc481ea9d187c2cf763} 
+\index{Track@{Track}!NCluster@{NCluster}}
+\index{NCluster@{NCluster}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{NCluster()}{NCluster()}}
+{\footnotesize\ttfamily int Track\+::\+NCluster (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Container of the cluster layers ID. 
+
+Returns the number of clusters in the tracks ~\newline
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-CMEPDA-\/\+GLAST/\+Create\+Tree/Class\+Evento.\+h\item 
-CMEPDA-\/\+GLAST/\+Tracking\+Retina/Class\+Evento.\+h\end{DoxyCompactItemize}
+CMEPDA-\/\+GLAST/\+Core/\+Headers/\mbox{\hyperlink{Track_8h}{Track.\+h}}\end{DoxyCompactItemize}

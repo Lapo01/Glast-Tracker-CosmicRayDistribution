@@ -1,3 +1,9 @@
+/**
+ *  \file Track.h
+ * Header file for the object Track
+ */
+
+#pragma once
 #include <TMath.h>
 #include "TROOT.h"
 #include "TH1F.h"
@@ -20,27 +26,46 @@
 class Track
 {
 public:
-	std::vector<double> Fit; // [q, m, chi2, chi2Att, chi2n]
-	std::vector<double> Error ;
-	std::vector<double> ClusterPosition;
-	std::vector<int> Layer;
-	int NCluster(){return ClusterPosition.size();}
+	std::vector<double> Fit; /**  Container for fit useful variable q, m, chi2, chi2Att, chi2n is the order in which the variables are inserted*/
+	std::vector<double> Error ; /** Container of the error for the position of each cluster */
+	std::vector<double> ClusterPosition; /** Container of the cluster positions */
+	std::vector<int> Layer; /** Container of the cluster layers ID */
+
+
 	
+	int NCluster()/** Returns the number of clusters in the tracks  */
+	{
+		return ClusterPosition.size();
+	}
 	
+	/************
+	 * Equal operator for tracks: tracks are equal if more than 1 point is in common. 
+	 *
+	 *
+	 *********/
 	friend bool operator==( const Track& a, const Track& b){
 		int N = 0; 
-		for(int i = 0; i< a.ClusterPosition.size(); i++){
-			for(int j = 0; j< b.ClusterPosition.size(); j++){
+		for(unsigned int i = 0; i< a.ClusterPosition.size(); i++){
+			for(unsigned int j = 0; j< b.ClusterPosition.size(); j++){
 				if(((a.ClusterPosition[i] - b.ClusterPosition[j])<0.02)&&(a.Layer[i] == b.Layer[j])){N++;}
 			}
 		} 
-		return ((N>=2));//||(((a.Fit[1]-b.Fit[1])<0.4)&&((a.Fit[0] - b.Fit[0]))<0.5));
+		return ((N>=2));
 	
 	}
-	
+	/************
+	 * Less operator for tracks: a track is less than another if it has less clusters.
+	 *
+	 *
+	 *********/
 	friend bool operator<(const Track& a, const Track& b){
 		return a.ClusterPosition.size() < b.ClusterPosition.size();
 		}
+	/************
+	 * Greater operator for tracks: based on less operator.
+	 *
+	 *
+	 *********/
 	friend bool operator>(const Track& a, const Track& b){
 		return !(a<b);
 		
