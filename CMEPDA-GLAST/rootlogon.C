@@ -8,5 +8,6 @@ void rootlogon()
     gSystem->Load("libGeneralUtils.so");
     gSystem->Load("libUtilsCreateTree.so");
     gSystem->Load("libUtilsRetina.so");
+    gSystem->Load("libUtilsMC.so");
 
 }

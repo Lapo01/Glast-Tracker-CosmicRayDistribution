@@ -41,7 +41,7 @@ void RectifyTracks(TString file, TString fileoutput){
 	// CREATE TREE TO BE WRITTEN
 	///////////////////////////////////////////////
 	TFile *output = new TFile(fileoutput,"recreate");
-	TTree *treetrackoutput = new TTree("treetrackoutput", "treetrackoutput");
+	TTree *treetrackoutput = new TTree("treetrack", "treetrack");
 	treetrackoutput->Branch("etrack",&etrack);
 
 
@@ -58,14 +58,13 @@ void RectifyTracks(TString file, TString fileoutput){
 	double theta, phi; //placeholders variables to find the angle between tracks that have 1 projection for each layer.
 	std::vector<size_t> TracksXToBeErased; //container of the index of the tracks in the container TrackX of the object EventoTrack that do not pass the cut in chisquare on the XZ vision, those are to be removed from the object EventoTrack.
 	std::vector<size_t> TracksYToBeErased; //container of the index of the tracks in the container TrackY of the object EventoTrack that do not pass the cut in chisquare on the YZ vision, those are to be removed from the object EventoTrack.
-	
+	TH1F *chi2XHist = new TH1F("h", "h", 1000,0 ,100);
 	auto start = std::chrono::high_resolution_clock::now();
 	for(int i =0; i<entries; i++){
 		tree->GetEntry(i);
 		TracksXToBeErased.clear(); //reset utils variable
 		TracksYToBeErased.clear(); //reset utils variable 
-		etrack.TrackX.clear(); //clear object
-		etrack.TrackY.clear(); //clear object
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//																SECTION 2: WORK WITH EVENTS THAT HAVE ONLY 1 PROJECTION FOR EACH VISION
 		//In this section we work with event that have 1 potential track for each vision, correction for shifts along XYZ and for relative rotations are made, 
@@ -73,13 +72,8 @@ void RectifyTracks(TString file, TString fileoutput){
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		if((e.Nx()==1) && (e.Ny()==1)){
 
-			
-			
-
 			//copy object from the read tree to the object on the tree to be written
-			//etrack.NEvento = e.NEvento; 
-			//etrack.TrackX.push_back(e.TrackX[0]);
-			//etrack.TrackY.push_back(e.TrackY[0]);
+			
 			etrack = e;
 			//container of points where to make lineare fit
 			TGraphErrors *XZ = new TGraphErrors();
@@ -136,7 +130,9 @@ void RectifyTracks(TString file, TString fileoutput){
 			phi = atan2(my,mx)*180/3.14;
 			theta = atan(sqrt(mx*mx+my*my))*180/3.14;
 			
-
+			if(chi2AttX==3){
+				chi2XHist->Fill(chi2X);
+			}
 			
 			//if the track passes the cut, fill the object with the info on the track, else remove the track
 			if((chi2X<SoglieChiMappa[chi2AttX])){
@@ -214,6 +210,9 @@ void RectifyTracks(TString file, TString fileoutput){
 				}
 				mm++;
 				delete XZ;
+				if(chi2AttX==3){
+				chi2XHist->Fill(chi2X);
+			}
 			}
 
 			mm =0; //reset utils
@@ -264,11 +263,11 @@ void RectifyTracks(TString file, TString fileoutput){
 		treetrackoutput->Fill();
 		
 	}
-	
+	chi2XHist->SaveAs("chi2Dist.root");
+
 	
 	output->Write();
 	output->Close();
-	
 	auto endtime = std::chrono::high_resolution_clock::now();
 
 	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endtime - start);

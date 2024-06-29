@@ -23,14 +23,14 @@
 
 
 
-double Theta(EventoTrack &e, int &i){
+double Theta(EventoTrack &e, int i){
     //questa funzione ritorna l'angolo theta di una traccia i-esima.
     return atan(sqrt(e.TrackX[i].Fit[1]*e.TrackX[i].Fit[1]+ e.TrackY[i].Fit[1]*e.TrackY[i].Fit[1]))*180/3.14;
 
 
 }
 
-double Phi(EventoTrack &e, int &i){
+double Phi(EventoTrack &e, int i){
 
     return atan2(e.TrackY[i].Fit[1],e.TrackX[i].Fit[1])*180/3.14;
 

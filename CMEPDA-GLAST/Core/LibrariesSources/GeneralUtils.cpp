@@ -26,8 +26,33 @@ std::map<std::string, int> MapLayerToID/** It maps raw string to the layer's ID*
                                 {"Y4", 24}
                                 }; 
 
+std::map<int, std::string> MapIDToLayer/** It maps Layer's ID to its raw string  */
+{
+                                {10,"X0"},
+                                {11,"X1"},
+                                {12,"X2"},
+                                {13,"X3"},
+                                {14,"X4"},
+                                {20,"Y0"},
+                                {21,"Y1"},
+                                {22,"Y2"},
+                                {23,"Y3"},
+                                {24,"Y4"}
+};
 
 
+std::map<int, double> EfficiencyMap{ /** Maps Layer's ID to its mean efficiency */
+                                {10,0.84},
+                                {11,0.857},
+                                {12,1.},
+                                {13,0.91},
+                                {14,0.61},
+                                {20,0.86},
+                                {21,0.95},
+                                {22,1.},
+                                {23,0.56},
+                                {24,0.75}
+};
 
 
 std::map<int, double> Zmap{ /** Maps Layer's ID to its height in centimeters */
@@ -50,18 +75,19 @@ std::vector<int> LayerY={20,21,22,23,24}/** ID of XZ Layers */;
 
 
 /*******************************************************************************
- *This function returns the strip position in centimeters.
- *@param Strip The strip for which the coordinate has to be calculated
+ * This function calculate given the strip number its position in cm.
  *
- *
+ * @param Strip It is the strip number ID (goes from 1 to 1536)
  ******************************************************************************/
-double StripCoordinate(int &Strip){
-	const double StripPitch = 0.0228; //cm
+double StripCoordinate(int Strip ){
+
+   
+	
+	const double StripPitch = 0.0228; // cm
 	const double EdgeWidth = 0.1; //cm
 	const double LadderSeparation = 0.02; //cm
-	double coordinate = EdgeWidth + StripPitch*int(Strip) + (LadderSeparation + 2*EdgeWidth - StripPitch)*int(Strip/384);
+	double coordinate = EdgeWidth + StripPitch*int(Strip) + (LadderSeparation + 2*EdgeWidth - StripPitch)*int(Strip/384); 
 return coordinate;};
-
 
 
 
@@ -76,10 +102,10 @@ double LayerCoordinate(int &ID){
 	double posizione;
 	double shift[10] = {0, 0.3631, -0.3683, 0, -0.2463, 0.6223, 0, 0.3241, -0.3331, 0}; //Fissando i layer X0,X3, Y1,Y4
     
-    if(ID>15){
+    if(ID<15){
 	    posizione = Zmap[ID] - shift[ID-10];
     }
-    if(ID<15){
+    if(ID>15){
         posizione = Zmap[ID] - shift[ID-15];
     }
 return posizione;
@@ -104,3 +130,4 @@ double Error(int &StripIn, int &Dimension){
 	return error; 
 };
 	
+

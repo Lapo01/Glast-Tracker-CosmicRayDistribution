@@ -12,7 +12,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${ROOT_INCLUDE_DIRS})
 include_directories(Core/Headers)
 
-
+add_library(UtilsMC SHARED ${CMAKE_SOURCE_DIR}/UtilsMC.cpp)
 add_library(UtilsRectifyTracks SHARED ${CMAKE_SOURCE_DIR}/UtilsRectifyTracks.cpp )
 add_library(GeneralUtils SHARED ${CMAKE_SOURCE_DIR}/GeneralUtils.cpp )
 add_library(UtilsCreateTree SHARED ${CMAKE_SOURCE_DIR}/UtilsCreateTree.cpp )

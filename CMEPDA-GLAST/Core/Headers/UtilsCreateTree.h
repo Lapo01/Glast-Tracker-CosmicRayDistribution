@@ -37,6 +37,5 @@ void FlushPlaceholder(Evento &e, std::map<int, int> &MapHitPerPiano, std::map<in
 void FillStripLayer(Evento &e, std::vector<int> &StripLayer, std::map<int,int> &MapHitPerPiano, int &Layer);
 
 
-double StripCoordinate(int Strip);
 
 

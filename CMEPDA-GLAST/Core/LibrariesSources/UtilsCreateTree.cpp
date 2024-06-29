@@ -86,7 +86,7 @@ void FindMutedStrips(const std::string &file, int &NHit, int &ciclo, std::vector
 	{
 		delete x;
 	}
-	ciclo = 0; /***/
+	ciclo = 0; 
 }
 
 
@@ -270,21 +270,5 @@ void FillStripLayer(Evento &e, std::vector<int> &StripLayer, std::map<int,int> &
 
 
 
-
-
-/*******************************************************************************
- * This function calculate given the strip number its position in cm.
- *
- * @param Strip It is the strip number ID (goes from 1 to 1536)
- ******************************************************************************/
-double StripCoordinate(int Strip ){
-
-   
-	
-	const double StripPitch = 0.0228; // cm
-	const double EdgeWidth = 0.1; //cm
-	const double LadderSeparation = 0.02; //cm
-	double coordinate = EdgeWidth + StripPitch*int(Strip) + (LadderSeparation + 2*EdgeWidth - StripPitch)*int(Strip/384); 
-return coordinate;};
 
 

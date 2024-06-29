@@ -24,7 +24,6 @@
  *
  *
  ******************************************************************************/
-
 double AngleCorrection(int &layer, double &mx, double &qx, double &my, double &qy){//m e q sono i parametri della retta dell'altro piano
 	//ad ogni punto, quando rifaccio il fit devo sottrarre questa funzione con i dati del primo fit 
 	double alpha[10] = {-0.00092, -0.00064, 0.00176, 0.00188, -0.00161, 0.00246, 0.00032, 0.00010, 0.00145, 0.00125}; //Step 50, con correzione XY precedente
@@ -67,12 +66,12 @@ std::map<int, double> ErrorXYZ{ /**Map that links the layer ID to a rescaled err
 
 
 std::map<int, double> ErrorXYAngoloZ{ /** Map that links the layer ID to a rescaled error based on the width of residuals. Correction used for event that have one projection per vision*/
-	{10, 0.0132882},
-	{11, 0.0101872},
-	{12, 0.0110667},
-	{13, 0.0111949},
-	{14, 0.0321004},
-	{20, 0.0317406},
+	{10, 0.0101872},
+	{11, 0.0110667},
+	{12, 0.0111949},
+	{13, 0.0321004},
+	{14, 0.0317406},
+	{20, 0.0411782},
 	{21, 0.011021 },
 	{22, 0.0112294},
 	{23, 0.0106568},
@@ -81,17 +80,16 @@ std::map<int, double> ErrorXYAngoloZ{ /** Map that links the layer ID to a resca
 
 std::map<int, double> MapShift{ /** Map that links the layer ID to its shift along the X or Y direction */
 	{10, 0.},
-	{11, 0.0081},
-	{12, 0.0099},
+	{11, -0.0081},
+	{12, -0.0099},
 	{13, 0.},
 	{14, 0.0632},
-	{20, 0.0717},
+	{20, -0.0717},
 	{21, 0. },
 	{22, 0.0178},
 	{23, 0.0003},
 	{24, 0.}	
 };
-
 
 std::map<int, double> SoglieChiMappa{ /** Chisquare distribution cuts at 95%, based on NOMINAL CHISQUARE DISTRIBUTION, not the measured one */
 	{1, 3.841},
