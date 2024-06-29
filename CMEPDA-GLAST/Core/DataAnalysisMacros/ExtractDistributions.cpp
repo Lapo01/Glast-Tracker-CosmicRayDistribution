@@ -1,6 +1,23 @@
+/**
+ * \file ExtractDistributions.cpp 
+ * 
+ * This code takes takes as input a .root file containing the second abstraction of trackin data and outputs the measured zenith and azimuth distributions.
+ *
+ */
+
 #include "GeneralUtils.h"
 #include "ClassEvento.h"
 
+
+/**
+ * This macro takes as input two filepaths, the first is the path of the .root file that contains data in form of tracks. The second is a path where to print the root files containing the distributions.
+ *  
+ * @param fileoutput path to the File that contains the tree with tracks
+ * 
+ * @param path path for the output .root files that contains the distributions.
+ * 
+ * 
+ */
 void ExtractDistributions(TString fileinput, TString path){
 
 

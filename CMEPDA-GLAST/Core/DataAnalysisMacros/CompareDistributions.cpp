@@ -1,7 +1,21 @@
+/**
+ * \file CompareDistributions.cpp 
+ * 
+ * This code takes as input two strings and compares them with a Kolmogorv Test, after that the distribution are each normalized and a pdf is produced with both. It returns a p-value.
+ *
+ */
 
 
-
-
+/**
+ * This macro takes as input two root files containing hists, compares the distributions with a Kolmogorov Test and returns a plot with both the normalized distributions. It returns a p-value.
+ *  
+ * @param f1 File containing the first distribution
+ * 
+ * @param f2 File containing the second distribution
+ * 
+ * @param path Path where to print the pdf in which the two distributions are compared.
+ * 
+ */
 double CompareDistributions(TString f1, TString f2, TString path){
     TFile *One = new TFile(f1);
     TFile *Two = new TFile(f2);
