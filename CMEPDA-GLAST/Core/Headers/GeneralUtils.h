@@ -26,6 +26,13 @@
 #include<algorithm>
 #include <numeric>
 
+
+
+
+double Theta(EventoTrack &e, int i);/** Returns zenith angle for track */
+
+double Phi(EventoTrack &e, int i);/** Returns azimuth angle for track */
+
 extern std::vector<int> LayersID; /** Container of the layer's ID*/
 
 extern std::map<std::string, int> MapLayerToID; /** It maps raw string to the layer's ID*/

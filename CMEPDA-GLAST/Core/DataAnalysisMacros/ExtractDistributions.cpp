@@ -6,7 +6,6 @@
  */
 
 #include "GeneralUtils.h"
-#include "ClassEvento.h"
 
 
 /**

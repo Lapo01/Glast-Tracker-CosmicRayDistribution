@@ -17,7 +17,7 @@ void \mbox{\hyperlink{UtilsRetina_8cpp_aaef05d644e2949001fec9f4d0f52349c}{Cell\+
 \doxysubsection{Detailed Description}
 
 \begin{DoxyItemize}
-\item This cpp macro takes as input a raw data file and returns a .root file with a tree. It performs a first abstraction of the data 
+\item Source code for the library that contains utils for the Retina macro 
 \end{DoxyItemize}
 
 \doxysubsection{Function Documentation}
@@ -54,7 +54,7 @@ This function resets all utils variable used in the single cell analysis.
 \hline
 {\em TrackY} & \doxylink{classTrack}{Track} object containing the info on the potential track on the considered cell in the vision YZ\\
 \hline
-{\em Vec\+Index} & Indexes of the elements that are close by 0.\+5 cm from the track of the member Cluster\+Posizione in the object \doxylink{classEvento}{Evento}.\\
+{\em Vec\+Index} & Indexes of the elements of the member Cluster\+Posizione in the instance of the \doxylink{classEvento}{Evento} that are close by 0.\+5 cm from the straight line of the cell .\\
 \hline
 {\em Vec} & Vector filled with the distances of all points in a layer that are close by 0.\+5 cm from the track identified by the phase space cell\\
 \hline
@@ -66,9 +66,9 @@ This function resets all utils variable used in the single cell analysis.
 \hline
 {\em my} & Value of angular coefficient for the chosen cell on YZ vision\\
 \hline
-{\em lineX} & linear function for fitting\\
+{\em lineX} & linear function for fitting, initial parameters for fitting are settled in this function\\
 \hline
-{\em lineY} & linear function for fitting \\
+{\em lineY} & linear function for fitting, initial parameters for fitting are settled in this functions \\
 \hline
 \end{DoxyParams}
 \Hypertarget{UtilsRetina_8cpp_adfa6f23c52f3224aab128855089de982}\label{UtilsRetina_8cpp_adfa6f23c52f3224aab128855089de982} 

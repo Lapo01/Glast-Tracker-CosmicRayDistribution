@@ -186,15 +186,7 @@ void CreateTree(const std::string &fileinput, TString fileoutput){
 
 						}
 					}
-					if(ciclo == 86680){
-						for(auto diff: VettoreDifferenzeStripConsecutive){
-							std::cout <<"L'elemento del vettore differenze è: "<< diff<<" per il layer "<<  x<<std::endl;
-						}	
-						for(auto strip:StripLayer){
-							std::cout<<"La strip hittata è: "<<strip<< " per il layer"<< x <<std::endl;
-						}
-						std::cout<<"La dimensione del vettore delle differenze è: "<<VettoreDifferenzeStripConsecutive.size()<<std::endl;
-					}
+					
 					if(StripLayer.size()>1) //Clustering in case of multiple hits
 					{
 						for(unsigned int j = 0; j<StripLayer.size(); j++)//loop on all strip of the layer
@@ -209,9 +201,7 @@ void CreateTree(const std::string &fileinput, TString fileoutput){
 							/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 							if((VettoreDifferenzeStripConsecutive[j] == 1)&(j!=StripLayer.size()-1)) // keep increasing the cluster dimension if there is a one, 
 							{	
-									if((ciclo == 86680)&&(x == 20)){
-										std::cout<<"Sono qui primo if" << j<<std::endl;
-									}
+									
 
 									LengthCluster++;
 							}
@@ -228,9 +218,7 @@ void CreateTree(const std::string &fileinput, TString fileoutput){
 
 								NClusterInTheLayer++; //keep account of number of clusters
 								LengthCluster = 1; //reset
-								if((ciclo == 86680)&&(x == 20)){
-										std::cout<<"Sono qui secondo else if" << j<<std::endl;
-									}
+								
 							}
 							else//The only case remaining is a cluster of dimension 1
 							{
@@ -241,9 +229,7 @@ void CreateTree(const std::string &fileinput, TString fileoutput){
 								evento.ClusterPosizione.push_back(StripCoordinate(StripLayer[j]));//Fill object evento
 								NClusterInTheLayer++;		
 								CheckForFlagOne(evento, MapDeiVettoriMutati, StripLayer, x, LengthCluster, j); 
-								if((ciclo == 86680)&&(x == 20)){
-										std::cout<<"Sono qui terzo else" << j<<std::endl;
-									}
+								
 							}
 
 						}		
@@ -259,17 +245,7 @@ void CreateTree(const std::string &fileinput, TString fileoutput){
 
 				}
 
-				if(ciclo == 86680){
-					int NumberHits = 0;
-					for(int ss = 0; ss<  evento.ClusterDimension.size(); ss++){
-						std::cout<<"Il cluster ha dimensione "<<evento.ClusterDimension[ss] << " e strip iniziale " << evento.InitialStrip[ss]<< " nel layer "<< evento.ClusterLayer[ss]<<std::endl;
-						NumberHits+= evento.ClusterDimension[ss] ;
-					}
-					if(NumberHits!= evento.NHit){
-						std::cout<<"nope : "<<evento.NHit<<" " << NumberHits<<std::endl;
-					}
-				}
-
+				
 
 
 

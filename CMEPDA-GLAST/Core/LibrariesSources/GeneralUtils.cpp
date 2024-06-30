@@ -9,7 +9,66 @@
  *
  *
  */
+
+
+
+
+
+/**
+ * This function returns the zenith angle for an event with a number of projections equal to 1.
+ * 
+ *
+ *
+ * @param e The instance of the object EventoTrack containing the fitting parameters info on the projectios
+ *
+ * @param i Parameter putted for post-compatibility in case one wanted to do 3D multitracking.
+ *
+ *
+ *
+ */
+
+double Theta(EventoTrack &e, int i){
+    //questa funzione ritorna l'angolo theta di una traccia i-esima.
+    return atan(sqrt(e.TrackX[i].Fit[1]*e.TrackX[i].Fit[1]+ e.TrackY[i].Fit[1]*e.TrackY[i].Fit[1]))*180/3.14;
+
+
+};
+
+
+/**
+ * This function returns the azimuth angle for an event with a number of projections equal to 1.
+ * 
+ *
+ *
+ * @param e The instance of the object EventoTrack containing the fitting parameters info on the projectios
+ *
+ * @param i Parameter putted for post-compatibility in case one wanted to do 3D multitracking.
+ *
+ *
+ *
+ */
+double Phi(EventoTrack &e, int i){
+
+    return atan2(e.TrackY[i].Fit[1],e.TrackX[i].Fit[1])*180/3.14;
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 std::vector<int> LayersID = {10,11,12,13,14,20,21,22,23,24}; /** Container of the layer's ID*/
+
+
 
 
 std::map<std::string, int> MapLayerToID/** It maps raw string to the layer's ID*/

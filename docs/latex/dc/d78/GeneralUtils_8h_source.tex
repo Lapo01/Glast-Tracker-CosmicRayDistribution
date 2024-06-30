@@ -27,23 +27,18 @@
 \DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <fstream>}}
 \DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <sstream>}}
 \DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <iterator>}}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include<algorithm>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <numeric>}}
 \DoxyCodeLine{00028\ }
 \DoxyCodeLine{00029\ \textcolor{keyword}{extern}\ std::vector<int>\ LayersID;\ }
 \DoxyCodeLine{00031\ \textcolor{keyword}{extern}\ std::map<std::string,\ int>\ \mbox{\hyperlink{GeneralUtils_8cpp_a776b960425b2324caf6190ae1d733df1}{MapLayerToID}};\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{extern}\ std::map<int,\ double>\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}};}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{keyword}{extern}\ std::vector<int>\ LayerX;}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \textcolor{keyword}{extern}\ std::vector<int>\ LayerY;}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_a8ec746fda3279c1893692177030e7875}{StripCoordinate}}(\textcolor{keywordtype}{int}\ \&Strip);}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}{LayerCoordinate}}(\textcolor{keywordtype}{int}\ \&ID);}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582}{Error}}(\textcolor{keywordtype}{int}\ \&StripIn,\ \textcolor{keywordtype}{int}\ \&Dimension);}
-\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{extern}\ std::map<int,\ std::string>\ \mbox{\hyperlink{GeneralUtils_8cpp_a50f5ab88982ebd3f80427f3e3638a3e0}{MapIDToLayer}};\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{extern}\ std::map<int,\ double>\ \mbox{\hyperlink{GeneralUtils_8cpp_a2fddc52cc3c0fa2e811b2ed1a27256da}{EfficiencyMap}};\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{extern}\ std::map<int,\ double>\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}};\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{extern}\ std::vector<int>\ \mbox{\hyperlink{GeneralUtils_8cpp_afd05718b9dab72b2255b3cda29b196ff}{LayerX}};\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{extern}\ std::vector<int>\ \mbox{\hyperlink{GeneralUtils_8cpp_a9d236f40a51f26bb4eb5b4bba0d19e92}{LayerY}};\ }
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(\textcolor{keywordtype}{int}\ Strip);\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}{LayerCoordinate}}(\textcolor{keywordtype}{int}\ \&ID);\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582}{Error}}(\textcolor{keywordtype}{int}\ \&StripIn,\ \textcolor{keywordtype}{int}\ \&Dimension);\ }
 
 \end{DoxyCode}
