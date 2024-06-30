@@ -47,8 +47,8 @@ void BuildGrid(std::vector<std::vector<std::pair<double, double>>> &Grid){
 	int strip = 1536;
 	double q_fin = 65;
 	std::vector<std::pair<double, double>> Column;
-	double N = 200; //Phase space number of cells along the angular coefficient direction
-	double M = 100; //Phase space number of cells along the intercept direction
+	double N = 100; //Phase space number of cells along the angular coefficient direction
+	double M = 200; //Phase space number of cells along the intercept direction
 	
 	for(int i = 0; i<N; i++){
 		

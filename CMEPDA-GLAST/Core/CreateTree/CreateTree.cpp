@@ -43,7 +43,7 @@ void CreateTree(const std::string &fileinput, TString fileoutput){
 	int FalseTrigger = 0; // Used to count the number of events that have a False Trigger condition
 	int Nx = 0; // Used to count number of hits in the XZ vision
 	int Ny = 0; // Used to count the number of hits in the YZ vision
-	
+	int BadEvents = 0;
 
 
 
@@ -167,13 +167,12 @@ void CreateTree(const std::string &fileinput, TString fileoutput){
 							evento.InitialStrip.push_back(StripLayer[0]);
 							evento.ClusterLayer.push_back(x);
 							evento.ClusterPosizione.push_back(StripCoordinate(StripLayer[0]));
-							
-							CheckForFlagOne(evento, MapDeiVettoriMutati, StripLayer, LengthCluster, x, -1); 
+							CheckForFlagOne(evento, MapDeiVettoriMutati, StripLayer,  x,LengthCluster, 0); 
 						}
 						
 					else if(StripLayer.size() == 0)//do nothing
-
 					{
+
 					}
 					else //fill up the difference vector: Make vector of consecutive differences between strips of the same layer
 					{ 
@@ -181,16 +180,25 @@ void CreateTree(const std::string &fileinput, TString fileoutput){
 						for(unsigned int j = 0; j<StripLayer.size()-1; j++) 
 						{ 
 							VettoreDifferenzeStripConsecutive.push_back(StripLayer[j+1] - StripLayer[j]); 
+
+							
+
+
 						}
 					}
-
-
+					if(ciclo == 86680){
+						for(auto diff: VettoreDifferenzeStripConsecutive){
+							std::cout <<"L'elemento del vettore differenze è: "<< diff<<" per il layer "<<  x<<std::endl;
+						}	
+						for(auto strip:StripLayer){
+							std::cout<<"La strip hittata è: "<<strip<< " per il layer"<< x <<std::endl;
+						}
+						std::cout<<"La dimensione del vettore delle differenze è: "<<VettoreDifferenzeStripConsecutive.size()<<std::endl;
+					}
 					if(StripLayer.size()>1) //Clustering in case of multiple hits
 					{
 						for(unsigned int j = 0; j<StripLayer.size(); j++)//loop on all strip of the layer
-						{  
-							if(VettoreDifferenzeStripConsecutive[j] == 1) // keep increasing the cluster dimension if there is a one, 
-							/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+						{   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 							//						IMPORTANT COMMENT
 							// One may think it is a mistake to loop up to StripLayer.size() and that actually one should go up to StripLayer.size()-1 for the vector 
 							// VettoreDifferenzeStripConsecutive since its size is lower by 1, however this is useful to cover up the case of a last single cluster, which 
@@ -199,12 +207,16 @@ void CreateTree(const std::string &fileinput, TString fileoutput){
 							// Without going up to StripLayer.size(), the last cluster would not be counted.
 							// 
 							/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+							if((VettoreDifferenzeStripConsecutive[j] == 1)&(j!=StripLayer.size()-1)) // keep increasing the cluster dimension if there is a one, 
 							{	
+									if((ciclo == 86680)&&(x == 20)){
+										std::cout<<"Sono qui primo if" << j<<std::endl;
+									}
+
 									LengthCluster++;
 							}
 							else if((LengthCluster>1)) //Fill object with cluster data if cluster has more than one strip, turns False the Flag 2 and checks if Flag 1 must be turned off.
 							{
-
 								evento.ClusterDimension.push_back(LengthCluster); //Fill object evento
 								evento.InitialStrip.push_back(StripLayer[j-LengthCluster+1]);
 								evento.ClusterLayer.push_back(x);
@@ -212,10 +224,13 @@ void CreateTree(const std::string &fileinput, TString fileoutput){
 								evento.ClusterPosizione.push_back((StripCoordinate(StripLayer[j])+StripCoordinate(StripLayer[j-LengthCluster+1]))/2.); //The cluster position is at half between the initial and last strip
 
 								
-								CheckForFlagOne(evento, MapDeiVettoriMutati, StripLayer, LengthCluster,x, j); 
+								CheckForFlagOne(evento, MapDeiVettoriMutati, StripLayer,x, LengthCluster,  j); 
 
 								NClusterInTheLayer++; //keep account of number of clusters
 								LengthCluster = 1; //reset
+								if((ciclo == 86680)&&(x == 20)){
+										std::cout<<"Sono qui secondo else if" << j<<std::endl;
+									}
 							}
 							else//The only case remaining is a cluster of dimension 1
 							{
@@ -225,7 +240,10 @@ void CreateTree(const std::string &fileinput, TString fileoutput){
 								evento.ClusterLayer.push_back(x);//Fill object evento
 								evento.ClusterPosizione.push_back(StripCoordinate(StripLayer[j]));//Fill object evento
 								NClusterInTheLayer++;		
-								CheckForFlagOne(evento, MapDeiVettoriMutati, StripLayer, LengthCluster,x, j); 
+								CheckForFlagOne(evento, MapDeiVettoriMutati, StripLayer, x, LengthCluster, j); 
+								if((ciclo == 86680)&&(x == 20)){
+										std::cout<<"Sono qui terzo else" << j<<std::endl;
+									}
 							}
 
 						}		
@@ -241,7 +259,17 @@ void CreateTree(const std::string &fileinput, TString fileoutput){
 
 				}
 
-				
+				if(ciclo == 86680){
+					int NumberHits = 0;
+					for(int ss = 0; ss<  evento.ClusterDimension.size(); ss++){
+						std::cout<<"Il cluster ha dimensione "<<evento.ClusterDimension[ss] << " e strip iniziale " << evento.InitialStrip[ss]<< " nel layer "<< evento.ClusterLayer[ss]<<std::endl;
+						NumberHits+= evento.ClusterDimension[ss] ;
+					}
+					if(NumberHits!= evento.NHit){
+						std::cout<<"nope : "<<evento.NHit<<" " << NumberHits<<std::endl;
+					}
+				}
+
 
 
 
@@ -261,7 +289,10 @@ void CreateTree(const std::string &fileinput, TString fileoutput){
 					if(MapHitPerPiano[i+10]>0){Ny++;}
 				}
 
+				if(evento.Flags[0] == 0){
+					BadEvents++;
 
+				}
 
 
 				if((Nx>=3)&(Ny>=3)){ //Fill if this partial trigger condition is satisfied
@@ -280,6 +311,7 @@ void CreateTree(const std::string &fileinput, TString fileoutput){
 		myfile_in.close();   //close input file
 
 		// Report on false trigger.
+		std::cout<<"Eventi con cluster accanto a strip mutate: "<< BadEvents<< std::endl;
 		std::cout<<"Eventi totali: "<<(ciclo-1)<<std::endl;
 		std::cout<<"Eventi veri:  "<<(ciclo-1-FalseTrigger)<<std::endl;
 		std::cout<<"Eventi con falsetrigger:  "<<FalseTrigger<<std::endl;

@@ -27,6 +27,14 @@ double CompareDistributions(TString f1, TString f2, TString path){
     for(int i = 0; i<1000; i++){
 		NormOne+= firsthist->GetBinContent(i);
 		NormTwo+= secondhist->GetBinContent(i);
+        if(i>10000){
+            firsthist->SetBinContent(i, 0);
+            secondhist->SetBinContent(i, 0);
+
+
+        }
+
+
 		}
 
     firsthist->Scale(1/NormOne);
@@ -35,8 +43,8 @@ double CompareDistributions(TString f1, TString f2, TString path){
     TCanvas *c = new TCanvas();
 
 
-    firsthist->Rebin(40);
-    secondhist->Rebin(40);
+    firsthist->Rebin(10);
+    secondhist->Rebin(10);
     TLegend *l = new TLegend();
     l->AddEntry(firsthist, firsthist->GetTitle());
     l->AddEntry(secondhist, secondhist->GetTitle());

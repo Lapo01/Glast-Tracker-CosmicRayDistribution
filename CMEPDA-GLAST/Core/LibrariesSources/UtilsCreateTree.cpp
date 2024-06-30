@@ -77,8 +77,12 @@ void FindMutedStrips(const std::string &file, int &NHit, int &ciclo, std::vector
 		}
 	}
 
+	for (auto x: LayersID){
+		std::cout<< "Il layer considerato è " <<x<<" e il numero di strip mutate è: "<<MapDeiVettoriMutati[x].size()<<std::endl;
+
+	}
+
 	myfile_in.clear();
-	//myfile_in.seekg(0);
 	myfile_in.close();/** Close file */
 
 	
@@ -161,10 +165,10 @@ void CheckForFlagOne(Evento &e, std::map<int, std::vector<int>> &MapDeiVettoriMu
 	if(LengthCluster >1){
 		for(auto y:MapDeiVettoriMutati[layer])//check if the external strips are near to muted/dead strips
 		{
-			if (StripLayer[j-LengthCluster+1]-y ==1){//Flag 0 is not satisfied: the strip is near a dead/muted one			
+			if (abs(StripLayer[j-LengthCluster+1]-y) ==1){//Flag 0 is not satisfied: the strip is near a dead/muted one			
 				e.Flags[0] = 0;
 			}
-			if (y-StripLayer[j] ==1){ // Flag 0 is not satisfied: the strip is near a dead/muted one
+			if (abs(y-StripLayer[j]) ==1){ // Flag 0 is not satisfied: the strip is near a dead/muted one
 				e.Flags[0] = 0;
 			}		   	
 		}
@@ -173,7 +177,7 @@ void CheckForFlagOne(Evento &e, std::map<int, std::vector<int>> &MapDeiVettoriMu
 	{
 		for(auto y:MapDeiVettoriMutati[layer])//check if the single strip composing the cluster is near a muted/dead one
 		{	
-			if (abs(y-StripLayer[j]) ==1){
+			if (abs(y-StripLayer[j]) == 1){
 				e.Flags[0] = 0;
 			}	
 		}

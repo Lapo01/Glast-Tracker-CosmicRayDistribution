@@ -226,8 +226,8 @@ if __name__ == "__main__":
         ROOT.gROOT.LoadMacro(os.path.join("Core", "DataAnalysisMacros", "ExtractDistributions.cpp"))
 
         ROOT.ExtractDistributions(fileinput, os.path.join("Data", "ResultsImages","Measured"))
-        KolmogorovTestResultTheta = round(ROOT.CompareDistributions(os.path.join("Data", "ResultsImages", "MeasuredZenithDistribution.root"), os.path.join(fileoutput + "ZenithExpectedDistribution.root"), os.path.join("Data", "ResultImages", "ComparisonMCRealDataZenith.pdf")),2)
-        KolmogorovTestResultPhi = round(ROOT.CompareDistributions(os.path.join("Data", "ResultsImages", "MeasuredAzimuthDistribution.root"), os.path.join(fileoutput + "AzimuthExpectedDistribution.root"), os.path.join("Data", "ResultImages", "ComparisonMCRealDataAzimuth.pdf")),2)
+        KolmogorovTestResultTheta = round(ROOT.CompareDistributions(os.path.join("Data", "ResultsImages", "MeasuredZenithDistribution.root"), os.path.join(fileoutput + "ZenithExpectedDistribution.root"), os.path.join("Data", "ResultsImages", "ComparisonMCRealDataZenith.pdf")),2)
+        KolmogorovTestResultPhi = round(ROOT.CompareDistributions(os.path.join("Data", "ResultsImages", "MeasuredAzimuthDistribution.root"), os.path.join(fileoutput + "AzimuthExpectedDistribution.root"), os.path.join("Data", "ResultsImages", "ComparisonMCRealDataAzimuth.pdf")),2)
         OutText = "Il test di kolmogorov effettuato sulla distribuzione zenith simulata e su quella misurata ritorna un p-value di "+str(KolmogorovTestResultTheta)
         logger.info(OutText)
         OutText = "Il test di kolmogorov effettuato sulla distribuzione azimuth simulata e su quella misurata ritorna un p-value di "+str(KolmogorovTestResultPhi)

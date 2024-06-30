@@ -15,7 +15,7 @@ std::vector<int> LayersID = {10,11,12,13,14,20,21,22,23,24}; /** Container of th
 std::map<std::string, int> MapLayerToID/** It maps raw string to the layer's ID*/
                                 {
                                 {"X0", 10},
-                                {"X1",11 },
+                                {"X1",11},
                                 {"X2", 12},
                                 {"X3", 13},
                                 {"X4", 14},

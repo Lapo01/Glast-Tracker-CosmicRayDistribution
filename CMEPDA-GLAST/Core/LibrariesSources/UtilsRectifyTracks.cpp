@@ -66,12 +66,12 @@ std::map<int, double> ErrorXYZ{ /**Map that links the layer ID to a rescaled err
 
 
 std::map<int, double> ErrorXYAngoloZ{ /** Map that links the layer ID to a rescaled error based on the width of residuals. Correction used for event that have one projection per vision*/
-	{10, 0.0101872},
-	{11, 0.0110667},
-	{12, 0.0111949},
-	{13, 0.0321004},
-	{14, 0.0317406},
-	{20, 0.0411782},
+	{10, 0.0132882},
+	{11, 0.0101872},
+	{12, 0.0110667},
+	{13, 0.0111949},
+	{14, 0.0321004},
+	{20, 0.0317406},
 	{21, 0.011021 },
 	{22, 0.0112294},
 	{23, 0.0106568},

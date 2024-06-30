@@ -65,7 +65,7 @@ void Retina(TString file, TString fileoutput, int iteration, int numcores){
 	// Variables used in section 3//
 	////////////////////////////////
 	
-	std::vector<Track> VettoreMarionetta; //util variable: container that will be used to contain all equal tracks
+	std::vector<Track> VettoreMarionetta; //util variable: container that will be used to contain all equal tracksz
 	
 	int count = 0; //util variable used to keep count of the number of unique tracks
 	
@@ -100,7 +100,6 @@ void Retina(TString file, TString fileoutput, int iteration, int numcores){
 	
 	
 	
-	
 	auto start = std::chrono::high_resolution_clock::now();
 	
 	
@@ -108,7 +107,6 @@ void Retina(TString file, TString fileoutput, int iteration, int numcores){
 		tree->GetEntry(i);
 		count = 0;
 		if(e.Flags[0] ==1){ //we are choosing events that do not have ill clusters. That is specified by the first flag.
-		
 			EventReset(multipleTracksY, multipleTracksX, etrack, CopiaVettore, VettoreTracceUniche, FinalFilteredTracksX, FinalFilteredTracksY);
 
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -163,7 +161,6 @@ void Retina(TString file, TString fileoutput, int iteration, int numcores){
 								Vec.push_back(Distance(qy, my ,e.ClusterPosizione[j], Zmap[l]));	
 								VecIndex.push_back(j);
 							}	
-
 						}
 						if(VecIndex.size() !=0){//if there are any points close by 0.5 cm search the closest and fill the TGraphErrors YZ
 							n = YZ->GetN();
@@ -269,7 +266,7 @@ void Retina(TString file, TString fileoutput, int iteration, int numcores){
 			//reset utils
 			VettoreTracceUniche.clear();
 			count2=0;
-			count = 0;
+			count=0;
 			CopiaVettore.clear();
 			VettoreMarionetta.clear();		
 
@@ -302,8 +299,6 @@ void Retina(TString file, TString fileoutput, int iteration, int numcores){
 			while(FinalFilteredTracksY.size() != 0){
 				etrack.TrackY.push_back(FinalFilteredTracksY[0]);
 				FinalFilteredTracksY.erase(std::remove_if(FinalFilteredTracksY.begin(), FinalFilteredTracksY.end(), [FinalFilteredTracksY](Track cc){return cc== FinalFilteredTracksY[0];}), FinalFilteredTracksY.end());
-
-
 			}
 			//final filter to remove duplicate projections on XZ vision
 			while(FinalFilteredTracksX.size() != 0){

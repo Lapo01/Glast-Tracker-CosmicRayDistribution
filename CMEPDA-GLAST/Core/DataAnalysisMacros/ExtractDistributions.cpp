@@ -48,7 +48,7 @@ void ExtractDistributions(TString fileinput, TString path){
 
     MeasuredZenithDistribution->SetTitle("Measured Zenith Distribution");
     MeasuredZenithDistribution->GetXaxis()->SetTitle("Zenith angle #theta");
-    MeasuredZenithDistribution->GetXaxis()->SetTitle("Counts");
+    MeasuredZenithDistribution->GetYaxis()->SetTitle("Counts");
 
     
     MeasuredAzimuthDistribution->SetTitle("Measured Azimuth Distribution");

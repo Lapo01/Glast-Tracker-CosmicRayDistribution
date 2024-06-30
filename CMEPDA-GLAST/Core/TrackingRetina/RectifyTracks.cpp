@@ -58,7 +58,12 @@ void RectifyTracks(TString file, TString fileoutput){
 	double theta, phi; //placeholders variables to find the angle between tracks that have 1 projection for each layer.
 	std::vector<size_t> TracksXToBeErased; //container of the index of the tracks in the container TrackX of the object EventoTrack that do not pass the cut in chisquare on the XZ vision, those are to be removed from the object EventoTrack.
 	std::vector<size_t> TracksYToBeErased; //container of the index of the tracks in the container TrackY of the object EventoTrack that do not pass the cut in chisquare on the YZ vision, those are to be removed from the object EventoTrack.
-	TH1F *chi2XHist = new TH1F("h", "h", 1000,0 ,100);
+	TH1F *chi2XHist = new TH1F("h", "h", 2000,0 ,50);
+	TH1F *oldchi2XHist = new TH1F("h", "h", 2000,0 ,50);
+	TH1F *ThetaNoCut = new TH1F("hist","Theta Distribution with no cut", 1000,0, 90);
+
+	TH1F *thetaHist = new TH1F("h", "h", 1000,0 ,90);
+
 	auto start = std::chrono::high_resolution_clock::now();
 	for(int i =0; i<entries; i++){
 		tree->GetEntry(i);
@@ -71,7 +76,6 @@ void RectifyTracks(TString file, TString fileoutput){
 		//a fit is the made with the corrected data and a cut in chisquare is made at 95% of the integral of the NOMINAL CHISQUARE DISTRIBUTION for the corresponding dof. 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		if((e.Nx()==1) && (e.Ny()==1)){
-
 			//copy object from the read tree to the object on the tree to be written
 			
 			etrack = e;
@@ -84,7 +88,12 @@ void RectifyTracks(TString file, TString fileoutput){
 			my = e.TrackY[0].Fit[1];
 			qx = e.TrackX[0].Fit[0];
 			qy = e.TrackY[0].Fit[0];
+			ThetaNoCut->Fill(atan(sqrt(mx*mx + my*my))*180/3.14);
 
+			if(etrack.TrackX[0].Fit[3] == 3){
+				oldchi2XHist->Fill(etrack.TrackX[0].Fit[2]);
+
+			}
 			
 
 			//correct the projection on the XZ vision for relative shifts and relative angle between layers
@@ -130,7 +139,7 @@ void RectifyTracks(TString file, TString fileoutput){
 			phi = atan2(my,mx)*180/3.14;
 			theta = atan(sqrt(mx*mx+my*my))*180/3.14;
 			
-			if(chi2AttX==3){
+			if(chi2AttX ==3){ 
 				chi2XHist->Fill(chi2X);
 			}
 			
@@ -162,6 +171,10 @@ void RectifyTracks(TString file, TString fileoutput){
 				etrack.TrackY.pop_back();
 			}
 
+
+			if((chi2Y<SoglieChiMappa[chi2AttY])&(chi2X<SoglieChiMappa[chi2AttX])){
+				thetaHist->Fill(theta);
+			}
 
 			delete XZ; //delete containers for points
 			delete YZ; //delete containers for points
@@ -210,9 +223,7 @@ void RectifyTracks(TString file, TString fileoutput){
 				}
 				mm++;
 				delete XZ;
-				if(chi2AttX==3){
-				chi2XHist->Fill(chi2X);
-			}
+				
 			}
 
 			mm =0; //reset utils
@@ -248,6 +259,7 @@ void RectifyTracks(TString file, TString fileoutput){
 				}
 				mm++;
 				delete YZ;
+				
 			}
 
 			//erase tracks that do not pass the chisquare cut on the XZ vision
@@ -260,11 +272,14 @@ void RectifyTracks(TString file, TString fileoutput){
 				etrack.TrackY.erase(etrack.TrackY.begin() + *it);
 			}
 		}
+
 		treetrackoutput->Fill();
 		
 	}
+	oldchi2XHist->SaveAs("oldchi2Dist.root");
+	ThetaNoCut->SaveAs("OldThetaDist.root");
 	chi2XHist->SaveAs("chi2Dist.root");
-
+	thetaHist->SaveAs("ThetaDist.root");
 	
 	output->Write();
 	output->Close();

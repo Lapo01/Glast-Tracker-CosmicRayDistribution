@@ -100,7 +100,7 @@ void ResetUtils(std::vector<double> &TrackX, std::vector<double> &TrackY, std::v
 void GenerateRandomNumbers(double &auxiliary, double &theta, double &phi, double &x0, double &y0, double &mx, double &my , double &qx, double &qy, double &thetacalc, double &phicalc, double &Ztop){
         auxiliary = gRandom->Uniform(1); //generate util variable for Inverse Transforming Sample Method.
         theta = acos(pow(1-auxiliary, 1./4.))*180/3.14; //generate zenith angle 
-        phi = gRandom->Uniform(-180, 180 //generate azimuth angle
+        phi = gRandom->Uniform(-180, 180); //generate azimuth angle
         x0 = gRandom->Uniform(-100, StripCoordinate(1536) +100); //generate X coordinate of initial point
         y0 = gRandom->Uniform(-100, StripCoordinate(1536) +100); //generate Y coordinate of initial point
         thetacalc =theta*3.14/180;
