@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['stripcoordinate_0',['StripCoordinate',['../dc/d43/GeneralUtils_8cpp.html#a8ec746fda3279c1893692177030e7875',1,'StripCoordinate(int &amp;Strip):&#160;GeneralUtils.cpp'],['../d6/d87/UtilsCreateTree_8cpp.html#a100c62543a890246b20d112b2242817e',1,'StripCoordinate(int Strip):&#160;UtilsCreateTree.cpp']]]
+  ['ncluster_0',['NCluster',['../d9/d18/classTrack.html#abe1778db3b958fc481ea9d187c2cf763',1,'Track']]],
+  ['nx_1',['Nx',['../d2/da4/classEventoTrack.html#a5cb6f67c0416adee2f3dee2039944d27',1,'EventoTrack']]],
+  ['ny_2',['Ny',['../d2/da4/classEventoTrack.html#a88ac7f432f68018e471bb50b73b36d36',1,'EventoTrack']]]
 ];

@@ -104,9 +104,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ae6621827442b50675c4d3f28ae9db3e4" id="r_ae6621827442b50675c4d3f28ae9db3e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6621827442b50675c4d3f28ae9db3e4">FillStripLayer</a> (<a class="el" href="../../d1/dc8/classEvento.html">Evento</a> &amp;e, std::vector&lt; int &gt; &amp;StripLayer, std::map&lt; int, int &gt; &amp;MapHitPerPiano, int &amp;Layer)</td></tr>
 <tr class="memdesc:ae6621827442b50675c4d3f28ae9db3e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function fills a placeholder vector with the hits of the same layer on the event.  <br /></td></tr>
 <tr class="separator:ae6621827442b50675c4d3f28ae9db3e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a100c62543a890246b20d112b2242817e" id="r_a100c62543a890246b20d112b2242817e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a100c62543a890246b20d112b2242817e">StripCoordinate</a> (int Strip)</td></tr>
-<tr class="memdesc:a100c62543a890246b20d112b2242817e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function calculate given the strip number its position in cm.  <br /></td></tr>
-<tr class="separator:a100c62543a890246b20d112b2242817e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><ul>
@@ -415,31 +412,6 @@ Functions</h2></td></tr>
     <tr><td class="paramname">LayersID</td><td>Layer's ID vector passed by reference for convenience.</td></tr>
     <tr><td class="paramname">Nx</td><td>Number of hits on XZ vision.</td></tr>
     <tr><td class="paramname">Ny</td><td>Number of hits on YZ vision. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a100c62543a890246b20d112b2242817e" name="a100c62543a890246b20d112b2242817e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a100c62543a890246b20d112b2242817e">&#9670;&#160;</a></span>StripCoordinate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double StripCoordinate </td>
-          <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>Strip</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>This function calculate given the strip number its position in cm. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Strip</td><td>It is the strip number ID (goes from 1 to 1536) </td></tr>
   </table>
   </dd>
 </dl>

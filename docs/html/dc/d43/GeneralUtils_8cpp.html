@@ -86,9 +86,9 @@ $(function() {
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8ec746fda3279c1893692177030e7875" id="r_a8ec746fda3279c1893692177030e7875"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ec746fda3279c1893692177030e7875">StripCoordinate</a> (int &amp;Strip)</td></tr>
-<tr class="memdesc:a8ec746fda3279c1893692177030e7875"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function returns the strip position in centimeters.  <br /></td></tr>
-<tr class="separator:a8ec746fda3279c1893692177030e7875"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a100c62543a890246b20d112b2242817e" id="r_a100c62543a890246b20d112b2242817e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a100c62543a890246b20d112b2242817e">StripCoordinate</a> (int Strip)</td></tr>
+<tr class="memdesc:a100c62543a890246b20d112b2242817e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function calculate given the strip number its position in cm.  <br /></td></tr>
+<tr class="separator:a100c62543a890246b20d112b2242817e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d662b9f40450252cd0a030691fc914f" id="r_a2d662b9f40450252cd0a030691fc914f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d662b9f40450252cd0a030691fc914f">LayerCoordinate</a> (int &amp;ID)</td></tr>
 <tr class="memdesc:a2d662b9f40450252cd0a030691fc914f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function corrects shifts along the Z directions given the layer.  <br /></td></tr>
 <tr class="separator:a2d662b9f40450252cd0a030691fc914f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -104,14 +104,23 @@ std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>L
 <tr class="memitem:a776b960425b2324caf6190ae1d733df1" id="r_a776b960425b2324caf6190ae1d733df1"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a776b960425b2324caf6190ae1d733df1">MapLayerToID</a></td></tr>
 <tr class="memdesc:a776b960425b2324caf6190ae1d733df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container of the layer's ID.  <br /></td></tr>
 <tr class="separator:a776b960425b2324caf6190ae1d733df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50f5ab88982ebd3f80427f3e3638a3e0" id="r_a50f5ab88982ebd3f80427f3e3638a3e0"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50f5ab88982ebd3f80427f3e3638a3e0">MapIDToLayer</a></td></tr>
+<tr class="memdesc:a50f5ab88982ebd3f80427f3e3638a3e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">It maps Layer's ID to its raw string <br  />
+  <br /></td></tr>
+<tr class="separator:a50f5ab88982ebd3f80427f3e3638a3e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fddc52cc3c0fa2e811b2ed1a27256da" id="r_a2fddc52cc3c0fa2e811b2ed1a27256da"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2fddc52cc3c0fa2e811b2ed1a27256da">EfficiencyMap</a></td></tr>
+<tr class="memdesc:a2fddc52cc3c0fa2e811b2ed1a27256da"><td class="mdescLeft">&#160;</td><td class="mdescRight">It maps layer's ID to raw string.  <br /></td></tr>
+<tr class="separator:a2fddc52cc3c0fa2e811b2ed1a27256da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75d921e09141f0b547dbb28160f9c4f5" id="r_a75d921e09141f0b547dbb28160f9c4f5"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75d921e09141f0b547dbb28160f9c4f5">Zmap</a></td></tr>
-<tr class="memdesc:a75d921e09141f0b547dbb28160f9c4f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">It maps raw string to the layer's ID.  <br /></td></tr>
+<tr class="memdesc:a75d921e09141f0b547dbb28160f9c4f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">It maps Layer's ID to its mean efficiency.  <br /></td></tr>
 <tr class="separator:a75d921e09141f0b547dbb28160f9c4f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd05718b9dab72b2255b3cda29b196ff" id="r_afd05718b9dab72b2255b3cda29b196ff"><td class="memItemLeft" align="right" valign="top"><a id="afd05718b9dab72b2255b3cda29b196ff" name="afd05718b9dab72b2255b3cda29b196ff"></a>
 std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>LayerX</b> = {10,11,12,13,14}</td></tr>
+<tr class="memdesc:afd05718b9dab72b2255b3cda29b196ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">It maps layer's ID to its height along Z. <br /></td></tr>
 <tr class="separator:afd05718b9dab72b2255b3cda29b196ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d236f40a51f26bb4eb5b4bba0d19e92" id="r_a9d236f40a51f26bb4eb5b4bba0d19e92"><td class="memItemLeft" align="right" valign="top"><a id="a9d236f40a51f26bb4eb5b4bba0d19e92" name="a9d236f40a51f26bb4eb5b4bba0d19e92"></a>
 std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>LayerY</b> ={20,21,22,23,24}</td></tr>
+<tr class="memdesc:a9d236f40a51f26bb4eb5b4bba0d19e92"><td class="mdescLeft">&#160;</td><td class="mdescRight">vector of Layer X ID's <br /></td></tr>
 <tr class="separator:a9d236f40a51f26bb4eb5b4bba0d19e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -139,6 +148,7 @@ std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>L
 </div><div class="memdoc">
 
 <p>This function returns the error on the position of a cluster assuming a uniform distribution between the position of the initial strip and the last strip of the cluster. </p>
+<p>Function used in the correction of shifts along z: returns the corrected z position for a layer.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">StripIn</td><td>Initial strip of the cluster </td></tr>
@@ -165,6 +175,7 @@ std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>L
 </div><div class="memdoc">
 
 <p>This function corrects shifts along the Z directions given the layer. </p>
+<p>Function that returns the coordinate of a strip in cm.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ID</td><td>The layer ID </td></tr>
@@ -174,8 +185,8 @@ std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>L
 
 </div>
 </div>
-<a id="a8ec746fda3279c1893692177030e7875" name="a8ec746fda3279c1893692177030e7875"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ec746fda3279c1893692177030e7875">&#9670;&#160;</a></span>StripCoordinate()</h2>
+<a id="a100c62543a890246b20d112b2242817e" name="a100c62543a890246b20d112b2242817e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a100c62543a890246b20d112b2242817e">&#9670;&#160;</a></span>StripCoordinate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -183,16 +194,17 @@ std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>L
         <tr>
           <td class="memname">double StripCoordinate </td>
           <td>(</td>
-          <td class="paramtype">int &amp;</td>          <td class="paramname"><span class="paramname"><em>Strip</em></span></td><td>)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>Strip</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>This function returns the strip position in centimeters. </p>
+<p>This function calculate given the strip number its position in cm. </p>
+<p>vector of Layer Y ID's</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Strip</td><td>The strip for which the coordinate has to be calculated </td></tr>
+    <tr><td class="paramname">Strip</td><td>It is the strip number ID (goes from 1 to 1536) </td></tr>
   </table>
   </dd>
 </dl>
@@ -200,6 +212,64 @@ std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>L
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a2fddc52cc3c0fa2e811b2ed1a27256da" name="a2fddc52cc3c0fa2e811b2ed1a27256da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fddc52cc3c0fa2e811b2ed1a27256da">&#9670;&#160;</a></span>EfficiencyMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;int, double&gt; EfficiencyMap</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{ </div>
+<div class="line">                                {10,0.84},</div>
+<div class="line">                                {11,0.857},</div>
+<div class="line">                                {12,1.},</div>
+<div class="line">                                {13,0.91},</div>
+<div class="line">                                {14,0.61},</div>
+<div class="line">                                {20,0.86},</div>
+<div class="line">                                {21,0.95},</div>
+<div class="line">                                {22,1.},</div>
+<div class="line">                                {23,0.56},</div>
+<div class="line">                                {24,0.75}</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>It maps layer's ID to raw string. </p>
+
+</div>
+</div>
+<a id="a50f5ab88982ebd3f80427f3e3638a3e0" name="a50f5ab88982ebd3f80427f3e3638a3e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50f5ab88982ebd3f80427f3e3638a3e0">&#9670;&#160;</a></span>MapIDToLayer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;int, std::string&gt; MapIDToLayer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">                                {10,<span class="stringliteral">&quot;X0&quot;</span>},</div>
+<div class="line">                                {11,<span class="stringliteral">&quot;X1&quot;</span>},</div>
+<div class="line">                                {12,<span class="stringliteral">&quot;X2&quot;</span>},</div>
+<div class="line">                                {13,<span class="stringliteral">&quot;X3&quot;</span>},</div>
+<div class="line">                                {14,<span class="stringliteral">&quot;X4&quot;</span>},</div>
+<div class="line">                                {20,<span class="stringliteral">&quot;Y0&quot;</span>},</div>
+<div class="line">                                {21,<span class="stringliteral">&quot;Y1&quot;</span>},</div>
+<div class="line">                                {22,<span class="stringliteral">&quot;Y2&quot;</span>},</div>
+<div class="line">                                {23,<span class="stringliteral">&quot;Y3&quot;</span>},</div>
+<div class="line">                                {24,<span class="stringliteral">&quot;Y4&quot;</span>}</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>It maps Layer's ID to its raw string <br  />
+ </p>
+<p>It maps raw string to the layer's ID. </p>
+
+</div>
+</div>
 <a id="a776b960425b2324caf6190ae1d733df1" name="a776b960425b2324caf6190ae1d733df1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a776b960425b2324caf6190ae1d733df1">&#9670;&#160;</a></span>MapLayerToID</h2>
 
@@ -213,7 +283,7 @@ std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>L
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{</div>
 <div class="line">                                {<span class="stringliteral">&quot;X0&quot;</span>, 10},</div>
-<div class="line">                                {<span class="stringliteral">&quot;X1&quot;</span>,11 },</div>
+<div class="line">                                {<span class="stringliteral">&quot;X1&quot;</span>,11},</div>
 <div class="line">                                {<span class="stringliteral">&quot;X2&quot;</span>, 12},</div>
 <div class="line">                                {<span class="stringliteral">&quot;X3&quot;</span>, 13},</div>
 <div class="line">                                {<span class="stringliteral">&quot;X4&quot;</span>, 14},</div>
@@ -253,7 +323,7 @@ std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>L
 <div class="line">    {24, 27.8}</div>
 <div class="line">}</div>
 </div><!-- fragment -->
-<p>It maps raw string to the layer's ID. </p>
+<p>It maps Layer's ID to its mean efficiency. </p>
 
 </div>
 </div>
