@@ -20,4 +20,4 @@ on:
              run: doxygen
 
             -name : open html ?
-             run index.html
+             run: index.html
