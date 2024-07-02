@@ -1,0 +1,23 @@
+name : update Docs
+
+
+on:
+   push:
+      branches: ["main"]
+   pull_request:
+      branches: ["main"]
+
+
+  jobs:
+     build:
+
+
+        runs on: ubuntu-latest
+
+            steps:
+            -uses: actions/checkout@v4
+            -name: Update docs
+             run: doxygen
+
+            -name : open html ?
+             run index.html
