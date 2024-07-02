@@ -1,0 +1,154 @@
+\doxysection{CMEPDA-\/\+GLAST/\+Core/\+Headers/\+Utils\+Rectify\+Tracks.h File Reference}
+\hypertarget{UtilsRectifyTracks_8h}{}\label{UtilsRectifyTracks_8h}\index{CMEPDA-\/GLAST/Core/Headers/UtilsRectifyTracks.h@{CMEPDA-\/GLAST/Core/Headers/UtilsRectifyTracks.h}}
+
+
+Headers for library Utils\+Rectify\+Tracks.  
+
+
+{\ttfamily \#include $<$TMath.\+h$>$}\newline
+{\ttfamily \#include "{}Evento.\+h"{}}\newline
+{\ttfamily \#include "{}Evento\+Track.\+h"{}}\newline
+{\ttfamily \#include "{}General\+Utils.\+h"{}}\newline
+{\ttfamily \#include "{}TROOT.\+h"{}}\newline
+{\ttfamily \#include "{}TH1\+F.\+h"{}}\newline
+{\ttfamily \#include "{}TH2\+F.\+h"{}}\newline
+{\ttfamily \#include "{}TGraph\+Errors.\+h"{}}\newline
+{\ttfamily \#include "{}TRandom.\+h"{}}\newline
+{\ttfamily \#include "{}TCanvas.\+h"{}}\newline
+{\ttfamily \#include "{}TFrame.\+h"{}}\newline
+{\ttfamily \#include "{}TDatime.\+h"{}}\newline
+{\ttfamily \#include "{}TF1.\+h"{}}\newline
+{\ttfamily \#include "{}TFile.\+h"{}}\newline
+{\ttfamily \#include "{}TStopwatch.\+h"{}}\newline
+{\ttfamily \#include "{}TTree.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{UtilsRectifyTracks_8h_a84e55be38b776611ae78cd78e781086b}{Angle\+Correction}} (int \&layer, double \&mx, double \&qx, double \&my, double \&qy)
+\begin{DoxyCompactList}\small\item\em This function corrects relative rotations for events that have one projection for each vision. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{UtilsRectifyTracks_8h_ae808a6d76bd4260e5cc04a963b482582}{Error}} (int \&Strip\+In, int \&Dimension)
+\begin{DoxyCompactList}\small\item\em This function returns the error on the position of a cluster assuming a uniform distribution between the position of the initial strip and the last strip of the cluster. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{UtilsRectifyTracks_8h_af4a24f87a72116125dc5c295c7614f03}{Error\+XYZ}}
+\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{UtilsRectifyTracks_8h_a83a10e0dd3374e63580b952dae32df3e}{Error\+XYAngoloZ}}
+\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{UtilsRectifyTracks_8h_af993d034cccc6fd64ca9fe07a8ebf345}{Map\+Shift}}
+\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{UtilsRectifyTracks_8h_a3846c37be4bb2fde612d0ebedb11607c}{Soglie\+Chi\+Mappa}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Headers for library Utils\+Rectify\+Tracks. 
+
+
+
+Definition in file \mbox{\hyperlink{UtilsRectifyTracks_8h_source}{Utils\+Rectify\+Tracks.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{UtilsRectifyTracks_8h_a84e55be38b776611ae78cd78e781086b}\label{UtilsRectifyTracks_8h_a84e55be38b776611ae78cd78e781086b} 
+\index{UtilsRectifyTracks.h@{UtilsRectifyTracks.h}!AngleCorrection@{AngleCorrection}}
+\index{AngleCorrection@{AngleCorrection}!UtilsRectifyTracks.h@{UtilsRectifyTracks.h}}
+\doxysubsubsection{\texorpdfstring{AngleCorrection()}{AngleCorrection()}}
+{\footnotesize\ttfamily double Angle\+Correction (\begin{DoxyParamCaption}\item[{int \&}]{layer,  }\item[{double \&}]{mx,  }\item[{double \&}]{qx,  }\item[{double \&}]{my,  }\item[{double \&}]{qy }\end{DoxyParamCaption})}
+
+
+
+This function corrects relative rotations for events that have one projection for each vision. 
+
+3D info is needed for this correction.
+
+
+\begin{DoxyParams}{Parameters}
+{\em layer} & Layer ID\\
+\hline
+{\em mx} & Angular coefficient of track on XZ vision\\
+\hline
+{\em qx} & Intercept of track on XZ vision\\
+\hline
+{\em my} & Angular coefficient of track on YZ vision\\
+\hline
+{\em qy} & Intercept of track on YZ vision \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{UtilsRectifyTracks_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{UtilsRectifyTracks_8cpp_source}{Utils\+Rectify\+Tracks.\+cpp}}.
+
+\Hypertarget{UtilsRectifyTracks_8h_ae808a6d76bd4260e5cc04a963b482582}\label{UtilsRectifyTracks_8h_ae808a6d76bd4260e5cc04a963b482582} 
+\index{UtilsRectifyTracks.h@{UtilsRectifyTracks.h}!Error@{Error}}
+\index{Error@{Error}!UtilsRectifyTracks.h@{UtilsRectifyTracks.h}}
+\doxysubsubsection{\texorpdfstring{Error()}{Error()}}
+{\footnotesize\ttfamily double Error (\begin{DoxyParamCaption}\item[{int \&}]{Strip\+In,  }\item[{int \&}]{Dimension }\end{DoxyParamCaption})}
+
+
+
+This function returns the error on the position of a cluster assuming a uniform distribution between the position of the initial strip and the last strip of the cluster. 
+
+Function used in the correction of shifts along z\+: returns the corrected z position for a layer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Strip\+In} & Initial strip of the cluster \\
+\hline
+{\em Dimension} & Dimension of the cluster \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{GeneralUtils_8cpp_source_l00182}{182}} of file \mbox{\hyperlink{GeneralUtils_8cpp_source}{General\+Utils.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{UtilsRectifyTracks_8h_a83a10e0dd3374e63580b952dae32df3e}\label{UtilsRectifyTracks_8h_a83a10e0dd3374e63580b952dae32df3e} 
+\index{UtilsRectifyTracks.h@{UtilsRectifyTracks.h}!ErrorXYAngoloZ@{ErrorXYAngoloZ}}
+\index{ErrorXYAngoloZ@{ErrorXYAngoloZ}!UtilsRectifyTracks.h@{UtilsRectifyTracks.h}}
+\doxysubsubsection{\texorpdfstring{ErrorXYAngoloZ}{ErrorXYAngoloZ}}
+{\footnotesize\ttfamily std\+::map$<$int, double$>$ Error\+XYAngoloZ\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{UtilsRectifyTracks_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{UtilsRectifyTracks_8cpp_source}{Utils\+Rectify\+Tracks.\+cpp}}.
+
+\Hypertarget{UtilsRectifyTracks_8h_af4a24f87a72116125dc5c295c7614f03}\label{UtilsRectifyTracks_8h_af4a24f87a72116125dc5c295c7614f03} 
+\index{UtilsRectifyTracks.h@{UtilsRectifyTracks.h}!ErrorXYZ@{ErrorXYZ}}
+\index{ErrorXYZ@{ErrorXYZ}!UtilsRectifyTracks.h@{UtilsRectifyTracks.h}}
+\doxysubsubsection{\texorpdfstring{ErrorXYZ}{ErrorXYZ}}
+{\footnotesize\ttfamily std\+::map$<$int,double$>$ Error\+XYZ\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{UtilsRectifyTracks_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{UtilsRectifyTracks_8cpp_source}{Utils\+Rectify\+Tracks.\+cpp}}.
+
+\Hypertarget{UtilsRectifyTracks_8h_af993d034cccc6fd64ca9fe07a8ebf345}\label{UtilsRectifyTracks_8h_af993d034cccc6fd64ca9fe07a8ebf345} 
+\index{UtilsRectifyTracks.h@{UtilsRectifyTracks.h}!MapShift@{MapShift}}
+\index{MapShift@{MapShift}!UtilsRectifyTracks.h@{UtilsRectifyTracks.h}}
+\doxysubsubsection{\texorpdfstring{MapShift}{MapShift}}
+{\footnotesize\ttfamily std\+::map$<$int, double$>$ Map\+Shift\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{UtilsRectifyTracks_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{UtilsRectifyTracks_8cpp_source}{Utils\+Rectify\+Tracks.\+cpp}}.
+
+\Hypertarget{UtilsRectifyTracks_8h_a3846c37be4bb2fde612d0ebedb11607c}\label{UtilsRectifyTracks_8h_a3846c37be4bb2fde612d0ebedb11607c} 
+\index{UtilsRectifyTracks.h@{UtilsRectifyTracks.h}!SoglieChiMappa@{SoglieChiMappa}}
+\index{SoglieChiMappa@{SoglieChiMappa}!UtilsRectifyTracks.h@{UtilsRectifyTracks.h}}
+\doxysubsubsection{\texorpdfstring{SoglieChiMappa}{SoglieChiMappa}}
+{\footnotesize\ttfamily std\+::map$<$int, double$>$ Soglie\+Chi\+Mappa\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{UtilsRectifyTracks_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{UtilsRectifyTracks_8cpp_source}{Utils\+Rectify\+Tracks.\+cpp}}.
+

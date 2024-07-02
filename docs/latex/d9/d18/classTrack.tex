@@ -4,34 +4,35 @@
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{classTrack_abe1778db3b958fc481ea9d187c2cf763}{NCluster}} ()
-\begin{DoxyCompactList}\small\item\em Container of the cluster layers ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the number of clusters in the tracks ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classTrack_a30aab41e69db16a9359a5c47f639df03}\label{classTrack_a30aab41e69db16a9359a5c47f639df03} 
-std\+::vector$<$ double $>$ {\bfseries Fit}
-\item 
-\Hypertarget{classTrack_ad66743e1981db57ee2fb84b7d98985e5}\label{classTrack_ad66743e1981db57ee2fb84b7d98985e5} 
-std\+::vector$<$ double $>$ {\bfseries Error}
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classTrack_a30aab41e69db16a9359a5c47f639df03}{Fit}}
 \begin{DoxyCompactList}\small\item\em Container for fit useful variable q, m, chi2, chi2\+Att, chi2n is the order in which the variables are inserted. \end{DoxyCompactList}\item 
-\Hypertarget{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}\label{classTrack_a034d262fffa4a451b4c2ada2e2afcabf} 
-std\+::vector$<$ double $>$ {\bfseries Cluster\+Position}
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classTrack_ad66743e1981db57ee2fb84b7d98985e5}{Error}}
 \begin{DoxyCompactList}\small\item\em Container of the error for the position of each cluster. \end{DoxyCompactList}\item 
-\Hypertarget{classTrack_accce27ec07d1ad7f6f872a96d35806c9}\label{classTrack_accce27ec07d1ad7f6f872a96d35806c9} 
-std\+::vector$<$ int $>$ {\bfseries Layer}
-\begin{DoxyCompactList}\small\item\em Container of the cluster positions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{Cluster\+Position}}
+\begin{DoxyCompactList}\small\item\em Container of the cluster positions. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classTrack_accce27ec07d1ad7f6f872a96d35806c9}{Layer}}
+\begin{DoxyCompactList}\small\item\em Container of the cluster layers ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classTrack_af7bff7aa97c36e2b257144a1b870124a}\label{classTrack_af7bff7aa97c36e2b257144a1b870124a} 
-bool {\bfseries operator==} (const \mbox{\hyperlink{classTrack}{Track}} \&a, const \mbox{\hyperlink{classTrack}{Track}} \&b)
+bool \mbox{\hyperlink{classTrack_af7bff7aa97c36e2b257144a1b870124a}{operator==}} (const \mbox{\hyperlink{classTrack}{Track}} \&a, const \mbox{\hyperlink{classTrack}{Track}} \&b)
 \begin{DoxyCompactList}\small\item\em Equal operator for tracks\+: tracks are equal if more than 1 point is in common. \end{DoxyCompactList}\item 
-\Hypertarget{classTrack_a9ebdd1266943912711b14e778cd2a511}\label{classTrack_a9ebdd1266943912711b14e778cd2a511} 
-bool {\bfseries operator$<$} (const \mbox{\hyperlink{classTrack}{Track}} \&a, const \mbox{\hyperlink{classTrack}{Track}} \&b)
+bool \mbox{\hyperlink{classTrack_a9ebdd1266943912711b14e778cd2a511}{operator$<$}} (const \mbox{\hyperlink{classTrack}{Track}} \&a, const \mbox{\hyperlink{classTrack}{Track}} \&b)
 \begin{DoxyCompactList}\small\item\em Less operator for tracks\+: a track is less than another if it has less clusters. \end{DoxyCompactList}\item 
-\Hypertarget{classTrack_af20f843c616809d72c66a6bce3bec59b}\label{classTrack_af20f843c616809d72c66a6bce3bec59b} 
-bool {\bfseries operator$>$} (const \mbox{\hyperlink{classTrack}{Track}} \&a, const \mbox{\hyperlink{classTrack}{Track}} \&b)
+bool \mbox{\hyperlink{classTrack_af20f843c616809d72c66a6bce3bec59b}{operator$>$}} (const \mbox{\hyperlink{classTrack}{Track}} \&a, const \mbox{\hyperlink{classTrack}{Track}} \&b)
 \begin{DoxyCompactList}\small\item\em Greater operator for tracks\+: based on less operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{Track_8h_source_l00026}{26}} of file \mbox{\hyperlink{Track_8h_source}{Track.\+h}}.
+
 
 
 \doxysubsection{Member Function Documentation}
@@ -43,10 +44,118 @@ bool {\bfseries operator$>$} (const \mbox{\hyperlink{classTrack}{Track}} \&a, co
 
 
 
-Container of the cluster layers ID. 
-
 Returns the number of clusters in the tracks ~\newline
  
+
+
+
+Definition at line \mbox{\hyperlink{Track_8h_source_l00046}{46}} of file \mbox{\hyperlink{Track_8h_source}{Track.\+h}}.
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classTrack_a9ebdd1266943912711b14e778cd2a511}\label{classTrack_a9ebdd1266943912711b14e778cd2a511} 
+\index{Track@{Track}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{operator$<$}{operator<}}
+{\footnotesize\ttfamily bool operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTrack}{Track}} \&}]{a,  }\item[{const \mbox{\hyperlink{classTrack}{Track}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Less operator for tracks\+: a track is less than another if it has less clusters. 
+
+
+
+Definition at line \mbox{\hyperlink{Track_8h_source_l00072}{72}} of file \mbox{\hyperlink{Track_8h_source}{Track.\+h}}.
+
+\Hypertarget{classTrack_af7bff7aa97c36e2b257144a1b870124a}\label{classTrack_af7bff7aa97c36e2b257144a1b870124a} 
+\index{Track@{Track}!operator==@{operator==}}
+\index{operator==@{operator==}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{operator==}{operator==}}
+{\footnotesize\ttfamily bool operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTrack}{Track}} \&}]{a,  }\item[{const \mbox{\hyperlink{classTrack}{Track}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Equal operator for tracks\+: tracks are equal if more than 1 point is in common. 
+
+
+
+Definition at line \mbox{\hyperlink{Track_8h_source_l00057}{57}} of file \mbox{\hyperlink{Track_8h_source}{Track.\+h}}.
+
+\Hypertarget{classTrack_af20f843c616809d72c66a6bce3bec59b}\label{classTrack_af20f843c616809d72c66a6bce3bec59b} 
+\index{Track@{Track}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{operator$>$}{operator>}}
+{\footnotesize\ttfamily bool operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTrack}{Track}} \&}]{a,  }\item[{const \mbox{\hyperlink{classTrack}{Track}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Greater operator for tracks\+: based on less operator. 
+
+
+
+Definition at line \mbox{\hyperlink{Track_8h_source_l00080}{80}} of file \mbox{\hyperlink{Track_8h_source}{Track.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}\label{classTrack_a034d262fffa4a451b4c2ada2e2afcabf} 
+\index{Track@{Track}!ClusterPosition@{ClusterPosition}}
+\index{ClusterPosition@{ClusterPosition}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{ClusterPosition}{ClusterPosition}}
+{\footnotesize\ttfamily std\+::vector$<$double$>$ Track\+::\+Cluster\+Position}
+
+
+
+Container of the cluster positions. 
+
+
+
+Definition at line \mbox{\hyperlink{Track_8h_source_l00040}{40}} of file \mbox{\hyperlink{Track_8h_source}{Track.\+h}}.
+
+\Hypertarget{classTrack_ad66743e1981db57ee2fb84b7d98985e5}\label{classTrack_ad66743e1981db57ee2fb84b7d98985e5} 
+\index{Track@{Track}!Error@{Error}}
+\index{Error@{Error}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{Error}{Error}}
+{\footnotesize\ttfamily std\+::vector$<$double$>$ Track\+::\+Error}
+
+
+
+Container of the error for the position of each cluster. 
+
+
+
+Definition at line \mbox{\hyperlink{Track_8h_source_l00038}{38}} of file \mbox{\hyperlink{Track_8h_source}{Track.\+h}}.
+
+\Hypertarget{classTrack_a30aab41e69db16a9359a5c47f639df03}\label{classTrack_a30aab41e69db16a9359a5c47f639df03} 
+\index{Track@{Track}!Fit@{Fit}}
+\index{Fit@{Fit}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{Fit}{Fit}}
+{\footnotesize\ttfamily std\+::vector$<$double$>$ Track\+::\+Fit}
+
+
+
+Container for fit useful variable q, m, chi2, chi2\+Att, chi2n is the order in which the variables are inserted. 
+
+
+
+Definition at line \mbox{\hyperlink{Track_8h_source_l00034}{34}} of file \mbox{\hyperlink{Track_8h_source}{Track.\+h}}.
+
+\Hypertarget{classTrack_accce27ec07d1ad7f6f872a96d35806c9}\label{classTrack_accce27ec07d1ad7f6f872a96d35806c9} 
+\index{Track@{Track}!Layer@{Layer}}
+\index{Layer@{Layer}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{Layer}{Layer}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Track\+::\+Layer}
+
+
+
+Container of the cluster layers ID. 
+
+
+
+Definition at line \mbox{\hyperlink{Track_8h_source_l00042}{42}} of file \mbox{\hyperlink{Track_8h_source}{Track.\+h}}.
+
+
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

@@ -2,59 +2,66 @@
 \hypertarget{Track_8h_source}{}\label{Track_8h_source}\index{CMEPDA-\/GLAST/Core/Headers/Track.h@{CMEPDA-\/GLAST/Core/Headers/Track.h}}
 \mbox{\hyperlink{Track_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ }
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <TMath.h>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}TROOT.h"{}}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}TH2F.h"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}TGraphErrors.h"{}}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}TRandom.h"{}}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}TCanvas.h"{}}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}TFrame.h"{}}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}TDatime.h"{}}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}TStopwatch.h"{}}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <fstream>}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <sstream>}}
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <iterator>}}
-\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTrack}{Track}}}
-\DoxyCodeLine{00027\ \{}
-\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00029\ \ \ \ \ std::vector<double>\ Fit;\ }
-\DoxyCodeLine{00030\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classTrack_ad66743e1981db57ee2fb84b7d98985e5}{Error}}\ ;\ }
-\DoxyCodeLine{00031\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}};\ }
-\DoxyCodeLine{00032\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classTrack_accce27ec07d1ad7f6f872a96d35806c9}{Layer}};\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTrack_abe1778db3b958fc481ea9d187c2cf763}{NCluster}}()}
-\DoxyCodeLine{00037\ \ \ \ \ \{}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}.size();}
-\DoxyCodeLine{00039\ \ \ \ \ \}}
-\DoxyCodeLine{00040\ \ \ \ \ }
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTrack_af7bff7aa97c36e2b257144a1b870124a}{operator==}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ b)\{}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ N\ =\ 0;\ }
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i<\ a.\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}.size();\ i++)\{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ j\ =\ 0;\ j<\ b.\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}.size();\ j++)\{}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(((a.\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}[i]\ -\/\ b.\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}[j])<0.02)\&\&(a.\mbox{\hyperlink{classTrack_accce27ec07d1ad7f6f872a96d35806c9}{Layer}}[i]\ ==\ b.\mbox{\hyperlink{classTrack_accce27ec07d1ad7f6f872a96d35806c9}{Layer}}[j]))\{N++;\}}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((N>=2));}
-\DoxyCodeLine{00054\ \ \ \ \ }
-\DoxyCodeLine{00055\ \ \ \ \ \}}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTrack_a9ebdd1266943912711b14e778cd2a511}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ b)\{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a.\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}.size()\ <\ b.\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}.size();}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTrack_af20f843c616809d72c66a6bce3bec59b}{operator>}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ b)\{}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(a<b);}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00073\ \};}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00006}00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <TMath.h>}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}TROOT.h"{}}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}TH2F.h"{}}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}TGraphErrors.h"{}}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}TCanvas.h"{}}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}TFrame.h"{}}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}TDatime.h"{}}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}TStopwatch.h"{}}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00024}00024\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00025}00025\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00026}\mbox{\hyperlink{classTrack}{00026}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTrack}{Track}}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00027}00027\ \{}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00028}00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00030}00030\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00034}\mbox{\hyperlink{classTrack_a30aab41e69db16a9359a5c47f639df03}{00034}}\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classTrack_a30aab41e69db16a9359a5c47f639df03}{Fit}};\ 4}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00038}\mbox{\hyperlink{classTrack_ad66743e1981db57ee2fb84b7d98985e5}{00038}}\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classTrack_ad66743e1981db57ee2fb84b7d98985e5}{Error}}\ ;}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00040}\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{00040}}\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}};\ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00042}\mbox{\hyperlink{classTrack_accce27ec07d1ad7f6f872a96d35806c9}{00042}}\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classTrack_accce27ec07d1ad7f6f872a96d35806c9}{Layer}};}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00045}00045\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00046}\mbox{\hyperlink{classTrack_abe1778db3b958fc481ea9d187c2cf763}{00046}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTrack_abe1778db3b958fc481ea9d187c2cf763}{NCluster}}()}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00047}00047\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}.size();}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00050}00050\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00057}\mbox{\hyperlink{classTrack_af7bff7aa97c36e2b257144a1b870124a}{00057}}\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTrack_af7bff7aa97c36e2b257144a1b870124a}{operator==}}(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ b)\{}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ N\ =\ 0;\ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i<\ a.\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}.size();\ i++)\{}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ j\ =\ 0;\ j<\ b.\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}.size();\ j++)\{}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(((a.\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}[i]\ -\/\ b.\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}[j])<0.02)\&\&(a.\mbox{\hyperlink{classTrack_accce27ec07d1ad7f6f872a96d35806c9}{Layer}}[i]\ ==\ b.\mbox{\hyperlink{classTrack_accce27ec07d1ad7f6f872a96d35806c9}{Layer}}[j]))\{N++;\}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((N>=2));}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00065}00065\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00072}\mbox{\hyperlink{classTrack_a9ebdd1266943912711b14e778cd2a511}{00072}}\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTrack_a9ebdd1266943912711b14e778cd2a511}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ b)\{}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a.\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}.size()\ <\ b.\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}.size();}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00080}\mbox{\hyperlink{classTrack_af20f843c616809d72c66a6bce3bec59b}{00080}}\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTrack_af20f843c616809d72c66a6bce3bec59b}{operator>}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classTrack}{Track}}\&\ b)\{}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(a<b);}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Track_8h_source_l00084}00084\ \};}
 
 \end{DoxyCode}

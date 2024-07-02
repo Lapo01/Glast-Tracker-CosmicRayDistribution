@@ -1,6 +1,6 @@
 /**
  *  \file Track.h
- * Header file for the object Track
+ * Headers for the object Track
  */
 
 #pragma once
@@ -26,10 +26,20 @@
 class Track
 {
 public:
-	std::vector<double> Fit; /**  Container for fit useful variable q, m, chi2, chi2Att, chi2n is the order in which the variables are inserted*/
-	std::vector<double> Error ; /** Container of the error for the position of each cluster */
-	std::vector<double> ClusterPosition; /** Container of the cluster positions */
-	std::vector<int> Layer; /** Container of the cluster layers ID */
+
+	
+	/**  
+	 *Container for fit useful variable q, m, chi2, chi2Att, chi2n is the order in which the variables are inserted
+	 */
+	std::vector<double> Fit;
+
+	/** Container of the error for the position of each cluster */
+	
+	std::vector<double> Error ;
+	/** Container of the cluster positions */
+	std::vector<double> ClusterPosition; 
+	 /** Container of the cluster layers ID */
+	std::vector<int> Layer;
 
 
 	
@@ -38,6 +48,7 @@ public:
 		return ClusterPosition.size();
 	}
 	
+
 	/************
 	 * Equal operator for tracks: tracks are equal if more than 1 point is in common. 
 	 *

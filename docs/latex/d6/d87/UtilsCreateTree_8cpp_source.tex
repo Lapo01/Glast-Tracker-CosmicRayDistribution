@@ -1,0 +1,179 @@
+\doxysection{Utils\+Create\+Tree.\+cpp}
+\hypertarget{UtilsCreateTree_8cpp_source}{}\label{UtilsCreateTree_8cpp_source}\index{CMEPDA-\/GLAST/Core/LibrariesSources/UtilsCreateTree.cpp@{CMEPDA-\/GLAST/Core/LibrariesSources/UtilsCreateTree.cpp}}
+\mbox{\hyperlink{UtilsCreateTree_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{UtilsCreateTree_8h}{UtilsCreateTree.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00033}\mbox{\hyperlink{UtilsCreateTree_8cpp_a2e3c33f3b2a5ed69f4aee9756d4b9608}{00033}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_a2e3c33f3b2a5ed69f4aee9756d4b9608}{FindMutedStrips}}(\textcolor{keyword}{const}\ std::string\ \&file,\ \textcolor{keywordtype}{int}\ \&NHit,\ \textcolor{keywordtype}{int}\ \&ciclo,\ std::vector<int>\ \&\mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}},\ std::map<std::string,\ int>\ \&mapping,\ std::map<\textcolor{keywordtype}{int},\ std::vector<int>>\ \&MapDeiVettoriMutati\ )\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00034}00034\ \ \ \ \ std::string\ line;\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00035}00035\ \ \ \ \ std::vector<TH1F*>\ HitCounts;\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00036}00036\ \ \ \ \ std::map<int,TH1F*>\ HitMap;\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 10;\ ++i)\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ TH1F\ *h\ =\ \textcolor{keyword}{new}\ TH1F(Form(\textcolor{stringliteral}{"{}Hit\ Distribution\ Layer\ \%d"{}},\ \mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}}[i]),\ \textcolor{stringliteral}{"{}Hit\ Distribution"{}},\ 1536,\ 0,\ 1536);}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ HitCounts.push\_back(h);}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ HitMap.insert(std::make\_pair(\mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}}[i],\ h));}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00044}00044\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00045}00045\ \ \ \ \ std::ifstream\ myfile\_in(file);}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (myfile\_in.is\_open())}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00047}00047\ \ \ \ \ \{\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}ok"{}}<<std::endl;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(getline(myfile\_in,\ line))\textcolor{comment}{/*The\ line\ is\ loaded,\ remember\ each\ event\ correspond\ to\ a\ line*/}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(ciclo>0)\{\ \textcolor{comment}{/*Line\ 0\ is\ skipped\ as\ it\ is\ a\ title\ and\ contains\ no\ info.*/}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::istringstream\ iss\{line\};\ \textcolor{comment}{/*using\ iterators\ to\ access\ the\ needed\ info*/}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ words\{\ \textcolor{comment}{/*making\ a\ vector\ of\ words*/}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::istream\_iterator<std::string>(iss),}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::istream\_iterator<std::string>()}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NHit\ =\ stoi(words[1]);\ \textcolor{comment}{/*\ Retrieve\ the\ number\ of\ hits\ for\ this\ event*/}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<NHit;\ i++)\textcolor{comment}{/*\ Fill\ the\ layer\ corresponding\ histogram\ with\ the\ hitten\ strips*/}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HitMap[mapping[words[i+2+4*i]]]\ -\/>Fill(stoi(words[i+4+4*i]));}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ ciclo++;\ \textcolor{comment}{/*\ Keep\ account\ of\ the\ iteration\ */}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ x:\mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}})}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00068}00068\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ StripBinContent\ =0;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=\ 1;\ i<1537;\ i++)}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ StripBinContent=\ HitMap[x]-\/>GetBinContent(i);}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(StripBinContent==0)}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MapDeiVettoriMutati[x].push\_back(i);}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00080}00080\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ x:\ \mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}})\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ std::cout<<\ \textcolor{stringliteral}{"{}Il\ layer\ considerato\ è\ "{}}\ <<x<<\textcolor{stringliteral}{"{}\ e\ il\ numero\ di\ strip\ mutate\ è:\ "{}}<<MapDeiVettoriMutati[x].size()<<std::endl;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00085}00085\ \ \ \ \ myfile\_in.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00086}00086\ \ \ \ \ myfile\_in.close();}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ x:HitCounts)}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00090}00090\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ x;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00093}00093\ \ \ \ \ ciclo\ =\ 0;\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00094}00094\ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00122}\mbox{\hyperlink{UtilsCreateTree_8cpp_aca6b17a669149b56998741e92d84bca8}{00122}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_aca6b17a669149b56998741e92d84bca8}{FlushPlaceholder}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::map<int,\ int>\ \&MapHitPerPiano,\ std::map<int,int>\ \&MapClusterPerPiano,\ std::vector<int>\ \&VettoreDifferenzeStripConsecutive,\ std::vector<int>\ \&StripLayer,\ std::vector<int>\ \&\mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}},\ \textcolor{keywordtype}{int}\ \&Nx,\ \textcolor{keywordtype}{int}\ \&Ny\ )\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00124}00124\ \ \ \ \ e.\mbox{\hyperlink{classEvento_a153ee65784b514a6c5c24cb4a298796c}{Layer}}.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00125}00125\ \ \ \ \ e.\mbox{\hyperlink{classEvento_a8cfabeb4f3492febba7e0f7f932664de}{Strip}}.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00126}00126\ \ \ \ \ e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00127}00127\ \ \ \ \ e.\mbox{\hyperlink{classEvento_ab088b412620cb1c3a80dca0ca56ab720}{ClusterDimension}}.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00128}00128\ \ \ \ \ e.\mbox{\hyperlink{classEvento_a06a9c21fec9646ee71e2d6139fe82655}{InitialStrip}}.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00129}00129\ \ \ \ \ e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00130}00130\ \ \ \ \ e.\mbox{\hyperlink{classEvento_af016bfeb93df293c3291ba67f39f7ee3}{Flags}}[0]\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00131}00131\ \ \ \ \ e.\mbox{\hyperlink{classEvento_af016bfeb93df293c3291ba67f39f7ee3}{Flags}}[1]\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00132}00132\ \ \ \ \ e.\mbox{\hyperlink{classEvento_af016bfeb93df293c3291ba67f39f7ee3}{Flags}}[2]\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00133}00133\ \ \ \ \ e.\mbox{\hyperlink{classEvento_af016bfeb93df293c3291ba67f39f7ee3}{Flags}}[3]\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00134}00134\ \ \ \ \ VettoreDifferenzeStripConsecutive.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00135}00135\ \ \ \ \ StripLayer.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00136}00136\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ x:\mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}})\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ MapHitPerPiano[x]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ MapClusterPerPiano[x]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00139}00139\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00140}00140\ \ \ \ \ Nx\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00141}00141\ \ \ \ \ Ny\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00142}00142\ \};}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00162}\mbox{\hyperlink{UtilsCreateTree_8cpp_aeeb1cdab7bd20e0a279049b369a2f4b6}{00162}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_aeeb1cdab7bd20e0a279049b369a2f4b6}{CheckForFlagOne}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::map<\textcolor{keywordtype}{int},\ std::vector<int>>\ \&MapDeiVettoriMutati,\ std::vector<int>\ \&StripLayer,\ \textcolor{keywordtype}{int}\ \&layer,\ \textcolor{keywordtype}{int}\ \&LengthCluster,\ \textcolor{keywordtype}{int}\ j\ )\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00165}00165\ \ \ \ \ \textcolor{keywordflow}{if}(LengthCluster\ >1)\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ y:MapDeiVettoriMutati[layer])\textcolor{comment}{//check\ if\ the\ external\ strips\ are\ near\ to\ muted/dead\ strips}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (abs(StripLayer[j-\/LengthCluster+1]-\/y)\ ==1)\{\textcolor{comment}{//Flag\ 0\ is\ not\ satisfied:\ the\ strip\ is\ near\ a\ dead/muted\ one\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_af016bfeb93df293c3291ba67f39f7ee3}{Flags}}[0]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (abs(y-\/StripLayer[j])\ ==1)\{\ \textcolor{comment}{//\ Flag\ 0\ is\ not\ satisfied:\ the\ strip\ is\ near\ a\ dead/muted\ one}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_af016bfeb93df293c3291ba67f39f7ee3}{Flags}}[0]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00175}00175\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00176}00176\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00177}00177\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ y:MapDeiVettoriMutati[layer])\textcolor{comment}{//check\ if\ the\ single\ strip\ composing\ the\ cluster\ is\ near\ a\ muted/dead\ one}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \{\ \ \ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (abs(y-\/StripLayer[j])\ ==\ 1)\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_af016bfeb93df293c3291ba67f39f7ee3}{Flags}}[0]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00184}00184\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00185}00185\ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00197}\mbox{\hyperlink{UtilsCreateTree_8cpp_a043a2af0e9309627b8a609ef0dbdf941}{00197}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_a043a2af0e9309627b8a609ef0dbdf941}{CheckForFlagTwo}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ \textcolor{keywordtype}{int}\ \&NCluster\ )\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00198}00198\ \ \ \ \ \textcolor{keywordflow}{if}(NCluster\ >\ 1)\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00199}00199\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_af016bfeb93df293c3291ba67f39f7ee3}{Flags}}[1]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00201}00201\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00203}00203\ \};}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00223}\mbox{\hyperlink{UtilsCreateTree_8cpp_a210da059f308fac2de4e31917b1cb320}{00223}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_a210da059f308fac2de4e31917b1cb320}{CheckForFlagThree}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::map<int,int>\ \&MapClusterPerPiano,\ \textcolor{keywordtype}{int}\ \&NLayerXZWithMoreThan2Cluster,\ \textcolor{keywordtype}{int}\ \&NLayerYZWithMoreThan2Cluster,\ std::vector<int>\ \&\mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}}\ )\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00225}00225\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ x:\ e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}})\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ MapClusterPerPiano[x]++;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00227}00227\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00228}00228\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00230}00230\ \ \ \ \ NLayerXZWithMoreThan2Cluster\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00231}00231\ \ \ \ \ NLayerYZWithMoreThan2Cluster\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ x:\mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}})\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x>15)\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((MapClusterPerPiano[x]>3))\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NLayerYZWithMoreThan2Cluster++;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x<15)\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((MapClusterPerPiano[x]>3))\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NLayerXZWithMoreThan2Cluster++;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00244}00244\ \ \ \ \ \textcolor{keywordflow}{if}((NLayerXZWithMoreThan2Cluster>2)||(NLayerYZWithMoreThan2Cluster>2))\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_af016bfeb93df293c3291ba67f39f7ee3}{Flags}}[3]\ =0;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00246}00246\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00248}00248\ \};}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00266}\mbox{\hyperlink{UtilsCreateTree_8cpp_ae6621827442b50675c4d3f28ae9db3e4}{00266}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_ae6621827442b50675c4d3f28ae9db3e4}{FillStripLayer}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::vector<int>\ \&StripLayer,\ std::map<int,int>\ \&MapHitPerPiano,\ \textcolor{keywordtype}{int}\ \&Layer\ )\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00267}00267\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<e.\mbox{\hyperlink{classEvento_a169ad3427525c72d5918a2fc2633221b}{NHit}};\ i++)\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(e.\mbox{\hyperlink{classEvento_a153ee65784b514a6c5c24cb4a298796c}{Layer}}[i]\ ==\ Layer)\{}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ StripLayer.push\_back(e.\mbox{\hyperlink{classEvento_a8cfabeb4f3492febba7e0f7f932664de}{Strip}}[i]);\ \ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ MapHitPerPiano[Layer]++;}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00272}00272\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00273}00273\ \};}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8cpp_source_l00278}00278\ }
+
+\end{DoxyCode}

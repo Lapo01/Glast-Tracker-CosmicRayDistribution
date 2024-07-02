@@ -1,3 +1,10 @@
+
+/**
+ * \file UtilsRetina.h
+ *
+ * Headers for library UtilsRetina
+ *
+ */
 #pragma once
 #include <iostream>
 #include <vector>

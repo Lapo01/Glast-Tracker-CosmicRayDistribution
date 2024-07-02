@@ -1,0 +1,237 @@
+\doxysection{Interface Namespace Reference}
+\hypertarget{namespaceInterface}{}\label{namespaceInterface}\index{Interface@{Interface}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceInterface_ac251e2e26217d607fbf604178ea48c92}{Clustering}} (fileinput, fileoutput)
+\item 
+\mbox{\hyperlink{namespaceInterface_a17fa1fe4e1cdee1c85e65cfda2c98bc5}{Analyse\+Part\+Of\+Data}} (j)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceInterface_a7690f4deb4621ab8781327b6f32e8f21}{parser}}
+\item 
+\mbox{\hyperlink{namespaceInterface_a4117f57e93008aa01922f116721daa9b}{help}}
+\item 
+\mbox{\hyperlink{namespaceInterface_abdb4b8a8b7b8ae3cac7d4e99a0c1425c}{default}}
+\item 
+\mbox{\hyperlink{namespaceInterface_adb4541306e243da55c9aea554bd483f1}{action}}
+\item 
+\mbox{\hyperlink{namespaceInterface_a8b5d2e3d096542b3142aa97540f56907}{args}} = parser.\+parse\+\_\+args()
+\item 
+\mbox{\hyperlink{namespaceInterface_adf83e60e78cc9146ad6bf6a55c7cd078}{fileinput}} = os.\+path.\+join("{}Data"{}, "{}Dataroot"{}, "{}Cluster\+Abstraction\+Data"{}, args.\+infile)
+\item 
+\mbox{\hyperlink{namespaceInterface_a5c9796ed3aaf462de32d5b4d4463a43b}{fileoutput}} = args.\+outfile
+\item 
+\mbox{\hyperlink{namespaceInterface_af54ac0393c15db415461cb03617242d1}{Iterations}} = range(os.\+cpu\+\_\+count())
+\item 
+\mbox{\hyperlink{namespaceInterface_a4204f7f04873e224b099d3e7b282709c}{pool}} = mp.\+Pool(processes = os.\+cpu\+\_\+count())
+\item 
+\mbox{\hyperlink{namespaceInterface_a65214cf3afa75b5d004343d3f8d04c8c}{results}} = pool.\+map(Analyse\+Part\+Of\+Data, Iterations)
+\item 
+list \mbox{\hyperlink{namespaceInterface_aa88ee073a50bd0aa1ac73b23a132961c}{Utils\+List}} = \mbox{[}None\mbox{]}\texorpdfstring{$\ast$}{*}os.\+cpu\+\_\+count()
+\item 
+str \mbox{\hyperlink{namespaceInterface_afaf9c719237560169433cb12be4d814c}{str\+Out}} = "{}TAGLIO IN CHI2 EFFETTUATO, IL NOME DEL FILE CREATO E\textquotesingle{} "{} + fileoutput + "{}.root"{}
+\item 
+\mbox{\hyperlink{namespaceInterface_aa3ac8ad46432a8f334349750846f52d1}{Kolmogorov\+Test\+Result\+Theta}} = round(ROOT.\+Compare\+Distributions(os.\+path.\+join("{}Data"{},"{}MCSimulations"{} ,"{}Testing\+Retina\+Algorithm"{},"{}Reconstructed\+Zenith\+Distribution.\+root"{}), os.\+path.\+join("{}Data"{}, "{}MCSimulations"{}, "{}Testing\+Retina\+Algorithm"{},"{}Sample\+Zenith\+Test.\+root"{}), os.\+path.\+join("{}Data"{}, "{}MCSimulations"{}, "{}Testing\+Retina\+Algorithm"{},"{}Result\+Comparison\+Zenith.\+pdf"{})),2)
+\item 
+\mbox{\hyperlink{namespaceInterface_a1b769101955c0f3cc3b56f9ea79e89f9}{Kolmogorov\+Test\+Result\+Phi}} = round(ROOT.\+Compare\+Distributions(os.\+path.\+join("{}Data"{},"{}MCSimulations"{} ,"{}Testing\+Retina\+Algorithm"{},"{}Reconstructed\+Azimuth\+Distribution.\+root"{}), os.\+path.\+join("{}Data"{}, "{}MCSimulations"{}, "{}Testing\+Retina\+Algorithm"{},"{}Sample\+Azimuth\+Test.\+root"{}),os.\+path.\+join("{}Data"{}, "{}MCSimulations"{}, "{}Testing\+Retina\+Algorithm"{},"{}Result\+Comparison\+Azimuth.\+pdf"{})),2)
+\item 
+str \mbox{\hyperlink{namespaceInterface_ad280335638dcd87da208f2922128691d}{Out\+Text}} = "{}Il test di kolmogorov effettuato sulla distribuzione zenith generata e su quella ricostruita ritorna un p-\/value di "{}+str(Kolmogorov\+Test\+Result\+Theta)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb} @file Interface.py 
+Interface used to call c++ macros. 
+Several options are put.\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceInterface_a17fa1fe4e1cdee1c85e65cfda2c98bc5}\label{namespaceInterface_a17fa1fe4e1cdee1c85e65cfda2c98bc5} 
+\index{Interface@{Interface}!AnalysePartOfData@{AnalysePartOfData}}
+\index{AnalysePartOfData@{AnalysePartOfData}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{AnalysePartOfData()}{AnalysePartOfData()}}
+{\footnotesize\ttfamily Interface.\+Analyse\+Part\+Of\+Data (\begin{DoxyParamCaption}\item[{}]{j }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00116}{116}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_ac251e2e26217d607fbf604178ea48c92}\label{namespaceInterface_ac251e2e26217d607fbf604178ea48c92} 
+\index{Interface@{Interface}!Clustering@{Clustering}}
+\index{Clustering@{Clustering}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{Clustering()}{Clustering()}}
+{\footnotesize\ttfamily Interface.\+Clustering (\begin{DoxyParamCaption}\item[{}]{fileinput,  }\item[{}]{fileoutput }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Docs for clustering
+This function loads the necessary macros to perform the first abstraction of data.
+
+@param fileinput typos
+
+@param fileoutput typos
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00048}{48}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespaceInterface_adb4541306e243da55c9aea554bd483f1}\label{namespaceInterface_adb4541306e243da55c9aea554bd483f1} 
+\index{Interface@{Interface}!action@{action}}
+\index{action@{action}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{action}{action}}
+{\footnotesize\ttfamily Interface.\+action}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00028}{28}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_a8b5d2e3d096542b3142aa97540f56907}\label{namespaceInterface_a8b5d2e3d096542b3142aa97540f56907} 
+\index{Interface@{Interface}!args@{args}}
+\index{args@{args}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{args}{args}}
+{\footnotesize\ttfamily Interface.\+args = parser.\+parse\+\_\+args()}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00066}{66}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_abdb4b8a8b7b8ae3cac7d4e99a0c1425c}\label{namespaceInterface_abdb4b8a8b7b8ae3cac7d4e99a0c1425c} 
+\index{Interface@{Interface}!default@{default}}
+\index{default@{default}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{default}{default}}
+{\footnotesize\ttfamily Interface.\+default}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00025}{25}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_adf83e60e78cc9146ad6bf6a55c7cd078}\label{namespaceInterface_adf83e60e78cc9146ad6bf6a55c7cd078} 
+\index{Interface@{Interface}!fileinput@{fileinput}}
+\index{fileinput@{fileinput}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{fileinput}{fileinput}}
+{\footnotesize\ttfamily Interface.\+fileinput = os.\+path.\+join("{}Data"{}, "{}Dataroot"{}, "{}Cluster\+Abstraction\+Data"{}, args.\+infile)}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00102}{102}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_a5c9796ed3aaf462de32d5b4d4463a43b}\label{namespaceInterface_a5c9796ed3aaf462de32d5b4d4463a43b} 
+\index{Interface@{Interface}!fileoutput@{fileoutput}}
+\index{fileoutput@{fileoutput}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{fileoutput}{fileoutput}}
+{\footnotesize\ttfamily Interface.\+fileoutput = args.\+outfile}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00111}{111}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_a4117f57e93008aa01922f116721daa9b}\label{namespaceInterface_a4117f57e93008aa01922f116721daa9b} 
+\index{Interface@{Interface}!help@{help}}
+\index{help@{help}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{help}{help}}
+{\footnotesize\ttfamily Interface.\+help}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00023}{23}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_af54ac0393c15db415461cb03617242d1}\label{namespaceInterface_af54ac0393c15db415461cb03617242d1} 
+\index{Interface@{Interface}!Iterations@{Iterations}}
+\index{Iterations@{Iterations}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{Iterations}{Iterations}}
+{\footnotesize\ttfamily Interface.\+Iterations = range(os.\+cpu\+\_\+count())}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00124}{124}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_a1b769101955c0f3cc3b56f9ea79e89f9}\label{namespaceInterface_a1b769101955c0f3cc3b56f9ea79e89f9} 
+\index{Interface@{Interface}!KolmogorovTestResultPhi@{KolmogorovTestResultPhi}}
+\index{KolmogorovTestResultPhi@{KolmogorovTestResultPhi}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{KolmogorovTestResultPhi}{KolmogorovTestResultPhi}}
+{\footnotesize\ttfamily Interface.\+Kolmogorov\+Test\+Result\+Phi = round(ROOT.\+Compare\+Distributions(os.\+path.\+join("{}Data"{},"{}MCSimulations"{} ,"{}Testing\+Retina\+Algorithm"{},"{}Reconstructed\+Azimuth\+Distribution.\+root"{}), os.\+path.\+join("{}Data"{}, "{}MCSimulations"{}, "{}Testing\+Retina\+Algorithm"{},"{}Sample\+Azimuth\+Test.\+root"{}),os.\+path.\+join("{}Data"{}, "{}MCSimulations"{}, "{}Testing\+Retina\+Algorithm"{},"{}Result\+Comparison\+Azimuth.\+pdf"{})),2)}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00185}{185}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_aa3ac8ad46432a8f334349750846f52d1}\label{namespaceInterface_aa3ac8ad46432a8f334349750846f52d1} 
+\index{Interface@{Interface}!KolmogorovTestResultTheta@{KolmogorovTestResultTheta}}
+\index{KolmogorovTestResultTheta@{KolmogorovTestResultTheta}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{KolmogorovTestResultTheta}{KolmogorovTestResultTheta}}
+{\footnotesize\ttfamily Interface.\+Kolmogorov\+Test\+Result\+Theta = round(ROOT.\+Compare\+Distributions(os.\+path.\+join("{}Data"{},"{}MCSimulations"{} ,"{}Testing\+Retina\+Algorithm"{},"{}Reconstructed\+Zenith\+Distribution.\+root"{}), os.\+path.\+join("{}Data"{}, "{}MCSimulations"{}, "{}Testing\+Retina\+Algorithm"{},"{}Sample\+Zenith\+Test.\+root"{}), os.\+path.\+join("{}Data"{}, "{}MCSimulations"{}, "{}Testing\+Retina\+Algorithm"{},"{}Result\+Comparison\+Zenith.\+pdf"{})),2)}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00184}{184}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_ad280335638dcd87da208f2922128691d}\label{namespaceInterface_ad280335638dcd87da208f2922128691d} 
+\index{Interface@{Interface}!OutText@{OutText}}
+\index{OutText@{OutText}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{OutText}{OutText}}
+{\footnotesize\ttfamily str Interface.\+Out\+Text = "{}Il test di kolmogorov effettuato sulla distribuzione zenith generata e su quella ricostruita ritorna un p-\/value di "{}+str(Kolmogorov\+Test\+Result\+Theta)}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00189}{189}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_a7690f4deb4621ab8781327b6f32e8f21}\label{namespaceInterface_a7690f4deb4621ab8781327b6f32e8f21} 
+\index{Interface@{Interface}!parser@{parser}}
+\index{parser@{parser}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily Interface.\+parser}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ argparse.ArgumentParser(prog=\textcolor{stringliteral}{'Interfaccia\ Fermi-\/Glast\ Data'},\ }
+\DoxyCodeLine{00002\ description\ =\textcolor{stringliteral}{'Interfaccia\ per\ astrazione\ dati\ ed\ analisi\ del\ tracker\ Fermi-\/Glast'},formatter\_class=RawTextHelpFormatter)}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00017}{17}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_a4204f7f04873e224b099d3e7b282709c}\label{namespaceInterface_a4204f7f04873e224b099d3e7b282709c} 
+\index{Interface@{Interface}!pool@{pool}}
+\index{pool@{pool}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{pool}{pool}}
+{\footnotesize\ttfamily Interface.\+pool = mp.\+Pool(processes = os.\+cpu\+\_\+count())}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00125}{125}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_a65214cf3afa75b5d004343d3f8d04c8c}\label{namespaceInterface_a65214cf3afa75b5d004343d3f8d04c8c} 
+\index{Interface@{Interface}!results@{results}}
+\index{results@{results}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{results}{results}}
+{\footnotesize\ttfamily Interface.\+results = pool.\+map(Analyse\+Part\+Of\+Data, Iterations)}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00126}{126}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_afaf9c719237560169433cb12be4d814c}\label{namespaceInterface_afaf9c719237560169433cb12be4d814c} 
+\index{Interface@{Interface}!strOut@{strOut}}
+\index{strOut@{strOut}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{strOut}{strOut}}
+{\footnotesize\ttfamily str Interface.\+str\+Out = "{}TAGLIO IN CHI2 EFFETTUATO, IL NOME DEL FILE CREATO E\textquotesingle{} "{} + fileoutput + "{}.root"{}}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00140}{140}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{namespaceInterface_aa88ee073a50bd0aa1ac73b23a132961c}\label{namespaceInterface_aa88ee073a50bd0aa1ac73b23a132961c} 
+\index{Interface@{Interface}!UtilsList@{UtilsList}}
+\index{UtilsList@{UtilsList}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{UtilsList}{UtilsList}}
+{\footnotesize\ttfamily list Interface.\+Utils\+List = \mbox{[}None\mbox{]}\texorpdfstring{$\ast$}{*}os.\+cpu\+\_\+count()}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00129}{129}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+

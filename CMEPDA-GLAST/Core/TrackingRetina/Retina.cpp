@@ -108,7 +108,7 @@ void Retina(TString file, TString fileoutput, int iteration, int numcores){
 		count = 0;
 		if(e.Flags[0] ==1){ //we are choosing events that do not have ill clusters. That is specified by the first flag.
 			EventReset(multipleTracksY, multipleTracksX, etrack, CopiaVettore, VettoreTracceUniche, FinalFilteredTracksX, FinalFilteredTracksY);
-
+			etrack.NEvento = e.NEventi;
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//																			SECTION 2: SEARCH FOR TRACKS 																														  //
 			// In this section, for EACH CELL of the phase space created, the code checks for each vision and for each layer the closest points by 0.5 cm, if there are more than two points than a placeholder track is filled and a linear  //

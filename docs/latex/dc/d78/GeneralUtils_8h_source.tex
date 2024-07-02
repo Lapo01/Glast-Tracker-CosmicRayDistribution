@@ -1,44 +1,50 @@
 \doxysection{General\+Utils.\+h}
 \hypertarget{GeneralUtils_8h_source}{}\label{GeneralUtils_8h_source}\index{CMEPDA-\/GLAST/Core/Headers/GeneralUtils.h@{CMEPDA-\/GLAST/Core/Headers/GeneralUtils.h}}
-
+\mbox{\hyperlink{GeneralUtils_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include<vector>}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include<iostream>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include<map>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <TMath.h>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{Evento_8h}{Evento.h}}"{}}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{EventoTrack_8h}{EventoTrack.h}}"{}}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}TROOT.h"{}}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}TH2F.h"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}TGraphErrors.h"{}}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}TRandom.h"{}}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}TCanvas.h"{}}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}TFrame.h"{}}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}TDatime.h"{}}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}TStopwatch.h"{}}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <fstream>}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <sstream>}}
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <iterator>}}
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include<algorithm>}}
-\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <numeric>}}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{keyword}{extern}\ std::vector<int>\ LayersID;\ }
-\DoxyCodeLine{00031\ \textcolor{keyword}{extern}\ std::map<std::string,\ int>\ \mbox{\hyperlink{GeneralUtils_8cpp_a776b960425b2324caf6190ae1d733df1}{MapLayerToID}};\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{extern}\ std::map<int,\ std::string>\ \mbox{\hyperlink{GeneralUtils_8cpp_a50f5ab88982ebd3f80427f3e3638a3e0}{MapIDToLayer}};\ }
-\DoxyCodeLine{00035\ \textcolor{keyword}{extern}\ std::map<int,\ double>\ \mbox{\hyperlink{GeneralUtils_8cpp_a2fddc52cc3c0fa2e811b2ed1a27256da}{EfficiencyMap}};\ }
-\DoxyCodeLine{00037\ \textcolor{keyword}{extern}\ std::map<int,\ double>\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}};\ }
-\DoxyCodeLine{00039\ \textcolor{keyword}{extern}\ std::vector<int>\ \mbox{\hyperlink{GeneralUtils_8cpp_afd05718b9dab72b2255b3cda29b196ff}{LayerX}};\ }
-\DoxyCodeLine{00041\ \textcolor{keyword}{extern}\ std::vector<int>\ \mbox{\hyperlink{GeneralUtils_8cpp_a9d236f40a51f26bb4eb5b4bba0d19e92}{LayerY}};\ }
-\DoxyCodeLine{00043\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(\textcolor{keywordtype}{int}\ Strip);\ }
-\DoxyCodeLine{00045\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}{LayerCoordinate}}(\textcolor{keywordtype}{int}\ \&ID);\ }
-\DoxyCodeLine{00048\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582}{Error}}(\textcolor{keywordtype}{int}\ \&StripIn,\ \textcolor{keywordtype}{int}\ \&Dimension);\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00009}00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include<vector>}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include<iostream>}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include<map>}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <TMath.h>}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{Evento_8h}{Evento.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{EventoTrack_8h}{EventoTrack.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}TROOT.h"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}TH2F.h"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}TGraphErrors.h"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}TCanvas.h"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}TFrame.h"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00023}00023\ \textcolor{preprocessor}{\#include\ "{}TDatime.h"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00024}00024\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}TStopwatch.h"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00027}00027\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00034}00034\ \textcolor{preprocessor}{\#include<algorithm>}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ <numeric>}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00040}00040\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8h_a574f30866c7831429f2521e0316e6a81}{Theta}}(\mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ \&e,\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00042}00042\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8h_a8616af98d144c90fc52efa621732f2a3}{Phi}}(\mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ \&e,\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00044}00044\ \textcolor{keyword}{extern}\ std::vector<int>\ \mbox{\hyperlink{GeneralUtils_8h_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}};\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00046}00046\ \textcolor{keyword}{extern}\ std::map<std::string,\ int>\ \mbox{\hyperlink{GeneralUtils_8h_a776b960425b2324caf6190ae1d733df1}{MapLayerToID}};\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00048}00048\ \textcolor{keyword}{extern}\ std::map<int,\ std::string>\ \mbox{\hyperlink{GeneralUtils_8h_a50f5ab88982ebd3f80427f3e3638a3e0}{MapIDToLayer}};\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00050}00050\ \textcolor{keyword}{extern}\ std::map<int,\ double>\ \mbox{\hyperlink{GeneralUtils_8h_a2fddc52cc3c0fa2e811b2ed1a27256da}{EfficiencyMap}};\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00052}00052\ \textcolor{keyword}{extern}\ std::map<int,\ double>\ \mbox{\hyperlink{GeneralUtils_8h_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}};\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00054}00054\ \textcolor{keyword}{extern}\ std::vector<int>\ \mbox{\hyperlink{GeneralUtils_8h_afd05718b9dab72b2255b3cda29b196ff}{LayerX}};\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00056}00056\ \textcolor{keyword}{extern}\ std::vector<int>\ \mbox{\hyperlink{GeneralUtils_8h_a9d236f40a51f26bb4eb5b4bba0d19e92}{LayerY}};\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00058}00058\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8h_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(\textcolor{keywordtype}{int}\ Strip);\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00060}00060\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8h_a2d662b9f40450252cd0a030691fc914f}{LayerCoordinate}}(\textcolor{keywordtype}{int}\ \&ID);\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8h_source_l00063}00063\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8h_ae808a6d76bd4260e5cc04a963b482582}{Error}}(\textcolor{keywordtype}{int}\ \&StripIn,\ \textcolor{keywordtype}{int}\ \&Dimension);\ }
 
 \end{DoxyCode}

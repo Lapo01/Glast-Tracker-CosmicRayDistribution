@@ -1,3 +1,11 @@
+
+/** 
+ *  \file GeneralUtils.h
+ *
+ * Headers for library GeneralUtils
+ *
+ */
+
 #pragma once
 #include<vector>
 #include<iostream>

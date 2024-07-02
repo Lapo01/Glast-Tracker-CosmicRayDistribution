@@ -2,7 +2,7 @@
 
 /**
  *  * \file GeneralUtils.cpp
- *	Questo file contiene mappe usate globalmente in tutti i codici.
+ *	Source code for GeneralUtils library, used almost everywhere.
  * 
  *
  * 

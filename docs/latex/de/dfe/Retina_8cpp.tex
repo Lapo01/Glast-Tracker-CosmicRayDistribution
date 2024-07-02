@@ -9,8 +9,7 @@
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{Retina_8cpp_a42678008e6b094e63dbf255e957526d4}\label{Retina_8cpp_a42678008e6b094e63dbf255e957526d4} 
-void {\bfseries Retina} (TString file, TString fileoutput, int iteration, int numcores)
+void \mbox{\hyperlink{Retina_8cpp_a42678008e6b094e63dbf255e957526d4}{Retina}} (TString file, TString fileoutput, int iteration, int numcores)
 \end{DoxyCompactItemize}
 
 
@@ -20,3 +19,19 @@ void {\bfseries Retina} (TString file, TString fileoutput, int iteration, int nu
 \item This cpp macro takes as input a raw data file and returns a .root file with a tree. It performs the second abstraction of the data from clusters to potential tracks. However, the tracks found have to be later corrected with systematics error from relative disalignment and rotations between layers of the apparatus. ~\newline
  The code is subdivided in three sections\+: The first section consists in the creation of placeholders, utils variables and the trees to be read and filled in the code. A phase space in (m, q) is created The second section checks for all the cells in the phase space for potential tracks, potential tracks are found if they consists of more than 2 points. The third section filters all equal tracks, by equal we mean those that have more than 1 point in common, and choose among the groups of equal tracks those that are "{}greater"{}, by greater we mean the one that has the greater number of points. 
 \end{DoxyItemize}
+
+Definition in file \mbox{\hyperlink{Retina_8cpp_source}{Retina.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Retina_8cpp_a42678008e6b094e63dbf255e957526d4}\label{Retina_8cpp_a42678008e6b094e63dbf255e957526d4} 
+\index{Retina.cpp@{Retina.cpp}!Retina@{Retina}}
+\index{Retina@{Retina}!Retina.cpp@{Retina.cpp}}
+\doxysubsubsection{\texorpdfstring{Retina()}{Retina()}}
+{\footnotesize\ttfamily void Retina (\begin{DoxyParamCaption}\item[{TString}]{file,  }\item[{TString}]{fileoutput,  }\item[{int}]{iteration,  }\item[{int}]{numcores }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Retina_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{Retina_8cpp_source}{Retina.\+cpp}}.
+

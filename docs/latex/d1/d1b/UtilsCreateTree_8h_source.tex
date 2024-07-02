@@ -1,47 +1,48 @@
 \doxysection{Utils\+Create\+Tree.\+h}
 \hypertarget{UtilsCreateTree_8h_source}{}\label{UtilsCreateTree_8h_source}\index{CMEPDA-\/GLAST/Core/Headers/UtilsCreateTree.h@{CMEPDA-\/GLAST/Core/Headers/UtilsCreateTree.h}}
-
+\mbox{\hyperlink{UtilsCreateTree_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Evento_8h}{Evento.h}}"{}}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <fstream>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <sstream>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iterator>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <TMath.h>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}TROOT.h"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}TH2F.h"{}}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}TGraphErrors.h"{}}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}TRandom.h"{}}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}TCanvas.h"{}}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}TFrame.h"{}}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}TDatime.h"{}}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}TStopwatch.h"{}}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_a2e3c33f3b2a5ed69f4aee9756d4b9608}{FindMutedStrips}}(\textcolor{keyword}{const}\ std::string\ \&file,\ \textcolor{keywordtype}{int}\ \&NHit,\ \textcolor{keywordtype}{int}\ \&ciclo,\ std::vector<int>\ \&stringa,\ \ std::map<std::string,\ int>\ \&mapping,\ std::map<\textcolor{keywordtype}{int},\ std::vector<int>>\ \&MapDeiVettoriMutati);}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_a043a2af0e9309627b8a609ef0dbdf941}{CheckForFlagTwo}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ \textcolor{keywordtype}{int}\ \&NCluster);}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_aeeb1cdab7bd20e0a279049b369a2f4b6}{CheckForFlagOne}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::map<\textcolor{keywordtype}{int},\ std::vector<int>>\ \&MapDeiVettoriMutati,\ std::vector<int>\ \&StripLayer,\ \textcolor{keywordtype}{int}\ \&LengthCluster,\textcolor{keywordtype}{int}\ \&layer,\ \ \textcolor{keywordtype}{int}\ j\ );}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_a210da059f308fac2de4e31917b1cb320}{CheckForFlagThree}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::map<int,int>\ \&MapClusterPerPiano,\ \textcolor{keywordtype}{int}\ \&aaaax,\ \textcolor{keywordtype}{int}\ \&aaaay,\ std::vector<int>\ \&LayersID);}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_aca6b17a669149b56998741e92d84bca8}{FlushPlaceholder}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::map<int,\ int>\ \&MapHitPerPiano,\ std::map<int,int>\ \&MapClusterPerPiano,\ std::vector<int>\ \&VettoreDifferenzeStripConsecutive,\ std::vector<int>\ \&StripLayer,\ std::vector<int>\ \&LayersID,\ \textcolor{keywordtype}{int}\ \&Nx,\ \textcolor{keywordtype}{int}\ \&Ny);}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8cpp_ae6621827442b50675c4d3f28ae9db3e4}{FillStripLayer}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::vector<int>\ \&StripLayer,\ std::map<int,int>\ \&MapHitPerPiano,\ \textcolor{keywordtype}{int}\ \&Layer);}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00008}00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Evento_8h}{Evento.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <TMath.h>}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}TROOT.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}TH2F.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}TGraphErrors.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}TCanvas.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}TFrame.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00023}00023\ \textcolor{preprocessor}{\#include\ "{}TDatime.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00024}00024\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}TStopwatch.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00027}00027\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00034}00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8h_a008c82a4b096aaf1e46219c8861947f0}{FindMutedStrips}}(\textcolor{keyword}{const}\ std::string\ \&file,\ \textcolor{keywordtype}{int}\ \&NHit,\ \textcolor{keywordtype}{int}\ \&ciclo,\ std::vector<int>\ \&stringa,\ \ std::map<std::string,\ int>\ \&mapping,\ std::map<\textcolor{keywordtype}{int},\ std::vector<int>>\ \&MapDeiVettoriMutati);}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00036}00036\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8h_a043a2af0e9309627b8a609ef0dbdf941}{CheckForFlagTwo}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ \textcolor{keywordtype}{int}\ \&NCluster);}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00038}00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8h_a04385435e5b6c569869359cf619d5125}{CheckForFlagOne}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::map<\textcolor{keywordtype}{int},\ std::vector<int>>\ \&MapDeiVettoriMutati,\ std::vector<int>\ \&StripLayer,\ \textcolor{keywordtype}{int}\ \&LengthCluster,\textcolor{keywordtype}{int}\ \&layer,\ \ \textcolor{keywordtype}{int}\ j\ );}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00040}00040\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8h_a5e3d3f69bc3b01f5b81c109d522ff7c1}{CheckForFlagThree}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::map<int,int>\ \&MapClusterPerPiano,\ \textcolor{keywordtype}{int}\ \&aaaax,\ \textcolor{keywordtype}{int}\ \&aaaay,\ std::vector<int>\ \&\mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}});}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00042}00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8h_aca6b17a669149b56998741e92d84bca8}{FlushPlaceholder}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::map<int,\ int>\ \&MapHitPerPiano,\ std::map<int,int>\ \&MapClusterPerPiano,\ std::vector<int>\ \&VettoreDifferenzeStripConsecutive,\ std::vector<int>\ \&StripLayer,\ std::vector<int>\ \&\mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}},\ \textcolor{keywordtype}{int}\ \&Nx,\ \textcolor{keywordtype}{int}\ \&Ny);}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00044}00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsCreateTree_8h_ae6621827442b50675c4d3f28ae9db3e4}{FillStripLayer}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e,\ std::vector<int>\ \&StripLayer,\ std::map<int,int>\ \&MapHitPerPiano,\ \textcolor{keywordtype}{int}\ \&Layer);}
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{UtilsCreateTree_8h_source_l00048}00048\ }
 
 \end{DoxyCode}

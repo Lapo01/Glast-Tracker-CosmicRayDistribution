@@ -1,0 +1,140 @@
+\doxysection{General\+Utils.\+cpp}
+\hypertarget{GeneralUtils_8cpp_source}{}\label{GeneralUtils_8cpp_source}\index{CMEPDA-\/GLAST/Core/LibrariesSources/GeneralUtils.cpp@{CMEPDA-\/GLAST/Core/LibrariesSources/GeneralUtils.cpp}}
+\mbox{\hyperlink{GeneralUtils_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GeneralUtils_8h}{GeneralUtils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00030}\mbox{\hyperlink{GeneralUtils_8cpp_a574f30866c7831429f2521e0316e6a81}{00030}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_a574f30866c7831429f2521e0316e6a81}{Theta}}(\mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ \&e,\ \textcolor{keywordtype}{int}\ i)\{}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//questa\ funzione\ ritorna\ l'angolo\ theta\ di\ una\ traccia\ i-\/esima.}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{return}\ atan(sqrt(e.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[i].Fit[1]*e.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[i].Fit[1]+\ e.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[i].Fit[1]*e.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[i].Fit[1]))*180/3.14;}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00035}00035\ \};}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00050}\mbox{\hyperlink{GeneralUtils_8cpp_a8616af98d144c90fc52efa621732f2a3}{00050}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_a8616af98d144c90fc52efa621732f2a3}{Phi}}(\mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ \&e,\ \textcolor{keywordtype}{int}\ i)\{}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{return}\ atan2(e.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[i].Fit[1],e.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[i].Fit[1])*180/3.14;}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00054}00054\ \};}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00069}\mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{00069}}\ std::vector<int>\ \mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}}\ =\ \{10,11,12,13,14,20,21,22,23,24\};\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00074}\mbox{\hyperlink{GeneralUtils_8cpp_a776b960425b2324caf6190ae1d733df1}{00074}}\ std::map<std::string,\ int>\ \mbox{\hyperlink{GeneralUtils_8cpp_a776b960425b2324caf6190ae1d733df1}{MapLayerToID}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}X0"{}},\ 10\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}X1"{}},11\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}X2"{}},\ 12\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}X3"{}},\ 13\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}X4"{}},\ 14\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Y0"{}},\ 20\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Y1"{}},\ 21\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Y2"{}},\ 22\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Y3"{}},\ 23\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Y4"{}},\ 24\}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00088}\mbox{\hyperlink{GeneralUtils_8cpp_a50f5ab88982ebd3f80427f3e3638a3e0}{00088}}\ std::map<int,\ std::string>\ \mbox{\hyperlink{GeneralUtils_8cpp_a50f5ab88982ebd3f80427f3e3638a3e0}{MapIDToLayer}}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00089}00089\ \{}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{10,\textcolor{stringliteral}{"{}X0"{}}\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{11,\textcolor{stringliteral}{"{}X1"{}}\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{12,\textcolor{stringliteral}{"{}X2"{}}\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{13,\textcolor{stringliteral}{"{}X3"{}}\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{14,\textcolor{stringliteral}{"{}X4"{}}\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{20,\textcolor{stringliteral}{"{}Y0"{}}\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{21,\textcolor{stringliteral}{"{}Y1"{}}\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{22,\textcolor{stringliteral}{"{}Y2"{}}\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{23,\textcolor{stringliteral}{"{}Y3"{}}\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{24,\textcolor{stringliteral}{"{}Y4"{}}\}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00100}00100\ \};}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00103}\mbox{\hyperlink{GeneralUtils_8cpp_a2fddc52cc3c0fa2e811b2ed1a27256da}{00103}}\ std::map<int,\ double>\ \mbox{\hyperlink{GeneralUtils_8cpp_a2fddc52cc3c0fa2e811b2ed1a27256da}{EfficiencyMap}}\{\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{10,0.84\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{11,0.857\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{12,1.\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{13,0.91\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{14,0.61\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{20,0.86\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{21,0.95\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{22,1.\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{23,0.56\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{24,0.75\}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00114}00114\ \};}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00117}\mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{00117}}\ std::map<int,\ double>\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}\{\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00118}00118\ \ \ \ \ \{10,\ 3.1\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00119}00119\ \ \ \ \ \{11,\ 6.3\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00120}00120\ \ \ \ \ \{12,\ 16.9\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00121}00121\ \ \ \ \ \{13,\ 20.1\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00122}00122\ \ \ \ \ \{14,\ 31.2\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00123}00123\ \ \ \ \ \{20,\ -\/1.0\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00124}00124\ \ \ \ \ \{21,\ 10.1\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00125}00125\ \ \ \ \ \{22,\ 13.3\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00126}00126\ \ \ \ \ \{23,\ 24.6\},}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00127}00127\ \ \ \ \ \{24,\ 27.8\}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00128}00128\ \};}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00131}\mbox{\hyperlink{GeneralUtils_8cpp_afd05718b9dab72b2255b3cda29b196ff}{00131}}\ std::vector<int>\ \mbox{\hyperlink{GeneralUtils_8cpp_afd05718b9dab72b2255b3cda29b196ff}{LayerX}}=\ \{10,11,12,13,14\};}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00132}\mbox{\hyperlink{GeneralUtils_8cpp_a9d236f40a51f26bb4eb5b4bba0d19e92}{00132}}\ std::vector<int>\ \mbox{\hyperlink{GeneralUtils_8cpp_a9d236f40a51f26bb4eb5b4bba0d19e92}{LayerY}}=\{20,21,22,23,24\};}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00141}\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{00141}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(\textcolor{keywordtype}{int}\ Strip\ )\{}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00143}00143\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00144}00144\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00145}00145\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ StripPitch\ =\ 0.0228;\ \textcolor{comment}{//\ cm}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00146}00146\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ EdgeWidth\ =\ 0.1;\ \textcolor{comment}{//cm}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00147}00147\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ LadderSeparation\ =\ 0.02;\ \textcolor{comment}{//cm}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00148}00148\ \ \ \ \ \textcolor{keywordtype}{double}\ coordinate\ =\ EdgeWidth\ +\ StripPitch*int(Strip)\ +\ (LadderSeparation\ +\ 2*EdgeWidth\ -\/\ StripPitch)*\textcolor{keywordtype}{int}(Strip/384);\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00149}00149\ \textcolor{keywordflow}{return}\ coordinate;\};}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00160}\mbox{\hyperlink{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}{00160}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}{LayerCoordinate}}(\textcolor{keywordtype}{int}\ \&ID)\{}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00161}00161\ \ \ \ \ \textcolor{keywordtype}{double}\ posizione;}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00162}00162\ \ \ \ \ \textcolor{keywordtype}{double}\ shift[10]\ =\ \{0,\ 0.3631,\ -\/0.3683,\ 0,\ -\/0.2463,\ 0.6223,\ 0,\ 0.3241,\ -\/0.3331,\ 0\};\ \textcolor{comment}{//Fissando\ i\ layer\ X0,X3,\ Y1,Y4}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00163}00163\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00164}00164\ \ \ \ \ \textcolor{keywordflow}{if}(ID<15)\{}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ posizione\ =\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}[ID]\ -\/\ shift[ID-\/10];}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00166}00166\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00167}00167\ \ \ \ \ \textcolor{keywordflow}{if}(ID>15)\{}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ posizione\ =\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}[ID]\ -\/\ shift[ID-\/15];}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00169}00169\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00170}00170\ \textcolor{keywordflow}{return}\ posizione;}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00171}00171\ \};}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00182}\mbox{\hyperlink{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582}{00182}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582}{Error}}(\textcolor{keywordtype}{int}\ \&StripIn,\ \textcolor{keywordtype}{int}\ \&Dimension)\{}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00183}00183\ \ \ \ \ \textcolor{keywordtype}{int}\ StripFin\ =\ StripIn\ +\ Dimension;}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00184}00184\ \ \ \ \ \textcolor{keywordtype}{double}\ error\ =\ (\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(StripFin)-\/\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(StripIn))/(sqrt(12.));}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00185}00185\ \ \ \ \ \textcolor{keywordflow}{if}(Dimension==1)}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00186}00186\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ error\ =\ 0.0228/sqrt(12.);}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00188}00188\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00189}00189\ \ \ \ \ \textcolor{keywordflow}{return}\ error;\ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00190}00190\ \};}
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00191}00191\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{GeneralUtils_8cpp_source_l00192}00192\ }
+
+\end{DoxyCode}

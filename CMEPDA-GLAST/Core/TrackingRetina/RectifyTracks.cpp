@@ -26,7 +26,6 @@ void RectifyTracks(TString file, TString fileoutput){
 	///////////////////////////////////////////////
 	// CREATE TREE TO BE READ 
 	///////////////////////////////////////////////
-	EventoTrack etrack;
 
 
 
@@ -40,6 +39,7 @@ void RectifyTracks(TString file, TString fileoutput){
 	///////////////////////////////////////////////
 	// CREATE TREE TO BE WRITTEN
 	///////////////////////////////////////////////
+	EventoTrack etrack;
 	TFile *output = new TFile(fileoutput,"recreate");
 	TTree *treetrackoutput = new TTree("treetrack", "treetrack");
 	treetrackoutput->Branch("etrack",&etrack);

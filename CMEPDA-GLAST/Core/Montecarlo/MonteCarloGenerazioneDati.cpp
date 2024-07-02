@@ -89,6 +89,8 @@ void MonteCarloGenerazioneDati(TString fileoutput, TString path){
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 
     //Init the MC simulation
+    gRandom = new TRandom3(0); //set random seed.
+
     for(int j = 0; j<10; j++){
         for(int i = 0; i <100000;i++){
     

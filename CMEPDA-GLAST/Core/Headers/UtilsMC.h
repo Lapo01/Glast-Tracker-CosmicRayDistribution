@@ -1,4 +1,10 @@
 
+/**
+ * \file UtilsMC.h
+ *
+ * Headers for library UtilsMC
+ *
+ */
 #pragma once
 #include "GeneralUtils.h"
 #include "UtilsCreateTree.h"

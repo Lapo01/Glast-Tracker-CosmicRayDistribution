@@ -1,0 +1,282 @@
+\doxysection{CMEPDA-\/\+GLAST/\+Core/\+Headers/\+General\+Utils.h File Reference}
+\hypertarget{GeneralUtils_8h}{}\label{GeneralUtils_8h}\index{CMEPDA-\/GLAST/Core/Headers/GeneralUtils.h@{CMEPDA-\/GLAST/Core/Headers/GeneralUtils.h}}
+
+
+Headers for library General\+Utils.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$TMath.\+h$>$}\newline
+{\ttfamily \#include "{}Evento.\+h"{}}\newline
+{\ttfamily \#include "{}Evento\+Track.\+h"{}}\newline
+{\ttfamily \#include "{}TROOT.\+h"{}}\newline
+{\ttfamily \#include "{}TH1\+F.\+h"{}}\newline
+{\ttfamily \#include "{}TH2\+F.\+h"{}}\newline
+{\ttfamily \#include "{}TGraph\+Errors.\+h"{}}\newline
+{\ttfamily \#include "{}TRandom.\+h"{}}\newline
+{\ttfamily \#include "{}TCanvas.\+h"{}}\newline
+{\ttfamily \#include "{}TFrame.\+h"{}}\newline
+{\ttfamily \#include "{}TDatime.\+h"{}}\newline
+{\ttfamily \#include "{}TF1.\+h"{}}\newline
+{\ttfamily \#include "{}TFile.\+h"{}}\newline
+{\ttfamily \#include "{}TStopwatch.\+h"{}}\newline
+{\ttfamily \#include "{}TTree.\+h"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{GeneralUtils_8h_a574f30866c7831429f2521e0316e6a81}{Theta}} (\mbox{\hyperlink{classEventoTrack}{Evento\+Track}} \&e, int i)
+\begin{DoxyCompactList}\small\item\em This function returns the zenith angle for an event with a number of projections equal to 1. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{GeneralUtils_8h_a8616af98d144c90fc52efa621732f2a3}{Phi}} (\mbox{\hyperlink{classEventoTrack}{Evento\+Track}} \&e, int i)
+\begin{DoxyCompactList}\small\item\em Returns zenith angle for track. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{GeneralUtils_8h_a100c62543a890246b20d112b2242817e}{Strip\+Coordinate}} (int Strip)
+\begin{DoxyCompactList}\small\item\em vector of Layer Y ID\textquotesingle{}s \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{GeneralUtils_8h_a2d662b9f40450252cd0a030691fc914f}{Layer\+Coordinate}} (int \&ID)
+\begin{DoxyCompactList}\small\item\em Function that returns the coordinate of a strip in cm. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{GeneralUtils_8h_ae808a6d76bd4260e5cc04a963b482582}{Error}} (int \&Strip\+In, int \&Dimension)
+\begin{DoxyCompactList}\small\item\em Function used in the correction of shifts along z\+: returns the corrected z position for a layer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{GeneralUtils_8h_a0d5401f6323c56e8dd6c5e846a5ae8a7}{Layers\+ID}}
+\begin{DoxyCompactList}\small\item\em Returns azimuth angle for track. \end{DoxyCompactList}\item 
+std\+::map$<$ std\+::string, int $>$ \mbox{\hyperlink{GeneralUtils_8h_a776b960425b2324caf6190ae1d733df1}{Map\+Layer\+To\+ID}}
+\begin{DoxyCompactList}\small\item\em Container of the layer\textquotesingle{}s ID. \end{DoxyCompactList}\item 
+std\+::map$<$ int, std\+::string $>$ \mbox{\hyperlink{GeneralUtils_8h_a50f5ab88982ebd3f80427f3e3638a3e0}{Map\+IDTo\+Layer}}
+\begin{DoxyCompactList}\small\item\em It maps raw string to the layer\textquotesingle{}s ID. \end{DoxyCompactList}\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{GeneralUtils_8h_a2fddc52cc3c0fa2e811b2ed1a27256da}{Efficiency\+Map}}
+\begin{DoxyCompactList}\small\item\em It maps layer\textquotesingle{}s ID to raw string. \end{DoxyCompactList}\item 
+std\+::map$<$ int, double $>$ \mbox{\hyperlink{GeneralUtils_8h_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}
+\begin{DoxyCompactList}\small\item\em It maps Layer\textquotesingle{}s ID to its mean efficiency. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{GeneralUtils_8h_afd05718b9dab72b2255b3cda29b196ff}{LayerX}}
+\begin{DoxyCompactList}\small\item\em It maps layer\textquotesingle{}s ID to its height along Z. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{GeneralUtils_8h_a9d236f40a51f26bb4eb5b4bba0d19e92}{LayerY}}
+\begin{DoxyCompactList}\small\item\em vector of Layer X ID\textquotesingle{}s \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Headers for library General\+Utils. 
+
+
+
+Definition in file \mbox{\hyperlink{GeneralUtils_8h_source}{General\+Utils.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{GeneralUtils_8h_ae808a6d76bd4260e5cc04a963b482582}\label{GeneralUtils_8h_ae808a6d76bd4260e5cc04a963b482582} 
+\index{GeneralUtils.h@{GeneralUtils.h}!Error@{Error}}
+\index{Error@{Error}!GeneralUtils.h@{GeneralUtils.h}}
+\doxysubsubsection{\texorpdfstring{Error()}{Error()}}
+{\footnotesize\ttfamily double Error (\begin{DoxyParamCaption}\item[{int \&}]{Strip\+In,  }\item[{int \&}]{Dimension }\end{DoxyParamCaption})}
+
+
+
+Function used in the correction of shifts along z\+: returns the corrected z position for a layer. 
+
+Function used in the correction of shifts along z\+: returns the corrected z position for a layer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Strip\+In} & Initial strip of the cluster \\
+\hline
+{\em Dimension} & Dimension of the cluster \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{GeneralUtils_8cpp_source_l00182}{182}} of file \mbox{\hyperlink{GeneralUtils_8cpp_source}{General\+Utils.\+cpp}}.
+
+\Hypertarget{GeneralUtils_8h_a2d662b9f40450252cd0a030691fc914f}\label{GeneralUtils_8h_a2d662b9f40450252cd0a030691fc914f} 
+\index{GeneralUtils.h@{GeneralUtils.h}!LayerCoordinate@{LayerCoordinate}}
+\index{LayerCoordinate@{LayerCoordinate}!GeneralUtils.h@{GeneralUtils.h}}
+\doxysubsubsection{\texorpdfstring{LayerCoordinate()}{LayerCoordinate()}}
+{\footnotesize\ttfamily double Layer\+Coordinate (\begin{DoxyParamCaption}\item[{int \&}]{ID }\end{DoxyParamCaption})}
+
+
+
+Function that returns the coordinate of a strip in cm. 
+
+Function that returns the coordinate of a strip in cm.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ID} & The layer ID \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{GeneralUtils_8cpp_source_l00160}{160}} of file \mbox{\hyperlink{GeneralUtils_8cpp_source}{General\+Utils.\+cpp}}.
+
+\Hypertarget{GeneralUtils_8h_a8616af98d144c90fc52efa621732f2a3}\label{GeneralUtils_8h_a8616af98d144c90fc52efa621732f2a3} 
+\index{GeneralUtils.h@{GeneralUtils.h}!Phi@{Phi}}
+\index{Phi@{Phi}!GeneralUtils.h@{GeneralUtils.h}}
+\doxysubsubsection{\texorpdfstring{Phi()}{Phi()}}
+{\footnotesize\ttfamily double Phi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventoTrack}{Evento\+Track}} \&}]{e,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Returns zenith angle for track. 
+
+Returns zenith angle for track.
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & The instance of the object \doxylink{classEventoTrack}{Evento\+Track} containing the fitting parameters info on the projectios\\
+\hline
+{\em i} & Parameter putted for post-\/compatibility in case one wanted to do 3D multitracking. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{GeneralUtils_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{GeneralUtils_8cpp_source}{General\+Utils.\+cpp}}.
+
+\Hypertarget{GeneralUtils_8h_a100c62543a890246b20d112b2242817e}\label{GeneralUtils_8h_a100c62543a890246b20d112b2242817e} 
+\index{GeneralUtils.h@{GeneralUtils.h}!StripCoordinate@{StripCoordinate}}
+\index{StripCoordinate@{StripCoordinate}!GeneralUtils.h@{GeneralUtils.h}}
+\doxysubsubsection{\texorpdfstring{StripCoordinate()}{StripCoordinate()}}
+{\footnotesize\ttfamily double Strip\+Coordinate (\begin{DoxyParamCaption}\item[{int}]{Strip }\end{DoxyParamCaption})}
+
+
+
+vector of Layer Y ID\textquotesingle{}s 
+
+vector of Layer Y ID\textquotesingle{}s
+
+
+\begin{DoxyParams}{Parameters}
+{\em Strip} & It is the strip number ID (goes from 1 to 1536) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{GeneralUtils_8cpp_source_l00141}{141}} of file \mbox{\hyperlink{GeneralUtils_8cpp_source}{General\+Utils.\+cpp}}.
+
+\Hypertarget{GeneralUtils_8h_a574f30866c7831429f2521e0316e6a81}\label{GeneralUtils_8h_a574f30866c7831429f2521e0316e6a81} 
+\index{GeneralUtils.h@{GeneralUtils.h}!Theta@{Theta}}
+\index{Theta@{Theta}!GeneralUtils.h@{GeneralUtils.h}}
+\doxysubsubsection{\texorpdfstring{Theta()}{Theta()}}
+{\footnotesize\ttfamily double Theta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventoTrack}{Evento\+Track}} \&}]{e,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+This function returns the zenith angle for an event with a number of projections equal to 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & The instance of the object \doxylink{classEventoTrack}{Evento\+Track} containing the fitting parameters info on the projectios\\
+\hline
+{\em i} & Parameter putted for post-\/compatibility in case one wanted to do 3D multitracking. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{GeneralUtils_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{GeneralUtils_8cpp_source}{General\+Utils.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{GeneralUtils_8h_a2fddc52cc3c0fa2e811b2ed1a27256da}\label{GeneralUtils_8h_a2fddc52cc3c0fa2e811b2ed1a27256da} 
+\index{GeneralUtils.h@{GeneralUtils.h}!EfficiencyMap@{EfficiencyMap}}
+\index{EfficiencyMap@{EfficiencyMap}!GeneralUtils.h@{GeneralUtils.h}}
+\doxysubsubsection{\texorpdfstring{EfficiencyMap}{EfficiencyMap}}
+{\footnotesize\ttfamily std\+::map$<$int, double$>$ Efficiency\+Map\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+It maps layer\textquotesingle{}s ID to raw string. 
+
+
+
+Definition at line \mbox{\hyperlink{GeneralUtils_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{GeneralUtils_8cpp_source}{General\+Utils.\+cpp}}.
+
+\Hypertarget{GeneralUtils_8h_a0d5401f6323c56e8dd6c5e846a5ae8a7}\label{GeneralUtils_8h_a0d5401f6323c56e8dd6c5e846a5ae8a7} 
+\index{GeneralUtils.h@{GeneralUtils.h}!LayersID@{LayersID}}
+\index{LayersID@{LayersID}!GeneralUtils.h@{GeneralUtils.h}}
+\doxysubsubsection{\texorpdfstring{LayersID}{LayersID}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Layers\+ID\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Returns azimuth angle for track. 
+
+
+
+Definition at line \mbox{\hyperlink{GeneralUtils_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{GeneralUtils_8cpp_source}{General\+Utils.\+cpp}}.
+
+\Hypertarget{GeneralUtils_8h_afd05718b9dab72b2255b3cda29b196ff}\label{GeneralUtils_8h_afd05718b9dab72b2255b3cda29b196ff} 
+\index{GeneralUtils.h@{GeneralUtils.h}!LayerX@{LayerX}}
+\index{LayerX@{LayerX}!GeneralUtils.h@{GeneralUtils.h}}
+\doxysubsubsection{\texorpdfstring{LayerX}{LayerX}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ LayerX\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+It maps layer\textquotesingle{}s ID to its height along Z. 
+
+
+
+Definition at line \mbox{\hyperlink{GeneralUtils_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{GeneralUtils_8cpp_source}{General\+Utils.\+cpp}}.
+
+\Hypertarget{GeneralUtils_8h_a9d236f40a51f26bb4eb5b4bba0d19e92}\label{GeneralUtils_8h_a9d236f40a51f26bb4eb5b4bba0d19e92} 
+\index{GeneralUtils.h@{GeneralUtils.h}!LayerY@{LayerY}}
+\index{LayerY@{LayerY}!GeneralUtils.h@{GeneralUtils.h}}
+\doxysubsubsection{\texorpdfstring{LayerY}{LayerY}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ LayerY\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+vector of Layer X ID\textquotesingle{}s 
+
+
+
+Definition at line \mbox{\hyperlink{GeneralUtils_8cpp_source_l00132}{132}} of file \mbox{\hyperlink{GeneralUtils_8cpp_source}{General\+Utils.\+cpp}}.
+
+\Hypertarget{GeneralUtils_8h_a50f5ab88982ebd3f80427f3e3638a3e0}\label{GeneralUtils_8h_a50f5ab88982ebd3f80427f3e3638a3e0} 
+\index{GeneralUtils.h@{GeneralUtils.h}!MapIDToLayer@{MapIDToLayer}}
+\index{MapIDToLayer@{MapIDToLayer}!GeneralUtils.h@{GeneralUtils.h}}
+\doxysubsubsection{\texorpdfstring{MapIDToLayer}{MapIDToLayer}}
+{\footnotesize\ttfamily std\+::map$<$int, std\+::string$>$ Map\+IDTo\+Layer\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+It maps raw string to the layer\textquotesingle{}s ID. 
+
+It maps raw string to the layer\textquotesingle{}s ID. 
+
+Definition at line \mbox{\hyperlink{GeneralUtils_8cpp_source_l00088}{88}} of file \mbox{\hyperlink{GeneralUtils_8cpp_source}{General\+Utils.\+cpp}}.
+
+\Hypertarget{GeneralUtils_8h_a776b960425b2324caf6190ae1d733df1}\label{GeneralUtils_8h_a776b960425b2324caf6190ae1d733df1} 
+\index{GeneralUtils.h@{GeneralUtils.h}!MapLayerToID@{MapLayerToID}}
+\index{MapLayerToID@{MapLayerToID}!GeneralUtils.h@{GeneralUtils.h}}
+\doxysubsubsection{\texorpdfstring{MapLayerToID}{MapLayerToID}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, int$>$ Map\+Layer\+To\+ID\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Container of the layer\textquotesingle{}s ID. 
+
+It maps raw string to the layer\textquotesingle{}s ID 
+
+Definition at line \mbox{\hyperlink{GeneralUtils_8cpp_source_l00074}{74}} of file \mbox{\hyperlink{GeneralUtils_8cpp_source}{General\+Utils.\+cpp}}.
+
+\Hypertarget{GeneralUtils_8h_a75d921e09141f0b547dbb28160f9c4f5}\label{GeneralUtils_8h_a75d921e09141f0b547dbb28160f9c4f5} 
+\index{GeneralUtils.h@{GeneralUtils.h}!Zmap@{Zmap}}
+\index{Zmap@{Zmap}!GeneralUtils.h@{GeneralUtils.h}}
+\doxysubsubsection{\texorpdfstring{Zmap}{Zmap}}
+{\footnotesize\ttfamily std\+::map$<$int, double$>$ Zmap\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+It maps Layer\textquotesingle{}s ID to its mean efficiency. 
+
+
+
+Definition at line \mbox{\hyperlink{GeneralUtils_8cpp_source_l00117}{117}} of file \mbox{\hyperlink{GeneralUtils_8cpp_source}{General\+Utils.\+cpp}}.
+

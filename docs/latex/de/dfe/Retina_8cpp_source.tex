@@ -1,0 +1,306 @@
+\doxysection{Retina.\+cpp}
+\hypertarget{Retina_8cpp_source}{}\label{Retina_8cpp_source}\index{CMEPDA-\/GLAST/Core/TrackingRetina/Retina.cpp@{CMEPDA-\/GLAST/Core/TrackingRetina/Retina.cpp}}
+\mbox{\hyperlink{Retina_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include<iostream>}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00015}00015\ \textcolor{preprocessor}{\#include<vector>}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00016}00016\ \textcolor{preprocessor}{\#include<sstream>}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00017}00017\ \textcolor{preprocessor}{\#include<map>}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00018}00018\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{UtilsRetina_8h}{UtilsRetina.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00019}00019\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{GeneralUtils_8h}{GeneralUtils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00023}00023\ \textcolor{keywordtype}{void}\ Retina(TString\ file,\ TString\ fileoutput,\ \textcolor{keywordtype}{int}\ iteration,\ \textcolor{keywordtype}{int}\ numcores)\{}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SECTION\ 1:\ CREATE\ PHASE\ SPACE,\ CREATE\ PLACEHOLDERS\ AND\ CREATE\ TREES\ TO\ BE\ READ\ AND\ FILLED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//Create\ the\ phase\ space\ cell\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00035}00035\ \ \ \ \ std::vector<std::vector<std::pair<double,\ double>\ >\ >\ Grid;}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00036}00036\ \ \ \ \ \mbox{\hyperlink{UtilsRetina_8cpp_a8b12c5c900d0b5c81b6fa6fd886f94f3}{BuildGrid}}(Grid);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00037}00037\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00038}00038\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ Create\ placeholders\ and\ utils\ variables.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00043}00043\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Variables\ used\ in\ section\ 2//}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00048}00048\ \ \ \ \ \mbox{\hyperlink{classTrack}{Track}}\ TrackXPlaceholder;\ \textcolor{comment}{//placeholder\ for\ the\ track\ found\ in\ each\ cell\ of\ the\ phase\ space\ in\ the\ vision\ XZ}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{classTrack}{Track}}\ TrackYPlaceholder;\ \textcolor{comment}{//placeholder\ for\ the\ track\ found\ in\ each\ cell\ of\ the\ phase\ space\ in\ the\ vision\ YZ}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00050}00050\ \ \ \ \ std::vector<Track>\ multipleTracksX;\ \textcolor{comment}{//placeholder\ variable\ to\ be\ filled\ with\ all\ tracks\ found\ in\ the\ event\ in\ the\ vision\ XZ\ }}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00051}00051\ \ \ \ \ std::vector<Track>\ multipleTracksY;\ \textcolor{comment}{//placeholder\ variable\ to\ be\ filled\ with\ all\ tracks\ found\ in\ the\ event\ in\ the\ vision\ XZ}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordtype}{double}\ mx,\ qx,\ my,\ qy,\ chi2X,\ chi2Y,chi2AttX,chi2AttY;\ \textcolor{comment}{//placeholders\ variables\ for\ track\ fitting}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ 0;\ \textcolor{comment}{//\ util\ variable\ used\ to\ keep\ count\ of\ the\ number\ of\ points\ found\ as\ it\ is\ needed\ to\ fill\ a\ TGraphError\ object\ }}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keywordtype}{int}\ index;\ \textcolor{comment}{//\ util\ used\ to\ identify\ the\ closest\ point\ in\ a\ layer}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00055}00055\ \ \ \ \ std::vector\ <double>\ Vec;\textcolor{comment}{//\ vector\ filled\ with\ the\ distances\ of\ all\ points\ in\ a\ layer\ that\ are\ close\ by\ 0.5\ cm\ from\ the\ track\ identified\ by\ the\ phase\ space\ cell}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00056}00056\ \ \ \ \ std::vector\ <int>\ VecIndex;\ \textcolor{comment}{//indexes\ of\ the\ elements\ that\ are\ close\ by\ 0.5\ cm\ from\ the\ track\ of\ the\ member\ ClusterPosizione\ in\ the\ object\ Evento.}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ just\ the\ linear\ fit\ function\ for\ each\ vision.\ }}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00059}00059\ \ \ \ \ TF1\ *lineX\ =\ \textcolor{keyword}{new}\ TF1(\textcolor{stringliteral}{"{}lineX"{}},\ \textcolor{stringliteral}{"{}[0]\ +\ [1]*x"{}},\ -\/2,\ 50);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00060}00060\ \ \ \ \ TF1\ *lineY\ =\ \textcolor{keyword}{new}\ TF1(\textcolor{stringliteral}{"{}lineY"{}},\ \textcolor{stringliteral}{"{}[0]\ +\ [1]*x"{}},\ -\/2,\ 50);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00061}00061\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00065}00065\ \ \ \ \ \textcolor{comment}{//\ Variables\ used\ in\ section\ 3//}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00067}00067\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00068}00068\ \ \ \ \ std::vector<Track>\ VettoreMarionetta;\ \textcolor{comment}{//util\ variable:\ container\ that\ will\ be\ used\ to\ contain\ all\ equal\ tracksz}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00069}00069\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ 0;\ \textcolor{comment}{//util\ variable\ used\ to\ keep\ count\ of\ the\ number\ of\ unique\ tracks}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00071}00071\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00072}00072\ \ \ \ \ std::vector<Track>\ FinalFilteredTracksX;\textcolor{comment}{//placeholder\ variable\ to\ be\ filled\ with\ all\ UNIQUE\ tracks\ found\ in\ the\ event\ in\ the\ vision\ XZ,\ between\ equal\ tracks\ the\ greater\ one\ is\ taken,\ see\ docs\ on\ Track\ Class}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00073}00073\ \ \ \ \ std::vector<Track>\ FinalFilteredTracksY;\textcolor{comment}{//placeholder\ variable\ to\ be\ filled\ with\ all\ UNIQUE\ tracks\ found\ in\ the\ event\ in\ the\ vision\ YZ,\ between\ equal\ tracks\ the\ greater\ one\ is\ taken,\ see\ docs\ on\ Track\ Class}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00074}00074\ \ \ \ \ std::vector<Track>\ CopiaVettore;\ \textcolor{comment}{//util\ variable\ used\ to\ identify\ unique\ tracks}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00075}00075\ \ \ \ \ std::vector\ <\ std::vector\ <Track>>\ \ VettoreTracceUniche;\ \textcolor{comment}{//\ container\ of\ container\ of\ equal\ tracks,\ used\ to\ choose\ the\ greater\ track\ between\ equals.}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00076}00076\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ tree\ to\ be\ read\ and\ the\ tree\ to\ be\ written\ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00083}00083\ \ \ \ \ \mbox{\hyperlink{classEvento}{Evento}}\ e;\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00084}00084\ \ \ \ \ \mbox{\hyperlink{classEvento}{Evento}}\ *p\ =\ \&e;}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00085}00085\ \ \ \ \ TFile\ *input\ =\ \textcolor{keyword}{new}\ TFile(file,\textcolor{stringliteral}{"{}read"{}});}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00086}00086\ \ \ \ \ TTree\ *tree\ =\ (TTree*)input-\/>Get(\textcolor{stringliteral}{"{}tree"{}});}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00087}00087\ \ \ \ \ tree-\/>SetBranchAddress(\textcolor{stringliteral}{"{}evento"{}},\ \&p);\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{int}\ entries\ =\ tree-\/>GetEntries();}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00089}00089\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00090}00090\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00091}00091\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ etrack;\ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00092}00092\ \ \ \ \ TFile\ *output\ =\ \textcolor{keyword}{new}\ TFile(fileoutput,\textcolor{stringliteral}{"{}recreate"{}});}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00093}00093\ \ \ \ \ TTree\ *treetrack\ =\ \textcolor{keyword}{new}\ TTree(\textcolor{stringliteral}{"{}treetrack"{}},\ \textcolor{stringliteral}{"{}treetrack"{}});}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00094}00094\ \ \ \ \ treetrack-\/>Branch(\textcolor{stringliteral}{"{}etrack"{}},\&etrack);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00095}00095\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00096}00096\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00097}00097\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00098}00098\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00099}00099\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00100}00100\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00101}00101\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00102}00102\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00103}00103\ \ \ \ \ \textcolor{keyword}{auto}\ start\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00104}00104\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00105}00105\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00106}00106\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ iteration*entries/numcores;\ i<(iteration+1)*entries/numcores;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ tree-\/>GetEntry(i);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ count\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(e.\mbox{\hyperlink{classEvento_af016bfeb93df293c3291ba67f39f7ee3}{Flags}}[0]\ ==1)\{\ \textcolor{comment}{//we\ are\ choosing\ events\ that\ do\ not\ have\ ill\ clusters.\ That\ is\ specified\ by\ the\ first\ flag.}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{UtilsRetina_8cpp_a827b2eb07e679ae746ca8d42188aa0ad}{EventReset}}(multipleTracksY,\ multipleTracksX,\ etrack,\ CopiaVettore,\ VettoreTracceUniche,\ FinalFilteredTracksX,\ FinalFilteredTracksY);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SECTION\ 2:\ SEARCH\ FOR\ TRACKS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ In\ this\ section,\ for\ EACH\ CELL\ of\ the\ phase\ space\ created,\ the\ code\ checks\ for\ each\ vision\ and\ for\ each\ layer\ the\ closest\ points\ by\ 0.5\ cm,\ if\ there\ are\ more\ than\ two\ points\ than\ a\ placeholder\ track\ is\ filled\ and\ a\ linear\ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fit,\ the\ placeholders\ TrackXPlaceholder\ and\ TrackYPlaceHolder\ are\ filled\ and\ cleared\ for\ EACH\ CELL,\ after\ the\ search\ is\ done\ for\ the\ single\ cell\ the\ placeholders\ MultipletracksX\ and\ MultipleTracksY\ are\ filled\ with\ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ found\ tracks\ and\ are\ to\ be\ filtered\ in\ the\ next\ sections\ of\ the\ code.\ Points\ are\ not\ cleared\ after\ being\ put\ into\ a\ track\ as\ that\ may\ introduce\ a\ bias.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ ColumnElement:\ Grid)\{\ \textcolor{comment}{//for\ each\ column\ of\ the\ phase\ space}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//for\ all\ cells\ of\ the\ phase\ space\ in\ the\ chosen\ column}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ cell:ColumnElement)}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//clear\ placeholders\ }}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{UtilsRetina_8cpp_aaef05d644e2949001fec9f4d0f52349c}{CellReset}}(cell,\ TrackXPlaceholder,\ TrackYPlaceholder,\ VecIndex,\ Vec,\ qx,\ qy,\ mx,\ my,\ lineX,\ lineY);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TGraphErrors\ *XZ\ =\ \textcolor{keyword}{new}\ TGraphErrors();}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TGraphErrors\ *YZ\ =\ \textcolor{keyword}{new}\ TGraphErrors();}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//find\ the\ points\ closest\ by\ 0.5\ cm\ for\ each\ LayerX}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ l:\mbox{\hyperlink{GeneralUtils_8cpp_afd05718b9dab72b2255b3cda29b196ff}{LayerX}})\{}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ j\ =\ 0;\ j<e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}.size();\ j++)\{\ \textcolor{comment}{//push\ all\ points\ close\ by\ 0.5\ cm\ from\ road,\ those\ are\ to\ be\ filtered\ up}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}[j]\ ==\ l)\&\&(\mbox{\hyperlink{UtilsRetina_8cpp_adfa6f23c52f3224aab128855089de982}{Distance}}(qx,\ mx\ ,e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}[j],\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}[l])<0.5))\{}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vec.push\_back(\mbox{\hyperlink{UtilsRetina_8cpp_adfa6f23c52f3224aab128855089de982}{Distance}}(qx,\ mx\ ,e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}[j],\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}[l]));\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VecIndex.push\_back(j);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(VecIndex.size()\ !=0)\{\ \textcolor{comment}{//if\ there\ are\ any\ points\ close\ by\ 0.5\ cm\ search\ the\ closest\ and\ fill\ the\ TGraphErrors\ XZ}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n\ =\ XZ-\/>GetN();}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index\ =\ std::distance(Vec.begin(),std::min\_element(Vec.begin(),\ Vec.end()));}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ XZ-\/>SetPoint(n,\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}[l],\ e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}[VecIndex[index]]);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ XZ-\/>SetPointError(n,\ 0,\ \mbox{\hyperlink{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582}{Error}}(e.\mbox{\hyperlink{classEvento_a06a9c21fec9646ee71e2d6139fe82655}{InitialStrip}}[VecIndex[index]],\ e.\mbox{\hyperlink{classEvento_ab088b412620cb1c3a80dca0ca56ab720}{ClusterDimension}}[VecIndex[index]]));}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackXPlaceholder.\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}.push\_back(e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}[VecIndex[index]]);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackXPlaceholder.\mbox{\hyperlink{classTrack_ad66743e1981db57ee2fb84b7d98985e5}{Error}}.push\_back(\mbox{\hyperlink{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582}{Error}}(e.\mbox{\hyperlink{classEvento_a06a9c21fec9646ee71e2d6139fe82655}{InitialStrip}}[VecIndex[index]],\ e.\mbox{\hyperlink{classEvento_ab088b412620cb1c3a80dca0ca56ab720}{ClusterDimension}}[VecIndex[index]]));}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackXPlaceholder.\mbox{\hyperlink{classTrack_accce27ec07d1ad7f6f872a96d35806c9}{Layer}}.push\_back(e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}[VecIndex[index]]);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VecIndex.clear();\textcolor{comment}{//reset\ utils}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vec.clear();\ \ \ \ \ \textcolor{comment}{//reset\ utils}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//find\ the\ points\ closest\ by\ 0.5\ cm\ for\ each\ LayerY}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ l:\mbox{\hyperlink{GeneralUtils_8cpp_a9d236f40a51f26bb4eb5b4bba0d19e92}{LayerY}})\{}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ j\ =\ 0;\ j<e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}.size();\ j++\ )\{\textcolor{comment}{//push\ all\ points\ close\ by\ 0.5\ cm\ from\ road}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}[j]\ ==\ l)\&\&(\mbox{\hyperlink{UtilsRetina_8cpp_adfa6f23c52f3224aab128855089de982}{Distance}}(qy,\ my\ ,e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}[j],\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}[l])<0.5))\{}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vec.push\_back(\mbox{\hyperlink{UtilsRetina_8cpp_adfa6f23c52f3224aab128855089de982}{Distance}}(qy,\ my\ ,e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}[j],\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}[l]));\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VecIndex.push\_back(j);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(VecIndex.size()\ !=0)\{\textcolor{comment}{//if\ there\ are\ any\ points\ close\ by\ 0.5\ cm\ search\ the\ closest\ and\ fill\ the\ TGraphErrors\ YZ}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n\ =\ YZ-\/>GetN();}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index\ =\ std::distance(Vec.begin(),std::min\_element(Vec.begin(),\ Vec.end()));\ \textcolor{comment}{//find\ the\ closest\ point}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ YZ-\/>SetPoint(n,\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}[l],\ e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}[VecIndex[index]]);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ YZ-\/>SetPointError(n,\ 0,\ \mbox{\hyperlink{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582}{Error}}(e.\mbox{\hyperlink{classEvento_a06a9c21fec9646ee71e2d6139fe82655}{InitialStrip}}[VecIndex[index]],\ e.\mbox{\hyperlink{classEvento_ab088b412620cb1c3a80dca0ca56ab720}{ClusterDimension}}[VecIndex[index]]));}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackYPlaceholder.\mbox{\hyperlink{classTrack_a034d262fffa4a451b4c2ada2e2afcabf}{ClusterPosition}}.push\_back(e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}[VecIndex[index]]);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackYPlaceholder.\mbox{\hyperlink{classTrack_ad66743e1981db57ee2fb84b7d98985e5}{Error}}.push\_back(\mbox{\hyperlink{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582}{Error}}(e.\mbox{\hyperlink{classEvento_a06a9c21fec9646ee71e2d6139fe82655}{InitialStrip}}[VecIndex[index]],\ e.\mbox{\hyperlink{classEvento_ab088b412620cb1c3a80dca0ca56ab720}{ClusterDimension}}[VecIndex[index]]));}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackYPlaceholder.\mbox{\hyperlink{classTrack_accce27ec07d1ad7f6f872a96d35806c9}{Layer}}.push\_back(e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}[VecIndex[index]]);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VecIndex.clear();\ \textcolor{comment}{//reset\ utils}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vec.clear();\ \ \ \ \ \ \textcolor{comment}{//reset\ utils}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//If\ there\ are\ more\ than\ 3\ points,\ make\ a\ fit\ and\ keep\ filling\ placeholder\ with\ info\ on\ the\ fit\ values\ and\ chisq}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((XZ-\/>GetN()>=3))\{}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ XZ-\/>Fit(\textcolor{stringliteral}{"{}lineX"{}},\textcolor{stringliteral}{"{}qEX0"{}});}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mx\ =\ lineX-\/>GetParameter(1);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qx\ =\ lineX-\/>GetParameter(0);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chi2X\ =\ lineX-\/>GetChisquare();}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chi2AttX\ =\ XZ-\/>GetN()\ -\/\ 2;}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackXPlaceholder.\mbox{\hyperlink{classTrack_a30aab41e69db16a9359a5c47f639df03}{Fit}}.push\_back(qx);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackXPlaceholder.\mbox{\hyperlink{classTrack_a30aab41e69db16a9359a5c47f639df03}{Fit}}.push\_back(mx);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackXPlaceholder.\mbox{\hyperlink{classTrack_a30aab41e69db16a9359a5c47f639df03}{Fit}}.push\_back(chi2X);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackXPlaceholder.\mbox{\hyperlink{classTrack_a30aab41e69db16a9359a5c47f639df03}{Fit}}.push\_back(chi2AttX);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackXPlaceholder.\mbox{\hyperlink{classTrack_a30aab41e69db16a9359a5c47f639df03}{Fit}}.push\_back(chi2X/chi2AttX);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ multipleTracksX.push\_back(TrackXPlaceholder);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//If\ there\ are\ more\ than\ 3\ points,\ make\ a\ fit\ and\ keep\ filling\ placeholder\ with\ info\ on\ the\ fit\ values\ and\ chisq}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(YZ-\/>GetN()>=3)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ YZ-\/>Fit(\textcolor{stringliteral}{"{}lineY"{}},\textcolor{stringliteral}{"{}qEX0"{}});}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ my\ =\ lineY-\/>GetParameter(1);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qy\ =\ lineY-\/>GetParameter(0);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chi2Y\ =\ lineY-\/>GetChisquare();}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chi2AttY\ =\ YZ-\/>GetN()\ -\/\ 2;}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackYPlaceholder.\mbox{\hyperlink{classTrack_a30aab41e69db16a9359a5c47f639df03}{Fit}}.push\_back(qy);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackYPlaceholder.\mbox{\hyperlink{classTrack_a30aab41e69db16a9359a5c47f639df03}{Fit}}.push\_back(my);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackYPlaceholder.\mbox{\hyperlink{classTrack_a30aab41e69db16a9359a5c47f639df03}{Fit}}.push\_back(chi2Y);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackYPlaceholder.\mbox{\hyperlink{classTrack_a30aab41e69db16a9359a5c47f639df03}{Fit}}.push\_back(chi2AttY);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackYPlaceholder.\mbox{\hyperlink{classTrack_a30aab41e69db16a9359a5c47f639df03}{Fit}}.push\_back(chi2Y/chi2AttY);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ multipleTracksY.push\_back(TrackYPlaceholder);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ END\ PROCESS\ FOR\ SINGLE\ PHASE\ SPACE\ CELL\ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ XZ;}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ YZ;}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ count2\ =\ 0;\ \textcolor{comment}{//reset\ utils\ variable\ \ }}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SECTION\ 3\ :\ REMOVE\ DUPLICATES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//The\ aim\ of\ this\ section\ is\ to\ remove\ all\ duplicate\ tracks\ from\ the\ event:\ two\ tracks\ are\ equal\ if\ they\ have\ more\ than\ 1\ point\ in\ common,\ one\ track\ is\ greater\ than\ another\ if\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//it\ has\ more\ points\ than\ the\ other.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//In\ this\ section\ all\ equal\ tracks\ are\ found\ and\ put\ in\ groups\ of\ equal\ tracks,\ the\ filled\ container\ is\ a\ vector\ of\ vectors\ of\ Tracks\ called\ VettoreTracceUniche,\ in\ each\ element\ of\ this\ vector\ of\ vectors\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//all\ equal\ tracks\ are\ put.\ Later\ each\ element\ of\ the\ VettoreTracceUniche\ (so\ all\ groups\ of\ equal\ tracks)\ is\ ordered\ and\ the\ greater\ track\ is\ taken\ (the\ one\ which\ has\ the\ most\ points).\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Remove\ Duplicates\ for\ XZ\ vision,\ the\ logic\ here\ is\ to\ take\ the\ "{}greater"{}\ tracks\ upon\ all\ the\ equals\ one,\ greater\ operator\ overloading\ is\ defined\ in\ the\ libraries.}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(multipleTracksX.size()>0)\{}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CopiaVettore\ =\ multipleTracksX;\textcolor{comment}{//copy\ vector\ }}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(CopiaVettore.size()!=0)\{\textcolor{comment}{//while\ there\ still\ are\ unique\ tracks\ remove\ all\ tracks\ equal\ to\ the\ first\ element\ of\ the\ CopiaVettore\ vector}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VettoreTracceUniche.push\_back(VettoreMarionetta);\textcolor{comment}{//fill\ the\ vector\ of\ vectors\ of\ tracks\ with\ an\ empty\ container\ for\ each\ type\ of\ unique\ track,\ later\ to\ be\ filled\ with\ all\ equal\ tracks}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VettoreTracceUniche[count2].push\_back(CopiaVettore[0]);\textcolor{comment}{//push\ the\ container\ of\ equal\ tracks\ with\ the\ first\ element\ of\ the\ found\ tracks}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CopiaVettore.erase(std::remove\_if(CopiaVettore.begin(),\ CopiaVettore.end(),\ [CopiaVettore](\mbox{\hyperlink{classTrack}{Track}}\ pp)\{return\ pp\ ==\ CopiaVettore[0];\}),\ CopiaVettore.end());\textcolor{comment}{//remove\ all\ tracks\ that\ are\ equal\ to\ the\ first\ track\ found.}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count2++;\textcolor{comment}{//keep\ count\ of\ the\ number\ of\ unique\ tracks}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ b\ :\ VettoreTracceUniche)\{\ \textcolor{comment}{//for\ each\ container\ of\ unique\ tracks,\ find\ all\ tracks\ that\ are\ equal}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ c:multipleTracksX)\{\ \textcolor{comment}{//iterate\ on\ all\ found\ tracks\ from\ section\ 2}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(c\ ==\ b[0])\{\ \textcolor{comment}{//\ if\ the\ track\ is\ equal\ to\ the\ first\ element\ of\ the\ container\ of\ equal\ tracks,\ add\ it\ to\ the\ container\ of\ equal\ tracks.}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.push\_back(c);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count++;\ \textcolor{comment}{//keep\ count\ of\ the\ length\ of\ the\ container\ of\ equal\ tracks\ as\ this\ number\ is\ needed\ to\ choose\ the\ greater\ track(the\ one\ with\ the\ most\ point)}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::sort(b.begin(),\ b.end());}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FinalFilteredTracksX.push\_back(b[count]);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//reset\ utils}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ VettoreTracceUniche.clear();}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ count2=0;}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ count=0;}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ CopiaVettore.clear();}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ VettoreMarionetta.clear();\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Remove\ Duplicates\ for\ YZ\ vision,\ the\ logic\ here\ is\ to\ take\ the\ "{}greater"{}\ tracks\ upon\ all\ the\ equals\ one,\ greater\ operator\ overloading\ is\ defined\ in\ the\ libraries.}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(multipleTracksY.size()>0)\{}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CopiaVettore\ =\ multipleTracksY;\ \textcolor{comment}{//copy\ vector\ }}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(CopiaVettore.size()!=0)\{\ \textcolor{comment}{//while\ there\ still\ are\ unique\ tracks\ remove\ all\ tracks\ equal\ to\ the\ first\ element\ of\ the\ CopiaVettore\ vector}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VettoreTracceUniche.push\_back(VettoreMarionetta);\ \textcolor{comment}{//fill\ the\ vector\ of\ vectors\ of\ tracks\ with\ an\ empty\ container\ for\ each\ type\ of\ unique\ track,\ later\ to\ be\ filled\ with\ all\ equal\ tracks}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VettoreTracceUniche[count2].push\_back(CopiaVettore[0]);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CopiaVettore.erase(std::remove\_if(CopiaVettore.begin(),\ CopiaVettore.end(),\ [CopiaVettore](\mbox{\hyperlink{classTrack}{Track}}\ cc)\{return\ cc==\ CopiaVettore[0];\}),\ CopiaVettore.end());\ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count2++;}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ b\ :\ VettoreTracceUniche)\{\ \textcolor{comment}{//for\ each\ container\ of\ unique\ tracks,\ find\ all\ tracks\ that\ are\ equal}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ c:multipleTracksY)\{\textcolor{comment}{//iterate\ on\ all\ found\ tracks\ from\ section\ 2}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(c\ ==\ b[0])\{\textcolor{comment}{//\ if\ the\ track\ is\ equal\ to\ the\ first\ element\ of\ the\ container\ of\ equal\ tracks,\ add\ it\ to\ the\ container\ of\ equal\ tracks.}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b.push\_back(c);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count++;\textcolor{comment}{//keep\ count\ of\ the\ length\ of\ the\ container\ of\ equal\ tracks\ as\ this\ number\ is\ needed\ to\ choose\ the\ greater\ track(the\ one\ with\ the\ most\ point)}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::sort(b.begin(),\ b.end());\ \textcolor{comment}{//order\ in\ crescent\ order\ the\ vector\ of\ equal\ tracks}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FinalFilteredTracksY.push\_back(b[count]);\ \textcolor{comment}{//take\ the\ greater\ Track}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count\ =\ 0;\ \textcolor{comment}{//reset\ util\ variable.}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//final\ filter\ to\ remove\ duplicate\ projections\ on\ YZ\ vision}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(FinalFilteredTracksY.size()\ !=\ 0)\{}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}.push\_back(FinalFilteredTracksY[0]);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FinalFilteredTracksY.erase(std::remove\_if(FinalFilteredTracksY.begin(),\ FinalFilteredTracksY.end(),\ [FinalFilteredTracksY](\mbox{\hyperlink{classTrack}{Track}}\ cc)\{return\ cc==\ FinalFilteredTracksY[0];\}),\ FinalFilteredTracksY.end());}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//final\ filter\ to\ remove\ duplicate\ projections\ on\ XZ\ vision}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(FinalFilteredTracksX.size()\ !=\ 0)\{}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}.push\_back(FinalFilteredTracksX[0]);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FinalFilteredTracksX.erase(std::remove\_if(FinalFilteredTracksX.begin(),\ FinalFilteredTracksX.end(),\ [FinalFilteredTracksX](\mbox{\hyperlink{classTrack}{Track}}\ cc)\{return\ cc==\ FinalFilteredTracksX[0];\}),\ FinalFilteredTracksX.end());}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ treetrack-\/>Fill();}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00310}00310\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00311}00311\ \ \ \ \ output-\/>Write();}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00312}00312\ \ \ \ \ output-\/>Close();}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00315}00315\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00316}00316\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00317}00317\ \ \ \ \ \textcolor{keyword}{auto}\ endtime\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00319}00319\ \ \ \ \ \textcolor{keyword}{auto}\ duration\ =\ std::chrono::duration\_cast<std::chrono::microseconds>(endtime\ -\/\ start);}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00321}00321\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Ci\ sono\ voluti\ "{}}<<duration.count()\ <<\ \textcolor{stringliteral}{"{}\ microsecondi\ a\ finire\ il\ processo\ "{}}<<\ iteration\ <<endl;}
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00323}00323\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00324}00324\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00325}00325\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00326}00326\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00327}00327\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00328}00328\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00329}00329\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Retina_8cpp_source_l00330}00330\ \ \ \ \ \}}
+
+\end{DoxyCode}

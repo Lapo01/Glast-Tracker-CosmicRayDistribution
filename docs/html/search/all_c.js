@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['rectifytracks_2ecpp_0',['RectifyTracks.cpp',['../d2/db4/RectifyTracks_8cpp.html',1,'']]],
-  ['resetevento_1',['ResetEvento',['../df/d18/UtilsMC_8cpp.html#adda5b766ce27d32b1a7db35d559331f9',1,'UtilsMC.cpp']]],
-  ['resetutils_2',['ResetUtils',['../df/d18/UtilsMC_8cpp.html#a1e369ca3e022cd7f119a026088ad64b6',1,'UtilsMC.cpp']]],
-  ['retina_2ecpp_3',['Retina.cpp',['../de/dfe/Retina_8cpp.html',1,'']]]
+  ['package_0',['Structure of the package',['../index.html#first_sec_first_sub_sec',1,'']]],
+  ['phase_3a_20clustering_1',['First Data Abstraction Phase: Clustering',['../index.html#first_ab',1,'']]],
+  ['phase_3a_20tracking_2',['Second Data Abstraction Phase: Tracking',['../index.html#second_ab',1,'']]],
+  ['phi_3',['Phi',['../dc/d43/GeneralUtils_8cpp.html#a8616af98d144c90fc52efa621732f2a3',1,'Phi(EventoTrack &amp;e, int i):&#160;GeneralUtils.cpp'],['../dc/d78/GeneralUtils_8h.html#a8616af98d144c90fc52efa621732f2a3',1,'Phi(EventoTrack &amp;e, int i):&#160;GeneralUtils.cpp']]],
+  ['project_4',['Introduction and brief resume of the project',['../index.html#intro_sec',1,'']]]
 ];

@@ -2,8 +2,8 @@
 
 
 /**
- *  * \file UtilsCreateTree.cpp
- *	Questo file contiene funzioni utili per la prima fase di astrazione dei dati, prende il format di oggetto .lif  e restituisce un file .root con un tree.
+ *  \file UtilsCreateTree.cpp
+ *	Source code for utils library used in CreateTree macro.
  * 
  *
  * 

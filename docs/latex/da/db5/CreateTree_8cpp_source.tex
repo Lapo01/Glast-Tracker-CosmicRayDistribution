@@ -1,0 +1,271 @@
+\doxysection{Create\+Tree.\+cpp}
+\hypertarget{CreateTree_8cpp_source}{}\label{CreateTree_8cpp_source}\index{CMEPDA-\/GLAST/Core/CreateTree/CreateTree.cpp@{CMEPDA-\/GLAST/Core/CreateTree/CreateTree.cpp}}
+\mbox{\hyperlink{CreateTree_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{UtilsCreateTree_8h}{UtilsCreateTree.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{GeneralUtils_8h}{GeneralUtils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00021}\mbox{\hyperlink{CreateTree_8cpp_a2fe5984273d03a4c917f106fc23ab5b6}{00021}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{CreateTree_8cpp_a2fe5984273d03a4c917f106fc23ab5b6}{CreateTree}}(\textcolor{keyword}{const}\ std::string\ \&fileinput,\ TString\ fileoutput)\{}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SECTION\ 1\ DECLARATION\ OF\ USED\ VARIABLES}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//\ \ In\ this\ section\ all\ variables\ used\ up\ in\ the\ detection\ of\ muted\ strips\ and\ in\ the\ creation\ of\ the\ root\ file\ are\ declared.}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00032}00032\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordtype}{int}\ LengthCluster=1;\ \textcolor{comment}{//\ intero\ usato\ per\ contare\ la\ lunghezza\ dei\ cluster}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordtype}{int}\ NHit=\ 0;\ \textcolor{comment}{//\ Variabile\ usata\ come\ placeholder\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordtype}{int}\ ciclo\ =\ 0;\textcolor{comment}{//variabile\ usata\ per\ contare\ le\ iterazioni\ dei\ cicli\ while\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00038}00038\ \ \ \ \ std::vector<int>\ VettoreDifferenzeStripConsecutive;\textcolor{comment}{//\ Vector\ of\ ints\ used\ to\ identify\ cluster\ and\ measure\ its\ number\ of\ strips\ (dimension)}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00039}00039\ \ \ \ \ std::vector<int>\ StripLayer;\ \textcolor{comment}{//\ Used\ to\ count\ the\ strips\ in\ a\ layer}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordtype}{int}\ NLayerXZWithMoreThan2Cluster\ =\ 0;\ \textcolor{comment}{//\ \ Used\ to\ count\ the\ number\ of\ layers\ with\ more\ than\ two\ clusters\ in\ the\ XZ\ vision}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{int}\ NLayerYZWithMoreThan2Cluster\ =\ 0;\ \textcolor{comment}{//\ \ Used\ to\ count\ the\ number\ of\ layers\ with\ more\ than\ two\ clusters\ in\ the\ YZ\ vision}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordtype}{int}\ NClusterInTheLayer\ =0;\ \textcolor{comment}{//\ \ Used\ to\ count\ the\ number\ of\ clusters\ in\ a\ layer\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordtype}{int}\ FalseTrigger\ =\ 0;\ \textcolor{comment}{//\ Used\ to\ count\ the\ number\ of\ events\ that\ have\ a\ False\ Trigger\ condition}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordtype}{int}\ Nx\ =\ 0;\ \textcolor{comment}{//\ Used\ to\ count\ number\ of\ hits\ in\ the\ XZ\ vision}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordtype}{int}\ Ny\ =\ 0;\ \textcolor{comment}{//\ Used\ to\ count\ the\ number\ of\ hits\ in\ the\ YZ\ vision}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordtype}{int}\ BadEvents\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{int}\ HitPerPiano[10]\ =\ \{0\};\ \textcolor{comment}{//Array\ containing\ the\ number\ of\ hit\ in\ the\ layers.}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00051}00051\ \ \ \ \ std::map<int,\ int>\ MapHitPerPiano;\ \textcolor{comment}{//It\ maps\ the\ layer's\ ID\ to\ its\ respective\ number\ of\ hits}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<10;i++)\{}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ MapHitPerPiano.insert(std::make\_pair(\mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}}[i],HitPerPiano[i]));}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{int}\ ClusterPerPiano[10]\ =\ \{0\};\ \textcolor{comment}{//Array\ containing\ the\ number\ of\ clusters\ in\ the\ layers.}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00059}00059\ \ \ \ \ std::map<int,int>\ MapClusterPerPiano;\ \textcolor{comment}{//It\ maps\ the\ layer's\ ID\ to\ its\ respective\ number\ of\ clusters}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<10;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ MapClusterPerPiano.insert(std::make\_pair(\mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}}[i],\ ClusterPerPiano[i]));}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00063}00063\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00065}00065\ \ \ \ \ std::vector<int>\ MutedStripX0;\textcolor{comment}{//vector\ that\ contains\ all\ dead/muted\ strips\ of\ layer\ X0}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00066}00066\ \ \ \ \ std::vector<int>\ MutedStripX1;\textcolor{comment}{//vector\ that\ contains\ all\ dead/muted\ strips\ of\ layer\ X1}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00067}00067\ \ \ \ \ std::vector<int>\ MutedStripX2;\textcolor{comment}{//vector\ that\ contains\ all\ dead/muted\ strips\ of\ layer\ X2}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00068}00068\ \ \ \ \ std::vector<int>\ MutedStripX3;\textcolor{comment}{//vector\ that\ contains\ all\ dead/muted\ strips\ of\ layer\ X3}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00069}00069\ \ \ \ \ std::vector<int>\ MutedStripX4;\textcolor{comment}{//vector\ that\ contains\ all\ dead/muted\ strips\ of\ layer\ X4}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00070}00070\ \ \ \ \ std::vector<int>\ MutedStripY0;\textcolor{comment}{//vector\ that\ contains\ all\ dead/muted\ strips\ of\ layer\ Y0}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00071}00071\ \ \ \ \ std::vector<int>\ MutedStripY1;\textcolor{comment}{//vector\ that\ contains\ all\ dead/muted\ strips\ of\ layer\ Y1}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00072}00072\ \ \ \ \ std::vector<int>\ MutedStripY2;\textcolor{comment}{//vector\ that\ contains\ all\ dead/muted\ strips\ of\ layer\ Y2}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00073}00073\ \ \ \ \ std::vector<int>\ MutedStripY3;\textcolor{comment}{//vector\ that\ contains\ all\ dead/muted\ strips\ of\ layer\ Y3}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00074}00074\ \ \ \ \ std::vector<int>\ MutedStripY4;\textcolor{comment}{//vector\ that\ contains\ all\ dead/muted\ strips\ of\ layer\ Y4}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00075}00075\ \ \ \ \ std::vector<std::vector<int>>\ MutedVector\ =\ \{MutedStripX0,MutedStripX1,MutedStripX2,MutedStripX3,MutedStripX4,MutedStripY0,MutedStripY1,MutedStripY2,MutedStripY3,MutedStripY4\};\ \textcolor{comment}{//\ Container\ of\ MutedStripsVectors\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00080}00080\ \ \ \ \ std::map<int,\ std::vector<int>>\ MapDeiVettoriMutati;\ \textcolor{comment}{//maps\ the\ layer's\ ID\ to\ its\ respective\ muted\ strip\ container}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i<MutedVector.size();\ i++)\{}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ MapDeiVettoriMutati.insert(std::make\_pair(\mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}}[i],MutedVector[i]));\ \textcolor{comment}{//inserting\ all\ pairs\ of\ IDs\ and\ muted\ strips\ containers}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ END\ SECTION\ 1}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SECTION\ 2:\ MUTED/DEAD\ STRIPS\ FINDING}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00094}00094\ \ \ \ \ \textcolor{comment}{//\ \ In\ this\ section\ a\ util\ function\ is\ called\ to\ find\ all\ muted\ strips\ in\ the\ tracker,\ an\ std::vector<TH1F*>\ is\ filled\ for\ each\ layer\ with\ the\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//\ \ hitten\ strips,\ then\ all\ strips\ that\ have\ a\ number\ of\ hits\ equal\ to\ 0\ are\ added\ to\ a\ container\ std::vector<int>}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00099}00099\ \ \ \ \ \mbox{\hyperlink{UtilsCreateTree_8cpp_a2e3c33f3b2a5ed69f4aee9756d4b9608}{FindMutedStrips}}(fileinput,NHit,ciclo,\mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}},\mbox{\hyperlink{GeneralUtils_8cpp_a776b960425b2324caf6190ae1d733df1}{MapLayerToID}},MapDeiVettoriMutati);\ \textcolor{comment}{//Let's\ fill\ the\ MutedStripsXN/YN\ vectors}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ END\ SECTION\ 2}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SECTION\ 3:\ CREATING\ THE\ ROOT\ FILE\ AND\ FILLING\ THE\ TREE\ WITH\ THE\ INSTANCES\ OF\ CUSTOM\ OBJECT\ EVENTO}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{comment}{//\ \ In\ this\ section\ a\ first\ subsection\ consist\ of\ setupping\ the\ creation\ of\ the\ output\ file,\ the\ input\ file\ .lif\ is\ read\ as\ a\ vector\ of\ words}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00111}00111\ \ \ \ \ \textcolor{comment}{//\ \ (strings\ separated\ by\ white\ space).\ Each\ line\ of\ the\ file\ corresponds\ to\ an\ event,\ so\ a\ loop\ is\ made,\ for\ each\ iteration\ the\ members\ Strip\ \ \ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00112}00112\ \ \ \ \ \textcolor{comment}{//\ \ and\ Layer\ are\ each\ filled\ respectively\ with\ the\ Strip\ number\ ID\ and\ Layer\ ID\ of\ all\ hits.\ Next\ subsection(2)\ a\ clustering\ abstraction\ and\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//\ \ the\ flagging-\/check\ for\ the\ event\ is\ made.\ In\ the\ last\ subsection(3)\ there\ is\ a\ check\ if\ the\ event\ is\ False-\/triggered\ (does\ not\ satisfy\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{comment}{//\ \ \ trigger\ condition).\ Note\ that\ it\ is\ not\ required\ that\ the\ hit\ are\ consecutive.}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//SUBSECTION\ 1:\ CREATION\ OF\ TREE\ AND\ FILE,\ HITS\ PHASE}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00121}00121\ \ \ \ \ \mbox{\hyperlink{classEvento}{Evento}}\ evento;}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00122}00122\ \ \ \ \ TFile\ *output\ =\ \textcolor{keyword}{new}\ TFile(fileoutput,\ \textcolor{stringliteral}{"{}recreate"{}});}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00123}00123\ \ \ \ \ TTree\ *tree\ =\ \textcolor{keyword}{new}\ TTree(\textcolor{stringliteral}{"{}tree"{}},\ \textcolor{stringliteral}{"{}tree"{}});}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00124}00124\ \ \ \ \ tree-\/>Branch(\textcolor{stringliteral}{"{}evento"{}},\&evento);}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00125}00125\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00127}00127\ \ \ \ \ std::string\ line;\ \textcolor{comment}{//declaring\ the\ std::string\ that\ will\ act\ as\ a\ placeholder\ for\ each\ line\ of\ the\ file}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00128}00128\ \ \ \ \ std::ifstream\ myfile\_in(fileinput);\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00129}00129\ \ \ \ \ \textcolor{keywordflow}{if}\ (myfile\_in.is\_open())\{\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}ok"{}}<<std::endl;\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(getline(myfile\_in,\ line))\{}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(ciclo>0)\{\ \textcolor{comment}{//\ Line\ 0\ contains\ no\ info,\ we\ skip\ it\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::istringstream\ iss\{line\};}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ words\ \textcolor{comment}{//we\ make\ a\ vector\ of\ words\ rather\ than\ chars}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::istream\_iterator<std::string>(iss),}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::istream\_iterator<std::string>()}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{UtilsCreateTree_8cpp_aca6b17a669149b56998741e92d84bca8}{FlushPlaceholder}}(evento,\ MapHitPerPiano,\ MapClusterPerPiano,\ VettoreDifferenzeStripConsecutive,\ StripLayer,\ \mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}},\ Nx,\ Ny);\ \ \textcolor{comment}{//\ Reset\ all\ variables\ used\ in\ the\ for\ loop,\ variable\ are\ reused\ for\ efficiency}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NHit\ =\ stoi(words[1]);\ \textcolor{comment}{//\ we\ use\ this\ placeholder\ because\ giving\ directly\ the\ value\ to\ the\ member\ NHit\ of\ class\ Evento\ raised\ a\ ValueError}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_a169ad3427525c72d5918a2fc2633221b}{NHit}}\ =\ NHit;\ \textcolor{comment}{//\ We\ set\ the\ NHit\ member\ of\ Evento}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_a67ceeffab359005a849c20f67d163273}{NEventi}}\ =\ ciclo;\ \textcolor{comment}{//\ We\ set\ the\ NEventi\ member\ of\ Evento}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<evento.\mbox{\hyperlink{classEvento_a169ad3427525c72d5918a2fc2633221b}{NHit}};\ i++)\{\ \textcolor{comment}{//Fill\ the\ members\ Layer\ and\ Strips\ of\ Evento}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_a153ee65784b514a6c5c24cb4a298796c}{Layer}}.push\_back(\mbox{\hyperlink{GeneralUtils_8cpp_a776b960425b2324caf6190ae1d733df1}{MapLayerToID}}[words[i+2+4*i]]);}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_a8cfabeb4f3492febba7e0f7f932664de}{Strip}}.push\_back(stoi(words[i+4+4*i]));}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ SUBSECTION\ 2:\ CLUSTERING\ AND\ FLAGGING}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ x:\ \mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}})\{\ \textcolor{comment}{//for\ each\ Layer\ do\ clustering,\ verify\ if\ flags\ 1,2,3\ are\ satisfied}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{UtilsCreateTree_8cpp_ae6621827442b50675c4d3f28ae9db3e4}{FillStripLayer}}(evento,\ StripLayer,\ MapHitPerPiano,\ x);\ \textcolor{comment}{//Fill\ the\ container\ striplayer\ with\ the\ strips\ of\ the\ current\ layer}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LengthCluster=1;\ \textcolor{comment}{//\ reset\ var}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (StripLayer.size()\ ==\ 1)\ \textcolor{comment}{//\ The\ layer\ has\ only\ one\ strip,\ one\ may\ as\ well\ directly\ do\ clustering\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_ab088b412620cb1c3a80dca0ca56ab720}{ClusterDimension}}.push\_back(LengthCluster);\ \textcolor{comment}{//Fill\ object\ evento}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_a06a9c21fec9646ee71e2d6139fe82655}{InitialStrip}}.push\_back(StripLayer[0]);}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}.push\_back(x);}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}.push\_back(\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(StripLayer[0]));}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{UtilsCreateTree_8cpp_aeeb1cdab7bd20e0a279049b369a2f4b6}{CheckForFlagOne}}(evento,\ MapDeiVettoriMutati,\ StripLayer,\ \ x,LengthCluster,\ 0);\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(StripLayer.size()\ ==\ 0)\textcolor{comment}{//do\ nothing}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//fill\ up\ the\ difference\ vector:\ Make\ vector\ of\ consecutive\ differences\ between\ strips\ of\ the\ same\ layer}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::sort(StripLayer.begin(),\ StripLayer.end());\ \textcolor{comment}{//sort\ strip\ vector\ in\ order\ to\ calculate\ the\ vector\ of\ consecutive\ differences}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ j\ =\ 0;\ j<StripLayer.size()-\/1;\ j++)\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VettoreDifferenzeStripConsecutive.push\_back(StripLayer[j+1]\ -\/\ StripLayer[j]);\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(StripLayer.size()>1)\ \textcolor{comment}{//Clustering\ in\ case\ of\ multiple\ hits}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ j\ =\ 0;\ j<StripLayer.size();\ j++)\textcolor{comment}{//loop\ on\ all\ strip\ of\ the\ layer}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IMPORTANT\ COMMENT}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ One\ may\ think\ it\ is\ a\ mistake\ to\ loop\ up\ to\ StripLayer.size()\ and\ that\ actually\ one\ should\ go\ up\ to\ StripLayer.size()-\/1\ for\ the\ vector\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ VettoreDifferenzeStripConsecutive\ since\ its\ size\ is\ lower\ by\ 1,\ however\ this\ is\ useful\ to\ cover\ up\ the\ case\ of\ a\ last\ single\ cluster,\ which\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ otherwise\ would\ not\ be\ counted.}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (e.g.\ one\ could\ hypothesize\ to\ have\ the\ VettoreDifferenzeStripConsecutive\ =\ \{1,\ 1,\ 2\},\ which\ correspond\ to\ two\ clusters\ with\ dimension\ 3\ and\ 1.}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Without\ going\ up\ to\ StripLayer.size(),\ the\ last\ cluster\ would\ not\ be\ counted.}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((VettoreDifferenzeStripConsecutive[j]\ ==\ 1)\&(j!=StripLayer.size()-\/1))\ \textcolor{comment}{//\ keep\ increasing\ the\ cluster\ dimension\ if\ there\ is\ a\ one,\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LengthCluster++;}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}((LengthCluster>1))\ \textcolor{comment}{//Fill\ object\ with\ cluster\ data\ if\ cluster\ has\ more\ than\ one\ strip,\ turns\ False\ the\ Flag\ 2\ and\ checks\ if\ Flag\ 1\ must\ be\ turned\ off.}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_ab088b412620cb1c3a80dca0ca56ab720}{ClusterDimension}}.push\_back(LengthCluster);\ \textcolor{comment}{//Fill\ object\ evento}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_a06a9c21fec9646ee71e2d6139fe82655}{InitialStrip}}.push\_back(StripLayer[j-\/LengthCluster+1]);}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}.push\_back(x);}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_af016bfeb93df293c3291ba67f39f7ee3}{Flags}}[2]\ =0;\ \ \textcolor{comment}{//turns\ off\ Flag\ 2}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}.push\_back((\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(StripLayer[j])+\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(StripLayer[j-\/LengthCluster+1]))/2.);\ \textcolor{comment}{//The\ cluster\ position\ is\ at\ half\ between\ the\ initial\ and\ last\ strip}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{UtilsCreateTree_8cpp_aeeb1cdab7bd20e0a279049b369a2f4b6}{CheckForFlagOne}}(evento,\ MapDeiVettoriMutati,\ StripLayer,x,\ LengthCluster,\ \ j);\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NClusterInTheLayer++;\ \textcolor{comment}{//keep\ account\ of\ number\ of\ clusters}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LengthCluster\ =\ 1;\ \textcolor{comment}{//reset}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\textcolor{comment}{//The\ only\ case\ remaining\ is\ a\ cluster\ of\ dimension\ 1}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_ab088b412620cb1c3a80dca0ca56ab720}{ClusterDimension}}.push\_back(LengthCluster);\textcolor{comment}{//Fill\ object\ evento}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_a06a9c21fec9646ee71e2d6139fe82655}{InitialStrip}}.push\_back(StripLayer[j]);\textcolor{comment}{//Fill\ object\ evento}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}.push\_back(x);\textcolor{comment}{//Fill\ object\ evento}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ evento.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}.push\_back(\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(StripLayer[j]));\textcolor{comment}{//Fill\ object\ evento}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NClusterInTheLayer++;\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{UtilsCreateTree_8cpp_aeeb1cdab7bd20e0a279049b369a2f4b6}{CheckForFlagOne}}(evento,\ MapDeiVettoriMutati,\ StripLayer,\ x,\ LengthCluster,\ j);\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{UtilsCreateTree_8cpp_a043a2af0e9309627b8a609ef0dbdf941}{CheckForFlagTwo}}(evento,\ NClusterInTheLayer);\textcolor{comment}{//check\ if\ flag\ 2\ is\ satisfied\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ StripLayer.clear();}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VettoreDifferenzeStripConsecutive.clear();}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NClusterInTheLayer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{UtilsCreateTree_8cpp_a210da059f308fac2de4e31917b1cb320}{CheckForFlagThree}}(evento,\ MapClusterPerPiano,\ NLayerXZWithMoreThan2Cluster,\ NLayerYZWithMoreThan2Cluster,\ \mbox{\hyperlink{GeneralUtils_8cpp_a0d5401f6323c56e8dd6c5e846a5ae8a7}{LayersID}});}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//SUBSECTION\ 4:\ FALSE-\/TRIGGER\ CHECK\ AND\ OUTPUTTING\ FILE}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=10;\ i<15;\ i++)\ \textcolor{comment}{//Check\ all\ the\ hits\ in\ the\ respective\ vision.}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(MapHitPerPiano[i]>0)\{Nx++;\}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(MapHitPerPiano[i+10]>0)\{Ny++;\}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(evento.\mbox{\hyperlink{classEvento_af016bfeb93df293c3291ba67f39f7ee3}{Flags}}[0]\ ==\ 0)\{}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BadEvents++;}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((Nx>=3)\&(Ny>=3))\{\ \textcolor{comment}{//Fill\ if\ this\ partial\ trigger\ condition\ is\ satisfied}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tree-\/>Fill();}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{\ \textcolor{comment}{//count\ up\ the\ event\ that\ does\ not\ respect\ partial\ trigger\ }}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FalseTrigger++;}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ ciclo++;}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ output-\/>Write();\ \ \ \textcolor{comment}{//write\ output\ file}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ output-\/>Close();\ \ \ \textcolor{comment}{//close\ output\ file}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ myfile\_in.close();\ \ \ \textcolor{comment}{//close\ input\ file}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Report\ on\ false\ trigger.}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Eventi\ con\ cluster\ accanto\ a\ strip\ mutate:\ "{}}<<\ BadEvents<<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Eventi\ totali:\ "{}}<<(ciclo-\/1)<<std::endl;}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Eventi\ veri:\ \ "{}}<<(ciclo-\/1-\/FalseTrigger)<<std::endl;}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Eventi\ con\ falsetrigger:\ \ "{}}<<FalseTrigger<<std::endl;}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00294}00294\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00296}00296\ \}}
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{CreateTree_8cpp_source_l00298}00298\ }
+
+\end{DoxyCode}

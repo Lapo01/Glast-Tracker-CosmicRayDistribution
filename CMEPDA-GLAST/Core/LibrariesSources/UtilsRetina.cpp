@@ -2,7 +2,7 @@
 
 /**
  *  * \file UtilsRetina.cpp
- *	Source code for the library that contains utils for the Retina macro
+ *	Source code of utils library for the Retina macro
  *
  * 
  *

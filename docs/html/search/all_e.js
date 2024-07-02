@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['track_0',['Track',['../d9/d18/classTrack.html',1,'']]],
-  ['track_2eh_1',['Track.h',['../d3/de0/Track_8h.html',1,'']]],
-  ['tracky_2',['TrackY',['../d2/da4/classEventoTrack.html#afc78d0bef2be9a53e9adc51a2a83f9bb',1,'EventoTrack']]]
+  ['second_20data_20abstraction_20phase_3a_20tracking_0',['Second Data Abstraction Phase: Tracking',['../index.html#second_ab',1,'']]],
+  ['setup_1',['Setup',['../index.html#setup_sec',1,'']]],
+  ['strip_2',['Strip',['../d1/dc8/classEvento.html#a8cfabeb4f3492febba7e0f7f932664de',1,'Evento']]],
+  ['stripcoordinate_3',['StripCoordinate',['../dc/d43/GeneralUtils_8cpp.html#a100c62543a890246b20d112b2242817e',1,'StripCoordinate(int Strip):&#160;GeneralUtils.cpp'],['../dc/d78/GeneralUtils_8h.html#a100c62543a890246b20d112b2242817e',1,'StripCoordinate(int Strip):&#160;GeneralUtils.cpp']]],
+  ['structure_20of_20the_20package_4',['Structure of the package',['../index.html#first_sec_first_sub_sec',1,'']]]
 ];

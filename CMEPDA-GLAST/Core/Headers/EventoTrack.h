@@ -1,6 +1,6 @@
 /**
  *  \file EventoTrack.h
- * Header file for the object EventoTrack
+ * Headers for the object EventoTrack
  */
 
 
@@ -30,12 +30,18 @@
 class EventoTrack
 {
 public:
-	std::vector<Track> TrackX; /** Container of the projection on the vision XZ */
-	std::vector<Track> TrackY; /** Container of the projection on the vision YZ */
-	int Nx()/** Method that returns the number of tracks on the vision XZ */
+    /** Container of the projection on the vision XZ */
+	std::vector<Track> TrackX; 
+	/** Container of the projection on the vision YZ */
+	std::vector<Track> TrackY; 
+
+	/** Method that returns the number of tracks on the vision XZ */
+	int Nx()
 	{return TrackX.size();}
-	int Ny()/** Method that returns the number of tracks on the vision YZ */
+	/** Method that returns the number of tracks on the vision YZ */
+	int Ny()
 	{return TrackY.size();}
-	int NEvento; /** Event ID */
+	 /** Event ID */
+	int NEvento;
 	
 };

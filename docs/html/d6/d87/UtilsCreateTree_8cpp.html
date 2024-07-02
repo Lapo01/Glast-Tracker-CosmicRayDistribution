@@ -81,14 +81,19 @@ $(function() {
   <div class="headertitle"><div class="title">UtilsCreateTree.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;UtilsCreateTree.h&quot;</code><br />
-</div><table class="memberdecls">
+
+<p>Source code for utils library used in CreateTree macro.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d1/d1b/UtilsCreateTree_8h_source.html">UtilsCreateTree.h</a>&quot;</code><br />
+</div>
+<p><a href="../../d6/d87/UtilsCreateTree_8cpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2e3c33f3b2a5ed69f4aee9756d4b9608" id="r_a2e3c33f3b2a5ed69f4aee9756d4b9608"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e3c33f3b2a5ed69f4aee9756d4b9608">FindMutedStrips</a> (const std::string &amp;file, int &amp;NHit, int &amp;ciclo, std::vector&lt; int &gt; &amp;LayersID, std::map&lt; std::string, int &gt; &amp;mapping, std::map&lt; int, std::vector&lt; int &gt; &gt; &amp;MapDeiVettoriMutati)</td></tr>
+<tr class="memitem:a2e3c33f3b2a5ed69f4aee9756d4b9608" id="r_a2e3c33f3b2a5ed69f4aee9756d4b9608"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e3c33f3b2a5ed69f4aee9756d4b9608">FindMutedStrips</a> (const std::string &amp;file, int &amp;NHit, int &amp;ciclo, std::vector&lt; int &gt; &amp;<a class="el" href="../../dc/d43/GeneralUtils_8cpp.html#a0d5401f6323c56e8dd6c5e846a5ae8a7">LayersID</a>, std::map&lt; std::string, int &gt; &amp;mapping, std::map&lt; int, std::vector&lt; int &gt; &gt; &amp;MapDeiVettoriMutati)</td></tr>
 <tr class="memdesc:a2e3c33f3b2a5ed69f4aee9756d4b9608"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function finds dead and muted strips in the tracker, which one can safely assume to be equal to the set of strips that have never been hit if the data sample is big enough.  <br /></td></tr>
 <tr class="separator:a2e3c33f3b2a5ed69f4aee9756d4b9608"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca6b17a669149b56998741e92d84bca8" id="r_aca6b17a669149b56998741e92d84bca8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca6b17a669149b56998741e92d84bca8">FlushPlaceholder</a> (<a class="el" href="../../d1/dc8/classEvento.html">Evento</a> &amp;e, std::map&lt; int, int &gt; &amp;MapHitPerPiano, std::map&lt; int, int &gt; &amp;MapClusterPerPiano, std::vector&lt; int &gt; &amp;VettoreDifferenzeStripConsecutive, std::vector&lt; int &gt; &amp;StripLayer, std::vector&lt; int &gt; &amp;LayersID, int &amp;Nx, int &amp;Ny)</td></tr>
+<tr class="memitem:aca6b17a669149b56998741e92d84bca8" id="r_aca6b17a669149b56998741e92d84bca8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca6b17a669149b56998741e92d84bca8">FlushPlaceholder</a> (<a class="el" href="../../d1/dc8/classEvento.html">Evento</a> &amp;e, std::map&lt; int, int &gt; &amp;MapHitPerPiano, std::map&lt; int, int &gt; &amp;MapClusterPerPiano, std::vector&lt; int &gt; &amp;VettoreDifferenzeStripConsecutive, std::vector&lt; int &gt; &amp;StripLayer, std::vector&lt; int &gt; &amp;<a class="el" href="../../dc/d43/GeneralUtils_8cpp.html#a0d5401f6323c56e8dd6c5e846a5ae8a7">LayersID</a>, int &amp;Nx, int &amp;Ny)</td></tr>
 <tr class="memdesc:aca6b17a669149b56998741e92d84bca8"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function clears all the vectors in a object <a class="el" href="../../d1/dc8/classEvento.html">Evento</a> and sets all its flags to a default value of 1.  <br /></td></tr>
 <tr class="separator:aca6b17a669149b56998741e92d84bca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeb1cdab7bd20e0a279049b369a2f4b6" id="r_aeeb1cdab7bd20e0a279049b369a2f4b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeeb1cdab7bd20e0a279049b369a2f4b6">CheckForFlagOne</a> (<a class="el" href="../../d1/dc8/classEvento.html">Evento</a> &amp;e, std::map&lt; int, std::vector&lt; int &gt; &gt; &amp;MapDeiVettoriMutati, std::vector&lt; int &gt; &amp;StripLayer, int &amp;layer, int &amp;LengthCluster, int j)</td></tr>
@@ -97,7 +102,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a043a2af0e9309627b8a609ef0dbdf941" id="r_a043a2af0e9309627b8a609ef0dbdf941"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a043a2af0e9309627b8a609ef0dbdf941">CheckForFlagTwo</a> (<a class="el" href="../../d1/dc8/classEvento.html">Evento</a> &amp;e, int &amp;NCluster)</td></tr>
 <tr class="memdesc:a043a2af0e9309627b8a609ef0dbdf941"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function itself is made in order to make the main code more comprehensible, it checks if the number of cluster in a layer is at maximum 1.  <br /></td></tr>
 <tr class="separator:a043a2af0e9309627b8a609ef0dbdf941"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a210da059f308fac2de4e31917b1cb320" id="r_a210da059f308fac2de4e31917b1cb320"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a210da059f308fac2de4e31917b1cb320">CheckForFlagThree</a> (<a class="el" href="../../d1/dc8/classEvento.html">Evento</a> &amp;e, std::map&lt; int, int &gt; &amp;MapClusterPerPiano, int &amp;NLayerXZWithMoreThan2Cluster, int &amp;NLayerYZWithMoreThan2Cluster, std::vector&lt; int &gt; &amp;LayersID)</td></tr>
+<tr class="memitem:a210da059f308fac2de4e31917b1cb320" id="r_a210da059f308fac2de4e31917b1cb320"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a210da059f308fac2de4e31917b1cb320">CheckForFlagThree</a> (<a class="el" href="../../d1/dc8/classEvento.html">Evento</a> &amp;e, std::map&lt; int, int &gt; &amp;MapClusterPerPiano, int &amp;NLayerXZWithMoreThan2Cluster, int &amp;NLayerYZWithMoreThan2Cluster, std::vector&lt; int &gt; &amp;<a class="el" href="../../dc/d43/GeneralUtils_8cpp.html#a0d5401f6323c56e8dd6c5e846a5ae8a7">LayersID</a>)</td></tr>
 <tr class="memdesc:a210da059f308fac2de4e31917b1cb320"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function checks if the event satisfy Flag number four declared in the <br  />
  object evento.  <br /></td></tr>
 <tr class="separator:a210da059f308fac2de4e31917b1cb320"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -106,9 +111,9 @@ Functions</h2></td></tr>
 <tr class="separator:ae6621827442b50675c4d3f28ae9db3e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><ul>
-<li>Questo file contiene funzioni utili per la prima fase di astrazione dei dati, prende il format di oggetto .lif e restituisce un file .root con un tree. </li>
-</ul>
+<div class="textblock"><p>Source code for utils library used in CreateTree macro. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../d6/d87/UtilsCreateTree_8cpp_source.html">UtilsCreateTree.cpp</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="aeeb1cdab7bd20e0a279049b369a2f4b6" name="aeeb1cdab7bd20e0a279049b369a2f4b6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeeb1cdab7bd20e0a279049b369a2f4b6">&#9670;&#160;</a></span>CheckForFlagOne()</h2>
@@ -162,6 +167,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="../../d6/d87/UtilsCreateTree_8cpp_source.html#l00162">162</a> of file <a class="el" href="../../d6/d87/UtilsCreateTree_8cpp_source.html">UtilsCreateTree.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a210da059f308fac2de4e31917b1cb320" name="a210da059f308fac2de4e31917b1cb320"></a>
@@ -213,6 +220,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="../../d6/d87/UtilsCreateTree_8cpp_source.html#l00223">223</a> of file <a class="el" href="../../d6/d87/UtilsCreateTree_8cpp_source.html">UtilsCreateTree.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a043a2af0e9309627b8a609ef0dbdf941" name="a043a2af0e9309627b8a609ef0dbdf941"></a>
@@ -242,6 +251,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d87/UtilsCreateTree_8cpp_source.html#l00197">197</a> of file <a class="el" href="../../d6/d87/UtilsCreateTree_8cpp_source.html">UtilsCreateTree.cpp</a>.</p>
 
 </div>
 </div>
@@ -284,6 +295,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d87/UtilsCreateTree_8cpp_source.html#l00266">266</a> of file <a class="el" href="../../d6/d87/UtilsCreateTree_8cpp_source.html">UtilsCreateTree.cpp</a>.</p>
 
 </div>
 </div>
@@ -348,6 +361,8 @@ Functions</h2></td></tr>
 <p>Push back the strip ID into the vector corresponding to the layer's ID</p>
 <p>Close file</p>
 <p>Delete pointers</p>
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d87/UtilsCreateTree_8cpp_source.html#l00033">33</a> of file <a class="el" href="../../d6/d87/UtilsCreateTree_8cpp_source.html">UtilsCreateTree.cpp</a>.</p>
 
 </div>
 </div>
@@ -415,6 +430,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d87/UtilsCreateTree_8cpp_source.html#l00122">122</a> of file <a class="el" href="../../d6/d87/UtilsCreateTree_8cpp_source.html">UtilsCreateTree.cpp</a>.</p>
 
 </div>
 </div>

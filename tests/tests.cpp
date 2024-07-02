@@ -80,10 +80,10 @@ void TestSample(TString fileinput){
 			}
 	
 		if(e.NHit != NumberOfHits){
-			throw "Error: There is at least one event in which the sum of the dimension of the clusters does not match the number of hits: the CreateTree macro is malfunctioning."
+			throw std::exception("Error: There is at least one event in which the sum of the dimension of the clusters does not match the number of hits: the CreateTree macro is malfunctioning.");
 		}
 		if(e.NHit != e.Strip.size()){
-			throw "Error: the number of hitten strips does not match the number of hits in the event : the CreateTree macro is malfunctoning."
+			throw std::exception("Error: the number of hitten strips does not match the number of hits in the event : the CreateTree macro is malfunctoning.");
 			
 		}
 	}

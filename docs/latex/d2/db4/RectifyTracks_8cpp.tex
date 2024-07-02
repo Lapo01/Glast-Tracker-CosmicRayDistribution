@@ -9,8 +9,7 @@
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{RectifyTracks_8cpp_a3926338d4a9e26172b33e8621c66aba8}\label{RectifyTracks_8cpp_a3926338d4a9e26172b33e8621c66aba8} 
-void {\bfseries Rectify\+Tracks} (TString file, TString fileoutput)
+void \mbox{\hyperlink{RectifyTracks_8cpp_a3926338d4a9e26172b33e8621c66aba8}{Rectify\+Tracks}} (TString file, TString fileoutput)
 \end{DoxyCompactItemize}
 
 
@@ -19,3 +18,19 @@ void {\bfseries Rectify\+Tracks} (TString file, TString fileoutput)
 \begin{DoxyItemize}
 \item This cpp macro takes as input a .root data file with a tree and returns a .root file with a tree. It takes the found potential tracks from the Retina algorithm and corrects the positions on each vision with the shifts calculated, and if there is only one projection per vision than a correction in angle can be applied as there is no ambiguity in the 3D reconstruction (if there are more than 1 projections for at least one vision then there is ambiguity.) After correcting the shifts, a cut in chisquare is made a 95\% of the NOMINAL INTEGRAL for a chisquare distribution with 1,2,3 dof. 
 \end{DoxyItemize}
+
+Definition in file \mbox{\hyperlink{RectifyTracks_8cpp_source}{Rectify\+Tracks.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{RectifyTracks_8cpp_a3926338d4a9e26172b33e8621c66aba8}\label{RectifyTracks_8cpp_a3926338d4a9e26172b33e8621c66aba8} 
+\index{RectifyTracks.cpp@{RectifyTracks.cpp}!RectifyTracks@{RectifyTracks}}
+\index{RectifyTracks@{RectifyTracks}!RectifyTracks.cpp@{RectifyTracks.cpp}}
+\doxysubsubsection{\texorpdfstring{RectifyTracks()}{RectifyTracks()}}
+{\footnotesize\ttfamily void Rectify\+Tracks (\begin{DoxyParamCaption}\item[{TString}]{file,  }\item[{TString}]{fileoutput }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{RectifyTracks_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{RectifyTracks_8cpp_source}{Rectify\+Tracks.\+cpp}}.
+

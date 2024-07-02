@@ -1,0 +1,282 @@
+\doxysection{Rectify\+Tracks.\+cpp}
+\hypertarget{RectifyTracks_8cpp_source}{}\label{RectifyTracks_8cpp_source}\index{CMEPDA-\/GLAST/Core/TrackingRetina/RectifyTracks.cpp@{CMEPDA-\/GLAST/Core/TrackingRetina/RectifyTracks.cpp}}
+\mbox{\hyperlink{RectifyTracks_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include<iostream>}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include<vector>}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include<sstream>}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include<map>}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00015}00015\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{GeneralUtils_8h}{GeneralUtils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00016}00016\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{UtilsRectifyTracks_8h}{UtilsRectifyTracks.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00019}00019\ \textcolor{keywordtype}{void}\ RectifyTracks(TString\ file,\ TString\ fileoutput)\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00020}00020\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SECTION\ 1:\ CREATE\ UTILS\ VARIABLE,\ TREES\ TO\ BE\ READ\ AND\ FILLED,\ }}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ CREATE\ TREE\ TO\ BE\ READ\ }}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ etrack;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ e;\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00034}00034\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ *p\ =\ \&e;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00035}00035\ \ \ \ \ TFile\ *input\ =\ \textcolor{keyword}{new}\ TFile(file,\textcolor{stringliteral}{"{}read"{}});}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00036}00036\ \ \ \ \ TTree\ *tree\ =\ (TTree*)input-\/>Get(\textcolor{stringliteral}{"{}treetrack"{}});}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00037}00037\ \ \ \ \ tree-\/>SetBranchAddress(\textcolor{stringliteral}{"{}etrack"{}},\ \&p);\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{int}\ entries\ =\ tree-\/>GetEntries();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ CREATE\ TREE\ TO\ BE\ WRITTEN}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00043}00043\ \ \ \ \ TFile\ *output\ =\ \textcolor{keyword}{new}\ TFile(fileoutput,\textcolor{stringliteral}{"{}recreate"{}});}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00044}00044\ \ \ \ \ TTree\ *treetrackoutput\ =\ \textcolor{keyword}{new}\ TTree(\textcolor{stringliteral}{"{}treetrack"{}},\ \textcolor{stringliteral}{"{}treetrack"{}});}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00045}00045\ \ \ \ \ treetrackoutput-\/>Branch(\textcolor{stringliteral}{"{}etrack"{}},\&etrack);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ CREATE\ UTILS\ VARIABLES\ AND\ PLACEHOLDERS}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//simply\ create\ the\ fit\ functions\ for\ a\ track}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00053}00053\ \ \ \ \ TF1\ *lineX\ =\ \textcolor{keyword}{new}\ TF1(\textcolor{stringliteral}{"{}lineX"{}},\ \textcolor{stringliteral}{"{}[0]\ +\ [1]*x"{}},\ -\/2,\ 50);\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00054}00054\ \ \ \ \ TF1\ *lineY\ =\ \textcolor{keyword}{new}\ TF1(\textcolor{stringliteral}{"{}lineY"{}},\ \textcolor{stringliteral}{"{}[0]\ +\ [1]*x"{}},\ -\/2,\ 50);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00055}00055\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{int}\ n;\ \ \textcolor{comment}{//variable\ used\ to\ fill\ the\ TGraphErrors.}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{double}\ mx,\ qx,\ my,\ qy,\ chi2X,\ chi2Y,chi2AttX,chi2AttY;\ \textcolor{comment}{//placeholders\ variables\ for\ fitting.}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{double}\ theta,\ phi;\ \textcolor{comment}{//placeholders\ variables\ to\ find\ the\ angle\ between\ tracks\ that\ have\ 1\ projection\ for\ each\ layer.}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00059}00059\ \ \ \ \ std::vector<size\_t>\ TracksXToBeErased;\ \textcolor{comment}{//container\ of\ the\ index\ of\ the\ tracks\ in\ the\ container\ TrackX\ of\ the\ object\ EventoTrack\ that\ do\ not\ pass\ the\ cut\ in\ chisquare\ on\ the\ XZ\ vision,\ those\ are\ to\ be\ removed\ from\ the\ object\ EventoTrack.}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00060}00060\ \ \ \ \ std::vector<size\_t>\ TracksYToBeErased;\ \textcolor{comment}{//container\ of\ the\ index\ of\ the\ tracks\ in\ the\ container\ TrackY\ of\ the\ object\ EventoTrack\ that\ do\ not\ pass\ the\ cut\ in\ chisquare\ on\ the\ YZ\ vision,\ those\ are\ to\ be\ removed\ from\ the\ object\ EventoTrack.}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00061}00061\ \ \ \ \ TH1F\ *chi2XHist\ =\ \textcolor{keyword}{new}\ TH1F(\textcolor{stringliteral}{"{}h"{}},\ \textcolor{stringliteral}{"{}h"{}},\ 2000,0\ ,50);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00062}00062\ \ \ \ \ TH1F\ *oldchi2XHist\ =\ \textcolor{keyword}{new}\ TH1F(\textcolor{stringliteral}{"{}h"{}},\ \textcolor{stringliteral}{"{}h"{}},\ 2000,0\ ,50);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00063}00063\ \ \ \ \ TH1F\ *ThetaNoCut\ =\ \textcolor{keyword}{new}\ TH1F(\textcolor{stringliteral}{"{}hist"{}},\textcolor{stringliteral}{"{}Theta\ Distribution\ with\ no\ cut"{}},\ 1000,0,\ 90);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00065}00065\ \ \ \ \ TH1F\ *thetaHist\ =\ \textcolor{keyword}{new}\ TH1F(\textcolor{stringliteral}{"{}h"{}},\ \textcolor{stringliteral}{"{}h"{}},\ 1000,0\ ,90);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{auto}\ start\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =0;\ i<entries;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ tree-\/>GetEntry(i);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ TracksXToBeErased.clear();\ \textcolor{comment}{//reset\ utils\ variable}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ TracksYToBeErased.clear();\ \textcolor{comment}{//reset\ utils\ variable\ }}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SECTION\ 2:\ WORK\ WITH\ EVENTS\ THAT\ HAVE\ ONLY\ 1\ PROJECTION\ FOR\ EACH\ VISION}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//In\ this\ section\ we\ work\ with\ event\ that\ have\ 1\ potential\ track\ for\ each\ vision,\ correction\ for\ shifts\ along\ XYZ\ and\ for\ relative\ rotations\ are\ made,\ }}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{//a\ fit\ is\ the\ made\ with\ the\ corrected\ data\ and\ a\ cut\ in\ chisquare\ is\ made\ at\ 95\%\ of\ the\ integral\ of\ the\ NOMINAL\ CHISQUARE\ DISTRIBUTION\ for\ the\ corresponding\ dof.\ }}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((e.\mbox{\hyperlink{classEventoTrack_a5cb6f67c0416adee2f3dee2039944d27}{Nx}}()==1)\ \&\&\ (e.\mbox{\hyperlink{classEventoTrack_a88ac7f432f68018e471bb50b73b36d36}{Ny}}()==1))\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//copy\ object\ from\ the\ read\ tree\ to\ the\ object\ on\ the\ tree\ to\ be\ written}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ etrack\ =\ e;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//container\ of\ points\ where\ to\ make\ lineare\ fit}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ TGraphErrors\ *XZ\ =\ \textcolor{keyword}{new}\ TGraphErrors();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ TGraphErrors\ *YZ\ =\ \textcolor{keyword}{new}\ TGraphErrors();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//setup\ variables\ for\ finding\ the\ fit\ }}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ mx\ =\ e.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Fit[1];\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ my\ =\ e.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].Fit[1];}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ qx\ =\ e.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Fit[0];}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ qy\ =\ e.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].Fit[0];}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ ThetaNoCut-\/>Fill(atan(sqrt(mx*mx\ +\ my*my))*180/3.14);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Fit[3]\ ==\ 3)\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oldchi2XHist-\/>Fill(etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Fit[2]);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//correct\ the\ projection\ on\ the\ XZ\ vision\ for\ relative\ shifts\ and\ relative\ angle\ between\ layers}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ jj\ =\ 0;\ jj<etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].ClusterPosition.size();\ jj++)\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n\ =\ XZ-\/>GetN();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].ClusterPosition[jj]\ +=\ -\/\mbox{\hyperlink{UtilsRectifyTracks_8cpp_a84e55be38b776611ae78cd78e781086b}{AngleCorrection}}(etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Layer[jj],\ mx,qx,my,qy)\ -\/\ MapShift[etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Layer[jj]];}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Error[jj]\ =\ ErrorXYAngoloZ[etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Layer[jj]];\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ XZ-\/>SetPoint(n,\ \mbox{\hyperlink{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}{LayerCoordinate}}(etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Layer[jj]),\ etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].ClusterPosition[jj]\ );}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ XZ-\/>SetPointError(n,\ 0,\ etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Error[jj]);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//correct\ the\ projection\ on\ the\ YZ\ vision\ for\ relative\ shifts\ and\ relative\ angle\ between\ layers}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ jj\ =\ 0;\ jj<etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].ClusterPosition.size();\ jj++)\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n\ =\ YZ-\/>GetN();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].ClusterPosition[jj]\ +=\ -\/\mbox{\hyperlink{UtilsRectifyTracks_8cpp_a84e55be38b776611ae78cd78e781086b}{AngleCorrection}}(etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].Layer[jj],\ mx,qx,my,qy)\ -\/\ MapShift[etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].Layer[jj]];}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].Error[jj]\ =\ ErrorXYAngoloZ[etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].Layer[jj]];\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ YZ-\/>SetPoint(n,\ \mbox{\hyperlink{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}{LayerCoordinate}}(etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].Layer[jj]),\ etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].ClusterPosition[jj]);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ YZ-\/>SetPointError(n,\ 0,etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].Error[jj]);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//simply\ do\ the\ linear\ fit\ for\ each\ vision.}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ lineX-\/>SetParameter(0,qx);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ lineX-\/>SetParameter(1,mx);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ XZ-\/>Fit(\textcolor{stringliteral}{"{}lineX"{}},\textcolor{stringliteral}{"{}qEX0"{}});}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ mx\ =\ lineX-\/>GetParameter(1);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ qx\ =lineX-\/>GetParameter(0);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ chi2X\ =lineX-\/>GetChisquare();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ chi2AttX\ =XZ-\/>GetN()-\/2;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ lineY-\/>SetParameter(0,qy);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ lineY-\/>SetParameter(1,my);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ YZ-\/>Fit(\textcolor{stringliteral}{"{}lineY"{}},\textcolor{stringliteral}{"{}qEX0"{}});}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ my\ =\ lineY-\/>GetParameter(1);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ qy\ =lineY-\/>GetParameter(0);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ chi2Y\ =lineY-\/>GetChisquare();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ chi2AttY\ =\ YZ-\/>GetN()\ -\/\ 2;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//calculate\ phi\ and\ theta\ angle\ for\ 3D\ track.}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ phi\ =\ atan2(my,mx)*180/3.14;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ theta\ =\ atan(sqrt(mx*mx+my*my))*180/3.14;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(chi2AttX\ ==3)\{\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chi2XHist-\/>Fill(chi2X);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ the\ track\ passes\ the\ cut,\ fill\ the\ object\ with\ the\ info\ on\ the\ track,\ else\ remove\ the\ track}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((chi2X<SoglieChiMappa[chi2AttX]))\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Fit[0]=\ qx;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Fit[1]=\ mx;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Fit[2]=\ chi2X;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Fit[3]=\ chi2AttX;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}[0].Fit[4]=\ chi2X/chi2AttX;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}.pop\_back();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ the\ track\ passes\ the\ cut,\ fill\ the\ object\ with\ the\ info\ on\ the\ track,\ else\ remove\ the\ track}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((chi2Y<SoglieChiMappa[chi2AttY]))\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].Fit[0]=\ qy;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].Fit[1]=\ my;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].Fit[2]=\ chi2Y;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].Fit[3]=\ chi2AttY;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}[0].Fit[4]=\ chi2Y/chi2AttY;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}.pop\_back();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((chi2Y<SoglieChiMappa[chi2AttY])\&(chi2X<SoglieChiMappa[chi2AttX]))\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ thetaHist-\/>Fill(theta);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ XZ;\ \textcolor{comment}{//delete\ containers\ for\ points}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ YZ;\ \textcolor{comment}{//delete\ containers\ for\ points}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SECTION\ 3:\ WORK\ WITH\ EVENTS\ THAT\ DO\ NOT\ HAVE\ ONLY\ 1\ PROJECTION\ FOR\ AT\ LEAST\ A\ VISION}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \textcolor{comment}{//In\ this\ section\ we\ work\ with\ event\ that\ do\ not\ have\ 1\ potential\ track\ for\ at\ least\ one\ vision,\ correction\ for\ shifts\ along\ XYZ\ is\ made,\ }}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \textcolor{comment}{//a\ fit\ is\ the\ made\ with\ the\ corrected\ data\ and\ a\ cut\ in\ chisquare\ is\ made\ at\ 95\%\ of\ the\ integral\ of\ the\ NOMINAL\ CHISQUARE\ DISTRIBUTION\ for\ the\ corresponding\ dof.\ }}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ etrack\ =\ e;\ \textcolor{comment}{//copy\ object\ from\ the\ read\ tree\ to\ the\ object\ on\ the\ tree\ to\ be\ written}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ mm\ =\ 0;\ \textcolor{comment}{//util\ variable,\ placeholder\ for\ the\ index\ of\ the\ tracks\ that\ do\ not\ pass\ the\ chisquare\ cuts.}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//corrects\ each\ projection\ with\ shifts\ on\ XZ,\ angle\ correction\ is\ not\ made\ as\ there\ are\ ambiguities\ in\ the\ reconstruction.}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ track:etrack.TrackX)\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TGraphErrors\ *XZ\ =\ \textcolor{keyword}{new}\ TGraphErrors();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//correct\ shifts\ }}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ jj\ =\ 0;\ jj<track.ClusterPosition.size();\ jj++)\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ track.ClusterPosition[jj]\ +=\ -\/\ MapShift[track.Layer[jj]];\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ track.Error[jj]\ =\ ErrorXYZ[track.Layer[jj]];\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ XZ-\/>SetPoint(n,\ \mbox{\hyperlink{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}{LayerCoordinate}}(track.Layer[jj]),\ track.ClusterPosition[jj]\ );}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ XZ-\/>SetPointError(n,\ 0,\ track.Error[jj]);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//simply\ do\ fit}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lineX-\/>SetParameter(0,qx);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lineX-\/>SetParameter(1,mx);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ XZ-\/>Fit(\textcolor{stringliteral}{"{}lineX"{}},\textcolor{stringliteral}{"{}qEX0"{}});}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mx\ =\ lineX-\/>GetParameter(1);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qx\ =lineX-\/>GetParameter(0);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chi2X\ =lineX-\/>GetChisquare();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chi2AttX\ =XZ-\/>GetN()-\/2;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ cut\ is\ passed,\ than\ fill\ object\ with\ new\ fit\ values,\ else\ put\ index\ of\ tracks\ on\ the\ container\ of\ indexes\ of\ tracks\ to\ be\ erased.}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((chi2X<SoglieChiMappa[chi2AttX]))\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ track.Fit[0]=\ qx;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ track.Fit[1]=\ mx;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ track.Fit[2]=\ chi2X;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ track.Fit[3]=\ chi2AttX;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ track.Fit[4]=\ chi2X/chi2AttX;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TracksXToBeErased.push\_back(mm);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mm++;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ XZ;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ mm\ =0;\ \textcolor{comment}{//reset\ utils}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//corrects\ each\ projection\ with\ shifts\ on\ YZ,\ angle\ correction\ is\ not\ made\ as\ there\ are\ ambiguities\ in\ the\ reconstruction.}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ track:etrack.TrackY)\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TGraphErrors\ *YZ\ =\ \textcolor{keyword}{new}\ TGraphErrors();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//correct\ shifts\ }}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ jj\ =\ 0;\ jj<track.ClusterPosition.size();\ jj++)\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ track.ClusterPosition[jj]\ +=\ -\/\ MapShift[track.Layer[jj]];\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ track.Error[jj]\ =\ ErrorXYZ[track.Layer[jj]];\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ YZ-\/>SetPoint(n,\ \mbox{\hyperlink{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}{LayerCoordinate}}(track.Layer[jj]),\ track.ClusterPosition[jj]\ );}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ YZ-\/>SetPointError(n,\ 0,\ track.Error[jj]);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//simply\ do\ fit}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lineY-\/>SetParameter(0,qy);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lineY-\/>SetParameter(1,my);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ YZ-\/>Fit(\textcolor{stringliteral}{"{}lineX"{}},\textcolor{stringliteral}{"{}qEX0"{}});}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ my\ =\ lineY-\/>GetParameter(1);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qy\ =lineY-\/>GetParameter(0);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chi2Y\ =lineY-\/>GetChisquare();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chi2AttY\ =YZ-\/>GetN()-\/2;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ cut\ is\ passed,\ than\ fill\ object\ with\ new\ fit\ values,\ else\ put\ index\ of\ tracks\ on\ the\ container\ of\ indexes\ of\ tracks\ to\ be\ erased.}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((chi2Y<SoglieChiMappa[chi2AttY]))\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ track.Fit[0]=\ qy;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ track.Fit[1]=\ my;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ track.Fit[2]=\ chi2Y;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ track.Fit[3]=\ chi2AttY;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ track.Fit[4]=\ chi2Y/chi2AttY;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TracksYToBeErased.push\_back(mm);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mm++;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ YZ;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//erase\ tracks\ that\ do\ not\ pass\ the\ chisquare\ cut\ on\ the\ XZ\ vision}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ it\ =\ TracksXToBeErased.rbegin();\ it\ !=TracksXToBeErased.rend();++it)\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}.erase(etrack.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}.begin()\ +\ *it);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//erase\ tracks\ that\ do\ not\ pass\ the\ chisquare\ cut\ on\ the\ YZ\ vision}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ it\ =\ TracksYToBeErased.rbegin();\ it\ !=TracksYToBeErased.rend();\ ++it)\{}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}.erase(etrack.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}.begin()\ +\ *it);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ treetrackoutput-\/>Fill();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00278}00278\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00279}00279\ \ \ \ \ oldchi2XHist-\/>SaveAs(\textcolor{stringliteral}{"{}oldchi2Dist.root"{}});}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00280}00280\ \ \ \ \ ThetaNoCut-\/>SaveAs(\textcolor{stringliteral}{"{}OldThetaDist.root"{}});}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00281}00281\ \ \ \ \ chi2XHist-\/>SaveAs(\textcolor{stringliteral}{"{}chi2Dist.root"{}});}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00282}00282\ \ \ \ \ thetaHist-\/>SaveAs(\textcolor{stringliteral}{"{}ThetaDist.root"{}});}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00283}00283\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00284}00284\ \ \ \ \ output-\/>Write();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00285}00285\ \ \ \ \ output-\/>Close();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00286}00286\ \ \ \ \ \textcolor{keyword}{auto}\ endtime\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00288}00288\ \ \ \ \ \textcolor{keyword}{auto}\ duration\ =\ std::chrono::duration\_cast<std::chrono::microseconds>(endtime\ -\/\ start);}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00290}00290\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Ci\ sono\ voluti\ "{}}<<duration.count()\ <<\ \textcolor{stringliteral}{"{}\ microsecondi\ a\ togliere\ le\ sistematiche\ e\ ad\ effettuare\ il\ taglio\ in\ chi2."{}}<<endl;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00292}00292\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00293}00293\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00294}00294\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00295}00295\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00296}00296\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00297}00297\ \}}
+
+\end{DoxyCode}

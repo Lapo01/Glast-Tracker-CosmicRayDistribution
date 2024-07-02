@@ -2,40 +2,42 @@
 \hypertarget{EventoTrack_8h_source}{}\label{EventoTrack_8h_source}\index{CMEPDA-\/GLAST/Core/Headers/EventoTrack.h@{CMEPDA-\/GLAST/Core/Headers/EventoTrack.h}}
 \mbox{\hyperlink{EventoTrack_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ }
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <TMath.h>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{Track_8h}{Track.h}}"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}TROOT.h"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}TH2F.h"{}}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}TGraphErrors.h"{}}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}TRandom.h"{}}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}TCanvas.h"{}}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}TFrame.h"{}}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}TDatime.h"{}}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}TStopwatch.h"{}}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <fstream>}}
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <sstream>}}
-\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <iterator>}}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEventoTrack}{EventoTrack}}}
-\DoxyCodeLine{00031\ \{}
-\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00033\ \ \ \ \ std::vector<Track>\ TrackX;\ }
-\DoxyCodeLine{00034\ \ \ \ \ std::vector<Track>\ \mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}};\ }
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEventoTrack_a5cb6f67c0416adee2f3dee2039944d27}{Nx}}()}
-\DoxyCodeLine{00036\ \ \ \ \ \{\textcolor{keywordflow}{return}\ TrackX.size();\}}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEventoTrack_a88ac7f432f68018e471bb50b73b36d36}{Ny}}()}
-\DoxyCodeLine{00038\ \ \ \ \ \{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}.size();\}}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ NEvento;\ }
-\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00007}00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <TMath.h>}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{Track_8h}{Track.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}TROOT.h"{}}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}TH2F.h"{}}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}TGraphErrors.h"{}}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}TCanvas.h"{}}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}TFrame.h"{}}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}TDatime.h"{}}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ "{}TStopwatch.h"{}}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00024}00024\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00025}00025\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00026}00026\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00030}\mbox{\hyperlink{classEventoTrack}{00030}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEventoTrack}{EventoTrack}}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00031}00031\ \{}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00032}00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00034}\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{00034}}\ \ \ \ \ std::vector<Track>\ \mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}};\ }
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00036}\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{00036}}\ \ \ \ \ std::vector<Track>\ \mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}};\ }
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00039}\mbox{\hyperlink{classEventoTrack_a5cb6f67c0416adee2f3dee2039944d27}{00039}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEventoTrack_a5cb6f67c0416adee2f3dee2039944d27}{Nx}}()}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00040}00040\ \ \ \ \ \{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}.size();\}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00042}\mbox{\hyperlink{classEventoTrack_a88ac7f432f68018e471bb50b73b36d36}{00042}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEventoTrack_a88ac7f432f68018e471bb50b73b36d36}{Ny}}()}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00043}00043\ \ \ \ \ \{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}.size();\}}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00045}\mbox{\hyperlink{classEventoTrack_a3eaf59c48347453e9e15173b29239c99}{00045}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEventoTrack_a3eaf59c48347453e9e15173b29239c99}{NEvento}};}
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00046}00046\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{EventoTrack_8h_source_l00047}00047\ \};}
 
 \end{DoxyCode}

@@ -1,0 +1,78 @@
+\doxysection{Utils\+MC.\+cpp}
+\hypertarget{UtilsMC_8cpp_source}{}\label{UtilsMC_8cpp_source}\index{CMEPDA-\/GLAST/Core/LibrariesSources/UtilsMC.cpp@{CMEPDA-\/GLAST/Core/LibrariesSources/UtilsMC.cpp}}
+\mbox{\hyperlink{UtilsMC_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{UtilsMC_8h}{UtilsMC.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00011}00011\ std::vector<int>\ XLayer\ =\ \{14,13,12,11,10\};}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00012}\mbox{\hyperlink{UtilsMC_8cpp_a7126d985b763a926d39f99e80120e21b}{00012}}\ std::vector<int>\ \mbox{\hyperlink{UtilsMC_8cpp_a7126d985b763a926d39f99e80120e21b}{YLayer}}\ =\ \{24,23,22,21,20\};\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00021}\mbox{\hyperlink{UtilsMC_8cpp_adda5b766ce27d32b1a7db35d559331f9}{00021}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsMC_8cpp_adda5b766ce27d32b1a7db35d559331f9}{ResetEvento}}(\mbox{\hyperlink{classEvento}{Evento}}\ \&e)\{}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00022}00022\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00023}00023\ \ \ \ \ e.\mbox{\hyperlink{classEvento_a153ee65784b514a6c5c24cb4a298796c}{Layer}}.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00024}00024\ \ \ \ \ e.\mbox{\hyperlink{classEvento_a8cfabeb4f3492febba7e0f7f932664de}{Strip}}.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00025}00025\ \ \ \ \ e.\mbox{\hyperlink{classEvento_ab088b412620cb1c3a80dca0ca56ab720}{ClusterDimension}}.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00026}00026\ \ \ \ \ e.\mbox{\hyperlink{classEvento_a06a9c21fec9646ee71e2d6139fe82655}{InitialStrip}}.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00027}00027\ \ \ \ \ e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00028}00028\ \ \ \ \ e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00029}00029\ \};}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00054}\mbox{\hyperlink{UtilsMC_8cpp_a1e369ca3e022cd7f119a026088ad64b6}{00054}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsMC_8cpp_a1e369ca3e022cd7f119a026088ad64b6}{ResetUtils}}(std::vector<double>\ \&TrackX,\ std::vector<double>\ \&TrackY,\ std::vector<int>\ \&ZlevelX,\ std::vector<int>\ \&ZlevelY,\ std::vector<int>\ \&ZlevelXPlaceHolder,\ std::vector<int>\ \&ZlevelYPlaceHolder,\ \textcolor{keywordtype}{int}\ \&NxHit,\ \textcolor{keywordtype}{int}\ \&NyHit,\ \textcolor{keywordtype}{double}\ \&epsilon)\{}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00055}00055\ \ \ \ \ TrackX.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00056}00056\ \ \ \ \ TrackY.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00057}00057\ \ \ \ \ ZlevelX.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00058}00058\ \ \ \ \ ZlevelY.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00059}00059\ \ \ \ \ ZlevelYPlaceHolder.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00060}00060\ \ \ \ \ ZlevelXPlaceHolder.clear();}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00061}00061\ \ \ \ \ NxHit\ =\ 0;\ \textcolor{comment}{//reset\ hit}}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00062}00062\ \ \ \ \ NyHit\ =\ 0;\ \textcolor{comment}{//reset\ hit}}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00063}00063\ \ \ \ \ epsilon\ =\ 1;\ \textcolor{comment}{//reset\ efficiency.\ }}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00064}00064\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00068}00068\ \};}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00100}\mbox{\hyperlink{UtilsMC_8cpp_a86380da93c05bd425c6c2aca70e47186}{00100}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsMC_8cpp_a86380da93c05bd425c6c2aca70e47186}{GenerateRandomNumbers}}(\textcolor{keywordtype}{double}\ \&auxiliary,\ \textcolor{keywordtype}{double}\ \&theta,\ \textcolor{keywordtype}{double}\ \&phi,\ \textcolor{keywordtype}{double}\ \&x0,\ \textcolor{keywordtype}{double}\ \&y0,\ \textcolor{keywordtype}{double}\ \&mx,\ \textcolor{keywordtype}{double}\ \&my\ ,\ \textcolor{keywordtype}{double}\ \&qx,\ \textcolor{keywordtype}{double}\ \&qy,\ \textcolor{keywordtype}{double}\ \&thetacalc,\ \textcolor{keywordtype}{double}\ \&phicalc,\ \textcolor{keywordtype}{double}\ \&Ztop)\{}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ auxiliary\ =\ gRandom-\/>Uniform(1);\ \textcolor{comment}{//generate\ util\ variable\ for\ Inverse\ Transforming\ Sample\ Method.}}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ theta\ =\ acos(pow(1-\/auxiliary,\ 1./4.))*180/3.14;\ \textcolor{comment}{//generate\ zenith\ angle\ }}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ phi\ =\ gRandom-\/>Uniform(-\/180,\ 180);\ \textcolor{comment}{//generate\ azimuth\ angle}}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ x0\ =\ gRandom-\/>Uniform(-\/100,\ \mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(1536)\ +100);\ \textcolor{comment}{//generate\ X\ coordinate\ of\ initial\ point}}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ y0\ =\ gRandom-\/>Uniform(-\/100,\ \mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(1536)\ +100);\ \textcolor{comment}{//generate\ Y\ coordinate\ of\ initial\ point}}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ thetacalc\ =theta*3.14/180;}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ phicalc\ =\ phi*3.14/180;}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//here\ just\ find\ the\ correct\ sign\ value\ for\ mx\ and\ my.}}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((phi>-\/180)\&\&(phi<-\/90))\{}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ mx\ =\ +sqrt(tan(thetacalc)*tan(thetacalc)/(1+tan(phicalc)*tan(phicalc)));}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ my\ =\ +sqrt(tan(phicalc)*tan(phicalc)*tan(thetacalc)*tan(thetacalc)/(1+tan(phicalc)*tan(phicalc)));}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((phi>-\/90)\&\&(phi<0))\{}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ mx\ =\ -\/sqrt(tan(thetacalc)*tan(thetacalc)/(1+tan(phicalc)*tan(phicalc)));}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ my\ =\ +sqrt(tan(phicalc)*tan(phicalc)*tan(thetacalc)*tan(thetacalc)/(1+tan(phicalc)*tan(phicalc)));}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((phi>0)\&\&(phi<90))\{}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ mx\ =\ -\/sqrt(tan(thetacalc)*tan(thetacalc)/(1+tan(phicalc)*tan(phicalc)));}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ my\ =\ -\/sqrt(tan(phicalc)*tan(phicalc)*tan(thetacalc)*tan(thetacalc)/(1+tan(phicalc)*tan(phicalc)));}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((phi>90)\&\&(phi<180))\{}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ mx\ =\ +sqrt(tan(thetacalc)*tan(thetacalc)/(1+tan(phicalc)*tan(phicalc)));}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ my\ =\ -\/sqrt(tan(phicalc)*tan(phicalc)*tan(thetacalc)*tan(thetacalc)/(1+tan(phicalc)*tan(phicalc)));}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{comment}{//calculate\ Intercepts.}}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ qx\ =\ x0\ -\/\ mx*Ztop;}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ qy\ =\ y0\ -\/\ my*Ztop;}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00130}00130\ \};}
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{UtilsMC_8cpp_source_l00133}00133\ }
+
+\end{DoxyCode}

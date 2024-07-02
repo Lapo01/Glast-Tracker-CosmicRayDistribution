@@ -1,13 +1,15 @@
 var searchData=
 [
-  ['cellreset_0',['CellReset',['../d0/d75/UtilsRetina_8cpp.html#aaef05d644e2949001fec9f4d0f52349c',1,'UtilsRetina.cpp']]],
-  ['checkforflagone_1',['CheckForFlagOne',['../d6/d87/UtilsCreateTree_8cpp.html#aeeb1cdab7bd20e0a279049b369a2f4b6',1,'UtilsCreateTree.cpp']]],
-  ['checkforflagthree_2',['CheckForFlagThree',['../d6/d87/UtilsCreateTree_8cpp.html#a210da059f308fac2de4e31917b1cb320',1,'UtilsCreateTree.cpp']]],
-  ['checkforflagtwo_3',['CheckForFlagTwo',['../d6/d87/UtilsCreateTree_8cpp.html#a043a2af0e9309627b8a609ef0dbdf941',1,'UtilsCreateTree.cpp']]],
+  ['cellreset_0',['CellReset',['../d0/d75/UtilsRetina_8cpp.html#aaef05d644e2949001fec9f4d0f52349c',1,'CellReset(std::pair&lt; double, double &gt; &amp;element, Track &amp;TrackX, Track &amp;TrackY, std::vector&lt; int &gt; &amp;VecIndex, std::vector&lt; double &gt; &amp;Vec, double &amp;qx, double &amp;qy, double &amp;mx, double &amp;my, TF1 *lineX, TF1 *lineY):&#160;UtilsRetina.cpp'],['../db/daa/UtilsRetina_8h.html#aaef05d644e2949001fec9f4d0f52349c',1,'CellReset(std::pair&lt; double, double &gt; &amp;element, Track &amp;TrackX, Track &amp;TrackY, std::vector&lt; int &gt; &amp;VecIndex, std::vector&lt; double &gt; &amp;Vec, double &amp;qx, double &amp;qy, double &amp;mx, double &amp;my, TF1 *lineX, TF1 *lineY):&#160;UtilsRetina.cpp']]],
+  ['checkforflagone_1',['CheckForFlagOne',['../d6/d87/UtilsCreateTree_8cpp.html#aeeb1cdab7bd20e0a279049b369a2f4b6',1,'CheckForFlagOne(Evento &amp;e, std::map&lt; int, std::vector&lt; int &gt; &gt; &amp;MapDeiVettoriMutati, std::vector&lt; int &gt; &amp;StripLayer, int &amp;layer, int &amp;LengthCluster, int j):&#160;UtilsCreateTree.cpp'],['../d1/d1b/UtilsCreateTree_8h.html#a04385435e5b6c569869359cf619d5125',1,'CheckForFlagOne(Evento &amp;e, std::map&lt; int, std::vector&lt; int &gt; &gt; &amp;MapDeiVettoriMutati, std::vector&lt; int &gt; &amp;StripLayer, int &amp;LengthCluster, int &amp;layer, int j):&#160;UtilsCreateTree.cpp']]],
+  ['checkforflagthree_2',['CheckForFlagThree',['../d6/d87/UtilsCreateTree_8cpp.html#a210da059f308fac2de4e31917b1cb320',1,'CheckForFlagThree(Evento &amp;e, std::map&lt; int, int &gt; &amp;MapClusterPerPiano, int &amp;NLayerXZWithMoreThan2Cluster, int &amp;NLayerYZWithMoreThan2Cluster, std::vector&lt; int &gt; &amp;LayersID):&#160;UtilsCreateTree.cpp'],['../d1/d1b/UtilsCreateTree_8h.html#a5e3d3f69bc3b01f5b81c109d522ff7c1',1,'CheckForFlagThree(Evento &amp;e, std::map&lt; int, int &gt; &amp;MapClusterPerPiano, int &amp;aaaax, int &amp;aaaay, std::vector&lt; int &gt; &amp;LayersID):&#160;UtilsCreateTree.cpp']]],
+  ['checkforflagtwo_3',['CheckForFlagTwo',['../d6/d87/UtilsCreateTree_8cpp.html#a043a2af0e9309627b8a609ef0dbdf941',1,'CheckForFlagTwo(Evento &amp;e, int &amp;NCluster):&#160;UtilsCreateTree.cpp'],['../d1/d1b/UtilsCreateTree_8h.html#a043a2af0e9309627b8a609ef0dbdf941',1,'CheckForFlagTwo(Evento &amp;e, int &amp;NCluster):&#160;UtilsCreateTree.cpp']]],
   ['clusterdimension_4',['ClusterDimension',['../d1/dc8/classEvento.html#ab088b412620cb1c3a80dca0ca56ab720',1,'Evento']]],
-  ['clusterlayer_5',['ClusterLayer',['../d1/dc8/classEvento.html#a0ada3ef828172cea3dc7bb1245c5907e',1,'Evento']]],
-  ['clusterposition_6',['ClusterPosition',['../d9/d18/classTrack.html#a034d262fffa4a451b4c2ada2e2afcabf',1,'Track']]],
-  ['clusterposizione_7',['ClusterPosizione',['../d1/dc8/classEvento.html#aa733d2a7be4256ce5fa2ea50d272640b',1,'Evento']]],
-  ['createtree_8',['CreateTree',['../da/db5/CreateTree_8cpp.html#a2fe5984273d03a4c917f106fc23ab5b6',1,'CreateTree.cpp']]],
-  ['createtree_2ecpp_9',['CreateTree.cpp',['../da/db5/CreateTree_8cpp.html',1,'']]]
+  ['clustering_5',['Clustering',['../d9/d60/Interface_8py.html#ac251e2e26217d607fbf604178ea48c92',1,'Interface.Clustering()'],['../index.html#first_ab',1,'First Data Abstraction Phase: Clustering']]],
+  ['clusterlayer_6',['ClusterLayer',['../d1/dc8/classEvento.html#a0ada3ef828172cea3dc7bb1245c5907e',1,'Evento']]],
+  ['clusterposition_7',['ClusterPosition',['../d9/d18/classTrack.html#a034d262fffa4a451b4c2ada2e2afcabf',1,'Track']]],
+  ['clusterposizione_8',['ClusterPosizione',['../d1/dc8/classEvento.html#aa733d2a7be4256ce5fa2ea50d272640b',1,'Evento']]],
+  ['cosmic_20rays_9',['Glast Tracker Measurement of Zenith Angle and Azimuth Angle distributions of cosmic rays',['../index.html',1,'']]],
+  ['createtree_10',['CreateTree',['../da/db5/CreateTree_8cpp.html#a2fe5984273d03a4c917f106fc23ab5b6',1,'CreateTree.cpp']]],
+  ['createtree_2ecpp_11',['CreateTree.cpp',['../da/db5/CreateTree_8cpp.html',1,'']]]
 ];

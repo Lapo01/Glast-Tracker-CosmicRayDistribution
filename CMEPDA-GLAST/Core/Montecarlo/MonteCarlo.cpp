@@ -18,12 +18,9 @@ void UnitTestVoidSpaces(double y){
 
  
 	for(int i =0; i<1536; i++){
-		//std::vector<double> StripEnds = {StripCoordinate(i), StripCoordinate(i+1)};
-		StripPosition.push_back(StripCoordinate(i+1));
+-		StripPosition.push_back(StripCoordinate(i+1));
 	}
-	if((((y<0)||(y>MaxLength))||((y>StripCoordinate(384))&&(y<StripCoordinate(385)))||((y>StripCoordinate(768))&&(y<StripCoordinate(769)))||((y>StripCoordinate(1152))&&(y<StripCoordinate(1153)))||(y>StripCoordinate(1536)))){cout<<"Ho hittato uno spazio vuoto!Unit Test passato!La mappa non conta come hit gli spazi oltre la strip 1 e 1536, e gli spazi tra i vari ladder!"<<endl;}
-    auto HittenStripPosition = *std::lower_bound(StripPosition.begin(), StripPosition.end(), y);
-    cout<< "La pos è"<<HittenStripPosition <<endl;
+	assert((((y<0)||(y>MaxLength))||((y>StripCoordinate(384))&&(y<StripCoordinate(385)))||((y>StripCoordinate(768))&&(y<StripCoordinate(769)))||((y>StripCoordinate(1152))&&(y<StripCoordinate(1153)))||(y>StripCoordinate(1536)))){}
 }
 
 void UnitTestOfmap(int Strip){
@@ -40,8 +37,7 @@ void UnitTestOfmap(int Strip){
         if((((y<0)||(y>MaxLength))||((y>StripCoordinate(384))&&(y<StripCoordinate(385)))||((y>StripCoordinate(768))&&(y<StripCoordinate(769)))||((y>StripCoordinate(1152))&&(y<StripCoordinate(1153)))||(y>StripCoordinate(1536)))){cout<<"Ho hittato uno spazio vuoto!"<<endl;}
             auto HittenStripPosition = *std::lower_bound(StripPosition.begin(), StripPosition.end(), y);
             
-        if(abs(y-HittenStripPosition)<0.001){cout<<"La mappa Funziona!, la strip inserita nella UT è nella pos "<<StripCoordinate(Strip) <<"cm, quella invece mappata è " << HittenStripPosition << " cm"<<endl;}
-
+        assert(fabs(y-HittenStripPosition)<0.001);
         
 }
 
@@ -171,7 +167,7 @@ void MonteCarlo(const std::string fileinput, TString path){
 
 
 
-
+    gRandom = new TRandom3(0);//set random seed.
 
 
     for(int j = 0; j<10; j++){

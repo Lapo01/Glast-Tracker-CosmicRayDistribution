@@ -1,27 +1,28 @@
 \doxysection{Utils\+Retina.\+h}
 \hypertarget{UtilsRetina_8h_source}{}\label{UtilsRetina_8h_source}\index{CMEPDA-\/GLAST/Core/Headers/UtilsRetina.h@{CMEPDA-\/GLAST/Core/Headers/UtilsRetina.h}}
-
+\mbox{\hyperlink{UtilsRetina_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <fstream>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <sstream>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iterator>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <utility>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Evento_8h}{Evento.h}}"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{EventoTrack_8h}{EventoTrack.h}}"{}}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include"{}GeneralUtils.h"{}}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{UtilsRetina_8cpp_adfa6f23c52f3224aab128855089de982}{Distance}}(\textcolor{keywordtype}{double}\ q,\ \textcolor{keywordtype}{double}\ m,\ \textcolor{keywordtype}{double}\ xpos,\ \textcolor{keywordtype}{double}\ zpos);}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsRetina_8cpp_a8b12c5c900d0b5c81b6fa6fd886f94f3}{BuildGrid}}(std::vector<std::vector<std::pair<double,\ double>>>\ \&Grid);}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsRetina_8cpp_a827b2eb07e679ae746ca8d42188aa0ad}{EventReset}}(std::vector<Track>\ \&multipleTracksY,\ std::vector<Track>\ \&multipleTracksX,\ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ \&etrack,\ std::vector<Track>\ \&CopiaVettore,\ std::vector<std::vector<Track>>\ \&VettoreTracceUniche,\ std::vector<Track>\ \&FinalFilteredTracksX,\ std::vector<Track>\ \&FinalFilteredTracksY);}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsRetina_8cpp_aaef05d644e2949001fec9f4d0f52349c}{CellReset}}(std::pair<double,\ double>\ \&element,\ \mbox{\hyperlink{classTrack}{Track}}\ \&TrackX,\ \mbox{\hyperlink{classTrack}{Track}}\ \&TrackY,\ std::vector\ <int>\ \&VecIndex,\ std::vector\ <double>\ \&Vec,\ \textcolor{keywordtype}{double}\ \&qx,\ \textcolor{keywordtype}{double}\ \&qy,\ \textcolor{keywordtype}{double}\ \&mx,\ \textcolor{keywordtype}{double}\ \&my,\ TF1\ *lineX,\ TF1\ *lineY);}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00008}00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Evento_8h}{Evento.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{EventoTrack_8h}{EventoTrack.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{GeneralUtils_8h}{GeneralUtils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00022}00022\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{UtilsRetina_8h_adfa6f23c52f3224aab128855089de982}{Distance}}(\textcolor{keywordtype}{double}\ q,\ \textcolor{keywordtype}{double}\ m,\ \textcolor{keywordtype}{double}\ xpos,\ \textcolor{keywordtype}{double}\ zpos);}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00024}00024\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsRetina_8h_a8b12c5c900d0b5c81b6fa6fd886f94f3}{BuildGrid}}(std::vector<std::vector<std::pair<double,\ double>>>\ \&Grid);}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00026}00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsRetina_8h_a827b2eb07e679ae746ca8d42188aa0ad}{EventReset}}(std::vector<Track>\ \&multipleTracksY,\ std::vector<Track>\ \&multipleTracksX,\ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ \&etrack,\ std::vector<Track>\ \&CopiaVettore,\ std::vector<std::vector<Track>>\ \&VettoreTracceUniche,\ std::vector<Track>\ \&FinalFilteredTracksX,\ std::vector<Track>\ \&FinalFilteredTracksY);}
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{UtilsRetina_8h_source_l00028}00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{UtilsRetina_8h_aaef05d644e2949001fec9f4d0f52349c}{CellReset}}(std::pair<double,\ double>\ \&element,\ \mbox{\hyperlink{classTrack}{Track}}\ \&TrackX,\ \mbox{\hyperlink{classTrack}{Track}}\ \&TrackY,\ std::vector\ <int>\ \&VecIndex,\ std::vector\ <double>\ \&Vec,\ \textcolor{keywordtype}{double}\ \&qx,\ \textcolor{keywordtype}{double}\ \&qy,\ \textcolor{keywordtype}{double}\ \&mx,\ \textcolor{keywordtype}{double}\ \&my,\ TF1\ *lineX,\ TF1\ *lineY);}
 
 \end{DoxyCode}

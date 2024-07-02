@@ -1,52 +1,53 @@
 \doxysection{Utils\+Rectify\+Tracks.\+h}
 \hypertarget{UtilsRectifyTracks_8h_source}{}\label{UtilsRectifyTracks_8h_source}\index{CMEPDA-\/GLAST/Core/Headers/UtilsRectifyTracks.h@{CMEPDA-\/GLAST/Core/Headers/UtilsRectifyTracks.h}}
-
+\mbox{\hyperlink{UtilsRectifyTracks_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <TMath.h>}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{Evento_8h}{Evento.h}}"{}}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{EventoTrack_8h}{EventoTrack.h}}"{}}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}GeneralUtils.h"{}}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}TROOT.h"{}}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}TH2F.h"{}}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}TGraphErrors.h"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}TRandom.h"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}TCanvas.h"{}}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}TFrame.h"{}}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}TDatime.h"{}}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}TStopwatch.h"{}}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <fstream>}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <sstream>}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <iterator>}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}GeneralUtils.h"{}}}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{UtilsRectifyTracks_8cpp_a84e55be38b776611ae78cd78e781086b}{AngleCorrection}}(\textcolor{keywordtype}{int}\ \&layer,\ \textcolor{keywordtype}{double}\ \&mx,\ \textcolor{keywordtype}{double}\ \&qx,\ \textcolor{keywordtype}{double}\ \&my,\ \textcolor{keywordtype}{double}\ \&qy);}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{GeneralUtils_8cpp_ae808a6d76bd4260e5cc04a963b482582}{Error}}(\textcolor{keywordtype}{int}\ \&StripIn,\ \textcolor{keywordtype}{int}\ \&Dimension);}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{extern}\ std::map<int,double>\ ErrorXYZ;}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{keyword}{extern}\ std::map<int,\ double>\ ErrorXYAngoloZ;}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \textcolor{keyword}{extern}\ std::map<int,\ double>\ MapShift;}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \textcolor{keyword}{extern}\ std::map<int,\ double>\ SoglieChiMappa;}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00008}00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <TMath.h>}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{Evento_8h}{Evento.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{EventoTrack_8h}{EventoTrack.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GeneralUtils_8h}{GeneralUtils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}TROOT.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}TH1F.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}TH2F.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}TGraphErrors.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}TCanvas.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}TFrame.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ "{}TDatime.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}TF1.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00023}00023\ \textcolor{preprocessor}{\#include\ "{}TStopwatch.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00024}00024\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00025}00025\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00026}00026\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GeneralUtils_8h}{GeneralUtils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00036}00036\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{UtilsRectifyTracks_8h_a84e55be38b776611ae78cd78e781086b}{AngleCorrection}}(\textcolor{keywordtype}{int}\ \&layer,\ \textcolor{keywordtype}{double}\ \&mx,\ \textcolor{keywordtype}{double}\ \&qx,\ \textcolor{keywordtype}{double}\ \&my,\ \textcolor{keywordtype}{double}\ \&qy);}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00038}00038\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{UtilsRectifyTracks_8h_ae808a6d76bd4260e5cc04a963b482582}{Error}}(\textcolor{keywordtype}{int}\ \&StripIn,\ \textcolor{keywordtype}{int}\ \&Dimension);}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00040}00040\ \textcolor{keyword}{extern}\ std::map<int,double>\ ErrorXYZ;}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00042}00042\ \textcolor{keyword}{extern}\ std::map<int,\ double>\ ErrorXYAngoloZ;}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00044}00044\ \textcolor{keyword}{extern}\ std::map<int,\ double>\ MapShift;}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00046}00046\ \textcolor{keyword}{extern}\ std::map<int,\ double>\ SoglieChiMappa;}
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{UtilsRectifyTracks_8h_source_l00053}00053\ }
 
 \end{DoxyCode}
