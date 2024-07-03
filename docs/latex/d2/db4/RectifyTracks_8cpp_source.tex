@@ -17,18 +17,18 @@
 \DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//}}
 \DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00025}00025\ }
 \DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ CREATE\ TREE\ TO\ BE\ READ\ }}
-\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ etrack;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00029}00029\ }
 \DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00030}00030\ }
 \DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00031}00031\ }
-\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00032}00032\ }
-\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ e;\ }
-\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00034}00034\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ *p\ =\ \&e;}
-\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00035}00035\ \ \ \ \ TFile\ *input\ =\ \textcolor{keyword}{new}\ TFile(file,\textcolor{stringliteral}{"{}read"{}});}
-\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00036}00036\ \ \ \ \ TTree\ *tree\ =\ (TTree*)input-\/>Get(\textcolor{stringliteral}{"{}treetrack"{}});}
-\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00037}00037\ \ \ \ \ tree-\/>SetBranchAddress(\textcolor{stringliteral}{"{}etrack"{}},\ \&p);\ }
-\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{int}\ entries\ =\ tree-\/>GetEntries();}
-\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00039}00039\ }
-\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ CREATE\ TREE\ TO\ BE\ WRITTEN}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00032}00032\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ e;\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ *p\ =\ \&e;}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00034}00034\ \ \ \ \ TFile\ *input\ =\ \textcolor{keyword}{new}\ TFile(file,\textcolor{stringliteral}{"{}read"{}});}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00035}00035\ \ \ \ \ TTree\ *tree\ =\ (TTree*)input-\/>Get(\textcolor{stringliteral}{"{}treetrack"{}});}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00036}00036\ \ \ \ \ tree-\/>SetBranchAddress(\textcolor{stringliteral}{"{}etrack"{}},\ \&p);\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordtype}{int}\ entries\ =\ tree-\/>GetEntries();}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ CREATE\ TREE\ TO\ BE\ WRITTEN}}
+\DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00042}00042\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ etrack;}
 \DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00043}00043\ \ \ \ \ TFile\ *output\ =\ \textcolor{keyword}{new}\ TFile(fileoutput,\textcolor{stringliteral}{"{}recreate"{}});}
 \DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00044}00044\ \ \ \ \ TTree\ *treetrackoutput\ =\ \textcolor{keyword}{new}\ TTree(\textcolor{stringliteral}{"{}treetrack"{}},\ \textcolor{stringliteral}{"{}treetrack"{}});}
 \DoxyCodeLine{\Hypertarget{RectifyTracks_8cpp_source_l00045}00045\ \ \ \ \ treetrackoutput-\/>Branch(\textcolor{stringliteral}{"{}etrack"{}},\&etrack);}

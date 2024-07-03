@@ -1,6 +1,6 @@
 \chapter{Glast Tracker Measurement of Zenith Angle and Azimuth Angle distributions of cosmic rays}
 \hypertarget{index}{}\label{index}\index{Glast Tracker Measurement of Zenith Angle and Azimuth Angle distributions of cosmic rays@{Glast Tracker Measurement of Zenith Angle and Azimuth Angle distributions of cosmic rays}}
-The goal of this project is to measure the zenith and azimuth angle distribution of cosmic rays using the Fermi-\/\+Glast Tracker. ~\newline
+provaprovaprova The goal of this project is to measure the zenith and azimuth angle distribution of cosmic rays using the Fermi-\/\+Glast Tracker. ~\newline
   
 \begin{DoxyInlineImage}
 \includegraphics[width=10]{TrackerFoto.jpeg}%“\+Foto dell’apparato, la direzione “y” è uscente, la direzione x è invece verso la sinistra.”
@@ -34,13 +34,13 @@ DEPENDENCIES\+: ~\newline
 
 \end{DoxyItemize}
 
-PYTHON DEPENDENCIES\+: pyroot , loguru ~\newline
+PYTHON DEPENDENCIES\+: pyroot , loguru, multiprocess (NOT MULTIPROCESSING!!!) ~\newline
 
 \begin{DoxyItemize}
 \item on Fedora 40 run in terminal \+: ~\newline
- \$ pip install loguru
+ \$ pip install loguru multiprocess
 \item on Linux run in terminal \+: ~\newline
- \$ pip install loguru pyroot
+ \$ pip install loguru pyroot multiprocess
 \end{DoxyItemize}\hypertarget{index_setup_sec}{}\doxysection{\texorpdfstring{Setup}{Setup}}\label{index_setup_sec}
 To setup the package, firstly run in the Core folder\+:~\newline
  \$ cmake ..~\newline
