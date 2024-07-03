@@ -45,11 +45,11 @@ int main(){
 	}
 
     try{
-    UnitTestOfmap(383);
+        UnitTestOfmap(383,StripPosition);
 
-    UnitTestOfmap(384);
+        UnitTestOfmap(384,StripPosition);
 
-    UnitTestOfmap(385);
+        UnitTestOfmap(385,StripPosition);
     }
     catch(std::exception *e){
         std::cout<<"La strip non viene mappata alla sua posizione originale, errore."<<std::endl;
