@@ -15,7 +15,7 @@ void UnitTestVoidSpaces(double y){
 	double MaxLength = StripCoordinate(1536);
 
 	
-	if((((y<0)||(y>MaxLength))||((y>StripCoordinate(384))&&(y<StripCoordinate(385)))||((y>StripCoordinate(768))&&(y<StripCoordinate(769)))||((y>StripCoordinate(1152))&&(y<StripCoordinate(1153)))||(y>StripCoordinate(1536)))){
+	if(!(((y<0)||(y>MaxLength))||((y>StripCoordinate(384))&&(y<StripCoordinate(385)))||((y>StripCoordinate(768))&&(y<StripCoordinate(769)))||((y>StripCoordinate(1152))&&(y<StripCoordinate(1153)))||(y>StripCoordinate(1536)))){
         throw std::exception();
 
     }
