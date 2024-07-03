@@ -32,5 +32,6 @@
 *.app
 
 #doxygen
+docs/
 html
 latex
