@@ -18,7 +18,7 @@
  *
  * @param fileoutput The name of the output .root file
 ******************************************************************************/
-void CreateTree(const std::string &fileinput, TString fileoutput){
+void CreateTree(const std::string fileinput, TString fileoutput){
 
 
 
