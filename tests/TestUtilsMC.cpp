@@ -39,7 +39,7 @@ void UnitTestOfmap(int Strip, std::vector<double> &StripPosition){
 
 int main(){
 
-
+    std::vector<double> StripPosition;
 	for(int i =0; i<1536; i++){
 		StripPosition.push_back(StripCoordinate(i+1));
 	}
