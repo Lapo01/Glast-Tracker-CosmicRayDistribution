@@ -3,7 +3,7 @@
  *	This file makes a MC simulation in order to generated expected measured zenith angle and azimuth distribution. Those distributions are saved in a TH1F container inside a .root file
  *  The code keeps account of muted strips and simulate trigger condition of at least 3 consecutive hits per vision. 
  *  Smearing of hits, cuts on ill clusters, and cluster length dimension is not kept into account.
- *
+ *  The generated distributions assumes a cos^3(theta)sin(theta) distribution for the zenith angle and a uniform distribution for the azimuth angle between -180 to 180 deg.
  *
  */
 

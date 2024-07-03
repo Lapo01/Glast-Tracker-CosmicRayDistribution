@@ -9,33 +9,16 @@ Interface used to call c++ macros.
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{Interface_8py_ac251e2e26217d607fbf604178ea48c92}{Interface.\+Clustering}} (fileinput, fileoutput)
-\begin{DoxyCompactList}\small\item\em Docs for clustering This function performs the first abstractin of data by calling the adeguate c++ macros. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Docs for clustering This function performs the first abstractin of data by calling the c++ macros \doxylink{CreateTree_8cpp}{Create\+Tree.\+cpp} . \end{DoxyCompactList}\item 
 \mbox{\hyperlink{Interface_8py_ab2eda89ccc82925973832210275a7aa0}{Interface.\+Tracking}} (fileinput, fileoutput)
-\begin{DoxyCompactList}\small\item\em Docs for Tracking This function performs the second abstractin of data by calling the Retina, Rectify\+Tracks and Unify\+Tree macros. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Docs for Tracking This function performs the second abstractin of data by calling the \doxylink{Retina_8cpp}{Retina.\+cpp} , \doxylink{RectifyTracks_8cpp}{Rectify\+Tracks.\+cpp} and \doxylink{UnifyTree_8cpp_source}{Unify\+Tree.\+cpp} macros. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{Interface_8py_a01d16339d60381f45520e5bc1427f1db}{Interface.\+Test\+Reconstruction}} ()
-\begin{DoxyCompactList}\small\item\em Docs for testing the tracking algorithm. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Docs for testing the tracking algorithm This function starts by calling the c++ macro Monte\+Carlo\+Generazione\+Dati.\+cpp that simulate a data acquisition with only 1 tracks per vision and no noise, the simulated data is fed to the tracking algorithm in the macro \doxylink{Retina_8cpp}{Retina.\+cpp} . \end{DoxyCompactList}\item 
 \mbox{\hyperlink{Interface_8py_a0fb5da7971754ec9fc962a11eff21420}{Interface.\+Montecarlo}} (fileinput, fileoutput)
-\begin{DoxyCompactList}\small\item\em Docs for doing MC simulation. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Docs for doing MC simulation This function call the c++ macro Monte\+Carlo.\+cpp that runs a MC simulation of 3D tracks that goes through the tracker. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{Interface_8py_a6c70ecdabc46a3a1f89e4416b325008a}{Interface.\+Results}} (fileinput, fileoutput)
 \begin{DoxyCompactList}\small\item\em Docs function that shows results. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{Interface_8py_a74dde9e19dee68c4b33c5e8beec83109}{Interface.\+process\+\_\+file}} (args)
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Variables}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{Interface_8py_a7690f4deb4621ab8781327b6f32e8f21}{Interface.\+parser}}
-\item 
-\mbox{\hyperlink{Interface_8py_a4117f57e93008aa01922f116721daa9b}{Interface.\+help}}
-\item 
-\mbox{\hyperlink{Interface_8py_abdb4b8a8b7b8ae3cac7d4e99a0c1425c}{Interface.\+default}}
-\item 
-\mbox{\hyperlink{Interface_8py_adb4541306e243da55c9aea554bd483f1}{Interface.\+action}}
-\item 
-\mbox{\hyperlink{Interface_8py_a8b5d2e3d096542b3142aa97540f56907}{Interface.\+args}} = parser.\+parse\+\_\+args()
-\item 
-\mbox{\hyperlink{Interface_8py_adf83e60e78cc9146ad6bf6a55c7cd078}{Interface.\+fileinput}} = os.\+path.\+join("{}Data"{},"{}Datalif"{},args.\+infile)
-\item 
-\mbox{\hyperlink{Interface_8py_a5c9796ed3aaf462de32d5b4d4463a43b}{Interface.\+fileoutput}} = os.\+path.\+join("{}Data"{},"{}Dataroot"{},"{}Cluster\+Abstraction\+Data"{}, args.\+outfile+ "{}.root"{})
+\mbox{\hyperlink{Interface_8py_a62de84edea2804b969c8dc2ee5ce6577}{Interface.\+Interface\+\_\+parse}} ()
 \end{DoxyCompactItemize}
 
 
@@ -57,7 +40,7 @@ Definition in file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
 
 
 
-Docs for clustering This function performs the first abstractin of data by calling the adeguate c++ macros. 
+Docs for clustering This function performs the first abstractin of data by calling the c++ macros \doxylink{CreateTree_8cpp}{Create\+Tree.\+cpp} . 
 
 
 \begin{DoxyParams}{Parameters}
@@ -65,6 +48,9 @@ Docs for clustering This function performs the first abstractin of data by calli
 \hline
 {\em fileoutput} & \\
 \hline
+\end{DoxyParams}
+After abstracting the data, a second macro is called to plot the Cluster Number Distribution, the Cluster Position distribution on the layer X2 and the number of Clusters per event distribution 
+\begin{DoxyParams}{Parameters}
 {\em fileinput} & Name of the input file with extension, the path is not necessary.\\
 \hline
 {\em fileoutput} & Name of the outputfile with no extension., the output file is put in the folder Dataroot/\+Cluster\+Abstraction\+Data with the name fileoutput.\+root \\
@@ -72,7 +58,17 @@ Docs for clustering This function performs the first abstractin of data by calli
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00065}{65}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00030}{30}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+
+\Hypertarget{Interface_8py_a62de84edea2804b969c8dc2ee5ce6577}\label{Interface_8py_a62de84edea2804b969c8dc2ee5ce6577} 
+\index{Interface.py@{Interface.py}!Interface\_parse@{Interface\_parse}}
+\index{Interface\_parse@{Interface\_parse}!Interface.py@{Interface.py}}
+\doxysubsubsection{\texorpdfstring{Interface\_parse()}{Interface\_parse()}}
+{\footnotesize\ttfamily Interface.\+Interface\+\_\+parse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00246}{246}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
 
 \Hypertarget{Interface_8py_a0fb5da7971754ec9fc962a11eff21420}\label{Interface_8py_a0fb5da7971754ec9fc962a11eff21420} 
 \index{Interface.py@{Interface.py}!Montecarlo@{Montecarlo}}
@@ -82,21 +78,20 @@ Definition at line \mbox{\hyperlink{Interface_8py_source_l00065}{65}} of file \m
 
 
 
-Docs for doing MC simulation. 
+Docs for doing MC simulation This function call the c++ macro Monte\+Carlo.\+cpp that runs a MC simulation of 3D tracks that goes through the tracker. 
+
+The generated numbers are four\+: (x0,y0) point on the plane of the top layer, zenith angle theta and azimuth angle phi. From this four numbers the projections are generated on the vision XZ and YZ, then the hits are generated and if a track satisfy the trigger condition the angles zenith and azimuth are inserted into a histogram
 
 
+\begin{DoxyParams}{Parameters}
+{\em fileinput} & Name of the input file with extension .lif, the path is not necessary. This input is used to keep account of muted strips in the simulation.\\
+\hline
+{\em fileoutput} & variable used to specify where to save plots and distributions.\\
+\hline
+\end{DoxyParams}
+The MC distributions are saved into the Data/\+MCSimulations folder. 
 
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00173}{173}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
-
-\Hypertarget{Interface_8py_a74dde9e19dee68c4b33c5e8beec83109}\label{Interface_8py_a74dde9e19dee68c4b33c5e8beec83109} 
-\index{Interface.py@{Interface.py}!process\_file@{process\_file}}
-\index{process\_file@{process\_file}!Interface.py@{Interface.py}}
-\doxysubsubsection{\texorpdfstring{process\_file()}{process\_file()}}
-{\footnotesize\ttfamily Interface.\+process\+\_\+file (\begin{DoxyParamCaption}\item[{}]{args }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00202}{202}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00193}{193}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
 
 \Hypertarget{Interface_8py_a6c70ecdabc46a3a1f89e4416b325008a}\label{Interface_8py_a6c70ecdabc46a3a1f89e4416b325008a} 
 \index{Interface.py@{Interface.py}!Results@{Results}}
@@ -108,9 +103,18 @@ Definition at line \mbox{\hyperlink{Interface_8py_source_l00202}{202}} of file \
 
 Docs function that shows results. 
 
+This function calls the c++ macros Compare\+Distributions.\+cpp and Extract\+Distributions.\+cpp to extract the zenith and azimuth angle distribution from the measured data and compare them with the MC simulation. It is expected that one had already ran the MC simulation before running the results flag. The resuls are then saved as plot in the Data/\+Results\+Images folder.
 
 
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00182}{182}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+\begin{DoxyParams}{Parameters}
+{\em fileinput} & path to the tracking root file that contains the data.\\
+\hline
+{\em fileoutput} & path to where the MC simulations are, contains also the initial 2 letters of the names of the files (MC). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00218}{218}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
 
 \Hypertarget{Interface_8py_a01d16339d60381f45520e5bc1427f1db}\label{Interface_8py_a01d16339d60381f45520e5bc1427f1db} 
 \index{Interface.py@{Interface.py}!TestReconstruction@{TestReconstruction}}
@@ -120,11 +124,13 @@ Definition at line \mbox{\hyperlink{Interface_8py_source_l00182}{182}} of file \
 
 
 
-Docs for testing the tracking algorithm. 
+Docs for testing the tracking algorithm This function starts by calling the c++ macro Monte\+Carlo\+Generazione\+Dati.\+cpp that simulate a data acquisition with only 1 tracks per vision and no noise, the simulated data is fed to the tracking algorithm in the macro \doxylink{Retina_8cpp}{Retina.\+cpp} . 
 
+The generated distribution takes into account only the trigger condition, it is compared with a Kolmog\+Gorov Test with the reconstructed distribution by the tracking algorithm. One would expect a p-\/value of 1 for an optimal reconstruction
 
+The results are saved into the folder Data/\+MCSimulations/\+Testing\+Retina\+Algorithm 
 
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00126}{126}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00118}{118}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
 
 \Hypertarget{Interface_8py_ab2eda89ccc82925973832210275a7aa0}\label{Interface_8py_ab2eda89ccc82925973832210275a7aa0} 
 \index{Interface.py@{Interface.py}!Tracking@{Tracking}}
@@ -134,9 +140,11 @@ Definition at line \mbox{\hyperlink{Interface_8py_source_l00126}{126}} of file \
 
 
 
-Docs for Tracking This function performs the second abstractin of data by calling the Retina, Rectify\+Tracks and Unify\+Tree macros. 
+Docs for Tracking This function performs the second abstractin of data by calling the \doxylink{Retina_8cpp}{Retina.\+cpp} , \doxylink{RectifyTracks_8cpp}{Rectify\+Tracks.\+cpp} and \doxylink{UnifyTree_8cpp_source}{Unify\+Tree.\+cpp} macros. 
 
-It subdivides the data into a number of bunches equal to the number of pc cores, then each cores performs data abstraction on different bunches. At the end the Unify\+Tree macro is called and all created tree are merge into a unique tree put into .root file. It is advised to not interact with the pc throughout this process as this may cause slow-\/downs due to deprivation of resources. 
+It subdivides the data into a number of bunches equal to the number of pc cores, then each cores performs data abstraction on different bunches. At the end the Unify\+Tree macro is called and all created tree are merge into a unique tree put into .root file. It is advised to not interact with the pc throughout this process as this may cause slow-\/downs due to deprivation of resources.
+
+
 \begin{DoxyParams}{Parameters}
 {\em fileinput} & Name of the input file with extension, the path is not necessary.\\
 \hline
@@ -145,84 +153,5 @@ It subdivides the data into a number of bunches equal to the number of pc cores,
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00086}{86}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
-
-
-
-\doxysubsection{Variable Documentation}
-\Hypertarget{Interface_8py_adb4541306e243da55c9aea554bd483f1}\label{Interface_8py_adb4541306e243da55c9aea554bd483f1} 
-\index{Interface.py@{Interface.py}!action@{action}}
-\index{action@{action}!Interface.py@{Interface.py}}
-\doxysubsubsection{\texorpdfstring{action}{action}}
-{\footnotesize\ttfamily Interface.\+action}
-
-
-
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00026}{26}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
-
-\Hypertarget{Interface_8py_a8b5d2e3d096542b3142aa97540f56907}\label{Interface_8py_a8b5d2e3d096542b3142aa97540f56907} 
-\index{Interface.py@{Interface.py}!args@{args}}
-\index{args@{args}!Interface.py@{Interface.py}}
-\doxysubsubsection{\texorpdfstring{args}{args}}
-{\footnotesize\ttfamily Interface.\+args = parser.\+parse\+\_\+args()}
-
-
-
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00207}{207}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
-
-\Hypertarget{Interface_8py_abdb4b8a8b7b8ae3cac7d4e99a0c1425c}\label{Interface_8py_abdb4b8a8b7b8ae3cac7d4e99a0c1425c} 
-\index{Interface.py@{Interface.py}!default@{default}}
-\index{default@{default}!Interface.py@{Interface.py}}
-\doxysubsubsection{\texorpdfstring{default}{default}}
-{\footnotesize\ttfamily Interface.\+default}
-
-
-
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00023}{23}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
-
-\Hypertarget{Interface_8py_adf83e60e78cc9146ad6bf6a55c7cd078}\label{Interface_8py_adf83e60e78cc9146ad6bf6a55c7cd078} 
-\index{Interface.py@{Interface.py}!fileinput@{fileinput}}
-\index{fileinput@{fileinput}!Interface.py@{Interface.py}}
-\doxysubsubsection{\texorpdfstring{fileinput}{fileinput}}
-{\footnotesize\ttfamily Interface.\+fileinput = os.\+path.\+join("{}Data"{},"{}Datalif"{},args.\+infile)}
-
-
-
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00226}{226}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
-
-\Hypertarget{Interface_8py_a5c9796ed3aaf462de32d5b4d4463a43b}\label{Interface_8py_a5c9796ed3aaf462de32d5b4d4463a43b} 
-\index{Interface.py@{Interface.py}!fileoutput@{fileoutput}}
-\index{fileoutput@{fileoutput}!Interface.py@{Interface.py}}
-\doxysubsubsection{\texorpdfstring{fileoutput}{fileoutput}}
-{\footnotesize\ttfamily Interface.\+fileoutput = os.\+path.\+join("{}Data"{},"{}Dataroot"{},"{}Cluster\+Abstraction\+Data"{}, args.\+outfile+ "{}.root"{})}
-
-
-
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00227}{227}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
-
-\Hypertarget{Interface_8py_a4117f57e93008aa01922f116721daa9b}\label{Interface_8py_a4117f57e93008aa01922f116721daa9b} 
-\index{Interface.py@{Interface.py}!help@{help}}
-\index{help@{help}!Interface.py@{Interface.py}}
-\doxysubsubsection{\texorpdfstring{help}{help}}
-{\footnotesize\ttfamily Interface.\+help}
-
-
-
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00021}{21}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
-
-\Hypertarget{Interface_8py_a7690f4deb4621ab8781327b6f32e8f21}\label{Interface_8py_a7690f4deb4621ab8781327b6f32e8f21} 
-\index{Interface.py@{Interface.py}!parser@{parser}}
-\index{parser@{parser}!Interface.py@{Interface.py}}
-\doxysubsubsection{\texorpdfstring{parser}{parser}}
-{\footnotesize\ttfamily Interface.\+parser}
-
-{\bfseries Initial value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ =\ \ argparse.ArgumentParser(prog=\textcolor{stringliteral}{'Interfaccia\ Fermi-\/Glast\ Data'},\ }
-\DoxyCodeLine{00002\ description\ =\textcolor{stringliteral}{'Interfaccia\ per\ astrazione\ dati\ ed\ analisi\ del\ tracker\ Fermi-\/Glast'},formatter\_class=RawTextHelpFormatter)}
-
-\end{DoxyCode}
-
-
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00016}{16}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00051}{51}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
 
