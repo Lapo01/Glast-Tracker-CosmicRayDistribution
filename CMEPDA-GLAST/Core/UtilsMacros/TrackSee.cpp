@@ -125,7 +125,7 @@ void TrackSee(TString fileinput, int N, int M){
 
     }
     //catch the exception
-    catch(std::exception &except){
+    catch(std::exception *except){
         std::cout<<"Non esistono eventi con questo numero di proiezione per visione!"<<std::endl;
         exit(EXIT_FAILURE);
         delete except;

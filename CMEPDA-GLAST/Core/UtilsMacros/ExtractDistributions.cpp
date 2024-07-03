@@ -29,8 +29,8 @@ void ExtractDistributions(TString fileinput, TString path){
 
 
     //initialize histograms to be filled 
-    TH1F *MeasuredZenithDistribution = new TH1F("hist", "Distribuzione misurata dell'angolo zenith", 1000, 0, 90);
-    TH1F *MeasuredAzimuthDistribution = new TH1F("hist", "Distribuzione misurata dell'angolo azimuth", 1000, -180, 180);
+    TH1F *MeasuredZenithDistribution = new TH1F("hist", "Distribuzione ricostruita dell'angolo zenith", 1000, 0, 90);
+    TH1F *MeasuredAzimuthDistribution = new TH1F("hist", "Distribuzione ricostruita dell'angolo azimuth", 1000, -180, 180);
     TH2F *TrackXvsTrackYNumbers = new TH2F("hist2d","Tracce trovate X e Y", 10, 0,10, 10, 0, 10);
 
 
@@ -51,11 +51,11 @@ void ExtractDistributions(TString fileinput, TString path){
 
 
 
-    MeasuredZenithDistribution->SetTitle("Measured Zenith Distribution");
+    MeasuredZenithDistribution->SetTitle("Reconstructed Zenith Distribution");
     MeasuredZenithDistribution->GetXaxis()->SetTitle("Zenith angle #theta");
     MeasuredZenithDistribution->GetYaxis()->SetTitle("Counts");
 
-    MeasuredAzimuthDistribution->SetTitle("Measured Azimuth Distribution");
+    MeasuredAzimuthDistribution->SetTitle("Reconstructed Azimuth Distribution");
     MeasuredAzimuthDistribution->GetXaxis()->SetTitle("Azimuth angle #phi");
     MeasuredAzimuthDistribution->GetYaxis()->SetTitle("Counts");
 

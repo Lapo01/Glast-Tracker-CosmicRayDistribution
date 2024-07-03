@@ -53,8 +53,8 @@ void PlotClusterResults(TString fileinput){
 
         //for all clusters of the layer 12... fill the position distribution histogram with their positions.
         for(int j = 0; j< e.ClusterPosizione.size(); j++){
-            if(e.ClusterLayer(j) == 12){
-                PositionDistribution->Fill(e.ClusterPosizione(j));
+            if(e.ClusterLayer[j] == 12){
+                PositionDistribution->Fill(e.ClusterPosizione[j]);
             }
         }
 

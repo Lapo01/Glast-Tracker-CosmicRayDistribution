@@ -43,7 +43,7 @@ def Clustering(fileinput, fileoutput ):
 
     ROOT.CreateTree(fileinput, fileoutput) #call macro CreateTree
     logger.info("FATTO! Effettuata prima fase di astrazione dati, il file è stato salvato nel path ")
-    logger.info(os.path.join("Data","Dataroot","ClusterAbstractionData", args.outfile+ ".root"))
+    logger.info(os.path.join(fileoutput))
     ROOT.PlotClusterResults(fileoutput) #Visualize results.
 
 
@@ -89,6 +89,7 @@ def Tracking(fileinput, fileoutput) :
 
     #start multicore data analysis: divide the events in bunches each to be analyzed by a single core.
     Iterations = range(os.cpu_count())
+    logger.warning("Tracking abstraction phase started: it is advised to not touch the PC as it may slow down this phase.")
     pool = mp.Pool(processes = os.cpu_count())
     results = pool.map(AnalysePartOfData, Iterations)
     pool.close() #boh non la chiude da sola! bug DI PYTHON!!!!!!
@@ -194,7 +195,7 @@ def Montecarlo(fileinput,fileoutput):
     """!Docs for doing MC simulation
     This function call the c++ macro MonteCarlo.cpp that runs a MC simulation of 3D tracks that goes through the tracker. The generated numbers are four: (x0,y0) point on the plane of the top layer,
     zenith angle theta and azimuth angle phi. From this four numbers the projections are generated on the vision XZ and YZ, then the hits are generated and if a track satisfy the trigger 
-    condition the angles zenith and azimuth are inserted into a histogram
+    condition the angles zenith and azimuth are inserted into a histogram. The MC simulation does keep account of muted strips and mean efficiency of the tracker.
 
     @param fileinput Name of the input file with extension .lif, the path is not necessary. This input is used to keep account of muted strips in the simulation.
     
@@ -212,7 +213,7 @@ def Montecarlo(fileinput,fileoutput):
     #run MC macro
     logger.info("Avviata simulazione MC: potrebbe volerci massimo qualche minuto per ottenere le distribuzioni attese.")
     ROOT.MonteCarlo(os.path.join("Data", "Datalif", fileinput), fileoutput)
-    strOut = "FATTO: LE DISTRIBUZIONI MONTECARLO GENERATE E LE DISTRIBUZIONI MONTECARLO ATTESE DALLA MISURA SONO STATE SALVATE NELLA CARTELLA " + os.path.join("Data","MCSimulations") 
+    strOut = "FATTO: LE DISTRIBUZIONI MONTECARLO GENERATE E LE DISTRIBUZIONI MONTECARLO ATTESE DALLA MISURA SONO STATE SALVATE NELLA CARTELLA " + os.path.join("Data","Dataroot", "MCSimulations") 
     logger.info(strOut)
 
 def Results(fileinput, fileoutput):
@@ -271,17 +272,16 @@ def Interface_parse():
     parser.add_argument("-MCDist", action = "store_true",
                     help = "Prints out a montecarlo simulation for the zenith and azimuth angle distribution. To run it requires an --infile")
 
-
     parser.add_argument("-TestReconstruction", action = "store_true",
                     help = "Generate a sample of MC distribution and feeds it to the tracking algorithm. It returns a Kolmogorov Smirnov Test p-value for both zenith and azimuth distributions.")
 
     parser.add_argument("-TrackSee", action = "store_true",
                     help = "Displays a reconstructed event with its tracks on both visions. To run it requires to specify an --infile and the numbers of projections --Nx --Ny ")
 
-    parser.add_argument("-xz", "--Nx",
+    parser.add_argument("-nx", "--Nx",
                     help = "Number of tracks XZ that one want to visualize")
 
-    parser.add_argument("-yz", "--Ny",
+    parser.add_argument("-ny", "--Ny",
                     help = "Number of tracks YZ that one want to visualize")
 
     args = parser.parse_args()  
@@ -295,6 +295,8 @@ def Interface_parse():
 
     if args.Clustering: 
         #run some checks on the input file and on folders.
+        if not (os.path.exists(os.path.join("Data", "Dataroot"))):
+            os.mkdir((os.path.join("Data", "Dataroot")))
         if not (os.path.exists(os.path.join("Data", "Dataroot", "ClusterAbstractionData"))):
             os.mkdir((os.path.join("Data", "Dataroot", "ClusterAbstractionData")))
         if not (os.path.isfile(os.path.join("Data","Datalif",args.infile))):
@@ -314,8 +316,11 @@ def Interface_parse():
             logger.error("INSERISCI UN FILE DA ANALIZZARE USANDO LA FLAG -i")
             raise Exception("NON HAI INSERITO UN FILE DA ANALIZZARE.")     
         fileinput = os.path.join("Data", "Dataroot", "ClusterAbstractionData",  args.infile)
+        if not (os.path.exists(os.path.join("Data", "Dataroot"))):
+            os.mkdir((os.path.join("Data", "Dataroot")))    
         if not(os.path.exists(os.path.join("Data", "Dataroot", "TrackingAbstractionData"))):
             os.mkdir((os.path.join("Data", "Dataroot", "TrackingAbstractionData")))    
+
         if not(os.path.isfile(fileinput)):
             logger.error("IL FILE INSERITO NON ESISTE NELLA CARTELLA DEI DATI CLUSTER. SEI SICURO DI AVER INSERITO IL NOME CORRETTO?")
             raise Exception("Il file inserito non esiste.")
@@ -327,6 +332,7 @@ def Interface_parse():
         #run some checks on the input file and on folders.
 
         if not(os.path.exists(os.path.join("Data", "MCSimulations","TestingRetinaAlgorithm",))):
+            os.mkdir((os.path.join("Data", "MCSimulations")))  
             os.mkdir((os.path.join("Data", "MCSimulations","TestingRetinaAlgorithm",)))  
         TestReconstruction()
          
@@ -347,8 +353,8 @@ def Interface_parse():
 
     if args.Results:
         #run some checks on the input file and on folders.
-        if not os.path.exists(os.path.join("Data", "ResultsImages")):
-            os.mkdir(os.path.join("Data", "ResultImages"))
+        if not(os.path.exists(os.path.join("Data", "ResultsImages"))):
+            os.mkdir(os.path.join("Data", "ResultsImages"))
 
         if not args.infile:
             logger.error("INSERISCI UN FILE DA ANALIZZARE USANDO LA FLAG -i")

@@ -66,7 +66,7 @@ void MonteCarloGenerazioneDati(TString fileoutput, TString path){
     
     
     std::vector<double> TrackX; //placeholder container for position of hitten strips on the XZ vision
-    std::vector<double> TrackY //placeholder container for position of hitten strips on the YZ vision
+    std::vector<double> TrackY; //placeholder container for position of hitten strips on the YZ vision
     std::vector<int> ZlevelX;//placeholder container for position of hitten layers on the XZ vision
     std::vector<int> ZlevelY;//placeholder container for position of hitten layers on the YZ vision
     std::vector<int> ZlevelXPlaceHolder;//utils variable to check if the trigger condition of consecutive hits is satisfied. In this code is not used, however since the function ResetUtils from library UtilsMC require this input, to mantain compatibility we declare it
@@ -89,7 +89,7 @@ void MonteCarloGenerazioneDati(TString fileoutput, TString path){
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 
     //Init the MC simulation
-    gRandom = new TRandom3(0); //set random seed.
+    gRandom = new TRandom(0); //set random seed.
 
     for(int j = 0; j<10; j++){
         for(int i = 0; i <100000;i++){
@@ -106,7 +106,7 @@ void MonteCarloGenerazioneDati(TString fileoutput, TString path){
 				//calculate hit point coordinate
                 y = my * Zmap[l] + qy ; 
                 xplaceholder = mx * Zmap[l] + qx;
-                Flag =1; /reset Flag
+                Flag =1; //reset Flag
                 
                 //check if a hit is made, if not turn the flag to 0.
                 if((((y<StripCoordinate(0))||(y>MaxLength))||((y>StripCoordinate(383))&&(y<StripCoordinate(384)))||((y>StripCoordinate(767))&&(y<StripCoordinate(768)))||((y>StripCoordinate(1151))&&(y<StripCoordinate(1152)))||(y>StripCoordinate(1535))||((xplaceholder<StripCoordinate(0))||(xplaceholder>35)))){
@@ -129,7 +129,7 @@ void MonteCarloGenerazioneDati(TString fileoutput, TString path){
 				//calculate hit point coordinate
                 x = mx * Zmap[l] + qx ;
                 yplaceholder = my * Zmap[l] + qy;
-                Flag = 1;
+                Flag = 1;//reset Flag
                 //check if a hit is made, if not turn the flag to 0.
                 if((((x<StripCoordinate(0))||(x>MaxLength))||((x>StripCoordinate(383))&&(x<StripCoordinate(384)))||((x>StripCoordinate(767))&&(x<StripCoordinate(768)))||((x>StripCoordinate(1151))&&(x<StripCoordinate(1152)))||(x>StripCoordinate(1535))||((yplaceholder<StripCoordinate(0))&&(yplaceholder>35)))){  
                     Flag = 0;
@@ -144,7 +144,7 @@ void MonteCarloGenerazioneDati(TString fileoutput, TString path){
 
           
 			//if the event does not satisfy the condition of more than 2 hits per vision, go to next iteration.
-            if(NyHit<3)||NxHit<3){
+            if((NyHit<3)||NxHit<3){
 				goto exit;
 			}  
 
@@ -172,7 +172,7 @@ void MonteCarloGenerazioneDati(TString fileoutput, TString path){
 				    e.Strip.push_back(1);// we insert a placeholder value as this info is not needed. 
 	        }
 	        
-	        /Fill other info on the event.
+	        //Fill other info on the event.
             e.NEventi = j+i;
             e.NHit = e.Strip.size();
             e.Flags[0] =1; //just to render the file analyzable to retina. Retina requires this flag to be turned on.

@@ -55,11 +55,10 @@ void RectifyTracks(TString file, TString fileoutput){
 	
 	int n;  //variable used to fill the TGraphErrors.
 	double mx, qx, my, qy, chi2X, chi2Y,chi2AttX,chi2AttY; //placeholders variables for fitting.
-	double theta, phi; //placeholders variables to find the angle between tracks that have 1 projection for each layer.
 	std::vector<size_t> TracksXToBeErased; //container of the index of the tracks in the container TrackX of the object EventoTrack that do not pass the cut in chisquare on the XZ vision, those are to be removed from the object EventoTrack.
 	std::vector<size_t> TracksYToBeErased; //container of the index of the tracks in the container TrackY of the object EventoTrack that do not pass the cut in chisquare on the YZ vision, those are to be removed from the object EventoTrack.
-	TH1F *chi2XHist = new TH1F("h", "Chisquare distribution 3 dof, after correcting systematics", 2000,0 ,50);
-	TH1F *oldchi2XHist = new TH1F("h", "Chisquare distribution 3 dof, before correcting systematics", 2000,0 ,50);
+	TH1F *chi2XHist = new TH1F("hist", "Chisquare distribution 3 dof, after correcting systematics", 2000,0 ,50);
+	TH1F *oldchi2XHist = new TH1F("hist", "Chisquare distribution 3 dof, before correcting systematics", 2000,0 ,50);
 
 	auto start = std::chrono::high_resolution_clock::now();
 	for(int i =0; i<entries; i++){
@@ -131,9 +130,7 @@ void RectifyTracks(TString file, TString fileoutput){
 			chi2Y =lineY->GetChisquare();
 			chi2AttY = YZ->GetN() - 2;
 
-			//calculate phi and theta angle for 3D track.
-			phi = atan2(my,mx)*180/3.14;
-			theta = atan(sqrt(mx*mx+my*my))*180/3.14;
+			
 			
 			if(chi2AttX ==3){ 
 				chi2XHist->Fill(chi2X);
