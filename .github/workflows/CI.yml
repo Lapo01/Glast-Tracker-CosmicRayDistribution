@@ -8,7 +8,7 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
   build_dir: ${{github.workspace}}/CMEPDA-GLAST/Core
-  source_dir: ${{github.workspace}}/CMEPDA-GLAST/Core/LibrariesSources
+  source_dir: ${{github.workspace}}/CMEPDA-GLAST
   test_dir: ${{github.workspace}}/tests
   docker_dir: ${{github.workspace}}/ubuntu22
   ROOTSYS: ${{github.workspace}}/root
