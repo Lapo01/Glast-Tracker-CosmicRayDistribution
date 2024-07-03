@@ -1,0 +1,37 @@
+name: CI 
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+  build_dir: ${{github.workspace}}/CMEPDA-GLAST/Core
+  source_dir: ${{github.workspace}}/CMEPDA-GLAST/Core/LibrariesSources
+  test_dir: ${{github.workspace}}/tests
+  docker_dir: ${{github.workspace}}/ubuntu22
+  ROOTSYS: ${{github.workspace}}/root
+  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: install nlohmann-json3-dev
+        run : sudo apt-get install nlohmann-json3-dev
+      - name: Install root
+        run :  |
+          sudo apt-get update 
+          sudo apt-get install binutils cmake dpkg-dev g++ gcc libssl-dev git libx11-dev libxext-dev libxft-dev libxpm-dev python3 libtbb-dev
+          wget https://root.cern/download/root_v6.30.06.Linux-ubuntu22.04-x86_64-gcc11.4.tar.gz
+          tar -xzf root_v6.30.06.Linux-ubuntu22.04-x86_64-gcc11.4.tar.gz
+          source root/bin/thisroot.sh
+      - name: Configure source CMake
+        run : cmake -S ${{env.source_dir}} -B ${{env.build_dir}} 
+      - name: Build
+        run: cmake --build ${{env.build_dir}} --config ${{env.BUILD_TYPE}} 
+      - name: Test
+        run: make -C ${{env.build_dir}} test
