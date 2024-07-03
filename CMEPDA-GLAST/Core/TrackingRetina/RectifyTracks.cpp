@@ -58,11 +58,8 @@ void RectifyTracks(TString file, TString fileoutput){
 	double theta, phi; //placeholders variables to find the angle between tracks that have 1 projection for each layer.
 	std::vector<size_t> TracksXToBeErased; //container of the index of the tracks in the container TrackX of the object EventoTrack that do not pass the cut in chisquare on the XZ vision, those are to be removed from the object EventoTrack.
 	std::vector<size_t> TracksYToBeErased; //container of the index of the tracks in the container TrackY of the object EventoTrack that do not pass the cut in chisquare on the YZ vision, those are to be removed from the object EventoTrack.
-	TH1F *chi2XHist = new TH1F("h", "h", 2000,0 ,50);
-	TH1F *oldchi2XHist = new TH1F("h", "h", 2000,0 ,50);
-	TH1F *ThetaNoCut = new TH1F("hist","Theta Distribution with no cut", 1000,0, 90);
-
-	TH1F *thetaHist = new TH1F("h", "h", 1000,0 ,90);
+	TH1F *chi2XHist = new TH1F("h", "Chisquare distribution 3 dof, after correcting systematics", 2000,0 ,50);
+	TH1F *oldchi2XHist = new TH1F("h", "Chisquare distribution 3 dof, before correcting systematics", 2000,0 ,50);
 
 	auto start = std::chrono::high_resolution_clock::now();
 	for(int i =0; i<entries; i++){
@@ -88,7 +85,6 @@ void RectifyTracks(TString file, TString fileoutput){
 			my = e.TrackY[0].Fit[1];
 			qx = e.TrackX[0].Fit[0];
 			qy = e.TrackY[0].Fit[0];
-			ThetaNoCut->Fill(atan(sqrt(mx*mx + my*my))*180/3.14);
 
 			if(etrack.TrackX[0].Fit[3] == 3){
 				oldchi2XHist->Fill(etrack.TrackX[0].Fit[2]);
@@ -172,9 +168,7 @@ void RectifyTracks(TString file, TString fileoutput){
 			}
 
 
-			if((chi2Y<SoglieChiMappa[chi2AttY])&(chi2X<SoglieChiMappa[chi2AttX])){
-				thetaHist->Fill(theta);
-			}
+			
 
 			delete XZ; //delete containers for points
 			delete YZ; //delete containers for points
@@ -276,11 +270,17 @@ void RectifyTracks(TString file, TString fileoutput){
 		treetrackoutput->Fill();
 		
 	}
-	oldchi2XHist->SaveAs("oldchi2Dist.root");
-	ThetaNoCut->SaveAs("OldThetaDist.root");
-	chi2XHist->SaveAs("chi2Dist.root");
-	thetaHist->SaveAs("ThetaDist.root");
+
+
+	oldchi2XHist->SaveAs("Data/Dataroot/TrackingAbstractionData/oldchi2Dist.root");
+	chi2XHist->SaveAs("Data/Dataroot/TrackingAbstractionData/chi2Dist.root");
 	
+	TCanvas *c1 = new TCanvas();
+	oldchi2XHist->Draw();
+
+	TCanvas *c2 = new TCanvas();
+	chi2XHist->Draw();
+
 	output->Write();
 	output->Close();
 	auto endtime = std::chrono::high_resolution_clock::now();

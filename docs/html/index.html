@@ -75,7 +75,7 @@ $(function() {
   <div class="headertitle"><div class="title">Glast Tracker Measurement of Zenith Angle and Azimuth Angle distributions of cosmic rays </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>provaprovaprova The goal of this project is to measure the zenith and azimuth angle distribution of cosmic rays using the Fermi-Glast Tracker. <br  />
+<div class="textblock"><p>The goal of this project is to measure the zenith and azimuth angle distribution of cosmic rays using the Fermi-Glast Tracker. <br  />
  <img src="TrackerFoto.jpeg" alt="" width="10%" class="inline" title="“Foto dell’apparato, la direzione “y” è uscente, la direzione x è invece verso la sinistra.”"/>     <img src="TrackerSchema.png" alt="" width="10%" class="inline" title="“Disposizione dei vari layer del tracker”"/>     <br  />
  In these photos the tracker is portrayed and a faithful succession(not to scale!) along the z axis of the layers is also portrayed. The y-direction is exiting from the sheet, the x-direction is on the left.</p>
 <h1><a class="anchor" id="dependencies"></a>
@@ -141,24 +141,26 @@ Second Data Abstraction Phase: Tracking</h2>
 <li>After this cut, the zenith and azimuth angle can be calculated and the tracking phase abstraction is concluded. </li>
 </ul>
 <h2><a class="anchor" id="first_sec_first_sub_sec"></a>
-Structure of the package</h2>
+Typical workflow</h2>
 <p>The package is structured in the following way: An interface is written in python language and firstly load using a rootlogon.C file the shared utils libraries written in C++. The <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> can be run with multiple options, the usual workflow is the following:</p><ul>
-<li>$ python <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> -i infile.lif -o outfileCluster -Clustering <br  />
+<li>$ python -i <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> -i infile.lif -o outfileCluster -Clustering <br  />
  Performs the first abstraction of data from hits to clusters<br  />
 </li>
-<li>$ python <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> -i infile.lif -o outfileMC -MCDist <br  />
+<li>$ python -i <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> -i infile.lif -o outfileMC -MCDist <br  />
  Generates MC expected measured distributions for the zenith and azimuth angles simulating dead strips and mean efficiency of the layers. The dimension of the clusters, smearing of residuals are not taken into account and other refinements are not taken into account.<br  />
+ This option prints out the simulated Hits distributions for all layers, the generated pdf’s and the expected measured zenith and azimuth angle distributions. The MC assumes a distribution sin(theta)cos^3(theta) for the zenith angle theta and a uniform distribution between -180 and 180 deg for the azimuth angle.<br  />
+ <br  />
 </li>
-<li>$ python <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> -i outfileCluster.root -o outfleTracks -Tracking<br  />
- Performs the second abstraction of data from clusters to tracks.</li>
-<li>$ python <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> -i outfileTracks.root -Results<br  />
+<li>$ python -i <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> -i outfileCluster.root -o outfileTracks -Tracking<br  />
+ Performs the second abstraction of data from clusters to tracks, prints out the chisquare distribution with dof = 3 before and after correcting the systematics. As said, at the end of the script a file with a cut in chisquare is made.</li>
+<li>$ python -i <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> -i outfileTracks.root -Results<br  />
  Display the results and returns the p-value from a kolmogorov tests between <br  />
  measured distributions and Montecarlo simulated ones. <br  />
  Other options are<ul>
-<li>$ python <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> -TestReconstruction <br  />
- Tests the reconstruction made by the tracking algorithm by feeding it a generated distribution of events that have one projection per vision XZ and YZ. The number of identified projection is reported and compared with the expected one, the efficiency of the algorithm is calculated dividing the number of events that have 1 reconstructed track per layer by the total number of generated events. After this first steps a kolmogorov tests is taken and the zenith and azimuth angle reconstructed distributions are compared to the generated ones, a p-value is returned for both comparisons. <br  />
+<li>$ python -i <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> -TestReconstruction <br  />
+ The -i option after python is put to keep alive the processes containing the produced TH1F and TCanvas instances. Tests the reconstruction made by the tracking algorithm by feeding it a generated distribution of events that have one projection per vision XZ and YZ. The number of identified projection is reported and compared with the expected one, the efficiency of the algorithm is calculated dividing the number of events that have 1 reconstructed track per layer by the total number of generated events. After this first steps a kolmogorov tests is taken and the zenith and azimuth angle reconstructed distributions are compared to the generated ones, a p-value is returned for both comparisons. <br  />
 </li>
-<li>$ python <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> -TrackSee N M <br  />
+<li>$ python -i <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> -i outfileTracks.root -nx N -ny M <br  />
  Displays an event with N projections on the XZ vision and M projections on the YZ vision.</li>
 </ul>
 </li>

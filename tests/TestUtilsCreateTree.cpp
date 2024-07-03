@@ -6,23 +6,6 @@
 #include<cassert>
 #include"TSystem.h"
 
-/**
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- */
-
-
 
 void TestFillStripLayer(){
 	Evento e;
@@ -45,21 +28,6 @@ void TestFillStripLayer(){
 	
 };
 
-/**
- * 
- * This macro tests the reconstruction of a small sample of data for the CreateTree macro, 
- * 
- * 
- * 
- * @param fileinput Data in form of the first kind of abstraction: clustering.
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- */
 
 void TestSample(TString fileinput){
 	gSystem->AddDynamicPath("SharedLibs");
@@ -82,7 +50,6 @@ void TestSample(TString fileinput){
 	Evento *p = &e;
 	TFile *input = new TFile("TestSample.root", "read");
 	TTree *tree = (TTree*)input->Get("tree");
-
 	tree->SetBranchAddress("evento", &p); 
 	int entries = tree->GetEntries();
 	
@@ -115,6 +82,8 @@ int main(){
 		std::cout<<"Attenzione! Errore nella funzione FillStripLayer: Il vettore StripLayer ed e.Layer non hanno la stessa dimensione."<<std::endl;
 		abort();
 		delete e;
+	    exit(EXIT_FAILURE);
+
 	}
 
 
@@ -126,6 +95,8 @@ int main(){
 		std::cout<<"Attenzione! Vi è un errore nella fase di astrazione di clustering: la somma delle dimensioni dei cluster non coincide con il numero di hit.";
 		gSystem->Exec("rm TestSample.root");
 		delete e;
+		exit(EXIT_FAILURE);
+
 	}
 
 	return 0;

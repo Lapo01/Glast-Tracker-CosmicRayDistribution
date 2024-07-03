@@ -1,16 +1,30 @@
 #include"GeneralUtils.h"
 
+/**
+ * \file TrackSee.cpp 
+ * 
+ * This file contains functions to display a random event with N projections on the XZ vision and M projections on the YZ vision. .
+ *
+ */
 
 
 
+
+/**
+ * This function returns TGraphErrors containers with the points in the tracks for the XZ vision.
+ *  
+ * @param e The chosen event to display
+ *
+ * 
+ */
 TGraphErrors *TrackXZ(EventoTrack &e){
-    TGraphErrors *XZ =new TGraphErrors();
-    int n;
-    TString Title = "Track XZ  Event ID: "+ to_string(e.NEvento) +  "; X [cm]; Y [cm] " ;
-    XZ->SetTitle(Title);
+    TGraphErrors *XZ =new TGraphErrors(); //initialize TGraphErrors
+    int n; //initialize util variable to fill TGraphErrors instance
+    TString Title = "Track XZ  Event ID: "+ to_string(e.NEvento) +  "; X [cm]; Y [cm] " ; //TGraphErrors title.
+    XZ->SetTitle(Title); 
 
 
-
+    //for all XZ projections fill the TGraphErrors with their cluster info.
     for(auto track:e.TrackX){
         for(int i= 0; i<track.ClusterPosition.size(); i++){
             n = XZ->GetN();
@@ -21,13 +35,24 @@ TGraphErrors *TrackXZ(EventoTrack &e){
 
     return XZ;
 }
+
+
+
+/**
+ * This function returns TGraphErrors containers with the points in the tracks for the YZ vision.
+ *  
+ * @param e The chosen event to display
+ *
+ * 
+ */
 TGraphErrors *TrackYZ(EventoTrack &e){
-    TGraphErrors *YZ =new TGraphErrors();
-    int n;
-
-    TString Title = "Track YZ Event ID: " + to_string(e.NEvento) + "; Y [cm]; Y [cm] ";
-
+    TGraphErrors *YZ =new TGraphErrors();//initialize TGraphErrors
+    int n;//initialize util variable to fill TGraphErrors instance
+    TString Title = "Track YZ Event ID: " + to_string(e.NEvento) + "; Y [cm]; Y [cm] ";//TGraphErrors title.
     YZ->SetTitle(Title);
+
+    //for all YZ projections fill the TGraphErrors with their cluster info.
+
     for(auto track:e.TrackY){
         for(int i= 0; i<track.ClusterPosition.size(); i++){
             n = YZ->GetN();
@@ -43,7 +68,14 @@ TGraphErrors *TrackYZ(EventoTrack &e){
 }
 
 
-
+/**
+ * This function checks if the vector containing the ID of the entries with N and M projection for XZ and YZ vision has size 0.
+ *
+ *  
+ * @param a vector containing the number ID of the entries with N and M projection for XZ and YZ vision
+ *
+ * 
+ */
 void CheckLength(std::vector<int> &a){
     if(a.size() ==0){
         throw std::exception();
@@ -63,36 +95,51 @@ void CheckLength(std::vector<int> &a){
 
 void TrackSee(TString fileinput, int N, int M){
 
-    gRandom = new TRandom3(0);
+
+
+    gRandom = new TRandom(0); //make new pseudorandom seed
+
+
+    //initialize tree to be read
     EventoTrack e; 
 	EventoTrack *p = &e;
 	TFile *input = new TFile(fileinput,"read");
 	TTree *tree = (TTree*)input->Get("treetrack");
 	tree->SetBranchAddress("etrack", &p); 
 	int entries = tree->GetEntries();
-    std::vector<int> GoodEntries;
+    std::vector<int> GoodEntries; //vector of entry ID's
+
+    //push back to the GoodEntries vector the entry ID that satisfy the condition of having N and M projections respectively on the vision XZ and YZ
     for(int i = 0; i<entries; i++){
         tree->GetEntry(i);
         if((e.TrackX.size() == N) &(e.TrackY.size() == M)){
                 GoodEntries.push_back(i);
         }
     }
+    
 
+
+    //see if there are any event with the number N and M of projections.
     try {
         CheckLength(GoodEntries);
 
     }
-
+    //catch the exception
     catch(std::exception &except){
         std::cout<<"Non esistono eventi con questo numero di proiezione per visione!"<<std::endl;
         exit(EXIT_FAILURE);
+        delete except;
     }
+    //pick a random entry
     int RandomPick = int(gRandom->Uniform(0, GoodEntries.size()));
 
     std::cout<<GoodEntries[RandomPick]<<std::endl;
     tree->GetEntry(GoodEntries[RandomPick]);
 
 
+
+
+    //plot the events with their tracks.
     TCanvas *XZVision = new TCanvas();
     TGraphErrors *XZ =TrackXZ(e);
     XZ->Draw("*A");

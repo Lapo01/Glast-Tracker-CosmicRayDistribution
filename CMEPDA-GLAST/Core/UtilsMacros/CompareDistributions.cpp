@@ -6,6 +6,7 @@
  */
 
 
+
 /**
  * This macro takes as input two root files containing hists, compares the distributions with a Kolmogorov Test and returns a plot with both the normalized distributions. It returns a p-value.
  *  
@@ -17,11 +18,17 @@
  * 
  */
 double CompareDistributions(TString f1, TString f2, TString path){
+
+
+    //get histograms from .root files
     TFile *One = new TFile(f1);
     TFile *Two = new TFile(f2);
     TH1F *firsthist =(TH1F*)One->Get("hist");
 	TH1F *secondhist = (TH1F*)Two->Get("hist");
 
+
+
+    //normalize histograms
     double NormOne = 0;
     double NormTwo = 0;
     for(int i = 0; i<1000; i++){
@@ -33,13 +40,14 @@ double CompareDistributions(TString f1, TString f2, TString path){
 
 
         }
-
-
-		}
+	}
 
     firsthist->Scale(1/NormOne);
 	secondhist->Scale(1/NormTwo);
 
+    double test = secondhist->KolmogorovTest(firsthist);
+
+    //plot distributions and run Kolmogorov Test
     TCanvas *c = new TCanvas();
 
 
@@ -59,10 +67,10 @@ double CompareDistributions(TString f1, TString f2, TString path){
     pt->Draw("same");
     c->SaveAs(path);
 
+    
 
 
-
-    return secondhist->KolmogorovTest(firsthist);
+    return test;
 
 };
 

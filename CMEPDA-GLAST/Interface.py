@@ -1,6 +1,6 @@
 """! @file Interface.py 
 Interface used to call c++ macros. 
-Several options are put.
+Several options for data analysis can be chosen.
 
 """
 
@@ -24,13 +24,13 @@ parser.add_argument("-o", "--outfile", default = 'Out',
                     help = "Name of the output file")
 
 parser.add_argument("-Clustering", action = "store_true",
-                    help = "Takes raw data file and return abstraction of data in clustering as a tree in a root file.")
+                    help = "Takes a raw data file and return abstraction of data in clustering as a tree in a root file.")
 
 parser.add_argument("-Tracking", action = "store_true",
-                    help = "Takes the root file created in the clustering phase and returns a tree in a root file")
+                    help = "Takes a root file created in the clustering phase and returns a tree in a root file")
 
 parser.add_argument("-Results", action = "store_true",
-                    help = "Prints out the Zenith and Azimuth angle Cosmic Ray distributions")
+                    help = "Prints out the Zenith and Azimuth angle Cosmic Ray distributions, compares MC simulated distribution and measured distributions")
 
 parser.add_argument("-MCDist", action = "store_true",
                     help = "Prints out a montecarlo simulation for the zenith and azimuth angle distribution")
@@ -47,6 +47,9 @@ parser.add_argument("-xz", "--Nx",
 
 parser.add_argument("-yz", "--Ny",
                     help = "Number of tracks YZ that one want to visualize")
+
+
+
 ##
 # @param fileinput
 # 
@@ -59,9 +62,6 @@ parser.add_argument("-yz", "--Ny",
 # 
 # 
 #  
-   
-
-
 def Clustering(fileinput, fileoutput ):
     """! Docs for clustering
     This function performs the first abstractin of data by calling the adeguate c++ macros.
@@ -74,9 +74,12 @@ def Clustering(fileinput, fileoutput ):
 
 
     ROOT.gROOT.LoadMacro(os.path.join("Core", "CreateTree", "CreateTree.cpp")) #load macro
+    ROOT.gROOT.LoadMacro(os.path.join("Core", "CreateTree", "PlotClusterResults.cpp")) #load macro
+
     ROOT.CreateTree(fileinput, fileoutput) #call macro
     logger.info("FATTO! Effettuata prima fase di astrazione dati, il file è stato salvato nel path ")
     logger.info(os.path.join("Data","Dataroot","ClusterAbstractionData", args.outfile+ ".root"))
+    ROOT.PlotClusterResults(fileoutput)
 
 
 
@@ -161,8 +164,7 @@ def TestReconstruction():
     logger.info(OutText)
     OutText = "Il test di kolmogorov effettuato sulla distribuzione azimuth generata e su quella ricostruita ritorna un p-value di "+str(KolmogorovTestResultPhi)
     logger.info(OutText)
-    subprocess.call(["xdg-open", os.path.join("Data", "MCSimulations", "TestingRetinaAlgorithm","ResultComparisonAzimuth.pdf")])
-    subprocess.call(["xdg-open", os.path.join("Data", "MCSimulations", "TestingRetinaAlgorithm","ResultComparisonZenith.pdf")])
+    
 
 
 
@@ -190,8 +192,7 @@ def Results(fileinput, fileoutput):
     logger.info(OutText)
     OutText = "Il test di kolmogorov effettuato sulla distribuzione azimuth simulata e su quella misurata ritorna un p-value di "+str(KolmogorovTestResultPhi)
     logger.info(OutText)
-    subprocess.call(["xdg-open", os.path.join("Data", "ResultsImages", "ComparisonMCRealDataZenith.pdf")])
-    subprocess.call(["xdg-open",  os.path.join("Data", "ResultsImages", "ComparisonMCRealDataAzimuth.pdf")])
+    
 
 
 
@@ -256,7 +257,7 @@ if __name__ == "__main__":
             raise Exception("Il file inserito non esiste.")
         fileinput = args.infile
         fileoutput = os.path.join("Data","MCSimulations", "MC")
-        Montecarlo();
+        Montecarlo(fileinput, fileoutput);
 
 
     if args.Results:
@@ -278,7 +279,7 @@ if __name__ == "__main__":
         if ((not(os.path.isfile(fileoutput + "ZenithExpectedDistribution.root")))|(not (os.path.isfile(fileoutput + "AzimuthExpectedDistribution.root")))):
             logger.error("IL FILE CON LE SIMULAZIONI MC NON ESISTE: GENERA UN SET DI DATI USANDO LA FLAG -MCDist E INSERENDO IL FILE RELATIVO ALLA PRESA DATI CONSIDERATA.")
             raise Exception("La simulazione MC non è stata ancora effettuata.")
-        Results()
+        Results(fileinput, fileoutput)
 
 
     if args.TrackSee:

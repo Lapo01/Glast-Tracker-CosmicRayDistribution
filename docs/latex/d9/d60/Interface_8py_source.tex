@@ -4,7 +4,7 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00001}00001\ \textcolor{stringliteral}{"{}"{}"{}!\ @file\ Interface.py\ }}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00002}00002\ \textcolor{stringliteral}{Interface\ used\ to\ call\ c++\ macros.\ }}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00003}00003\ \textcolor{stringliteral}{Several\ options\ are\ put.}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00003}00003\ \textcolor{stringliteral}{Several\ options\ for\ data\ analysis\ can\ be\ chosen.}}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00004}00004\ \textcolor{stringliteral}{}}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00005}00005\ \textcolor{stringliteral}{"{}"{}"{}}}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00006}00006\ }
@@ -28,13 +28,13 @@
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help\ =\ \textcolor{stringliteral}{"{}Name\ of\ the\ output\ file"{}})}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00025}00025\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00026}00026\ parser.add\_argument(\textcolor{stringliteral}{"{}-\/Clustering"{}},\ action\ =\ \textcolor{stringliteral}{"{}store\_true"{}},}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help\ =\ \textcolor{stringliteral}{"{}Takes\ raw\ data\ file\ and\ return\ abstraction\ of\ data\ in\ clustering\ as\ a\ tree\ in\ a\ root\ file."{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help\ =\ \textcolor{stringliteral}{"{}Takes\ a\ raw\ data\ file\ and\ return\ abstraction\ of\ data\ in\ clustering\ as\ a\ tree\ in\ a\ root\ file."{}})}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00028}00028\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00029}00029\ parser.add\_argument(\textcolor{stringliteral}{"{}-\/Tracking"{}},\ action\ =\ \textcolor{stringliteral}{"{}store\_true"{}},}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help\ =\ \textcolor{stringliteral}{"{}Takes\ the\ root\ file\ created\ in\ the\ clustering\ phase\ and\ returns\ a\ tree\ in\ a\ root\ file"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help\ =\ \textcolor{stringliteral}{"{}Takes\ a\ root\ file\ created\ in\ the\ clustering\ phase\ and\ returns\ a\ tree\ in\ a\ root\ file"{}})}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00031}00031\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00032}00032\ parser.add\_argument(\textcolor{stringliteral}{"{}-\/Results"{}},\ action\ =\ \textcolor{stringliteral}{"{}store\_true"{}},}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help\ =\ \textcolor{stringliteral}{"{}Prints\ out\ the\ Zenith\ and\ Azimuth\ angle\ Cosmic\ Ray\ distributions"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help\ =\ \textcolor{stringliteral}{"{}Prints\ out\ the\ Zenith\ and\ Azimuth\ angle\ Cosmic\ Ray\ distributions,\ compares\ MC\ simulated\ distribution\ and\ measured\ distributions"{}})}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00034}00034\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00035}00035\ parser.add\_argument(\textcolor{stringliteral}{"{}-\/MCDist"{}},\ action\ =\ \textcolor{stringliteral}{"{}store\_true"{}},}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help\ =\ \textcolor{stringliteral}{"{}Prints\ out\ a\ montecarlo\ simulation\ for\ the\ zenith\ and\ azimuth\ angle\ distribution"{}})}
@@ -52,9 +52,9 @@
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00048}00048\ parser.add\_argument(\textcolor{stringliteral}{"{}-\/yz"{}},\ \textcolor{stringliteral}{"{}-\/-\/Ny"{}},}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help\ =\ \textcolor{stringliteral}{"{}Number\ of\ tracks\ YZ\ that\ one\ want\ to\ visualize"{}})}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00050}00050\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00062}00062\ \ \ \ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00063}00063\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00053}00053\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00065}00065\ \textcolor{keyword}{def\ }Clustering(fileinput,\ fileoutput\ ):}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00066}00066\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}!\ Docs\ for\ clustering}}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ This\ function\ performs\ the\ first\ abstractin\ of\ data\ by\ calling\ the\ adeguate\ c++\ macros.}}
@@ -67,227 +67,228 @@
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00074}00074\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00075}00075\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00076}00076\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}CreateTree"{}},\ \textcolor{stringliteral}{"{}CreateTree.cpp"{}}))\ \textcolor{comment}{\#load\ macro}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00077}00077\ \ \ \ \ ROOT.CreateTree(fileinput,\ fileoutput)\ \textcolor{comment}{\#call\ macro}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00078}00078\ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}FATTO!\ Effettuata\ prima\ fase\ di\ astrazione\ dati,\ il\ file\ è\ stato\ salvato\ nel\ path\ "{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00079}00079\ \ \ \ \ logger.info(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}Dataroot"{}},\textcolor{stringliteral}{"{}ClusterAbstractionData"{}},\ args.outfile+\ \textcolor{stringliteral}{"{}.root"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00080}00080\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00081}00081\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00082}00082\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00083}00083\ \textcolor{keyword}{def\ }Tracking(fileinput,\ fileoutput)\ :}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00084}00084\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}!Docs\ for\ Tracking}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00085}00085\ \textcolor{stringliteral}{\ \ \ \ This\ function\ performs\ the\ second\ abstractin\ of\ data\ by\ calling\ the\ Retina,\ RectifyTracks\ and\ UnifyTree\ macros.\ }}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00086}00086\ \textcolor{stringliteral}{\ \ \ \ It\ subdivides\ the\ data\ into\ a\ number\ of\ bunches\ equal\ to\ the\ number\ of\ pc\ cores,\ then\ each\ cores\ performs\ data\ abstraction\ on\ different\ bunches.}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00087}00087\ \textcolor{stringliteral}{\ \ \ \ At\ the\ end\ the\ UnifyTree\ macro\ is\ called\ and\ all\ created\ tree\ are\ merge\ into\ a\ unique\ tree\ put\ into\ .root\ file.}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00088}00088\ \textcolor{stringliteral}{\ \ \ \ It\ is\ advised\ to\ not\ interact\ with\ the\ pc\ throughout\ this\ process\ as\ this\ may\ cause\ slow-\/downs\ due\ to\ deprivation\ of\ resources.}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00089}00089\ \textcolor{stringliteral}{\ \ \ \ @param\ fileinput\ Name\ of\ the\ input\ file\ with\ extension,\ the\ path\ is\ not\ necessary.}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00090}00090\ \textcolor{stringliteral}{\ \ \ \ }}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00091}00091\ \textcolor{stringliteral}{\ \ \ \ @param\ fileoutput\ Name\ of\ the\ outputfile\ with\ no\ extension,\ the\ output\ file\ is\ put\ in\ the\ folder\ Dataroot/TrackingAbstractionData\ with\ the\ name\ fileoutput.root}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00092}00092\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00093}00093\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}TrackingRetina"{}},\ \textcolor{stringliteral}{"{}Retina.cpp++O"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00094}00094\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}TrackingRetina"{}},\ \textcolor{stringliteral}{"{}UnifyTree.cpp"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00095}00095\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}TrackingRetina"{}},\ \textcolor{stringliteral}{"{}RectifyTracks.cpp"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00096}00096\ \ \ \ \ \textcolor{keyword}{def\ }AnalysePartOfData(j):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Inizio\ processo\ numero\ "{}}\ +\ str(j))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ Stringsave\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\textcolor{stringliteral}{"{}TrackingAbstractionData"{}},\ fileoutput\ +str(j)+\ \textcolor{stringliteral}{"{}.root"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00099}00099\ \ \ \ \ \ \ \ \ ROOT.Retina(fileinput,\ Stringsave,\ j,\ \ os.cpu\_count())}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00100}00100\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Fine\ processo\ numero\ "{}}\ +\ str(j))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00101}00101\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00102}00102\ \ \ \ \ \textcolor{keywordflow}{if}\ os.cpu\_count()<2:}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00103}00103\ \ \ \ \ \ \ \ \ logger.warning(\textcolor{stringliteral}{"{}Attenzione:\ Il\ pc\ che\ stai\ utilizzando\ sembrerebbe\ avere\ meno\ di\ due\ core\ disponibili,\ potrebbe\ volerci\ un\ pò\ di\ tempo...\ Sui\ dataset\ forniti\ fino\ ad\ un\ massimo\ di\ 2\ ore\ nel\ caso\ peggiore."{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00077}00077\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}CreateTree"{}},\ \textcolor{stringliteral}{"{}PlotClusterResults.cpp"{}}))\ \textcolor{comment}{\#load\ macro}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00079}00079\ \ \ \ \ ROOT.CreateTree(fileinput,\ fileoutput)\ \textcolor{comment}{\#call\ macro}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00080}00080\ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}FATTO!\ Effettuata\ prima\ fase\ di\ astrazione\ dati,\ il\ file\ è\ stato\ salvato\ nel\ path\ "{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00081}00081\ \ \ \ \ logger.info(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}Dataroot"{}},\textcolor{stringliteral}{"{}ClusterAbstractionData"{}},\ args.outfile+\ \textcolor{stringliteral}{"{}.root"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00082}00082\ \ \ \ \ ROOT.PlotClusterResults(fileoutput)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00086}00086\ \textcolor{keyword}{def\ }Tracking(fileinput,\ fileoutput)\ :}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00087}00087\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}!Docs\ for\ Tracking}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00088}00088\ \textcolor{stringliteral}{\ \ \ \ This\ function\ performs\ the\ second\ abstractin\ of\ data\ by\ calling\ the\ Retina,\ RectifyTracks\ and\ UnifyTree\ macros.\ }}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00089}00089\ \textcolor{stringliteral}{\ \ \ \ It\ subdivides\ the\ data\ into\ a\ number\ of\ bunches\ equal\ to\ the\ number\ of\ pc\ cores,\ then\ each\ cores\ performs\ data\ abstraction\ on\ different\ bunches.}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00090}00090\ \textcolor{stringliteral}{\ \ \ \ At\ the\ end\ the\ UnifyTree\ macro\ is\ called\ and\ all\ created\ tree\ are\ merge\ into\ a\ unique\ tree\ put\ into\ .root\ file.}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00091}00091\ \textcolor{stringliteral}{\ \ \ \ It\ is\ advised\ to\ not\ interact\ with\ the\ pc\ throughout\ this\ process\ as\ this\ may\ cause\ slow-\/downs\ due\ to\ deprivation\ of\ resources.}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00092}00092\ \textcolor{stringliteral}{\ \ \ \ @param\ fileinput\ Name\ of\ the\ input\ file\ with\ extension,\ the\ path\ is\ not\ necessary.}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00093}00093\ \textcolor{stringliteral}{\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00094}00094\ \textcolor{stringliteral}{\ \ \ \ @param\ fileoutput\ Name\ of\ the\ outputfile\ with\ no\ extension,\ the\ output\ file\ is\ put\ in\ the\ folder\ Dataroot/TrackingAbstractionData\ with\ the\ name\ fileoutput.root}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00095}00095\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00096}00096\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}TrackingRetina"{}},\ \textcolor{stringliteral}{"{}Retina.cpp++O"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00097}00097\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}TrackingRetina"{}},\ \textcolor{stringliteral}{"{}UnifyTree.cpp"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00098}00098\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}TrackingRetina"{}},\ \textcolor{stringliteral}{"{}RectifyTracks.cpp"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00099}00099\ \ \ \ \ \textcolor{keyword}{def\ }AnalysePartOfData(j):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00100}00100\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Inizio\ processo\ numero\ "{}}\ +\ str(j))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00101}00101\ \ \ \ \ \ \ \ \ Stringsave\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\textcolor{stringliteral}{"{}TrackingAbstractionData"{}},\ fileoutput\ +str(j)+\ \textcolor{stringliteral}{"{}.root"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00102}00102\ \ \ \ \ \ \ \ \ ROOT.Retina(fileinput,\ Stringsave,\ j,\ \ os.cpu\_count())}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00103}00103\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Fine\ processo\ numero\ "{}}\ +\ str(j))}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00104}00104\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00105}00105\ \ \ \ \ Iterations\ =\ range(os.cpu\_count())}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00106}00106\ \ \ \ \ pool\ =\ mp.Pool(processes\ =\ os.cpu\_count())}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00107}00107\ \ \ \ \ results\ =\ pool.map(AnalysePartOfData,\ Iterations)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00108}00108\ \ \ \ \ pool.close()\ \textcolor{comment}{\#boh\ non\ la\ chiude\ da\ sola!\ bug\ DI\ PYTHON!!!!!!}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00109}00109\ \ \ \ \ UtilsList\ =\ [\textcolor{keywordtype}{None}]*os.cpu\_count()}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00110}00110\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00111}00111\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00112}00112\ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ item\ \textcolor{keywordflow}{in}\ enumerate(Iterations):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00113}00113\ \ \ \ \ \ \ \ \ UtilsList[i]\ =\ \ os.path.join(\textcolor{stringliteral}{"{}Data"{}}\ ,\ \textcolor{stringliteral}{"{}Dataroot"{}}\ ,\textcolor{stringliteral}{"{}TrackingAbstractionData"{}},fileoutput\ +str(item)\ +\textcolor{stringliteral}{"{}.root"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00114}00114\ \ \ \ \ ROOT.UnifyTree(os.cpu\_count(),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\ \textcolor{stringliteral}{"{}TrackingAbstractionData"{}}\ ,fileoutput))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00115}00115\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ item\ \textcolor{keywordflow}{in}\ enumerate(UtilsList):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00117}00117\ \ \ \ \ \ \ \ \ os.remove(UtilsList[i])}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00118}00118\ \ \ \ \ ROOT.RectifyTracks(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\textcolor{stringliteral}{"{}TrackingAbstractionData"{}},\ \ fileoutput\ +\ \textcolor{stringliteral}{"{}.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\textcolor{stringliteral}{"{}TrackingAbstractionData"{}},\ \ fileoutput\ +\ \textcolor{stringliteral}{"{}.root"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00119}00119\ \ \ \ \ strOut\ =\ \textcolor{stringliteral}{"{}TAGLIO\ IN\ CHI2\ EFFETTUATO,\ IL\ NOME\ DEL\ FILE\ CREATO\ E'\ "{}}\ +\ fileoutput\ +\ \textcolor{stringliteral}{"{}.root"{}}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00120}00120\ \ \ \ \ logger.info(strOut)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00121}00121\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00122}00122\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00123}00123\ \textcolor{keyword}{def\ }TestReconstruction():}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00124}00124\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}!Docs\ for\ testing\ the\ tracking\ algorithm}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00125}00125\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00126}00126\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}Montecarlo"{}},\ \textcolor{stringliteral}{"{}MonteCarloGenerazioneDati.cpp++O"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00127}00127\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}TrackingRetina"{}},\ \textcolor{stringliteral}{"{}Retina.cpp++O"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00128}00128\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}TrackingRetina"{}},\ \textcolor{stringliteral}{"{}UnifyTree.cpp"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00129}00129\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}UtilsMacros"{}},\ \textcolor{stringliteral}{"{}CompareDistributions.cpp"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00130}00130\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}UtilsMacros"{}},\ \textcolor{stringliteral}{"{}ExtractDistributions.cpp"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00131}00131\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00132}00132\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00133}00133\ \ \ \ \ ROOT.MonteCarloGenerazioneDati(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\ \textcolor{stringliteral}{"{}MCDist.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\ \textcolor{stringliteral}{"{}Sample"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00134}00134\ \ \ \ \ \textcolor{keyword}{def\ }AnalysePartOfData(j):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00135}00135\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Inizio\ processo\ numero\ "{}}\ +\ str(j))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00136}00136\ \ \ \ \ \ \ \ \ Stringsave\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}MCSimulations"{}},\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\ \textcolor{stringliteral}{"{}MCReconstructed"{}}\ +str(j)+\ \textcolor{stringliteral}{"{}.root"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00137}00137\ \ \ \ \ \ \ \ \ ROOT.Retina(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}MCDist.root"{}}),\ Stringsave,\ j,\ \ os.cpu\_count())}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00138}00138\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Fine\ processo\ numero\ "{}}\ +\ str(j))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00139}00139\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00140}00140\ \ \ \ \ Iterations\ =\ range(os.cpu\_count())}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00141}00141\ \ \ \ \ pool\ =\ mp.Pool(processes\ =\ os.cpu\_count())}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00142}00142\ \ \ \ \ results\ =\ pool.map(AnalysePartOfData,\ Iterations)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00143}00143\ \ \ \ \ pool.close()\ \textcolor{comment}{\#boh\ non\ la\ chiude\ da\ sola!\ bug\ DI\ PYTHON!!!!!!}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00144}00144\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00145}00145\ \ \ \ \ UtilsList\ =\ [\textcolor{keywordtype}{None}]*os.cpu\_count()}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00105}00105\ \ \ \ \ \textcolor{keywordflow}{if}\ os.cpu\_count()<2:}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00106}00106\ \ \ \ \ \ \ \ \ logger.warning(\textcolor{stringliteral}{"{}Attenzione:\ Il\ pc\ che\ stai\ utilizzando\ sembrerebbe\ avere\ meno\ di\ due\ core\ disponibili,\ potrebbe\ volerci\ un\ pò\ di\ tempo...\ Sui\ dataset\ forniti\ fino\ ad\ un\ massimo\ di\ 2\ ore\ nel\ caso\ peggiore."{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00108}00108\ \ \ \ \ Iterations\ =\ range(os.cpu\_count())}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00109}00109\ \ \ \ \ pool\ =\ mp.Pool(processes\ =\ os.cpu\_count())}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00110}00110\ \ \ \ \ results\ =\ pool.map(AnalysePartOfData,\ Iterations)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00111}00111\ \ \ \ \ pool.close()\ \textcolor{comment}{\#boh\ non\ la\ chiude\ da\ sola!\ bug\ DI\ PYTHON!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00112}00112\ \ \ \ \ UtilsList\ =\ [\textcolor{keywordtype}{None}]*os.cpu\_count()}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00115}00115\ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ item\ \textcolor{keywordflow}{in}\ enumerate(Iterations):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00116}00116\ \ \ \ \ \ \ \ \ UtilsList[i]\ =\ \ os.path.join(\textcolor{stringliteral}{"{}Data"{}}\ ,\ \textcolor{stringliteral}{"{}Dataroot"{}}\ ,\textcolor{stringliteral}{"{}TrackingAbstractionData"{}},fileoutput\ +str(item)\ +\textcolor{stringliteral}{"{}.root"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00117}00117\ \ \ \ \ ROOT.UnifyTree(os.cpu\_count(),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\ \textcolor{stringliteral}{"{}TrackingAbstractionData"{}}\ ,fileoutput))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ item\ \textcolor{keywordflow}{in}\ enumerate(UtilsList):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00120}00120\ \ \ \ \ \ \ \ \ os.remove(UtilsList[i])}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00121}00121\ \ \ \ \ ROOT.RectifyTracks(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\textcolor{stringliteral}{"{}TrackingAbstractionData"{}},\ \ fileoutput\ +\ \textcolor{stringliteral}{"{}.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\textcolor{stringliteral}{"{}TrackingAbstractionData"{}},\ \ fileoutput\ +\ \textcolor{stringliteral}{"{}.root"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00122}00122\ \ \ \ \ strOut\ =\ \textcolor{stringliteral}{"{}TAGLIO\ IN\ CHI2\ EFFETTUATO,\ IL\ NOME\ DEL\ FILE\ CREATO\ E'\ "{}}\ +\ fileoutput\ +\ \textcolor{stringliteral}{"{}.root"{}}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00123}00123\ \ \ \ \ logger.info(strOut)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00126}00126\ \textcolor{keyword}{def\ }TestReconstruction():}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00127}00127\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}!Docs\ for\ testing\ the\ tracking\ algorithm}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00128}00128\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00129}00129\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}Montecarlo"{}},\ \textcolor{stringliteral}{"{}MonteCarloGenerazioneDati.cpp++O"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00130}00130\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}TrackingRetina"{}},\ \textcolor{stringliteral}{"{}Retina.cpp++O"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00131}00131\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}TrackingRetina"{}},\ \textcolor{stringliteral}{"{}UnifyTree.cpp"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00132}00132\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}UtilsMacros"{}},\ \textcolor{stringliteral}{"{}CompareDistributions.cpp"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00133}00133\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}UtilsMacros"{}},\ \textcolor{stringliteral}{"{}ExtractDistributions.cpp"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00136}00136\ \ \ \ \ ROOT.MonteCarloGenerazioneDati(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\ \textcolor{stringliteral}{"{}MCDist.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\ \textcolor{stringliteral}{"{}Sample"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00137}00137\ \ \ \ \ \textcolor{keyword}{def\ }AnalysePartOfData(j):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00138}00138\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Inizio\ processo\ numero\ "{}}\ +\ str(j))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ Stringsave\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}MCSimulations"{}},\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\ \textcolor{stringliteral}{"{}MCReconstructed"{}}\ +str(j)+\ \textcolor{stringliteral}{"{}.root"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00140}00140\ \ \ \ \ \ \ \ \ ROOT.Retina(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}MCDist.root"{}}),\ Stringsave,\ j,\ \ os.cpu\_count())}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00141}00141\ \ \ \ \ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Fine\ processo\ numero\ "{}}\ +\ str(j))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00143}00143\ \ \ \ \ Iterations\ =\ range(os.cpu\_count())}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00144}00144\ \ \ \ \ pool\ =\ mp.Pool(processes\ =\ os.cpu\_count())}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00145}00145\ \ \ \ \ results\ =\ pool.map(AnalysePartOfData,\ Iterations)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00146}00146\ \ \ \ \ pool.close()\ \textcolor{comment}{\#boh\ non\ la\ chiude\ da\ sola!\ bug\ DI\ PYTHON!!!!!!}}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00147}00147\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00148}00148\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00149}00149\ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ item\ \textcolor{keywordflow}{in}\ enumerate(Iterations):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00150}00150\ \ \ \ \ \ \ \ \ UtilsList[i]\ =\ \ os.path.join(\textcolor{stringliteral}{"{}Data"{}}\ \ ,\textcolor{stringliteral}{"{}MCSimulations"{}},\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}MCReconstructed"{}}\ +str(item)\ +\textcolor{stringliteral}{"{}.root"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00151}00151\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00152}00152\ \ \ \ \ ROOT.UnifyTree(os.cpu\_count(),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}}\ ,\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}MCReconstructed"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00153}00153\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00154}00154\ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ item\ \textcolor{keywordflow}{in}\ enumerate(UtilsList):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00155}00155\ \ \ \ \ \ \ \ \ os.remove(UtilsList[i])}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00148}00148\ \ \ \ \ UtilsList\ =\ [\textcolor{keywordtype}{None}]*os.cpu\_count()}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00152}00152\ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ item\ \textcolor{keywordflow}{in}\ enumerate(Iterations):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00153}00153\ \ \ \ \ \ \ \ \ UtilsList[i]\ =\ \ os.path.join(\textcolor{stringliteral}{"{}Data"{}}\ \ ,\textcolor{stringliteral}{"{}MCSimulations"{}},\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}MCReconstructed"{}}\ +str(item)\ +\textcolor{stringliteral}{"{}.root"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00154}00154\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00155}00155\ \ \ \ \ ROOT.UnifyTree(os.cpu\_count(),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}}\ ,\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}MCReconstructed"{}}))}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00156}00156\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00157}00157\ \ \ \ \ ROOT.ExtractDistributions(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}MCReconstructed.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}Reconstructed"{}}),\ )}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00158}00158\ \ \ \ \ KolmogorovTestResultTheta\ =\ round(ROOT.CompareDistributions(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}MCSimulations"{}}\ ,\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}ReconstructedZenithDistribution.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}SampleZenithTest.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}ResultComparisonZenith.pdf"{}})),2)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00159}00159\ \ \ \ \ KolmogorovTestResultPhi\ =\ round(ROOT.CompareDistributions(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}MCSimulations"{}}\ ,\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}ReconstructedAzimuthDistribution.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}SampleAzimuthTest.root"{}}),os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}ResultComparisonAzimuth.pdf"{}})),2)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00160}00160\ \ \ \ \ OutText\ =\ \textcolor{stringliteral}{"{}Il\ test\ di\ kolmogorov\ effettuato\ sulla\ distribuzione\ zenith\ generata\ e\ su\ quella\ ricostruita\ ritorna\ un\ p-\/value\ di\ "{}}+str(KolmogorovTestResultTheta)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00161}00161\ \ \ \ \ logger.info(OutText)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00162}00162\ \ \ \ \ OutText\ =\ \textcolor{stringliteral}{"{}Il\ test\ di\ kolmogorov\ effettuato\ sulla\ distribuzione\ azimuth\ generata\ e\ su\ quella\ ricostruita\ ritorna\ un\ p-\/value\ di\ "{}}+str(KolmogorovTestResultPhi)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00163}00163\ \ \ \ \ logger.info(OutText)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00164}00164\ \ \ \ \ subprocess.call([\textcolor{stringliteral}{"{}xdg-\/open"{}},\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}ResultComparisonAzimuth.pdf"{}})])}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00165}00165\ \ \ \ \ subprocess.call([\textcolor{stringliteral}{"{}xdg-\/open"{}},\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}ResultComparisonZenith.pdf"{}})])}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00166}00166\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00157}00157\ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ item\ \textcolor{keywordflow}{in}\ enumerate(UtilsList):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00158}00158\ \ \ \ \ \ \ \ \ os.remove(UtilsList[i])}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00160}00160\ \ \ \ \ ROOT.ExtractDistributions(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}MCReconstructed.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}Reconstructed"{}}),\ )}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00161}00161\ \ \ \ \ KolmogorovTestResultTheta\ =\ round(ROOT.CompareDistributions(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}MCSimulations"{}}\ ,\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}ReconstructedZenithDistribution.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}SampleZenithTest.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}ResultComparisonZenith.pdf"{}})),2)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00162}00162\ \ \ \ \ KolmogorovTestResultPhi\ =\ round(ROOT.CompareDistributions(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}MCSimulations"{}}\ ,\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}ReconstructedAzimuthDistribution.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}SampleAzimuthTest.root"{}}),os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},\textcolor{stringliteral}{"{}ResultComparisonAzimuth.pdf"{}})),2)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00163}00163\ \ \ \ \ OutText\ =\ \textcolor{stringliteral}{"{}Il\ test\ di\ kolmogorov\ effettuato\ sulla\ distribuzione\ zenith\ generata\ e\ su\ quella\ ricostruita\ ritorna\ un\ p-\/value\ di\ "{}}+str(KolmogorovTestResultTheta)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00164}00164\ \ \ \ \ logger.info(OutText)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00165}00165\ \ \ \ \ OutText\ =\ \textcolor{stringliteral}{"{}Il\ test\ di\ kolmogorov\ effettuato\ sulla\ distribuzione\ azimuth\ generata\ e\ su\ quella\ ricostruita\ ritorna\ un\ p-\/value\ di\ "{}}+str(KolmogorovTestResultPhi)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00166}00166\ \ \ \ \ logger.info(OutText)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00167}00167\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00168}00168\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00169}00169\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00170}00170\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00171}00171\ \textcolor{keyword}{def\ }Montecarlo(fileinput,fileoutput):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00172}00172\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}!Docs\ for\ doing\ MC\ simulation}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00173}00173\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00174}00174\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}Montecarlo"{}},\ \textcolor{stringliteral}{"{}MonteCarlo.cpp++O"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00175}00175\ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Avviata\ simulazione\ MC:\ potrebbe\ volerci\ massimo\ qualche\ minuto\ per\ ottenere\ le\ distribuzioni\ attese."{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00176}00176\ \ \ \ \ ROOT.MonteCarlo(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Datalif"{}},\ fileinput),\ fileoutput)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00177}00177\ \ \ \ \ strOut\ =\ \textcolor{stringliteral}{"{}FATTO:\ LE\ DISTRIBUZIONI\ MONTECARLO\ GENERATE\ E\ LE\ DISTRIBUZIONI\ MONTECARLO\ ATTESE\ DALLA\ MISURA\ SONO\ STATE\ SALVATE\ NELLA\ CARTELLA\ "{}}\ +\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}MCSimulations"{}})\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00178}00178\ \ \ \ \ logger.info(strOut)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00179}00179\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00180}00180\ \textcolor{keyword}{def\ }Results(fileinput,\ fileoutput):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00181}00181\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}!Docs\ function\ that\ shows\ results.}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00182}00182\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00183}00183\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}UtilsMacros"{}},\ \textcolor{stringliteral}{"{}CompareDistributions.cpp"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00184}00184\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}UtilsMacros"{}},\ \textcolor{stringliteral}{"{}ExtractDistributions.cpp"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00185}00185\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00186}00186\ \ \ \ \ ROOT.ExtractDistributions(fileinput,\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultsImages"{}},\textcolor{stringliteral}{"{}Measured"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00187}00187\ \ \ \ \ KolmogorovTestResultTheta\ =\ round(ROOT.CompareDistributions(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultsImages"{}},\ \textcolor{stringliteral}{"{}MeasuredZenithDistribution.root"{}}),\ os.path.join(fileoutput\ +\ \textcolor{stringliteral}{"{}ZenithExpectedDistribution.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultsImages"{}},\ \textcolor{stringliteral}{"{}ComparisonMCRealDataZenith.pdf"{}})),2)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00188}00188\ \ \ \ \ KolmogorovTestResultPhi\ =\ round(ROOT.CompareDistributions(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultsImages"{}},\ \textcolor{stringliteral}{"{}MeasuredAzimuthDistribution.root"{}}),\ os.path.join(fileoutput\ +\ \textcolor{stringliteral}{"{}AzimuthExpectedDistribution.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultsImages"{}},\ \textcolor{stringliteral}{"{}ComparisonMCRealDataAzimuth.pdf"{}})),2)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00189}00189\ \ \ \ \ OutText\ =\ \textcolor{stringliteral}{"{}Il\ test\ di\ kolmogorov\ effettuato\ sulla\ distribuzione\ zenith\ simulata\ e\ su\ quella\ misurata\ ritorna\ un\ p-\/value\ di\ "{}}+str(KolmogorovTestResultTheta)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00190}00190\ \ \ \ \ logger.info(OutText)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00191}00191\ \ \ \ \ OutText\ =\ \textcolor{stringliteral}{"{}Il\ test\ di\ kolmogorov\ effettuato\ sulla\ distribuzione\ azimuth\ simulata\ e\ su\ quella\ misurata\ ritorna\ un\ p-\/value\ di\ "{}}+str(KolmogorovTestResultPhi)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00173}00173\ \textcolor{keyword}{def\ }Montecarlo(fileinput,fileoutput):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00174}00174\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}!Docs\ for\ doing\ MC\ simulation}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00175}00175\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00176}00176\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}Montecarlo"{}},\ \textcolor{stringliteral}{"{}MonteCarlo.cpp++O"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00177}00177\ \ \ \ \ logger.info(\textcolor{stringliteral}{"{}Avviata\ simulazione\ MC:\ potrebbe\ volerci\ massimo\ qualche\ minuto\ per\ ottenere\ le\ distribuzioni\ attese."{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00178}00178\ \ \ \ \ ROOT.MonteCarlo(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Datalif"{}},\ fileinput),\ fileoutput)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00179}00179\ \ \ \ \ strOut\ =\ \textcolor{stringliteral}{"{}FATTO:\ LE\ DISTRIBUZIONI\ MONTECARLO\ GENERATE\ E\ LE\ DISTRIBUZIONI\ MONTECARLO\ ATTESE\ DALLA\ MISURA\ SONO\ STATE\ SALVATE\ NELLA\ CARTELLA\ "{}}\ +\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}MCSimulations"{}})\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00180}00180\ \ \ \ \ logger.info(strOut)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00182}00182\ \textcolor{keyword}{def\ }Results(fileinput,\ fileoutput):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00183}00183\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}!Docs\ function\ that\ shows\ results.}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00184}00184\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00185}00185\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}UtilsMacros"{}},\ \textcolor{stringliteral}{"{}CompareDistributions.cpp"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00186}00186\ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}UtilsMacros"{}},\ \textcolor{stringliteral}{"{}ExtractDistributions.cpp"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00188}00188\ \ \ \ \ ROOT.ExtractDistributions(fileinput,\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultsImages"{}},\textcolor{stringliteral}{"{}Measured"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00189}00189\ \ \ \ \ KolmogorovTestResultTheta\ =\ round(ROOT.CompareDistributions(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultsImages"{}},\ \textcolor{stringliteral}{"{}MeasuredZenithDistribution.root"{}}),\ os.path.join(fileoutput\ +\ \textcolor{stringliteral}{"{}ZenithExpectedDistribution.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultsImages"{}},\ \textcolor{stringliteral}{"{}ComparisonMCRealDataZenith.pdf"{}})),2)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00190}00190\ \ \ \ \ KolmogorovTestResultPhi\ =\ round(ROOT.CompareDistributions(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultsImages"{}},\ \textcolor{stringliteral}{"{}MeasuredAzimuthDistribution.root"{}}),\ os.path.join(fileoutput\ +\ \textcolor{stringliteral}{"{}AzimuthExpectedDistribution.root"{}}),\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultsImages"{}},\ \textcolor{stringliteral}{"{}ComparisonMCRealDataAzimuth.pdf"{}})),2)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00191}00191\ \ \ \ \ OutText\ =\ \textcolor{stringliteral}{"{}Il\ test\ di\ kolmogorov\ effettuato\ sulla\ distribuzione\ zenith\ simulata\ e\ su\ quella\ misurata\ ritorna\ un\ p-\/value\ di\ "{}}+str(KolmogorovTestResultTheta)}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00192}00192\ \ \ \ \ logger.info(OutText)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00193}00193\ \ \ \ \ subprocess.call([\textcolor{stringliteral}{"{}xdg-\/open"{}},\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultsImages"{}},\ \textcolor{stringliteral}{"{}ComparisonMCRealDataZenith.pdf"{}})])}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00194}00194\ \ \ \ \ subprocess.call([\textcolor{stringliteral}{"{}xdg-\/open"{}},\ \ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultsImages"{}},\ \textcolor{stringliteral}{"{}ComparisonMCRealDataAzimuth.pdf"{}})])}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00193}00193\ \ \ \ \ OutText\ =\ \textcolor{stringliteral}{"{}Il\ test\ di\ kolmogorov\ effettuato\ sulla\ distribuzione\ azimuth\ simulata\ e\ su\ quella\ misurata\ ritorna\ un\ p-\/value\ di\ "{}}+str(KolmogorovTestResultPhi)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00194}00194\ \ \ \ \ logger.info(OutText)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00195}00195\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00196}00196\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00197}00197\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00198}00198\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00199}00199\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00200}00200\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00201}00201\ \textcolor{keyword}{def\ }process\_file(args):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00202}00202\ \ \ \ \ 1}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00202}00202\ \textcolor{keyword}{def\ }process\_file(args):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00203}00203\ \ \ \ \ 1}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00204}00204\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00205}00205\ \textcolor{keywordflow}{if}\ \_\_name\_\_\ ==\ \textcolor{stringliteral}{"{}\_\_main\_\_"{}}:}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00206}00206\ \ \ \ \ args\ =\ parser.parse\_args()\ \ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00207}00207\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00208}00208\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00209}00209\ \ \ \ \ ROOT.gROOT.LoadMacro(\textcolor{stringliteral}{"{}rootlogon.C"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00210}00210\ \ \ \ \ ROOT.rootlogon()\ \textcolor{comment}{\#load\ shared\ libraries.}}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00211}00211\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00206}00206\ \textcolor{keywordflow}{if}\ \_\_name\_\_\ ==\ \textcolor{stringliteral}{"{}\_\_main\_\_"{}}:}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00207}00207\ \ \ \ \ args\ =\ parser.parse\_args()\ \ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00208}00208\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00210}00210\ \ \ \ \ ROOT.gROOT.LoadMacro(\textcolor{stringliteral}{"{}rootlogon.C"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00211}00211\ \ \ \ \ ROOT.rootlogon()\ \textcolor{comment}{\#load\ shared\ libraries.}}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00212}00212\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00213}00213\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00214}00214\ }
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00215}00215\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00216}00216\ \ \ \ \ \textcolor{keywordflow}{if}\ args.Clustering:\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00217}00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ (os.path.exists(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\ \textcolor{stringliteral}{"{}ClusterAbstractionData"{}}))):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ os.mkdir((os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\ \textcolor{stringliteral}{"{}ClusterAbstractionData"{}})))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ (os.path.isfile(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}Datalif"{}},args.infile))):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}IL\ FILE\ INSERITO\ NON\ ESISTE\ NELLA\ CARTELLA\ DEI\ DATI\ LIF.\ SEI\ SICURO\ DI\ AVER\ INSERITO\ IL\ NOME\ CORRETTO?"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}Il\ file\ inserito\ non\ esiste."{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00222}00222\ \ \ \ \ \ \ \ \ if(\textcolor{keywordflow}{not}\ args.infile.endswith(\textcolor{stringliteral}{"{}.lif"{}})):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}IL\ FILE\ INSERITO\ HA\ IL\ FORMAT\ SBAGLIATO.\ ERRORE"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}Il\ file\ inserito\ non\ è\ del\ format\ .lif\ atteso."{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00225}00225\ \ \ \ \ \ \ \ \ fileinput\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}Datalif"{}},args.infile)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00226}00226\ \ \ \ \ \ \ \ \ fileoutput\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}Dataroot"{}},\textcolor{stringliteral}{"{}ClusterAbstractionData"{}},\ args.outfile+\ \textcolor{stringliteral}{"{}.root"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00227}00227\ \ \ \ \ \ \ \ \ Clustering(fileinput,\ fileoutput)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00228}00228\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00229}00229\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00230}00230\ \ \ \ \ \textcolor{keywordflow}{if}\ args.Tracking:}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00231}00231\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ args.infile:}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}INSERISCI\ UN\ FILE\ DA\ ANALIZZARE\ USANDO\ LA\ FLAG\ -\/i"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}NON\ HAI\ INSERITO\ UN\ FILE\ DA\ ANALIZZARE."{}})\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00234}00234\ \ \ \ \ \ \ \ \ fileinput\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\ \textcolor{stringliteral}{"{}ClusterAbstractionData"{}},\ \ args.infile)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ not(os.path.exists(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\ \textcolor{stringliteral}{"{}TrackingAbstractionData"{}}))):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ os.mkdir((os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\ \textcolor{stringliteral}{"{}TrackingAbstractionData"{}})))\ \ \ \ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00237}00237\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ not(os.path.isfile(fileinput)):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}IL\ FILE\ INSERITO\ NON\ ESISTE\ NELLA\ CARTELLA\ DEI\ DATI\ CLUSTER.\ SEI\ SICURO\ DI\ AVER\ INSERITO\ IL\ NOME\ CORRETTO?"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}Il\ file\ inserito\ non\ esiste."{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00240}00240\ \ \ \ \ \ \ \ \ fileoutput\ =\ args.outfile}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00241}00241\ \ \ \ \ \ \ \ \ Tracking(fileinput,\ fileoutput)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00217}00217\ \ \ \ \ \textcolor{keywordflow}{if}\ args.Clustering:\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00218}00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ (os.path.exists(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\ \textcolor{stringliteral}{"{}ClusterAbstractionData"{}}))):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ os.mkdir((os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\ \textcolor{stringliteral}{"{}ClusterAbstractionData"{}})))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00220}00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ (os.path.isfile(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}Datalif"{}},args.infile))):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}IL\ FILE\ INSERITO\ NON\ ESISTE\ NELLA\ CARTELLA\ DEI\ DATI\ LIF.\ SEI\ SICURO\ DI\ AVER\ INSERITO\ IL\ NOME\ CORRETTO?"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}Il\ file\ inserito\ non\ esiste."{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00223}00223\ \ \ \ \ \ \ \ \ if(\textcolor{keywordflow}{not}\ args.infile.endswith(\textcolor{stringliteral}{"{}.lif"{}})):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}IL\ FILE\ INSERITO\ HA\ IL\ FORMAT\ SBAGLIATO.\ ERRORE"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}Il\ file\ inserito\ non\ è\ del\ format\ .lif\ atteso."{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00226}00226\ \ \ \ \ \ \ \ \ fileinput\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}Datalif"{}},args.infile)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00227}00227\ \ \ \ \ \ \ \ \ fileoutput\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}Dataroot"{}},\textcolor{stringliteral}{"{}ClusterAbstractionData"{}},\ args.outfile+\ \textcolor{stringliteral}{"{}.root"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00228}00228\ \ \ \ \ \ \ \ \ Clustering(fileinput,\ fileoutput)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00229}00229\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00231}00231\ \ \ \ \ \textcolor{keywordflow}{if}\ args.Tracking:}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00232}00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ args.infile:}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}INSERISCI\ UN\ FILE\ DA\ ANALIZZARE\ USANDO\ LA\ FLAG\ -\/i"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}NON\ HAI\ INSERITO\ UN\ FILE\ DA\ ANALIZZARE."{}})\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00235}00235\ \ \ \ \ \ \ \ \ fileinput\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\ \textcolor{stringliteral}{"{}ClusterAbstractionData"{}},\ \ args.infile)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00236}00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ not(os.path.exists(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\ \textcolor{stringliteral}{"{}TrackingAbstractionData"{}}))):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ os.mkdir((os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\ \textcolor{stringliteral}{"{}TrackingAbstractionData"{}})))\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00238}00238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ not(os.path.isfile(fileinput)):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}IL\ FILE\ INSERITO\ NON\ ESISTE\ NELLA\ CARTELLA\ DEI\ DATI\ CLUSTER.\ SEI\ SICURO\ DI\ AVER\ INSERITO\ IL\ NOME\ CORRETTO?"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}Il\ file\ inserito\ non\ esiste."{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00241}00241\ \ \ \ \ \ \ \ \ fileoutput\ =\ args.outfile}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00242}00242\ \ \ \ \ \ \ \ \ Tracking(fileinput,\ fileoutput)}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00243}00243\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00244}00244\ \ \ \ \ \textcolor{keywordflow}{if}\ args.TestReconstruction:}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00245}00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ not(os.path.exists(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},))):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ os.mkdir((os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},)))\ \ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00247}00247\ \ \ \ \ \ \ \ \ TestReconstruction()}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00248}00248\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00249}00249\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00250}00250\ \ \ \ \ \textcolor{keywordflow}{if}\ args.MCDist:}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00251}00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ args.infile:}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}INSERISCI\ UN\ FILE\ DA\ ANALIZZARE\ USANDO\ LA\ FLAG\ -\/i\ DALLA\ CARTELLA\ DEI\ DATI\ .LIF,\ E'\ FONDAMENTALE\ PER\ LA\ SIMULAZIONE\ AL\ FINE\ DI\ TROVARE\ LE\ STRIP\ INEFFICIENTI/MORTE/MUTATE"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}NON\ HAI\ INSERITO\ UN\ FILE\ DA\ ANALIZZARE."{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00254}00254\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ (os.path.isfile(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}Datalif"{}},args.infile))):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}IL\ FILE\ INSERITO\ NON\ ESISTE\ NELLA\ CARTELLA\ DEI\ DATI\ LIF.\ SEI\ SICURO\ DI\ AVER\ INSERITO\ IL\ NOME\ CORRETTO?"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}Il\ file\ inserito\ non\ esiste."{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00257}00257\ \ \ \ \ \ \ \ \ fileinput\ =\ args.infile}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00258}00258\ \ \ \ \ \ \ \ \ fileoutput\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}MC"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00259}00259\ \ \ \ \ \ \ \ \ Montecarlo();}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00245}00245\ \ \ \ \ \textcolor{keywordflow}{if}\ args.TestReconstruction:}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00246}00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ not(os.path.exists(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},))):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ os.mkdir((os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\textcolor{stringliteral}{"{}TestingRetinaAlgorithm"{}},)))\ \ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00248}00248\ \ \ \ \ \ \ \ \ TestReconstruction()}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00249}00249\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00251}00251\ \ \ \ \ \textcolor{keywordflow}{if}\ args.MCDist:}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00252}00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ args.infile:}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}INSERISCI\ UN\ FILE\ DA\ ANALIZZARE\ USANDO\ LA\ FLAG\ -\/i\ DALLA\ CARTELLA\ DEI\ DATI\ .LIF,\ E'\ FONDAMENTALE\ PER\ LA\ SIMULAZIONE\ AL\ FINE\ DI\ TROVARE\ LE\ STRIP\ INEFFICIENTI/MORTE/MUTATE"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}NON\ HAI\ INSERITO\ UN\ FILE\ DA\ ANALIZZARE."{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00255}00255\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ (os.path.isfile(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}Datalif"{}},args.infile))):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}IL\ FILE\ INSERITO\ NON\ ESISTE\ NELLA\ CARTELLA\ DEI\ DATI\ LIF.\ SEI\ SICURO\ DI\ AVER\ INSERITO\ IL\ NOME\ CORRETTO?"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}Il\ file\ inserito\ non\ esiste."{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00258}00258\ \ \ \ \ \ \ \ \ fileinput\ =\ args.infile}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00259}00259\ \ \ \ \ \ \ \ \ fileoutput\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}MC"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00260}00260\ \ \ \ \ \ \ \ \ Montecarlo(fileinput,\ fileoutput);}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00261}00261\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00262}00262\ \ \ \ \ \textcolor{keywordflow}{if}\ args.Results:}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00263}00263\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ os.path.exists(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultsImages"{}})):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ os.mkdir(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultImages"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00265}00265\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00266}00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ args.infile:}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}INSERISCI\ UN\ FILE\ DA\ ANALIZZARE\ USANDO\ LA\ FLAG\ -\/i"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}NON\ HAI\ INSERITO\ UN\ FILE\ DA\ ANALIZZARE"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00269}00269\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00270}00270\ \ \ \ \ \ \ \ \ fileinput\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\textcolor{stringliteral}{"{}TrackingAbstractionData"{}},\ args.infile)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00271}00271\ \ \ \ \ \ \ \ \ fileoutput\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}MC"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00272}00272\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00273}00273\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ not(os.path.isfile(fileinput)):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}IL\ FILE\ INSERITO\ NON\ ESISTE\ NELLA\ CARTELLA\ DEI\ DATI.\ SEI\ SICURO\ DI\ AVER\ INSERITO\ IL\ NOME\ CORRETTO?"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}Il\ file\ inserito\ non\ esiste."{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00276}00276\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00277}00277\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00278}00278\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((not(os.path.isfile(fileoutput\ +\ \textcolor{stringliteral}{"{}ZenithExpectedDistribution.root"{}})))|(\textcolor{keywordflow}{not}\ (os.path.isfile(fileoutput\ +\ \textcolor{stringliteral}{"{}AzimuthExpectedDistribution.root"{}})))):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}IL\ FILE\ CON\ LE\ SIMULAZIONI\ MC\ NON\ ESISTE:\ GENERA\ UN\ SET\ DI\ DATI\ USANDO\ LA\ FLAG\ -\/MCDist\ E\ INSERENDO\ IL\ FILE\ RELATIVO\ ALLA\ PRESA\ DATI\ CONSIDERATA."{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}La\ simulazione\ MC\ non\ è\ stata\ ancora\ effettuata."{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00281}00281\ \ \ \ \ \ \ \ \ Results()}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00262}00262\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00263}00263\ \ \ \ \ \textcolor{keywordflow}{if}\ args.Results:}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00264}00264\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ os.path.exists(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultsImages"{}})):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ os.mkdir(os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}ResultImages"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00267}00267\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ args.infile:}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}INSERISCI\ UN\ FILE\ DA\ ANALIZZARE\ USANDO\ LA\ FLAG\ -\/i"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}NON\ HAI\ INSERITO\ UN\ FILE\ DA\ ANALIZZARE"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00270}00270\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00271}00271\ \ \ \ \ \ \ \ \ fileinput\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\textcolor{stringliteral}{"{}TrackingAbstractionData"{}},\ args.infile)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00272}00272\ \ \ \ \ \ \ \ \ fileoutput\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}MCSimulations"{}},\ \textcolor{stringliteral}{"{}MC"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00274}00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ not(os.path.isfile(fileinput)):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}IL\ FILE\ INSERITO\ NON\ ESISTE\ NELLA\ CARTELLA\ DEI\ DATI.\ SEI\ SICURO\ DI\ AVER\ INSERITO\ IL\ NOME\ CORRETTO?"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}Il\ file\ inserito\ non\ esiste."{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00277}00277\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00279}00279\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((not(os.path.isfile(fileoutput\ +\ \textcolor{stringliteral}{"{}ZenithExpectedDistribution.root"{}})))|(\textcolor{keywordflow}{not}\ (os.path.isfile(fileoutput\ +\ \textcolor{stringliteral}{"{}AzimuthExpectedDistribution.root"{}})))):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}IL\ FILE\ CON\ LE\ SIMULAZIONI\ MC\ NON\ ESISTE:\ GENERA\ UN\ SET\ DI\ DATI\ USANDO\ LA\ FLAG\ -\/MCDist\ E\ INSERENDO\ IL\ FILE\ RELATIVO\ ALLA\ PRESA\ DATI\ CONSIDERATA."{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}La\ simulazione\ MC\ non\ è\ stata\ ancora\ effettuata."{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00282}00282\ \ \ \ \ \ \ \ \ Results(fileinput,\ fileoutput)}
 \DoxyCodeLine{\Hypertarget{Interface_8py_source_l00283}00283\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00284}00284\ \ \ \ \ \textcolor{keywordflow}{if}\ args.TrackSee:}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00285}00285\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00286}00286\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ args.infile:}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}INSERISCI\ UN\ FILE\ DA\ ANALIZZARE\ USANDO\ LA\ FLAG\ -\/i"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}NON\ HAI\ INSERITO\ UN\ FILE\ DA\ ANALIZZARE"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00289}00289\ \ \ \ \ \ \ \ \ fileinput\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\textcolor{stringliteral}{"{}TrackingAbstractionData"{}},\ args.infile)}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00290}00290\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ not(os.path.isfile(fileinput)):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}INSERISCI\ UN\ FILE\ ESISTENTE\ USANDO\ LA\ FLAG\ -\/i"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}IL\ FILE\ INSERITO\ NON\ ESISTE."{}})\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00293}00293\ \ \ \ \ \ \ \ \ if((\textcolor{keywordflow}{not}\ args.Nx)|(\textcolor{keywordflow}{not}\ args.Ny)):}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}INSERISCI\ IL\ NUMERO\ DI\ TRACCE\ CHE\ VUOI\ VISUALIZZARE\ SIA\ NELLA\ VISIONE\ XZ\ SIA\ NELLA\ VISIONE\ YZ\ CON\ LE\ OPZIONI\ -\/xz\ e\ -\/yz"{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}NON\ HAI\ INSERITO\ IL\ NUMERO\ DI\ PROIEZIONI\ CHE\ VUOI\ VISUALIZZARE\ IN\ UNA\ O\ ENTRAMBE\ LE\ VISIONI."{}})}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00296}00296\ \ \ \ \ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}UtilsMacros"{}},\ \textcolor{stringliteral}{"{}TrackSee.cpp"{}}))}
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00297}00297\ }
-\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00298}00298\ \ \ \ \ \ \ \ \ ROOT.TrackSee(fileinput,\ int(args.Nx),\ int(args.Ny))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00285}00285\ \ \ \ \ \textcolor{keywordflow}{if}\ args.TrackSee:}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00286}00286\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ args.infile:}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}INSERISCI\ UN\ FILE\ DA\ ANALIZZARE\ USANDO\ LA\ FLAG\ -\/i"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}NON\ HAI\ INSERITO\ UN\ FILE\ DA\ ANALIZZARE"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00290}00290\ \ \ \ \ \ \ \ \ fileinput\ =\ os.path.join(\textcolor{stringliteral}{"{}Data"{}},\ \textcolor{stringliteral}{"{}Dataroot"{}},\textcolor{stringliteral}{"{}TrackingAbstractionData"{}},\ args.infile)}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00291}00291\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ not(os.path.isfile(fileinput)):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}INSERISCI\ UN\ FILE\ ESISTENTE\ USANDO\ LA\ FLAG\ -\/i"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}IL\ FILE\ INSERITO\ NON\ ESISTE."{}})\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00294}00294\ \ \ \ \ \ \ \ \ if((\textcolor{keywordflow}{not}\ args.Nx)|(\textcolor{keywordflow}{not}\ args.Ny)):}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ logger.error(\textcolor{stringliteral}{"{}INSERISCI\ IL\ NUMERO\ DI\ TRACCE\ CHE\ VUOI\ VISUALIZZARE\ SIA\ NELLA\ VISIONE\ XZ\ SIA\ NELLA\ VISIONE\ YZ\ CON\ LE\ OPZIONI\ -\/xz\ e\ -\/yz"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ Exception(\textcolor{stringliteral}{"{}NON\ HAI\ INSERITO\ IL\ NUMERO\ DI\ PROIEZIONI\ CHE\ VUOI\ VISUALIZZARE\ IN\ UNA\ O\ ENTRAMBE\ LE\ VISIONI."{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00297}00297\ \ \ \ \ \ \ \ \ ROOT.gROOT.LoadMacro(os.path.join(\textcolor{stringliteral}{"{}Core"{}},\ \textcolor{stringliteral}{"{}UtilsMacros"{}},\ \textcolor{stringliteral}{"{}TrackSee.cpp"{}}))}
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{Interface_8py_source_l00299}00299\ \ \ \ \ \ \ \ \ ROOT.TrackSee(fileinput,\ int(args.Nx),\ int(args.Ny))}
 
 \end{DoxyCode}

@@ -29,6 +29,7 @@ void MonteCarlo(const std::string fileinput, TString path){
 
 
 
+    gRandom = new TRandom(0); //make new pseudorandom seed
     
     std::vector<double> StripPosition; //vector used to map hit to the activated strip position.
     for(int i =0; i<1535; i++){
@@ -74,7 +75,7 @@ void MonteCarlo(const std::string fileinput, TString path){
     TString placename;
     for (int i = 0; i < 10; ++i) 
     {
-        placename = "Hit Distribution Layer " + MapIDToLayer[LayersID[i]] + " 2 Maggio 2024";
+        placename = "Hit Distribution Layer " + MapIDToLayer[LayersID[i]];
     	TH1F *h = new TH1F("hist", placename, 1000, 0, StripCoordinate(1536));
 	    HitCounts.push_back(h);
 	    HitMap.insert(std::make_pair(LayersID[i], h));
@@ -86,7 +87,7 @@ void MonteCarlo(const std::string fileinput, TString path){
 
 
 
-    int NBin = 1000//number of bins
+    int NBin = 1000;//number of bins
 
 
 	//declare histograms to be filled with generated zenith and azimuth distribution, and distribution of angles that satisfies trigger condition (ExpectedDistributions).
@@ -106,7 +107,7 @@ void MonteCarlo(const std::string fileinput, TString path){
     double Ztop = 31.2; // Height of the highest layer.
     double MaxLength = StripCoordinate(1536); //The maximum length at which a layer is sensible to a hit 
     std::vector<double> TrackX; //placeholder container for position of hitten strips on the XZ vision
-    std::vector<double> TrackY //placeholder container for position of hitten strips on the YZ vision
+    std::vector<double> TrackY; //placeholder container for position of hitten strips on the YZ vision
     std::vector<int> ZlevelX;//placeholder container for position of hitten layers on the XZ vision
     std::vector<int> ZlevelY;//placeholder container for position of hitten layers on the YZ vision
     std::vector<int> ZlevelXPlaceHolder; //util variable used to check for consecutive hits trigger condition on the XZ vision.
@@ -137,7 +138,6 @@ void MonteCarlo(const std::string fileinput, TString path){
 
 
 
-    gRandom = new TRandom3(0);//set random seed.
 
 
     for(int j = 0; j<10; j++){
@@ -286,6 +286,20 @@ void MonteCarlo(const std::string fileinput, TString path){
     ThetaTotalCount->SaveAs(output2);
     ThetaExpectedDistribution->SaveAs(output3);
     PhiExpectedDistribution->SaveAs(output4);
+
+
+    TCanvas *c1 = new TCanvas();
+    PhiTotalCount->Draw();
+
+    TCanvas *c2 = new TCanvas();
+    ThetaTotalCount->Draw();
+
+    TCanvas *c3 = new TCanvas();
+    ThetaExpectedDistribution->Draw();
+
+    TCanvas *c4 = new TCanvas();
+    PhiExpectedDistribution->Draw();
+
 
     TString Nome;
     for(auto x : LayersID){

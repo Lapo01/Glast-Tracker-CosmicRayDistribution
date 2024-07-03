@@ -23,13 +23,12 @@ void UnitTestVoidSpaces(double y){
 
 void UnitTestOfmap(int Strip, std::vector<double> &StripPosition){
 	
-		double y = StripCoordinate(Strip);
-        auto HittenStripPosition = *std::lower_bound(StripPosition.begin(), StripPosition.end(), y);
+	double y = StripCoordinate(Strip);
+    auto HittenStripPosition = *std::lower_bound(StripPosition.begin(), StripPosition.end(), y);
         
-        if(!(fabs(y-HittenStripPosition)<0.001)){
-            throw std::exception();
-
-        }
+    if(!(fabs(y-HittenStripPosition)<0.001)){
+        throw std::exception();
+    }
         
 }
 
@@ -53,8 +52,9 @@ int main(){
     }
     catch(std::exception *e){
         std::cout<<"La strip non viene mappata alla sua posizione originale, errore."<<std::endl;
-        abort();
         delete e;
+        exit(EXIT_FAILURE);
+
 
     }
 
@@ -65,8 +65,8 @@ int main(){
     }
     catch(std::exception *e){
         std::cout<<"Gli spazi non sensibili vengono considerati come hit."<<std::endl;
-        abort();
         delete e;
+
     }
 
 
