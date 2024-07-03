@@ -56,6 +56,7 @@ add_library(GeneralUtils SHARED ${CMAKE_SOURCE_DIR}/GeneralUtils.cpp )
 add_library(UtilsCreateTree SHARED ${CMAKE_SOURCE_DIR}/UtilsCreateTree.cpp )
 add_library(UtilsRetina SHARED ${CMAKE_SOURCE_DIR}/UtilsRetina.cpp )
 
+
 target_link_libraries(UtilsMC ${ROOT_LIBRARIES})
 target_link_libraries(UtilsRectifyTracks ${ROOT_LIBRARIES})
 target_link_libraries(GeneralUtils ${ROOT_LIBRARIES})
@@ -75,5 +76,11 @@ target_link_libraries(TestUtilsCreateTree UtilsRetina)
 add_test(NAME TestUtilsCreateTree COMMAND TestUtilsCreateTree)
 
 
-
+add_executable(TestUtilsMC ${TestDir}/TestUtilsMC.cpp)
+target_link_libraries(TestUtilsMC UtilsMC)
+target_link_libraries(TestUtilsMC UtilsRectifyTracks)
+target_link_libraries(TestUtilsMC GeneralUtils)
+target_link_libraries(TestUtilsMC UtilsCreateTree)
+target_link_libraries(TestUtilsMC UtilsRetina)
+add_test(NAME TestUtilsMC COMMAND TestUtilsMC)
 

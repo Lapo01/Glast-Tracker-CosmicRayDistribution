@@ -11,36 +11,6 @@
 #include"UtilsMC.h"
 
 
-void UnitTestVoidSpaces(double y){
-	double MaxLength = StripCoordinate(1536);
-
-	std::vector<double> StripPosition;
-
- 
-	for(int i =0; i<1536; i++){
--		StripPosition.push_back(StripCoordinate(i+1));
-	}
-	assert((((y<0)||(y>MaxLength))||((y>StripCoordinate(384))&&(y<StripCoordinate(385)))||((y>StripCoordinate(768))&&(y<StripCoordinate(769)))||((y>StripCoordinate(1152))&&(y<StripCoordinate(1153)))||(y>StripCoordinate(1536)))){}
-}
-
-void UnitTestOfmap(int Strip){
-	
-	std::vector<double> StripPosition;
-
- 
-	for(int i =0; i<1536; i++){
-		StripPosition.push_back(StripCoordinate(i+1));
-	}
-
-		double y = StripCoordinate(Strip);
-		double MaxLength = StripCoordinate(1536);
-        if((((y<0)||(y>MaxLength))||((y>StripCoordinate(384))&&(y<StripCoordinate(385)))||((y>StripCoordinate(768))&&(y<StripCoordinate(769)))||((y>StripCoordinate(1152))&&(y<StripCoordinate(1153)))||(y>StripCoordinate(1536)))){cout<<"Ho hittato uno spazio vuoto!"<<endl;}
-            auto HittenStripPosition = *std::lower_bound(StripPosition.begin(), StripPosition.end(), y);
-            
-        assert(fabs(y-HittenStripPosition)<0.001);
-        
-}
-
 
 
 
@@ -328,34 +298,6 @@ void MonteCarlo(const std::string fileinput, TString path){
     }
 
 
-
-//////////////////////////////////
-//SEZIONE DI UNIT TESTING       //
-//////////////////////////////////
-
-
-// 1 Verifichiamo che la mappa funzioni
-UnitTestOfmap(383);
-
-UnitTestOfmap(384);
-
-UnitTestOfmap(385);
- 
-// 2 Verifichiamo che le strip mutate vengano tolte
- 
- 
-int provamutata = MapMutedStrips[10][0];
-for(auto Muted:MapMutedStrips[10]){
-               if(Muted == provamutata){
-					cout<<"Success: il for sulle mappe mutate funziona!"<<endl;
-                }
-}
-//2 Verifichiamo che gli spazi vuoti vengano colpiti 
-UnitTestVoidSpaces((StripCoordinate(384) + StripCoordinate(385))/2.);
-UnitTestVoidSpaces(-1);
-UnitTestVoidSpaces(1000);
-UnitTestVoidSpaces(9.1);
-UnitTestVoidSpaces(9.05);
 
 
 }
