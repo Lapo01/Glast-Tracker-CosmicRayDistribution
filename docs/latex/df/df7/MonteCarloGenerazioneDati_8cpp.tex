@@ -1,0 +1,31 @@
+\doxysection{CMEPDA-\/\+GLAST/\+Core/\+Montecarlo/\+Monte\+Carlo\+Generazione\+Dati.cpp File Reference}
+\hypertarget{MonteCarloGenerazioneDati_8cpp}{}\label{MonteCarloGenerazioneDati_8cpp}\index{CMEPDA-\/GLAST/Core/Montecarlo/MonteCarloGenerazioneDati.cpp@{CMEPDA-\/GLAST/Core/Montecarlo/MonteCarloGenerazioneDati.cpp}}
+{\ttfamily \#include "{}Utils\+MC.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{MonteCarloGenerazioneDati_8cpp_a47a5a968879dbf7100a793a970ae6ab7}{Monte\+Carlo\+Generazione\+Dati}} (TString fileoutput, TString path)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+\begin{DoxyItemize}
+\item MC generator for distribution on zenith and azimuth angle. The only request is to have at least three hits per vision, in order to generate a population that has 1 track per vision. The generated simulation is used for testing the tracking algorithm retina. We do not care about the realism of the distribution as the goal is to validate the reconstruction of the algorithm for 3D tracks. One suggestion for the future may be to easily validate the recontruction for multi tracking easily including noise, cluster dimension distribution, residuals smearing and etc, but that esulates from the goal of this project. 
+\end{DoxyItemize}
+
+Definition in file \mbox{\hyperlink{MonteCarloGenerazioneDati_8cpp_source}{Monte\+Carlo\+Generazione\+Dati.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{MonteCarloGenerazioneDati_8cpp_a47a5a968879dbf7100a793a970ae6ab7}\label{MonteCarloGenerazioneDati_8cpp_a47a5a968879dbf7100a793a970ae6ab7} 
+\index{MonteCarloGenerazioneDati.cpp@{MonteCarloGenerazioneDati.cpp}!MonteCarloGenerazioneDati@{MonteCarloGenerazioneDati}}
+\index{MonteCarloGenerazioneDati@{MonteCarloGenerazioneDati}!MonteCarloGenerazioneDati.cpp@{MonteCarloGenerazioneDati.cpp}}
+\doxysubsubsection{\texorpdfstring{MonteCarloGenerazioneDati()}{MonteCarloGenerazioneDati()}}
+{\footnotesize\ttfamily void Monte\+Carlo\+Generazione\+Dati (\begin{DoxyParamCaption}\item[{TString}]{fileoutput,  }\item[{TString}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{MonteCarloGenerazioneDati_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{MonteCarloGenerazioneDati_8cpp_source}{Monte\+Carlo\+Generazione\+Dati.\+cpp}}.
+

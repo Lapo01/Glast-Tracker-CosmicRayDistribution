@@ -13,9 +13,9 @@ Interface used to call c++ macros.
 \mbox{\hyperlink{Interface_8py_ab2eda89ccc82925973832210275a7aa0}{Interface.\+Tracking}} (fileinput, fileoutput)
 \begin{DoxyCompactList}\small\item\em Docs for Tracking This function performs the second abstractin of data by calling the \doxylink{Retina_8cpp}{Retina.\+cpp} , \doxylink{RectifyTracks_8cpp}{Rectify\+Tracks.\+cpp} and \doxylink{UnifyTree_8cpp_source}{Unify\+Tree.\+cpp} macros. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{Interface_8py_a01d16339d60381f45520e5bc1427f1db}{Interface.\+Test\+Reconstruction}} ()
-\begin{DoxyCompactList}\small\item\em Docs for testing the tracking algorithm This function starts by calling the c++ macro Monte\+Carlo\+Generazione\+Dati.\+cpp that simulate a data acquisition with only 1 tracks per vision and no noise, the simulated data is fed to the tracking algorithm in the macro \doxylink{Retina_8cpp}{Retina.\+cpp} . \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Docs for testing the tracking algorithm This function starts by calling the c++ macro \doxylink{MonteCarloGenerazioneDati_8cpp}{Monte\+Carlo\+Generazione\+Dati.\+cpp} that simulate a data acquisition with only 1 tracks per vision and no noise, the simulated data is fed to the tracking algorithm in the macro \doxylink{Retina_8cpp}{Retina.\+cpp} . \end{DoxyCompactList}\item 
 \mbox{\hyperlink{Interface_8py_a0fb5da7971754ec9fc962a11eff21420}{Interface.\+Montecarlo}} (fileinput, fileoutput)
-\begin{DoxyCompactList}\small\item\em Docs for doing MC simulation This function call the c++ macro Monte\+Carlo.\+cpp that runs a MC simulation of 3D tracks that goes through the tracker. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Docs for doing MC simulation This function call the c++ macro \doxylink{MonteCarlo_8cpp}{Monte\+Carlo.\+cpp} that runs a MC simulation of 3D tracks that goes through the tracker. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{Interface_8py_a6c70ecdabc46a3a1f89e4416b325008a}{Interface.\+Results}} (fileinput, fileoutput)
 \begin{DoxyCompactList}\small\item\em Docs function that shows results. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{Interface_8py_a62de84edea2804b969c8dc2ee5ce6577}{Interface.\+Interface\+\_\+parse}} ()
@@ -78,7 +78,7 @@ Definition at line \mbox{\hyperlink{Interface_8py_source_l00248}{248}} of file \
 
 
 
-Docs for doing MC simulation This function call the c++ macro Monte\+Carlo.\+cpp that runs a MC simulation of 3D tracks that goes through the tracker. 
+Docs for doing MC simulation This function call the c++ macro \doxylink{MonteCarlo_8cpp}{Monte\+Carlo.\+cpp} that runs a MC simulation of 3D tracks that goes through the tracker. 
 
 The generated numbers are four\+: (x0,y0) point on the plane of the top layer, zenith angle theta and azimuth angle phi. From this four numbers the projections are generated on the vision XZ and YZ, then the hits are generated and if a track satisfy the trigger condition the angles zenith and azimuth are inserted into a histogram. The MC simulation does keep account of muted strips and mean efficiency of the tracker.
 
@@ -124,7 +124,7 @@ Definition at line \mbox{\hyperlink{Interface_8py_source_l00220}{220}} of file \
 
 
 
-Docs for testing the tracking algorithm This function starts by calling the c++ macro Monte\+Carlo\+Generazione\+Dati.\+cpp that simulate a data acquisition with only 1 tracks per vision and no noise, the simulated data is fed to the tracking algorithm in the macro \doxylink{Retina_8cpp}{Retina.\+cpp} . 
+Docs for testing the tracking algorithm This function starts by calling the c++ macro \doxylink{MonteCarloGenerazioneDati_8cpp}{Monte\+Carlo\+Generazione\+Dati.\+cpp} that simulate a data acquisition with only 1 tracks per vision and no noise, the simulated data is fed to the tracking algorithm in the macro \doxylink{Retina_8cpp}{Retina.\+cpp} . 
 
 The generated distribution takes into account only the trigger condition, it is compared with a Kolmog\+Gorov Test with the reconstructed distribution by the tracking algorithm. One would expect a p-\/value of 1 for an optimal reconstruction
 

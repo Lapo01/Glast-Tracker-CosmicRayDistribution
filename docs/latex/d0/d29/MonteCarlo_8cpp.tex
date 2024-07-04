@@ -1,0 +1,31 @@
+\doxysection{CMEPDA-\/\+GLAST/\+Core/\+Montecarlo/\+Monte\+Carlo.cpp File Reference}
+\hypertarget{MonteCarlo_8cpp}{}\label{MonteCarlo_8cpp}\index{CMEPDA-\/GLAST/Core/Montecarlo/MonteCarlo.cpp@{CMEPDA-\/GLAST/Core/Montecarlo/MonteCarlo.cpp}}
+{\ttfamily \#include "{}Utils\+MC.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{MonteCarlo_8cpp_ae71508eceb12e704c2d178713b40332b}{Monte\+Carlo}} (const std\+::string fileinput, TString path)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+\begin{DoxyItemize}
+\item This file makes a MC simulation in order to generated expected measured zenith angle and azimuth distribution. Those distributions are saved in a TH1F container inside a .root file The code keeps account of muted strips and simulate trigger condition of at least 3 consecutive hits per vision. Smearing of hits, cuts on ill clusters, and cluster length dimension is not kept into account. The generated distributions assumes a cos\texorpdfstring{$^\wedge$}{\string^}3(theta)sin(theta) distribution for the zenith angle and a uniform distribution for the azimuth angle between -\/180 to 180 deg. 
+\end{DoxyItemize}
+
+Definition in file \mbox{\hyperlink{MonteCarlo_8cpp_source}{Monte\+Carlo.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{MonteCarlo_8cpp_ae71508eceb12e704c2d178713b40332b}\label{MonteCarlo_8cpp_ae71508eceb12e704c2d178713b40332b} 
+\index{MonteCarlo.cpp@{MonteCarlo.cpp}!MonteCarlo@{MonteCarlo}}
+\index{MonteCarlo@{MonteCarlo}!MonteCarlo.cpp@{MonteCarlo.cpp}}
+\doxysubsubsection{\texorpdfstring{MonteCarlo()}{MonteCarlo()}}
+{\footnotesize\ttfamily void Monte\+Carlo (\begin{DoxyParamCaption}\item[{const std\+::string}]{fileinput,  }\item[{TString}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{MonteCarlo_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{MonteCarlo_8cpp_source}{Monte\+Carlo.\+cpp}}.
+

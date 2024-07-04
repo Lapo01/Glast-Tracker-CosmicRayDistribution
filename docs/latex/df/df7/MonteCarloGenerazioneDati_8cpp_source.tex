@@ -1,0 +1,209 @@
+\doxysection{Monte\+Carlo\+Generazione\+Dati.\+cpp}
+\hypertarget{MonteCarloGenerazioneDati_8cpp_source}{}\label{MonteCarloGenerazioneDati_8cpp_source}\index{CMEPDA-\/GLAST/Core/Montecarlo/MonteCarloGenerazioneDati.cpp@{CMEPDA-\/GLAST/Core/Montecarlo/MonteCarloGenerazioneDati.cpp}}
+\mbox{\hyperlink{MonteCarloGenerazioneDati_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{UtilsMC_8h}{UtilsMC.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00022}00022\ \textcolor{keywordtype}{void}\ MonteCarloGenerazioneDati(TString\ fileoutput,\ TString\ path)\{}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SECTION\ 1:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ In\ this\ section\ we\ initialize\ all\ variables\ used\ in\ the\ code,\ the\ tree\ to\ be\ outputted\ is\ initialized.\ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00034}00034\ \ \ \ \ std::vector<double>\ StripPosition;\ \textcolor{comment}{//vector\ used\ to\ map\ hit\ to\ the\ activated\ strip\ position.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =0;\ i<1535;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ StripPosition.push\_back(\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(i));}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordtype}{int}\ NBin\ =\ 1000;\ \textcolor{comment}{//set\ number\ of\ bins\ for\ histograms}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//Initialize\ containers\ for\ the\ distributions\ that\ are\ expected\ after\ the\ track\ passes\ the\ trigger\ condition\ of\ the\ experimental\ apparatus}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00048}00048\ \ \ \ \ TH1F\ *ThetaExpectedDistribution\ =\ \textcolor{keyword}{new}\ TH1F(\textcolor{stringliteral}{"{}hist"{}},\ \textcolor{stringliteral}{"{}Zenith\ angle\ Theta\ Expected\ Distribution"{}},\ NBin,\ 0,\ 90);}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00049}00049\ \ \ \ \ TH1F\ *PhiExpectedDistribution\ =\ \textcolor{keyword}{new}\ TH1F(\textcolor{stringliteral}{"{}hist"{}},\ \textcolor{stringliteral}{"{}Azimuth\ angle\ Phi\ Expected\ Distribution"{}},\ NBin,\ -\/180,\ 180);}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//Setup\ tree\ to\ be\ read\ }}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00053}00053\ \ \ \ \ \mbox{\hyperlink{classEvento}{Evento}}\ e;}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00054}00054\ \ \ \ \ TFile\ *output\ =\ \textcolor{keyword}{new}\ TFile(fileoutput,\ \textcolor{stringliteral}{"{}recreate"{}});}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00055}00055\ \ \ \ \ TTree\ *tree\ =\ \textcolor{keyword}{new}\ TTree(\textcolor{stringliteral}{"{}tree"{}},\ \textcolor{stringliteral}{"{}tree"{}});}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00056}00056\ \ \ \ \ tree-\/>Branch(\textcolor{stringliteral}{"{}evento"{}},\&e);}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//utils\ variables}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{int}\ NxHit\ =0;\ \textcolor{comment}{//number\ of\ hits\ on\ the\ XZ\ vision,\ on\ each\ iteration\ the\ code\ checks\ if\ the\ hits\ are\ more\ than\ 3.\ }}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordtype}{int}\ NyHit\ =0;\ \textcolor{comment}{//number\ of\ hits\ on\ the\ YZ\ vision,\ on\ each\ iteration\ the\ code\ checks\ if\ the\ hits\ are\ more\ than\ 3.\ }}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00061}00061\ \ \ \ \ \textcolor{keywordtype}{double}\ mx,\ my,\ qx,\ qy,\ theta,\ phi,\ x0,\ y0,\ x,\ y,thetacalc,\ phicalc,\ HittenStripPosition,\ auxiliary;\ \textcolor{comment}{//utils\ variables\ for\ MC\ data\ generation\ and\ for\ hitten\ strip.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{keywordtype}{double}\ Ztop\ =\ 31.2;\ \textcolor{comment}{//height\ of\ the\ highest\ layer\ between\ the\ XZ\ and\ YZ\ vision.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordtype}{double}\ MaxLength\ =\ \mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(1536);\ \textcolor{comment}{//The\ maximum\ length\ at\ which\ a\ layer\ is\ sensible\ to\ a\ hit\ }}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00064}00064\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00065}00065\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00066}00066\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00067}00067\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00068}00068\ \ \ \ \ std::vector<double>\ TrackX;\ \textcolor{comment}{//placeholder\ container\ for\ position\ of\ hitten\ strips\ on\ the\ XZ\ vision}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00069}00069\ \ \ \ \ std::vector<double>\ TrackY;\ \textcolor{comment}{//placeholder\ container\ for\ position\ of\ hitten\ strips\ on\ the\ YZ\ vision}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00070}00070\ \ \ \ \ std::vector<int>\ ZlevelX;\textcolor{comment}{//placeholder\ container\ for\ position\ of\ hitten\ layers\ on\ the\ XZ\ vision}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00071}00071\ \ \ \ \ std::vector<int>\ ZlevelY;\textcolor{comment}{//placeholder\ container\ for\ position\ of\ hitten\ layers\ on\ the\ YZ\ vision}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00072}00072\ \ \ \ \ std::vector<int>\ ZlevelXPlaceHolder;\textcolor{comment}{//utils\ variable\ to\ check\ if\ the\ trigger\ condition\ of\ consecutive\ hits\ is\ satisfied.\ In\ this\ code\ is\ not\ used,\ however\ since\ the\ function\ ResetUtils\ from\ library\ UtilsMC\ require\ this\ input,\ to\ mantain\ compatibility\ we\ declare\ it}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00073}00073\ \ \ \ \ std::vector<int>\ ZlevelYPlaceHolder;\textcolor{comment}{//utils\ variable\ to\ check\ if\ the\ trigger\ condition\ of\ consecutive\ hits\ is\ satisfied.\ In\ this\ code\ is\ not\ used,\ however\ since\ the\ function\ ResetUtils\ from\ library\ UtilsMC\ require\ this\ input,\ to\ mantain\ compatibility\ we\ declare\ it}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordtype}{int}\ Flag\ =1;\ \textcolor{comment}{//Flag\ used\ to\ check\ if\ a}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00075}00075\ \ \ \ \ \textcolor{keywordtype}{double}\ epsilon\ =\ 1;\ \textcolor{comment}{//\ utils\ varible\ to\ keep\ count\ of\ efficiency.\ In\ this\ code\ is\ not\ used,\ however\ since\ the\ function\ ResetUtils\ from\ library\ UtilsMC\ require\ this\ input,\ to\ mantain\ compatibility\ we\ declare\ it}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordtype}{double}\ yplaceholder,\ xplaceholder;\ \textcolor{comment}{//utils\ variables\ used\ to\ check\ at\ which\ point\ a\ strip\ has\ been\ hitten.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordtype}{int}\ N\ =\ 0;\ \textcolor{comment}{//util\ variable\ to\ keep\ count\ of\ generated\ events\ that\ passes\ the\ condition\ of\ having\ 1\ track\ per\ vision.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00078}00078\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00079}00079\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00080}00080\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00081}00081\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00082}00082\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SECTION\ 2:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//\ In\ this\ section\ we\ generate\ the\ distribution\ of\ events\ firstly\ utils\ variables\ and\ the\ object\ evento\ filled\ in\ the\ tree\ are\ reset\ \ //}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{comment}{//\ Next\ four\ random\ numbers\ are\ generated:\ theta,\ phi\ and\ the\ first\ point\ (x0,\ y0)\ on\ the\ plane\ of\ the\ highest\ layer,\ from\ this\ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//\ numbers\ all\ hits\ are\ generated\ for\ each\ layer,\ if\ there\ are\ more\ than\ 3\ hits\ for\ each\ vision,\ the\ tree\ is\ filled.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//Init\ the\ MC\ simulation}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00092}00092\ \ \ \ \ gRandom\ =\ \textcolor{keyword}{new}\ TRandom(0);\ \textcolor{comment}{//set\ random\ seed.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00094}00094\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j<10;\ j++)\{}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <100000;i++)\{}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00096}00096\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{UtilsMC_8cpp_adda5b766ce27d32b1a7db35d559331f9}{ResetEvento}}(e);\ \textcolor{comment}{//reset\ object\ evento\ to\ be\ filled.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{UtilsMC_8cpp_a1e369ca3e022cd7f119a026088ad64b6}{ResetUtils}}(TrackX,\ TrackY,\ ZlevelX,\ ZlevelY,\ ZlevelXPlaceHolder,\ ZlevelYPlaceHolder,\ NxHit,\ NyHit,\ epsilon);\ \textcolor{comment}{//reset\ utils}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{UtilsMC_8cpp_a86380da93c05bd425c6c2aca70e47186}{GenerateRandomNumbers}}(auxiliary,\ theta,\ phi,\ x0,\ y0,\ mx,\ my,\ qx,\ qy,\ thetacalc,\ phicalc,\ Ztop);}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//for\ each\ Y\ layer\ check\ if\ a\ hit\ has\ been\ registered}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ l:\mbox{\hyperlink{UtilsMC_8cpp_a7126d985b763a926d39f99e80120e21b}{YLayer}})\{}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//calculate\ hit\ point\ coordinate}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\ =\ my\ *\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}[l]\ +\ qy\ ;\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xplaceholder\ =\ mx\ *\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}[l]\ +\ qx;}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Flag\ =1;\ \textcolor{comment}{//reset\ Flag}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ if\ a\ hit\ is\ made,\ if\ not\ turn\ the\ flag\ to\ 0.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((((y<\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(0))||(y>MaxLength))||((y>\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(383))\&\&(y<\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(384)))||((y>\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(767))\&\&(y<\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(768)))||((y>\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(1151))\&\&(y<\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(1152)))||(y>\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(1535))||((xplaceholder<\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(0))||(xplaceholder>35))))\{}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Flag\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HittenStripPosition\ =\ *std::lower\_bound(StripPosition.begin(),\ StripPosition.end(),\ y);\ \textcolor{comment}{//calculate\ the\ strip\ position\ in\ cm.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ flag\ is\ turned\ on,\ register\ the\ hit\ }}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(Flag\ ==1)\{}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NyHit++;\ \textcolor{comment}{//increase\ number\ of\ hits}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ZlevelY.push\_back(l);\ \textcolor{comment}{//pushback\ layer\ height}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackY.push\_back(HittenStripPosition);\ \textcolor{comment}{//Push\ back\ strip\ position}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//for\ each\ X\ layer\ check\ if\ a\ hit\ has\ been\ registered}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ l:XLayer)\{}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//calculate\ hit\ point\ coordinate}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ mx\ *\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}[l]\ +\ qx\ ;}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yplaceholder\ =\ my\ *\ \mbox{\hyperlink{GeneralUtils_8cpp_a75d921e09141f0b547dbb28160f9c4f5}{Zmap}}[l]\ +\ qy;}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Flag\ =\ 1;\textcolor{comment}{//reset\ Flag}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ if\ a\ hit\ is\ made,\ if\ not\ turn\ the\ flag\ to\ 0.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((((x<\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(0))||(x>MaxLength))||((x>\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(383))\&\&(x<\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(384)))||((x>\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(767))\&\&(x<\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(768)))||((x>\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(1151))\&\&(x<\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(1152)))||(x>\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(1535))||((yplaceholder<\mbox{\hyperlink{GeneralUtils_8cpp_a100c62543a890246b20d112b2242817e}{StripCoordinate}}(0))\&\&(yplaceholder>35))))\{\ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Flag\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HittenStripPosition\ =\ *std::lower\_bound(StripPosition.begin(),\ StripPosition.end(),\ x);\ \textcolor{comment}{//calculate\ the\ hitten\ strip\ position\ in\ cm.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(Flag\ ==1)\{}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NxHit++;\textcolor{comment}{//increase\ number\ of\ hits}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrackX.push\_back(HittenStripPosition);\ \textcolor{comment}{//pushback\ layer\ height}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ZlevelX.push\_back(l);\ \textcolor{comment}{//Push\ back\ strip\ position}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ the\ event\ does\ not\ satisfy\ the\ condition\ of\ more\ than\ 2\ hits\ per\ vision,\ go\ to\ next\ iteration.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((NyHit<3)||NxHit<3)\{}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ exit;}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00153}00153\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//fill\ data\ for\ XZ\ projection}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ jj\ =\ 0;\ jj<TrackX.size();\ jj++)\{}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_a153ee65784b514a6c5c24cb4a298796c}{Layer}}.push\_back(ZlevelX[jj]);\textcolor{comment}{//push\ back\ the\ position\ in\ Z\ of\ the\ hitten\ layer.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_ab088b412620cb1c3a80dca0ca56ab720}{ClusterDimension}}.push\_back(1);\textcolor{comment}{//\ all\ cluster\ have\ dimension\ one}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_a06a9c21fec9646ee71e2d6139fe82655}{InitialStrip}}.push\_back(1);\ \textcolor{comment}{//we\ insert\ a\ placeholder\ value,\ since\ all\ generated\ cluster\ have\ dimension\ 1\ this\ info\ is\ not\ needed.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}.push\_back(TrackX[jj]);\ \textcolor{comment}{//push\ back\ the\ position\ of\ the\ cluster,\ which\ is\ equal\ to\ the\ position\ of\ the\ hitten\ strip.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}.push\_back(ZlevelX[jj]);\textcolor{comment}{//push\ back\ the\ position\ in\ Z\ of\ the\ hitten\ layer.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_a8cfabeb4f3492febba7e0f7f932664de}{Strip}}.push\_back(1);\textcolor{comment}{//\ we\ insert\ a\ placeholder\ value\ as\ this\ info\ is\ not\ needed.\ }}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//fill\ data\ for\ YZ\ projection}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ jj\ =\ 0;\ jj<TrackY.size();\ jj++)\{}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_a153ee65784b514a6c5c24cb4a298796c}{Layer}}.push\_back(ZlevelY[jj]);\textcolor{comment}{//push\ back\ the\ position\ in\ Z\ of\ the\ hitten\ layer.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_ab088b412620cb1c3a80dca0ca56ab720}{ClusterDimension}}.push\_back(1);\ \textcolor{comment}{//\ all\ cluster\ have\ dimension\ one}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_a06a9c21fec9646ee71e2d6139fe82655}{InitialStrip}}.push\_back(1);\ \textcolor{comment}{//we\ insert\ a\ placeholder\ value,\ since\ all\ generated\ cluster\ have\ dimension\ 1\ this\ info\ is\ not\ needed.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}.push\_back(TrackY[jj]);\ \textcolor{comment}{//push\ back\ the\ position\ of\ the\ cluster,\ which\ is\ equal\ to\ the\ position\ of\ the\ hitten\ strip.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}.push\_back(ZlevelY[jj]);\ \textcolor{comment}{//push\ back\ the\ position\ in\ Z\ of\ the\ hitten\ layer\ }}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_a8cfabeb4f3492febba7e0f7f932664de}{Strip}}.push\_back(1);\textcolor{comment}{//\ we\ insert\ a\ placeholder\ value\ as\ this\ info\ is\ not\ needed.\ }}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Fill\ other\ info\ on\ the\ event.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_a67ceeffab359005a849c20f67d163273}{NEventi}}\ =\ j+i;}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_a169ad3427525c72d5918a2fc2633221b}{NHit}}\ =\ e.\mbox{\hyperlink{classEvento_a8cfabeb4f3492febba7e0f7f932664de}{Strip}}.size();}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ e.\mbox{\hyperlink{classEvento_af016bfeb93df293c3291ba67f39f7ee3}{Flags}}[0]\ =1;\ \textcolor{comment}{//just\ to\ render\ the\ file\ analyzable\ to\ retina.\ Retina\ requires\ this\ flag\ to\ be\ turned\ on.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ tree-\/>Fill();\ \textcolor{comment}{//fill\ the\ tree}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ N++;\ \textcolor{comment}{//keep\ count\ of\ valid\ events}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//fill\ angle\ distributions\ of\ event\ that\ are\ inserted\ into\ the\ tree}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ ThetaExpectedDistribution-\/>Fill(theta);}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ PhiExpectedDistribution-\/>Fill(atan2(my,mx)*180/3.14);}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ exit:;\ \textcolor{comment}{//exit\ in\ case\ the\ event\ do\ not\ satisfy\ the\ request\ to\ have\ more\ than\ 2\ hits\ per\ vision}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00189}00189\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00191}00191\ \ \ \ \ output-\/>Write();\ \ \ \textcolor{comment}{//write\ output\ file}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00192}00192\ \ \ \ \ output-\/>Close();\ \ \ \textcolor{comment}{//close\ output\ file}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00195}00195\ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Sono\ stati\ generati\ "{}}\ <<N\ <<\textcolor{stringliteral}{"{}\ eventi\ con\ 1\ proiezione\ per\ traccia"{}}<<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00198}00198\ \ \ \ \ \textcolor{comment}{//Save\ angle\ distributions\ of\ event\ that\ are\ inserted\ into\ the\ tree,\ those\ are\ later\ to\ be\ compared\ with\ the\ reconstructed\ one\ by\ the\ tracking\ algorithm.}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00199}00199\ \ \ \ \ TString\ output1\ =\ path\ +\ \textcolor{stringliteral}{"{}AzimuthTest.root"{}};}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00200}00200\ \ \ \ \ TString\ output2\ =\ path\ +\ \textcolor{stringliteral}{"{}ZenithTest.root"{}};}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00201}00201\ \ \ \ \ PhiExpectedDistribution-\/>SaveAs(output1);}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00202}00202\ \ \ \ \ ThetaExpectedDistribution-\/>SaveAs(output2);}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00203}00203\ \}}
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{MonteCarloGenerazioneDati_8cpp_source_l00218}00218\ }
+
+\end{DoxyCode}

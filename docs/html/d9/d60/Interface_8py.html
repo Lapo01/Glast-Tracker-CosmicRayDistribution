@@ -96,10 +96,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:ab2eda89ccc82925973832210275a7aa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docs for Tracking This function performs the second abstractin of data by calling the <a class="el" href="../../de/dfe/Retina_8cpp.html">Retina.cpp</a> , <a class="el" href="../../d2/db4/RectifyTracks_8cpp.html">RectifyTracks.cpp</a> and <a class="el" href="../../d9/d8d/UnifyTree_8cpp_source.html">UnifyTree.cpp</a> macros.  <br /></td></tr>
 <tr class="separator:ab2eda89ccc82925973832210275a7aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01d16339d60381f45520e5bc1427f1db" id="r_a01d16339d60381f45520e5bc1427f1db"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01d16339d60381f45520e5bc1427f1db">Interface.TestReconstruction</a> ()</td></tr>
-<tr class="memdesc:a01d16339d60381f45520e5bc1427f1db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docs for testing the tracking algorithm This function starts by calling the c++ macro MonteCarloGenerazioneDati.cpp that simulate a data acquisition with only 1 tracks per vision and no noise, the simulated data is fed to the tracking algorithm in the macro <a class="el" href="../../de/dfe/Retina_8cpp.html">Retina.cpp</a> .  <br /></td></tr>
+<tr class="memdesc:a01d16339d60381f45520e5bc1427f1db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docs for testing the tracking algorithm This function starts by calling the c++ macro <a class="el" href="../../df/df7/MonteCarloGenerazioneDati_8cpp.html">MonteCarloGenerazioneDati.cpp</a> that simulate a data acquisition with only 1 tracks per vision and no noise, the simulated data is fed to the tracking algorithm in the macro <a class="el" href="../../de/dfe/Retina_8cpp.html">Retina.cpp</a> .  <br /></td></tr>
 <tr class="separator:a01d16339d60381f45520e5bc1427f1db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fb5da7971754ec9fc962a11eff21420" id="r_a0fb5da7971754ec9fc962a11eff21420"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fb5da7971754ec9fc962a11eff21420">Interface.Montecarlo</a> (fileinput, fileoutput)</td></tr>
-<tr class="memdesc:a0fb5da7971754ec9fc962a11eff21420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docs for doing MC simulation This function call the c++ macro MonteCarlo.cpp that runs a MC simulation of 3D tracks that goes through the tracker.  <br /></td></tr>
+<tr class="memdesc:a0fb5da7971754ec9fc962a11eff21420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docs for doing MC simulation This function call the c++ macro <a class="el" href="../../d0/d29/MonteCarlo_8cpp.html">MonteCarlo.cpp</a> that runs a MC simulation of 3D tracks that goes through the tracker.  <br /></td></tr>
 <tr class="separator:a0fb5da7971754ec9fc962a11eff21420"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c70ecdabc46a3a1f89e4416b325008a" id="r_a6c70ecdabc46a3a1f89e4416b325008a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c70ecdabc46a3a1f89e4416b325008a">Interface.Results</a> (fileinput, fileoutput)</td></tr>
 <tr class="memdesc:a6c70ecdabc46a3a1f89e4416b325008a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docs function that shows results.  <br /></td></tr>
@@ -190,7 +190,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Docs for doing MC simulation This function call the c++ macro MonteCarlo.cpp that runs a MC simulation of 3D tracks that goes through the tracker. </p>
+<p>Docs for doing MC simulation This function call the c++ macro <a class="el" href="../../d0/d29/MonteCarlo_8cpp.html">MonteCarlo.cpp</a> that runs a MC simulation of 3D tracks that goes through the tracker. </p>
 <p>The generated numbers are four: (x0,y0) point on the plane of the top layer, zenith angle theta and azimuth angle phi. From this four numbers the projections are generated on the vision XZ and YZ, then the hits are generated and if a track satisfy the trigger condition the angles zenith and azimuth are inserted into a histogram. The MC simulation does keep account of muted strips and mean efficiency of the tracker.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -253,7 +253,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Docs for testing the tracking algorithm This function starts by calling the c++ macro MonteCarloGenerazioneDati.cpp that simulate a data acquisition with only 1 tracks per vision and no noise, the simulated data is fed to the tracking algorithm in the macro <a class="el" href="../../de/dfe/Retina_8cpp.html">Retina.cpp</a> . </p>
+<p>Docs for testing the tracking algorithm This function starts by calling the c++ macro <a class="el" href="../../df/df7/MonteCarloGenerazioneDati_8cpp.html">MonteCarloGenerazioneDati.cpp</a> that simulate a data acquisition with only 1 tracks per vision and no noise, the simulated data is fed to the tracking algorithm in the macro <a class="el" href="../../de/dfe/Retina_8cpp.html">Retina.cpp</a> . </p>
 <p>The generated distribution takes into account only the trigger condition, it is compared with a KolmogGorov Test with the reconstructed distribution by the tracking algorithm. One would expect a p-value of 1 for an optimal reconstruction</p>
 <p>The results are saved into the folder Data/MCSimulations/TestingRetinaAlgorithm </p>
 
