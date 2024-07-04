@@ -11,32 +11,33 @@
 \DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00007}00007\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00008}00008\ \ \ \ \ TList\ *\ list\ =\ \textcolor{keyword}{new}\ TList();}
 \DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<\ iterations;\ i++)\{}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00010}00010\ \ \ \ \ \ \ \ \ TString\ filename\ =\ savefile\ +\ to\_string(i)\ +\ \textcolor{stringliteral}{"{}.root"{}}\ ;}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ TFile\ *file\ =\ \textcolor{keyword}{new}\ TFile(filename,\ \textcolor{stringliteral}{"{}read"{}});}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ etrack;}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ *e\ =\ \&etrack;}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ TTree\ *tree\ =\ (TTree*)file-\/>Get(\textcolor{stringliteral}{"{}treetrack"{}});}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ tree-\/>SetBranchAddress(\textcolor{stringliteral}{"{}etrack"{}},\ \&e);\ }
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ list-\/>Add(tree);\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00017}00017\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00018}00018\ }
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ etrack;}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00020}00020\ \ \ \ \ TString\ savefilename\ =\ savefile\ +\ \textcolor{stringliteral}{"{}.root"{}};}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00021}00021\ \ \ \ \ TFile\ *output\ =\ \textcolor{keyword}{new}\ TFile(savefilename,\textcolor{stringliteral}{"{}recreate"{}});}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00022}00022\ \ \ \ \ TTree\ *newtree\ =\ TTree::MergeTrees(list);}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00023}00023\ \ \ \ \ newtree-\/>SetName(\textcolor{stringliteral}{"{}treetrack"{}});}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00024}00024\ \ \ \ \ newtree-\/>Branch(\textcolor{stringliteral}{"{}etrack"{}},\&etrack);}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00025}00025\ \ \ \ \ newtree-\/>Write();}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00026}00026\ \ \ \ \ output-\/>Write();}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00027}00027\ \ \ \ \ output-\/>Close();}
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00028}00028\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00010}00010\ \ \ \ \ \ \ \ \ TString\ i\_name\ =\ to\_string(i);}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ TString\ filename\ =\ savefile\ +\ i\_name\ +\ \textcolor{stringliteral}{"{}.root"{}}\ ;}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ TFile\ *file\ =\ \textcolor{keyword}{new}\ TFile(filename,\ \textcolor{stringliteral}{"{}read"{}});}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ etrack;}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ *e\ =\ \&etrack;}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ TTree\ *tree\ =\ (TTree*)file-\/>Get(\textcolor{stringliteral}{"{}treetrack"{}});}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ tree-\/>SetBranchAddress(\textcolor{stringliteral}{"{}etrack"{}},\ \&e);\ }
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ list-\/>Add(tree);\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00020}00020\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ etrack;}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00021}00021\ \ \ \ \ TString\ savefilename\ =\ savefile\ +\ \textcolor{stringliteral}{"{}.root"{}};}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00022}00022\ \ \ \ \ TFile\ *output\ =\ \textcolor{keyword}{new}\ TFile(savefilename,\textcolor{stringliteral}{"{}recreate"{}});}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00023}00023\ \ \ \ \ TTree\ *newtree\ =\ TTree::MergeTrees(list);}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00024}00024\ \ \ \ \ newtree-\/>SetName(\textcolor{stringliteral}{"{}treetrack"{}});}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00025}00025\ \ \ \ \ newtree-\/>Branch(\textcolor{stringliteral}{"{}etrack"{}},\&etrack);}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00026}00026\ \ \ \ \ newtree-\/>Write();}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00027}00027\ \ \ \ \ output-\/>Write();}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00028}00028\ \ \ \ \ output-\/>Close();}
 \DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00029}00029\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00030}00030\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00031}00031\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00032}00032\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00033}00033\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00034}00034\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00035}00035\ }
-\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00035}00035\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{UnifyTree_8cpp_source_l00037}00037\ \}}
 
 \end{DoxyCode}

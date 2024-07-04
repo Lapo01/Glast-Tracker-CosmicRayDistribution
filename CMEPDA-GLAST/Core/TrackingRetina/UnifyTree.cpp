@@ -7,7 +7,8 @@ void UnifyTree(int iterations, TString savefile){
 	
 	TList * list = new TList();
 	for(int i = 0; i< iterations; i++){
-		TString filename = savefile + to_string(i) + ".root" ;
+		TString i_name = to_string(i);
+		TString filename = savefile + i_name + ".root" ;
 		TFile *file = new TFile(filename, "read");
 		EventoTrack etrack;
 		EventoTrack *e = &etrack;
