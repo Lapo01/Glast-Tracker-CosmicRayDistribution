@@ -32,7 +32,8 @@
  *
  *
  * \section setup_sec Setup
- *
+ * Install the package from git :\n 
+ * $ git clone https://github.com/Lapo01/Glast-Tracker-CosmicRayDistribution.git \n 
  * 
  * To setup the package, firstly run in the Core folder:\n 
  * $ cmake ..\n 
