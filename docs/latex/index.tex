@@ -84,7 +84,11 @@ The package is structured in the following way\+: An interface is written in pyt
  ~\newline
 
 \item \$ python -\/i \doxylink{Interface_8py}{Interface.\+py} -\/i outfile\+Cluster.\+root -\/o outfile\+Tracks -\/Tracking~\newline
- Performs the second abstraction of data from clusters to tracks, prints out the chisquare distribution with dof = 3 before and after correcting the systematics. As said, at the end of the script a file with a cut in chisquare is made.
+ Performs the second abstraction of data from clusters to tracks, prints out the chisquare distribution with dof = 3 before and after correcting the systematics. As said, at the end of the script a file with a cut in chisquare is made. ~\newline
+ A note\+: this part of the code is the most intensive one\+: time tests have been run on 2 PCs with a 100k events sample data\+: ~\newline
+ -\/) i7 11th gen 8-\/core , clockspeed 2.\+50 GHz time elapsed about 400s ~\newline
+ -\/) i3 6th gen 4-\/core, clockspeed 2.\+30 GHz, time elapsed about 900s ~\newline
+ One may use those to calculate an “expected” time run.
 \item \$ python -\/i \doxylink{Interface_8py}{Interface.\+py} -\/i outfile\+Tracks.\+root -\/Results~\newline
  Display the results and returns the p-\/value from a kolmogorov tests between ~\newline
  measured distributions and Montecarlo simulated ones. ~\newline

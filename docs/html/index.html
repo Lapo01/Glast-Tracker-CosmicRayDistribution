@@ -152,7 +152,11 @@ Typical workflow</h2>
  <br  />
 </li>
 <li>$ python -i <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> -i outfileCluster.root -o outfileTracks -Tracking<br  />
- Performs the second abstraction of data from clusters to tracks, prints out the chisquare distribution with dof = 3 before and after correcting the systematics. As said, at the end of the script a file with a cut in chisquare is made.</li>
+ Performs the second abstraction of data from clusters to tracks, prints out the chisquare distribution with dof = 3 before and after correcting the systematics. As said, at the end of the script a file with a cut in chisquare is made. <br  />
+ A note: this part of the code is the most intensive one: time tests have been run on 2 PCs with a 100k events sample data: <br  />
+ -) i7 11th gen 8-core , clockspeed 2.50 GHz time elapsed about 400s <br  />
+ -) i3 6th gen 4-core, clockspeed 2.30 GHz, time elapsed about 900s <br  />
+ One may use those to calculate an “expected” time run.</li>
 <li>$ python -i <a class="el" href="d9/d60/Interface_8py.html" title="Interface used to call c++ macros.">Interface.py</a> -i outfileTracks.root -Results<br  />
  Display the results and returns the p-value from a kolmogorov tests between <br  />
  measured distributions and Montecarlo simulated ones. <br  />
