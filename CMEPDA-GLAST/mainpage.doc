@@ -21,6 +21,7 @@
  * - to install root on debian based os (Ubuntu, Linux) check site: 
  * https://root.cern/install/\n 
  * 
+ * PYTHON VERSION > 3.0 \n 
  * PYTHON DEPENDENCIES: pyroot , loguru, multiprocess (NOT MULTIPROCESSING!!!) \n 
  * - on Fedora 40 run in terminal : \n 
  * $ pip install loguru multiprocess 
