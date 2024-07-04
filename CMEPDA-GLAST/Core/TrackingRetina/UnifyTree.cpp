@@ -1,8 +1,22 @@
+/**
+ * \file UnifyTree.cpp 
+ * 
+ * This code takes the produced file .root from each core and from each file takes the tree inside and unify them into a unique tree that is put in a file .root, this file is the final output of the tracking abstraction phase
+ *
+ */
+
 #include<iostream>
 #include<vector>
 #include<sstream>
 
-
+/**
+ * 
+ *
+ * 
+ * @param iterations it essentialy is the number of cores, this name is included in the produced files from the macro Retina which is run on all cores of the pc.
+ *
+ * @param savefile util variable containing name and path of the file to be produced
+ */
 void UnifyTree(int iterations, TString savefile){
 	
 	TList * list = new TList();

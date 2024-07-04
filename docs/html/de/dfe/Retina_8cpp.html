@@ -98,7 +98,7 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><ul>
 <li>This cpp macro takes as input a raw data file and returns a .root file with a tree. It performs the second abstraction of the data from clusters to potential tracks. However, the tracks found have to be later corrected with systematics error from relative disalignment and rotations between layers of the apparatus. <br  />
- The code is subdivided in three sections: The first section consists in the creation of placeholders, utils variables and the trees to be read and filled in the code. A phase space in (m, q) is created The second section checks for all the cells in the phase space for potential tracks, potential tracks are found if they consists of more than 2 points. The third section filters all equal tracks, by equal we mean those that have more than 1 point in common, and choose among the groups of equal tracks those that are "greater", by greater we mean the one that has the greater number of points. </li>
+ The code is subdivided in three sections: The first section consists in the creation of placeholders, utils variables and the trees to be read and filled in the code. A phase space in (m, q) is created The second section checks for all the cells in the phase space for potential tracks, potential tracks are found if they consists of more than 2 points. The third section filters all equal tracks, by equal we mean those that have more than 1 point in common, and choose among the groups of equal tracks those that are "greater", by greater we mean the one that has the greater number of points. Given a data acquisition, this macro is run on all cores of the pc, so the work is subdivided between the cores and each core outputs a .root file containing a tree with data abstracted to tracks. After this, the UnifyTree macro is run to unify all the files produced by the cores into a unique one. </li>
 </ul>
 
 <p class="definition">Definition in file <a class="el" href="../../de/dfe/Retina_8cpp_source.html">Retina.cpp</a>.</p>
@@ -131,8 +131,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>name of the input file, this file contains data in first abstraction phase.</td></tr>
+    <tr><td class="paramname">fileoutput</td><td>name of the outputfile</td></tr>
+    <tr><td class="paramname">iteration</td><td>used to divide the work in bunches</td></tr>
+    <tr><td class="paramname">numcores</td><td>used to divide the work in bunches depending on the hardware. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="../../de/dfe/Retina_8cpp_source.html#l00023">23</a> of file <a class="el" href="../../de/dfe/Retina_8cpp_source.html">Retina.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/dfe/Retina_8cpp_source.html#l00038">38</a> of file <a class="el" href="../../de/dfe/Retina_8cpp_source.html">Retina.cpp</a>.</p>
 
 </div>
 </div>

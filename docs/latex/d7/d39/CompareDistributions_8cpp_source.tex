@@ -1,0 +1,64 @@
+\doxysection{Compare\+Distributions.\+cpp}
+\hypertarget{CompareDistributions_8cpp_source}{}\label{CompareDistributions_8cpp_source}\index{CMEPDA-\/GLAST/Core/UtilsMacros/CompareDistributions.cpp@{CMEPDA-\/GLAST/Core/UtilsMacros/CompareDistributions.cpp}}
+\mbox{\hyperlink{CompareDistributions_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00020}\mbox{\hyperlink{CompareDistributions_8cpp_abd43d98df310cb5d24076fee9d1ed00f}{00020}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{CompareDistributions_8cpp_abd43d98df310cb5d24076fee9d1ed00f}{CompareDistributions}}(TString\ f1,\ TString\ f2,\ TString\ path)\{}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//get\ histograms\ from\ .root\ files}}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00024}00024\ \ \ \ \ TFile\ *One\ =\ \textcolor{keyword}{new}\ TFile(f1);}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00025}00025\ \ \ \ \ TFile\ *Two\ =\ \textcolor{keyword}{new}\ TFile(f2);}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00026}00026\ \ \ \ \ TH1F\ *firsthist\ =(TH1F*)One-\/>Get(\textcolor{stringliteral}{"{}hist"{}});}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00027}00027\ \ \ \ \ TH1F\ *secondhist\ =\ (TH1F*)Two-\/>Get(\textcolor{stringliteral}{"{}hist"{}});}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//normalize\ histograms}}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordtype}{double}\ NormOne\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordtype}{double}\ NormTwo\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<1000;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ NormOne+=\ firsthist-\/>GetBinContent(i);}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ NormTwo+=\ secondhist-\/>GetBinContent(i);}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i>10000)\{}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ firsthist-\/>SetBinContent(i,\ 0);}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ secondhist-\/>SetBinContent(i,\ 0);}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00045}00045\ \ \ \ \ firsthist-\/>Scale(1/NormOne);}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00046}00046\ \ \ \ \ secondhist-\/>Scale(1/NormTwo);}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordtype}{double}\ test\ =\ secondhist-\/>KolmogorovTest(firsthist);}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//plot\ distributions\ and\ run\ Kolmogorov\ Test}}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00051}00051\ \ \ \ \ TCanvas\ *c\ =\ \textcolor{keyword}{new}\ TCanvas();}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00054}00054\ \ \ \ \ firsthist-\/>Rebin(10);}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00055}00055\ \ \ \ \ secondhist-\/>Rebin(10);}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00056}00056\ \ \ \ \ TLegend\ *l\ =\ \textcolor{keyword}{new}\ TLegend();}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00057}00057\ \ \ \ \ l-\/>AddEntry(firsthist,\ firsthist-\/>GetTitle());}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00058}00058\ \ \ \ \ l-\/>AddEntry(secondhist,\ secondhist-\/>GetTitle());}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00059}00059\ \ \ \ \ firsthist-\/>SetLineColor(kRed);}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00060}00060\ \ \ \ \ firsthist-\/>Draw(\textcolor{stringliteral}{"{}HISTSame"{}});}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00061}00061\ \ \ \ \ secondhist-\/>Draw(\textcolor{stringliteral}{"{}HISTSame"{}});}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00062}00062\ \ \ \ \ l-\/>Draw(\textcolor{stringliteral}{"{}same"{}});}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00064}00064\ \ \ \ \ TPaveText\ *pt\ =\ \textcolor{keyword}{new}\ TPaveText();}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00065}00065\ \ \ \ \ TString\ text\ =\ \textcolor{stringliteral}{"{}Kolmogorov\ Test\ returns\ p-\/value\ of\ "{}}\ +\ std::to\_string(secondhist-\/>KolmogorovTest(firsthist));}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00066}00066\ \ \ \ \ pt-\/>AddText(text);}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00067}00067\ \ \ \ \ pt-\/>Draw(\textcolor{stringliteral}{"{}same"{}});}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00068}00068\ \ \ \ \ c-\/>SaveAs(path);}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00070}00070\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{keywordflow}{return}\ test;}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00075}00075\ \};}
+\DoxyCodeLine{\Hypertarget{CompareDistributions_8cpp_source_l00076}00076\ }
+
+\end{DoxyCode}

@@ -8,7 +8,8 @@
  *  The second section checks for all the cells in the phase space for potential tracks, potential tracks are found if they consists of more than 2 points.
  *  The third section filters all equal tracks, by equal we mean those that have more than 1 point in common,  and choose among the groups of equal tracks those that are "greater",
  *  by greater we mean the one that has the greater number of points.
- *
+ *	Given a data acquisition, this macro is run on all cores of the pc, so the work is subdivided between the cores and each core outputs a .root file containing a tree with data abstracted to tracks.
+ *  After this, the UnifyTree macro is run to unify all the files produced by the cores into a unique one.
  */
 
 #include<iostream>
@@ -19,7 +20,21 @@
 #include"GeneralUtils.h"
 
 
-
+/**
+ * 
+ *
+ *
+ *
+ * @param file name of the input file, this file contains data in first abstraction phase.
+ *
+ * @param fileoutput name of the outputfile
+ *
+ * @param iteration used to divide the work in bunches
+ *
+ * @param numcores used to divide the work in bunches depending on the hardware.
+ *
+ *
+ */
 void Retina(TString file, TString fileoutput, int iteration, int numcores){
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

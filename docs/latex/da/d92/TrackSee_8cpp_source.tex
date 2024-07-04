@@ -1,0 +1,137 @@
+\doxysection{Track\+See.\+cpp}
+\hypertarget{TrackSee_8cpp_source}{}\label{TrackSee_8cpp_source}\index{CMEPDA-\/GLAST/Core/UtilsMacros/TrackSee.cpp@{CMEPDA-\/GLAST/Core/UtilsMacros/TrackSee.cpp}}
+\mbox{\hyperlink{TrackSee_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include"{}\mbox{\hyperlink{GeneralUtils_8h}{GeneralUtils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00020}\mbox{\hyperlink{TrackSee_8cpp_ad2ccaecd344c9f312154cbc1c5efc61e}{00020}}\ TGraphErrors\ *\mbox{\hyperlink{TrackSee_8cpp_ad2ccaecd344c9f312154cbc1c5efc61e}{TrackXZ}}(\mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ \&e)\{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00021}00021\ \ \ \ \ TGraphErrors\ *XZ\ =\textcolor{keyword}{new}\ TGraphErrors();\ \textcolor{comment}{//initialize\ TGraphErrors}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{int}\ n;\ \textcolor{comment}{//initialize\ util\ variable\ to\ fill\ TGraphErrors\ instance}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00023}00023\ \ \ \ \ TString\ Title\ =\ \textcolor{stringliteral}{"{}Track\ XZ\ \ Event\ ID:\ "{}}+\ to\_string(e.\mbox{\hyperlink{classEventoTrack_a3eaf59c48347453e9e15173b29239c99}{NEvento}})\ +\ \ \textcolor{stringliteral}{"{};\ X\ [cm];\ Y\ [cm]\ "{}}\ ;\ \textcolor{comment}{//TGraphErrors\ title.}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00024}00024\ \ \ \ \ XZ-\/>SetTitle(Title);\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//for\ all\ XZ\ projections\ fill\ the\ TGraphErrors\ with\ their\ cluster\ info.}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ track:e.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}})\{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=\ 0;\ i<track.ClusterPosition.size();\ i++)\{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ n\ =\ XZ-\/>GetN();}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ XZ-\/>SetPoint(n,\mbox{\hyperlink{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}{LayerCoordinate}}(track.Layer[i]),\ track.ClusterPosition[i]\ );}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ XZ-\/>SetPointError(n,\ 0,track.Error[i]);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{return}\ XZ;}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00037}00037\ \}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00048}\mbox{\hyperlink{TrackSee_8cpp_a58b3b13f803b5a1d3428de4dd267a680}{00048}}\ TGraphErrors\ *\mbox{\hyperlink{TrackSee_8cpp_a58b3b13f803b5a1d3428de4dd267a680}{TrackYZ}}(\mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ \&e)\{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00049}00049\ \ \ \ \ TGraphErrors\ *YZ\ =\textcolor{keyword}{new}\ TGraphErrors();\textcolor{comment}{//initialize\ TGraphErrors}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{int}\ n;\textcolor{comment}{//initialize\ util\ variable\ to\ fill\ TGraphErrors\ instance}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00051}00051\ \ \ \ \ TString\ Title\ =\ \textcolor{stringliteral}{"{}Track\ YZ\ Event\ ID:\ "{}}\ +\ to\_string(e.\mbox{\hyperlink{classEventoTrack_a3eaf59c48347453e9e15173b29239c99}{NEvento}})\ +\ \textcolor{stringliteral}{"{};\ Y\ [cm];\ Y\ [cm]\ "{}};\textcolor{comment}{//TGraphErrors\ title.}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00052}00052\ \ \ \ \ YZ-\/>SetTitle(Title);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//for\ all\ YZ\ projections\ fill\ the\ TGraphErrors\ with\ their\ cluster\ info.}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ track:e.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}})\{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=\ 0;\ i<track.ClusterPosition.size();\ i++)\{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ n\ =\ YZ-\/>GetN();}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ YZ-\/>SetPoint(n,\mbox{\hyperlink{GeneralUtils_8cpp_a2d662b9f40450252cd0a030691fc914f}{LayerCoordinate}}(track.Layer[i]),\ track.ClusterPosition[i]);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ YZ-\/>SetPointError(n,\ 0,\ track.Error[i]);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{return}\ YZ;}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00068}00068\ \}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00079}\mbox{\hyperlink{TrackSee_8cpp_aabde80a3ef51d6e844f40b91491525d7}{00079}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{TrackSee_8cpp_aabde80a3ef51d6e844f40b91491525d7}{CheckLength}}(std::vector<int>\ \&a)\{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00080}00080\ \ \ \ \ \textcolor{keywordflow}{if}(a.size()\ ==0)\{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::exception();}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00085}00085\ \}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00096}00096\ \textcolor{keywordtype}{void}\ TrackSee(TString\ fileinput,\ \textcolor{keywordtype}{int}\ N,\ \textcolor{keywordtype}{int}\ M)\{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00100}00100\ \ \ \ \ gRandom\ =\ \textcolor{keyword}{new}\ TRandom(0);\ \textcolor{comment}{//make\ new\ pseudorandom\ seed}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00103}00103\ \ \ \ \ \textcolor{comment}{//initialize\ tree\ to\ be\ read}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00104}00104\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ e;\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00105}00105\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ *p\ =\ \&e;}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00106}00106\ \ \ \ \ TFile\ *input\ =\ \textcolor{keyword}{new}\ TFile(fileinput,\textcolor{stringliteral}{"{}read"{}});}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00107}00107\ \ \ \ \ TTree\ *tree\ =\ (TTree*)input-\/>Get(\textcolor{stringliteral}{"{}treetrack"{}});}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00108}00108\ \ \ \ \ tree-\/>SetBranchAddress(\textcolor{stringliteral}{"{}etrack"{}},\ \&p);\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00109}00109\ \ \ \ \ \textcolor{keywordtype}{int}\ entries\ =\ tree-\/>GetEntries();}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00110}00110\ \ \ \ \ std::vector<int>\ GoodEntries;\ \textcolor{comment}{//vector\ of\ entry\ ID's}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00112}00112\ \ \ \ \ \textcolor{comment}{//push\ back\ to\ the\ GoodEntries\ vector\ the\ entry\ ID\ that\ satisfy\ the\ condition\ of\ having\ N\ and\ M\ projections\ respectively\ on\ the\ vision\ XZ\ and\ YZ}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<entries;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ tree-\/>GetEntry(i);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((e.\mbox{\hyperlink{classEventoTrack_a15a53c929094411a8d5900d51d7eb2ab}{TrackX}}.size()\ ==\ N)\ \&(e.\mbox{\hyperlink{classEventoTrack_afc78d0bef2be9a53e9adc51a2a83f9bb}{TrackY}}.size()\ ==\ M))\{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GoodEntries.push\_back(i);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00118}00118\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00119}00119\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00122}00122\ \ \ \ \ \textcolor{comment}{//see\ if\ there\ are\ any\ event\ with\ the\ number\ N\ and\ M\ of\ projections.}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00123}00123\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{TrackSee_8cpp_aabde80a3ef51d6e844f40b91491525d7}{CheckLength}}(GoodEntries);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00126}00126\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{comment}{//catch\ the\ exception}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00128}00128\ \ \ \ \ \textcolor{keywordflow}{catch}(std::exception\ *except)\{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Non\ esistono\ eventi\ con\ questo\ numero\ di\ proiezione\ per\ visione!"{}}<<std::endl;}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ except;}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00132}00132\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00133}00133\ \ \ \ \ \textcolor{comment}{//pick\ a\ random\ entry}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00134}00134\ \ \ \ \ \textcolor{keywordtype}{int}\ RandomPick\ =\ int(gRandom-\/>Uniform(0,\ GoodEntries.size()));}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00136}00136\ \ \ \ \ std::cout<<GoodEntries[RandomPick]<<std::endl;}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00137}00137\ \ \ \ \ tree-\/>GetEntry(GoodEntries[RandomPick]);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00142}00142\ \ \ \ \ \textcolor{comment}{//plot\ the\ events\ with\ their\ tracks.}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00143}00143\ \ \ \ \ TCanvas\ *XZVision\ =\ \textcolor{keyword}{new}\ TCanvas();}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00144}00144\ \ \ \ \ TGraphErrors\ *XZ\ =\mbox{\hyperlink{TrackSee_8cpp_ad2ccaecd344c9f312154cbc1c5efc61e}{TrackXZ}}(e);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00145}00145\ \ \ \ \ XZ-\/>Draw(\textcolor{stringliteral}{"{}*A"{}});}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00146}00146\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ track:e.TrackX)\{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ TF1\ *line\ =\ \textcolor{keyword}{new}\ TF1(\textcolor{stringliteral}{"{}line"{}},\ \textcolor{stringliteral}{"{}[0]\ +\ [1]*x"{}},\ -\/3,\ 40);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ line-\/>SetParameter(0,\ track.Fit[0]);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ line-\/>SetParameter(1,\ track.Fit[1]);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ line-\/>Draw(\textcolor{stringliteral}{"{}same"{}});}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00151}00151\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00152}00152\ \ \ \ \ TCanvas\ *YZVision\ =\ \textcolor{keyword}{new}\ TCanvas();}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00153}00153\ \ \ \ \ TGraphErrors\ *YZ\ =\mbox{\hyperlink{TrackSee_8cpp_a58b3b13f803b5a1d3428de4dd267a680}{TrackYZ}}(e);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00154}00154\ \ \ \ \ YZ-\/>Draw(\textcolor{stringliteral}{"{}*A"{}});}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00155}00155\ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ track:e.TrackY)\{}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ TF1\ *line\ =\ \textcolor{keyword}{new}\ TF1(\textcolor{stringliteral}{"{}line"{}},\ \textcolor{stringliteral}{"{}[0]\ +\ [1]*x"{}},\ -\/3,\ 40);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ line-\/>SetParameter(0,\ track.Fit[0]);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ line-\/>SetParameter(1,\ track.Fit[1]);}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ line-\/>Draw(\textcolor{stringliteral}{"{}same"{}});}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00160}00160\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00163}00163\ \}}
+
+\end{DoxyCode}

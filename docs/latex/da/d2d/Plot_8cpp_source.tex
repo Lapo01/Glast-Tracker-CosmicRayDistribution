@@ -1,0 +1,35 @@
+\doxysection{Plot.\+cpp}
+\hypertarget{Plot_8cpp_source}{}\label{Plot_8cpp_source}\index{CMEPDA-\/GLAST/Core/UtilsMacros/Plot.cpp@{CMEPDA-\/GLAST/Core/UtilsMacros/Plot.cpp}}
+\mbox{\hyperlink{Plot_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00010}00010\ \textcolor{keywordtype}{void}\ Plot(TString\ f1,\ TString\ f2)\{}
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00012}00012\ \ \ \ \ TFile\ *One\ =\ \textcolor{keyword}{new}\ TFile(f1);}
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00013}00013\ \ \ \ \ TFile\ *Two\ =\ \textcolor{keyword}{new}\ TFile(f2);}
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00014}00014\ \ \ \ \ TH1F\ *firsthist\ =(TH1F*)One-\/>Get(\textcolor{stringliteral}{"{}hist"{}});}
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00015}00015\ \ \ \ \ TH1F\ *secondhist\ =\ (TH1F*)Two-\/>Get(\textcolor{stringliteral}{"{}hist"{}});}
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00019}00019\ \ \ \ \ TCanvas\ *c1\ =\ \textcolor{keyword}{new}\ TCanvas();}
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00020}00020\ \ \ \ \ firsthist-\/>Draw();}
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00024}00024\ \ \ \ \ TCanvas\ *c2\ =\ \textcolor{keyword}{new}\ TCanvas();}
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00025}00025\ \ \ \ \ secondhist-\/>Draw();}
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{Plot_8cpp_source_l00037}00037\ \}}
+
+\end{DoxyCode}

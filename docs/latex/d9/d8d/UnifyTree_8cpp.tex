@@ -1,0 +1,44 @@
+\doxysection{CMEPDA-\/\+GLAST/\+Core/\+Tracking\+Retina/\+Unify\+Tree.cpp File Reference}
+\hypertarget{UnifyTree_8cpp}{}\label{UnifyTree_8cpp}\index{CMEPDA-\/GLAST/Core/TrackingRetina/UnifyTree.cpp@{CMEPDA-\/GLAST/Core/TrackingRetina/UnifyTree.cpp}}
+
+
+This code takes the produced file .root from each core and from each file takes the tree inside and unify them into a unique tree that is put in a file .root, this file is the final output of the tracking abstraction phase.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{UnifyTree_8cpp_a7039e2cb87b96562aa708653f9719141}{Unify\+Tree}} (int iterations, TString savefile)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This code takes the produced file .root from each core and from each file takes the tree inside and unify them into a unique tree that is put in a file .root, this file is the final output of the tracking abstraction phase. 
+
+
+
+Definition in file \mbox{\hyperlink{UnifyTree_8cpp_source}{Unify\+Tree.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{UnifyTree_8cpp_a7039e2cb87b96562aa708653f9719141}\label{UnifyTree_8cpp_a7039e2cb87b96562aa708653f9719141} 
+\index{UnifyTree.cpp@{UnifyTree.cpp}!UnifyTree@{UnifyTree}}
+\index{UnifyTree@{UnifyTree}!UnifyTree.cpp@{UnifyTree.cpp}}
+\doxysubsubsection{\texorpdfstring{UnifyTree()}{UnifyTree()}}
+{\footnotesize\ttfamily void Unify\+Tree (\begin{DoxyParamCaption}\item[{int}]{iterations,  }\item[{TString}]{savefile }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em iterations} & it essentialy is the number of cores, this name is included in the produced files from the macro Retina which is run on all cores of the pc.\\
+\hline
+{\em savefile} & util variable containing name and path of the file to be produced \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{UnifyTree_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{UnifyTree_8cpp_source}{Unify\+Tree.\+cpp}}.
+

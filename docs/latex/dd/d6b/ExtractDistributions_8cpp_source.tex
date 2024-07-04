@@ -1,0 +1,65 @@
+\doxysection{Extract\+Distributions.\+cpp}
+\hypertarget{ExtractDistributions_8cpp_source}{}\label{ExtractDistributions_8cpp_source}\index{CMEPDA-\/GLAST/Core/UtilsMacros/ExtractDistributions.cpp@{CMEPDA-\/GLAST/Core/UtilsMacros/ExtractDistributions.cpp}}
+\mbox{\hyperlink{ExtractDistributions_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GeneralUtils_8h}{GeneralUtils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00020}\mbox{\hyperlink{ExtractDistributions_8cpp_aa6eff0886c49a57d165539e716d8cf1d}{00020}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ExtractDistributions_8cpp_aa6eff0886c49a57d165539e716d8cf1d}{ExtractDistributions}}(TString\ fileinput,\ TString\ path)\{}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//initialize\ tree\ to\ be\ read}}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ e;\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00024}00024\ \ \ \ \ \mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ *p\ =\ \&e;}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00025}00025\ \ \ \ \ TFile\ *input\ =\ \textcolor{keyword}{new}\ TFile(fileinput,\textcolor{stringliteral}{"{}read"{}});}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00026}00026\ \ \ \ \ TTree\ *tree\ =\ (TTree*)input-\/>Get(\textcolor{stringliteral}{"{}treetrack"{}});}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00027}00027\ \ \ \ \ tree-\/>SetBranchAddress(\textcolor{stringliteral}{"{}etrack"{}},\ \&p);\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordtype}{int}\ entries\ =\ tree-\/>GetEntries();}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//initialize\ histograms\ to\ be\ filled\ }}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00032}00032\ \ \ \ \ TH1F\ *MeasuredZenithDistribution\ =\ \textcolor{keyword}{new}\ TH1F(\textcolor{stringliteral}{"{}hist"{}},\ \textcolor{stringliteral}{"{}Distribuzione\ ricostruita\ dell'angolo\ zenith"{}},\ 1000,\ 0,\ 90);}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00033}00033\ \ \ \ \ TH1F\ *MeasuredAzimuthDistribution\ =\ \textcolor{keyword}{new}\ TH1F(\textcolor{stringliteral}{"{}hist"{}},\ \textcolor{stringliteral}{"{}Distribuzione\ ricostruita\ dell'angolo\ azimuth"{}},\ 1000,\ -\/180,\ 180);}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00034}00034\ \ \ \ \ TH2F\ *TrackXvsTrackYNumbers\ =\ \textcolor{keyword}{new}\ TH2F(\textcolor{stringliteral}{"{}hist2d"{}},\textcolor{stringliteral}{"{}Tracce\ trovate\ X\ e\ Y"{}},\ 10,\ 0,10,\ 10,\ 0,\ 10);}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//fill\ histograms\ and\ save\ them\ into\ root\ files}}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<entries;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ tree-\/>GetEntry(i);}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((e.\mbox{\hyperlink{classEventoTrack_a5cb6f67c0416adee2f3dee2039944d27}{Nx}}()==1)\&\&(e.\mbox{\hyperlink{classEventoTrack_a88ac7f432f68018e471bb50b73b36d36}{Ny}}()==1))\{}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ MeasuredZenithDistribution-\/>Fill(\mbox{\hyperlink{GeneralUtils_8cpp_a574f30866c7831429f2521e0316e6a81}{Theta}}(e,\ 0));}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ MeasuredAzimuthDistribution-\/>Fill(\mbox{\hyperlink{GeneralUtils_8cpp_a8616af98d144c90fc52efa621732f2a3}{Phi}}(e,\ 0));}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ TrackXvsTrackYNumbers-\/>Fill(e.\mbox{\hyperlink{classEventoTrack_a5cb6f67c0416adee2f3dee2039944d27}{Nx}}(),\ e.\mbox{\hyperlink{classEventoTrack_a88ac7f432f68018e471bb50b73b36d36}{Ny}}());}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00046}00046\ \ \ \ \ TString\ output1\ =\ path\ +\ \textcolor{stringliteral}{"{}ZenithDistribution.root"{}};}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00047}00047\ \ \ \ \ TString\ output2\ =\ path\ +\ \textcolor{stringliteral}{"{}AzimuthDistribution.root"{}};}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00048}00048\ \ \ \ \ TString\ output3\ =\ path\ +\ \textcolor{stringliteral}{"{}NXTracksvsNYTracks.root"{}};}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00054}00054\ \ \ \ \ MeasuredZenithDistribution-\/>SetTitle(\textcolor{stringliteral}{"{}Reconstructed\ Zenith\ Distribution"{}});}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00055}00055\ \ \ \ \ MeasuredZenithDistribution-\/>GetXaxis()-\/>SetTitle(\textcolor{stringliteral}{"{}Zenith\ angle\ \#theta"{}});}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00056}00056\ \ \ \ \ MeasuredZenithDistribution-\/>GetYaxis()-\/>SetTitle(\textcolor{stringliteral}{"{}Counts"{}});}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00058}00058\ \ \ \ \ MeasuredAzimuthDistribution-\/>SetTitle(\textcolor{stringliteral}{"{}Reconstructed\ Azimuth\ Distribution"{}});}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00059}00059\ \ \ \ \ MeasuredAzimuthDistribution-\/>GetXaxis()-\/>SetTitle(\textcolor{stringliteral}{"{}Azimuth\ angle\ \#phi"{}});}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00060}00060\ \ \ \ \ MeasuredAzimuthDistribution-\/>GetYaxis()-\/>SetTitle(\textcolor{stringliteral}{"{}Counts"{}});}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00062}00062\ \ \ \ \ TrackXvsTrackYNumbers-\/>SetTitle(\textcolor{stringliteral}{"{}Number\ of\ projections\ distributions"{}});}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00063}00063\ \ \ \ \ TrackXvsTrackYNumbers-\/>GetYaxis()-\/>SetTitle(\textcolor{stringliteral}{"{}Number\ of\ projection\ on\ the\ XZ\ vision"{}});}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00064}00064\ \ \ \ \ TrackXvsTrackYNumbers-\/>GetYaxis()-\/>SetTitle(\textcolor{stringliteral}{"{}Number\ of\ projection\ on\ the\ YZ\ vision"{}});}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00067}00067\ \ \ \ \ TCanvas\ *c\ =\ \textcolor{keyword}{new}\ TCanvas();}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00068}00068\ \ \ \ \ TrackXvsTrackYNumbers-\/>Draw(\textcolor{stringliteral}{"{}colz\ TEXT"{}});}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//save\ hist}}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00071}00071\ \ \ \ \ MeasuredZenithDistribution-\/>SaveAs(output1);}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00072}00072\ \ \ \ \ MeasuredAzimuthDistribution-\/>SaveAs(output2);}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00073}00073\ \ \ \ \ TrackXvsTrackYNumbers-\/>SaveAs(output3);}
+\DoxyCodeLine{\Hypertarget{ExtractDistributions_8cpp_source_l00074}00074\ \}}
+
+\end{DoxyCode}

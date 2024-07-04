@@ -1,4 +1,9 @@
-
+/**
+ * \file Plot.cpp 
+ * 
+ * Simply plots separately two histograms given their files .root
+ *
+ */
 
 
 

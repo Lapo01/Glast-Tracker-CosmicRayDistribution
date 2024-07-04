@@ -1,0 +1,48 @@
+\doxysection{CMEPDA-\/\+GLAST/\+Core/\+Utils\+Macros/\+Extract\+Distributions.cpp File Reference}
+\hypertarget{ExtractDistributions_8cpp}{}\label{ExtractDistributions_8cpp}\index{CMEPDA-\/GLAST/Core/UtilsMacros/ExtractDistributions.cpp@{CMEPDA-\/GLAST/Core/UtilsMacros/ExtractDistributions.cpp}}
+
+
+This code takes takes as input a .root file containing the second abstraction of trackin data and outputs the measured zenith and azimuth distributions.  
+
+
+{\ttfamily \#include "{}General\+Utils.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ExtractDistributions_8cpp_aa6eff0886c49a57d165539e716d8cf1d}{Extract\+Distributions}} (TString fileinput, TString path)
+\begin{DoxyCompactList}\small\item\em This macro takes as input two filepaths, the first is the path of the .root file that contains data in form of tracks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This code takes takes as input a .root file containing the second abstraction of trackin data and outputs the measured zenith and azimuth distributions. 
+
+Also returns the number of Nx projection vs Ny projections. 
+
+Definition in file \mbox{\hyperlink{ExtractDistributions_8cpp_source}{Extract\+Distributions.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ExtractDistributions_8cpp_aa6eff0886c49a57d165539e716d8cf1d}\label{ExtractDistributions_8cpp_aa6eff0886c49a57d165539e716d8cf1d} 
+\index{ExtractDistributions.cpp@{ExtractDistributions.cpp}!ExtractDistributions@{ExtractDistributions}}
+\index{ExtractDistributions@{ExtractDistributions}!ExtractDistributions.cpp@{ExtractDistributions.cpp}}
+\doxysubsubsection{\texorpdfstring{ExtractDistributions()}{ExtractDistributions()}}
+{\footnotesize\ttfamily void Extract\+Distributions (\begin{DoxyParamCaption}\item[{TString}]{fileinput,  }\item[{TString}]{path }\end{DoxyParamCaption})}
+
+
+
+This macro takes as input two filepaths, the first is the path of the .root file that contains data in form of tracks. 
+
+The second is a path where to print the root files containing the distributions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fileoutput} & path to the File that contains the tree with tracks\\
+\hline
+{\em path} & path for the output .root files that contains the distributions. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ExtractDistributions_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{ExtractDistributions_8cpp_source}{Extract\+Distributions.\+cpp}}.
+

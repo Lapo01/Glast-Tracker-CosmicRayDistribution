@@ -1,0 +1,98 @@
+\doxysection{CMEPDA-\/\+GLAST/\+Core/\+Utils\+Macros/\+Track\+See.cpp File Reference}
+\hypertarget{TrackSee_8cpp}{}\label{TrackSee_8cpp}\index{CMEPDA-\/GLAST/Core/UtilsMacros/TrackSee.cpp@{CMEPDA-\/GLAST/Core/UtilsMacros/TrackSee.cpp}}
+
+
+This file contains functions to display a random event with N projections on the XZ vision and M projections on the YZ vision.  
+
+
+{\ttfamily \#include "{}General\+Utils.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+TGraph\+Errors \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{TrackSee_8cpp_ad2ccaecd344c9f312154cbc1c5efc61e}{Track\+XZ}} (\mbox{\hyperlink{classEventoTrack}{Evento\+Track}} \&e)
+\begin{DoxyCompactList}\small\item\em This function returns TGraph\+Errors containers with the points in the tracks for the XZ vision. \end{DoxyCompactList}\item 
+TGraph\+Errors \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{TrackSee_8cpp_a58b3b13f803b5a1d3428de4dd267a680}{Track\+YZ}} (\mbox{\hyperlink{classEventoTrack}{Evento\+Track}} \&e)
+\begin{DoxyCompactList}\small\item\em This function returns TGraph\+Errors containers with the points in the tracks for the YZ vision. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{TrackSee_8cpp_aabde80a3ef51d6e844f40b91491525d7}{Check\+Length}} (std\+::vector$<$ int $>$ \&a)
+\begin{DoxyCompactList}\small\item\em This function checks if the vector containing the ID of the entries with N and M projection for XZ and YZ vision has size 0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{TrackSee_8cpp_a9dfbed0e258757f81bdf997309c39cbb}{Track\+See}} (TString fileinput, int N, int M)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains functions to display a random event with N projections on the XZ vision and M projections on the YZ vision. 
+
+
+
+Definition in file \mbox{\hyperlink{TrackSee_8cpp_source}{Track\+See.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{TrackSee_8cpp_aabde80a3ef51d6e844f40b91491525d7}\label{TrackSee_8cpp_aabde80a3ef51d6e844f40b91491525d7} 
+\index{TrackSee.cpp@{TrackSee.cpp}!CheckLength@{CheckLength}}
+\index{CheckLength@{CheckLength}!TrackSee.cpp@{TrackSee.cpp}}
+\doxysubsubsection{\texorpdfstring{CheckLength()}{CheckLength()}}
+{\footnotesize\ttfamily void Check\+Length (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$ \&}]{a }\end{DoxyParamCaption})}
+
+
+
+This function checks if the vector containing the ID of the entries with N and M projection for XZ and YZ vision has size 0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & vector containing the number ID of the entries with N and M projection for XZ and YZ vision \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{TrackSee_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{TrackSee_8cpp_source}{Track\+See.\+cpp}}.
+
+\Hypertarget{TrackSee_8cpp_a9dfbed0e258757f81bdf997309c39cbb}\label{TrackSee_8cpp_a9dfbed0e258757f81bdf997309c39cbb} 
+\index{TrackSee.cpp@{TrackSee.cpp}!TrackSee@{TrackSee}}
+\index{TrackSee@{TrackSee}!TrackSee.cpp@{TrackSee.cpp}}
+\doxysubsubsection{\texorpdfstring{TrackSee()}{TrackSee()}}
+{\footnotesize\ttfamily void Track\+See (\begin{DoxyParamCaption}\item[{TString}]{fileinput,  }\item[{int}]{N,  }\item[{int}]{M }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{TrackSee_8cpp_source_l00096}{96}} of file \mbox{\hyperlink{TrackSee_8cpp_source}{Track\+See.\+cpp}}.
+
+\Hypertarget{TrackSee_8cpp_ad2ccaecd344c9f312154cbc1c5efc61e}\label{TrackSee_8cpp_ad2ccaecd344c9f312154cbc1c5efc61e} 
+\index{TrackSee.cpp@{TrackSee.cpp}!TrackXZ@{TrackXZ}}
+\index{TrackXZ@{TrackXZ}!TrackSee.cpp@{TrackSee.cpp}}
+\doxysubsubsection{\texorpdfstring{TrackXZ()}{TrackXZ()}}
+{\footnotesize\ttfamily TGraph\+Errors \texorpdfstring{$\ast$}{*} Track\+XZ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventoTrack}{Evento\+Track}} \&}]{e }\end{DoxyParamCaption})}
+
+
+
+This function returns TGraph\+Errors containers with the points in the tracks for the XZ vision. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & The chosen event to display \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{TrackSee_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{TrackSee_8cpp_source}{Track\+See.\+cpp}}.
+
+\Hypertarget{TrackSee_8cpp_a58b3b13f803b5a1d3428de4dd267a680}\label{TrackSee_8cpp_a58b3b13f803b5a1d3428de4dd267a680} 
+\index{TrackSee.cpp@{TrackSee.cpp}!TrackYZ@{TrackYZ}}
+\index{TrackYZ@{TrackYZ}!TrackSee.cpp@{TrackSee.cpp}}
+\doxysubsubsection{\texorpdfstring{TrackYZ()}{TrackYZ()}}
+{\footnotesize\ttfamily TGraph\+Errors \texorpdfstring{$\ast$}{*} Track\+YZ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventoTrack}{Evento\+Track}} \&}]{e }\end{DoxyParamCaption})}
+
+
+
+This function returns TGraph\+Errors containers with the points in the tracks for the YZ vision. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & The chosen event to display \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{TrackSee_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{TrackSee_8cpp_source}{Track\+See.\+cpp}}.
+

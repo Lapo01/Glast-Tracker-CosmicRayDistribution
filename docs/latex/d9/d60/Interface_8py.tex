@@ -11,7 +11,7 @@ Interface used to call c++ macros.
 \mbox{\hyperlink{Interface_8py_ac251e2e26217d607fbf604178ea48c92}{Interface.\+Clustering}} (fileinput, fileoutput)
 \begin{DoxyCompactList}\small\item\em Docs for clustering This function performs the first abstractin of data by calling the c++ macros \doxylink{CreateTree_8cpp}{Create\+Tree.\+cpp} . \end{DoxyCompactList}\item 
 \mbox{\hyperlink{Interface_8py_ab2eda89ccc82925973832210275a7aa0}{Interface.\+Tracking}} (fileinput, fileoutput)
-\begin{DoxyCompactList}\small\item\em Docs for Tracking This function performs the second abstractin of data by calling the \doxylink{Retina_8cpp}{Retina.\+cpp} , \doxylink{RectifyTracks_8cpp}{Rectify\+Tracks.\+cpp} and \doxylink{UnifyTree_8cpp_source}{Unify\+Tree.\+cpp} macros. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Docs for Tracking This function performs the second abstractin of data by calling the \doxylink{Retina_8cpp}{Retina.\+cpp} , \doxylink{RectifyTracks_8cpp}{Rectify\+Tracks.\+cpp} and \doxylink{UnifyTree_8cpp}{Unify\+Tree.\+cpp} macros. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{Interface_8py_a01d16339d60381f45520e5bc1427f1db}{Interface.\+Test\+Reconstruction}} ()
 \begin{DoxyCompactList}\small\item\em Docs for testing the tracking algorithm This function starts by calling the c++ macro \doxylink{MonteCarloGenerazioneDati_8cpp}{Monte\+Carlo\+Generazione\+Dati.\+cpp} that simulate a data acquisition with only 1 tracks per vision and no noise, the simulated data is fed to the tracking algorithm in the macro \doxylink{Retina_8cpp}{Retina.\+cpp} . \end{DoxyCompactList}\item 
 \mbox{\hyperlink{Interface_8py_a0fb5da7971754ec9fc962a11eff21420}{Interface.\+Montecarlo}} (fileinput, fileoutput)
@@ -103,7 +103,7 @@ Definition at line \mbox{\hyperlink{Interface_8py_source_l00195}{195}} of file \
 
 Docs function that shows results. 
 
-This function calls the c++ macros Compare\+Distributions.\+cpp and Extract\+Distributions.\+cpp to extract the zenith and azimuth angle distribution from the measured data and compare them with the MC simulation. It is expected that one had already ran the MC simulation before running the results flag. The resuls are then saved as plot in the Data/\+Results\+Images folder.
+This function calls the c++ macros \doxylink{CompareDistributions_8cpp}{Compare\+Distributions.\+cpp} and \doxylink{ExtractDistributions_8cpp}{Extract\+Distributions.\+cpp} to extract the zenith and azimuth angle distribution from the measured data and compare them with the MC simulation. It is expected that one had already ran the MC simulation before running the results flag. The resuls are then saved as plot in the Data/\+Results\+Images folder.
 
 
 \begin{DoxyParams}{Parameters}
@@ -140,7 +140,7 @@ Definition at line \mbox{\hyperlink{Interface_8py_source_l00120}{120}} of file \
 
 
 
-Docs for Tracking This function performs the second abstractin of data by calling the \doxylink{Retina_8cpp}{Retina.\+cpp} , \doxylink{RectifyTracks_8cpp}{Rectify\+Tracks.\+cpp} and \doxylink{UnifyTree_8cpp_source}{Unify\+Tree.\+cpp} macros. 
+Docs for Tracking This function performs the second abstractin of data by calling the \doxylink{Retina_8cpp}{Retina.\+cpp} , \doxylink{RectifyTracks_8cpp}{Rectify\+Tracks.\+cpp} and \doxylink{UnifyTree_8cpp}{Unify\+Tree.\+cpp} macros. 
 
 It subdivides the data into a number of bunches equal to the number of pc cores, then each cores performs data abstraction on different bunches. At the end the Unify\+Tree macro is called and all created tree are merge into a unique tree put into .root file. It is advised to not interact with the pc throughout this process as this may cause slow-\/downs due to deprivation of resources.
 

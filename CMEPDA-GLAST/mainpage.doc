@@ -49,13 +49,15 @@
  * \subsection first_ab First Data Abstraction Phase: Clustering
  * A first abstraction of the data is made from hits to cluster by calling the macro CreateTree.cpp. A cluster is defined as a series of consecutive strips. \n 
  * A tree is filled with instances of the class Evento, this object contains info on the hits, their respective layers; info on the position, dimension, initial strip of the clusters and a vector of flags. \n 
- * The most important flag to account of is the first: this flag is set to False if there are in the event clusters adjacent to dead/muted/inefficient strips (strips that have not been activated) . The events that do not satisfy the flag amounts to about 21 %, those are kept but not used in further abstraction of the data.
+ * The most important flag to account of is the first: this flag is set to False if there are in the event clusters adjacent to dead/muted/inefficient strips (strips that have not been activated) . The events that do not satisfy the flag amounts to about 21 %, those are kept but not used in further abstraction of the data.\n 
+ *The macro PlotClusterResults.cpp is then called to display Cluster dimension distributions, the cluster position distribution on the layer X2 as an example and the number of clusters per event distribution.
  *
  *\subsection second_ab Second Data Abstraction Phase: Tracking
  * The second abstraction of the phase corresponds to tracking, a track is defined as >= 3 up to 5 clusters (max 1 per layer) for which a linear fit returns a chisquare that is below a 0.95 p-value cut made from the nominal distribution of the chisquare at N dof. The actual studied object are the projections  of the tracks rather than the tracks itself. \n 
  * Potential projections of the tracks are identified using a tracking algorithm inspired to the Retina tracking algorithm, which checks for each layer of each vision clusters that are close by 0.5 cm from a straight line with value (m, q); the closest clusters is chosen. 
  * This is run on each cell a phase space of (m,q). The obtained info on the clusters and on the linear fit is inserted for each projection on instances of the object Track, all of those instances are then inserted into instances of the object EventoTrack and a root tree object is filled and inserted into a root file. The Object Track contains overloaded operator for > and ==, a Track is “greater” than another if it contains more clusters, a Track is “equal” to another if it contains more than 1 cluster in common. Those operators have been inserted to account for the fact that the tracking algorithm after identifying a track does not remove the points from the events, and so between adjacent phase space cells there may be identified projections that are actually the same one.
  * It has been decided to not remove the points as that may actually introduce dangerous biases. \n 
+* To perform this, the macro Retina.cpp is called to run on all cores of the pc, the work is distributed equally between all the cores, to be precise if there are 5 cores and 100k events, the first core will analyse from the 0-th event to the 20k-th event, the second core from the 20k-th to the 40k-th and so on. Each core produces an output .root file, all are later to be merged together.\n 
  * After performing identification of potential projections, systematic error due to relative shifts in X, Y , Z and rotations between the Layers are corrected, in this project the macros to calculate this corrections are not include. However, here we report the way those corrections have been calculated.\n 
  * Firstly, the population of events selected is the one that satisfy the second Flag of the object Evento, which is a maximum of 1 cluster per layer. We assume that those contains projections of the tracks. \n 
  * After chosing this populations, the shifts are calculated in the following order:
@@ -63,14 +65,17 @@
  * - Shifts on Z: after performing the shift correction on the X, Y directions, all the events from the population with the second Flag activated are taken. Like in the calculation for the shifts in X, Y the layers X0, X3, Y1 and Y4 are fixed in position, if in an event clusters are in those fixed layers then a straight line is drawn and for each layer XN and YN the distances along the direction Z between the clusters and the drawn line are then inserted in a histogram for each layer,  the means are taken as shifts on the Z directions.
  * -Relative rotations on Planes: This correction is possible only in case there is 1 projection per vision as in this case one can affirm that the projections belong to the same 3D track. This correction is iterative. After performing the shift corrections along the X, Y, Z directions, for each layer fits are made by excluding the cluster in the layer, then residuals along the distance X or Y depending on the layer are correlated to correspondent position on the other vision which can be calculated since there are no ambiguities in the 3D reconstruction. A linear fit is made and then correction are fed on the position of the clusters at each iteration, ultimately the corrections is stopped when the angular coefficient of the fitted line in the residuals vs hit position along the strip plot is close enough to 0. \n
 *- After all the corrections, errors on each layers are set to the standard deviation of the residuals after performing fits excluding clusters from the layer , and a cut is made at a nominal p-value of 0.95. \n
+To perform these task, the macros RectifyTracks.cpp and UnifyTree.cpp are called, firstly the UnifyTree macro is called to unify all the trees produced by the cores, then the RectifyTracks macro is run and systematics are corrected.\n 
 - After this cut, the zenith and azimuth angle can be calculated and the tracking phase abstraction is concluded.
  * \subsection first_sec_first_sub_sec Typical workflow
  * The package is structured in the following way: An interface is written in python language and firstly load using a rootlogon.C file the shared utils libraries written in C++.
  * The Interface.py can be run with multiple options, the usual workflow is the following:
  *- $ python -i Interface.py -i infile.lif -o outfileCluster -Clustering \n 
 Performs the first abstraction of data from hits to clusters\n 
+Loads the macros CreateTree.cpp which produces a .root file with the abstracted data, then feeds it to the macro PlotClusterResults.cpp , which displays distributions such as the cluster dimension distribution, the number of clusters per event, the cluster position distribution for layer X2.\n 
  *- $ python -i Interface.py -i infile.lif -o outfileMC -MCDist \n 
 Generates MC expected measured distributions for the zenith and azimuth angles simulating dead strips and mean efficiency of the layers. The dimension of the clusters, smearing of residuals are not taken into account and other refinements are not taken into account.\n 
+* The called macro is MonteCarlo.cpp , which checks for muted strips and then produces the desired distributions. \n 
 * This option prints out the simulated Hits distributions for all layers, the generated pdf’s and the expected measured zenith and azimuth angle distributions. The MC assumes a distribution sin(theta)cos^3(theta) for the zenith angle theta and a uniform distribution between -180 and 180 deg for the azimuth angle.\n  
  *- $ python -i Interface.py -i outfileCluster.root -o outfileTracks -Tracking\n 
 Performs the second abstraction of data from clusters to tracks, prints out the chisquare distribution with dof = 3 before and after correcting the systematics.
@@ -78,15 +83,18 @@ Performs the second abstraction of data from clusters to tracks, prints out the 
 *A note: this part of the code is the most intensive one: time tests have been *run on 2 PCs with a 100k events sample data: \n 
 *-) i7 11th gen 8-core , clockspeed 2.50 GHz time elapsed about 400s \n 
 *-) i3 6th gen 4-core, clockspeed 2.30 GHz, time elapsed about 900s \n 
-*One may use those to calculate an “expected” time run.
+*One may use those to calculate an “expected” time run.\n 
+* The called macros are Retina.cpp on all cores of the pc, UnifyTree.cpp to unify the output files from the cores, and RectifyTracks.cpp to produce the final dataset. The Plot.cpp macro is called to display old vs new chisquare distribution for ndof = 3 as an example. \n 
  *- $ python -i Interface.py -i outfileTracks.root -Results\n 
- *Display the results and returns the p-value from a kolmogorov tests between \n  measured distributions and Montecarlo simulated ones. \n 
+ *Display the results and returns the p-value from a kolmogorov tests between \n measured distributions and Montecarlo simulated ones. \n 
+The called macros for this option are the ExtractDistributions.cpp which creates the .root files containing the histograms, than those hist are compared, using the CompareDistributions.cpp macro, to the distributions simulated by the montecarlo. NOTE: it is expected that to run this option a MC simulation has already been made. \n 
  *Other options are 
  * - $ python -i Interface.py -TestReconstruction \n 
  * The -i option after python is put to keep alive the processes containing the produced TH1F and TCanvas instances.
  * Tests the reconstruction made by the tracking algorithm by feeding it a generated distribution of events that have one projection per vision XZ and YZ. The number of identified projection is reported and compared with the expected one, the efficiency of the algorithm is calculated dividing the number of events that have 1 reconstructed track per layer by the total number of generated events. After this first steps a kolmogorov tests is taken and the zenith and azimuth angle reconstructed distributions are compared to the generated ones, a p-value is returned for both comparisons. \n 
+ * Here firstly the macro MonteCarloGenerazioneDati.cpp is called, then the produced distribution is fed to the Retina.cpp macro again in multi-core analysis, the outputs are unified by the UnifyTree.cpp macro and the reconstructed distributions are extracted using the ExtractDistributions.cpp  macro and compared to the simulated distributions by using the  CompareDistributions.cpp macro .
  * - $ python -i Interface.py -i outfileTracks.root -nx N -ny M \n 
- * Displays an event with N projections on the XZ vision and M projections on the YZ vision.
+ * Displays an event with N projections on the XZ vision and M projections on the YZ vision. The called macro is TrackSee.cpp 
  *
  *
  *

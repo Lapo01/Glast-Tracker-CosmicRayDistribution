@@ -1,0 +1,49 @@
+\doxysection{CMEPDA-\/\+GLAST/\+Core/\+Utils\+Macros/\+Compare\+Distributions.cpp File Reference}
+\hypertarget{CompareDistributions_8cpp}{}\label{CompareDistributions_8cpp}\index{CMEPDA-\/GLAST/Core/UtilsMacros/CompareDistributions.cpp@{CMEPDA-\/GLAST/Core/UtilsMacros/CompareDistributions.cpp}}
+
+
+This code takes as input two strings and compares them with a Kolmogorv Test, after that the distribution are each normalized and a pdf is produced with both.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{CompareDistributions_8cpp_abd43d98df310cb5d24076fee9d1ed00f}{Compare\+Distributions}} (TString f1, TString f2, TString path)
+\begin{DoxyCompactList}\small\item\em This macro takes as input two root files containing hists, compares the distributions with a Kolmogorov Test and returns a plot with both the normalized distributions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This code takes as input two strings and compares them with a Kolmogorv Test, after that the distribution are each normalized and a pdf is produced with both. 
+
+It returns a p-\/value. 
+
+Definition in file \mbox{\hyperlink{CompareDistributions_8cpp_source}{Compare\+Distributions.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{CompareDistributions_8cpp_abd43d98df310cb5d24076fee9d1ed00f}\label{CompareDistributions_8cpp_abd43d98df310cb5d24076fee9d1ed00f} 
+\index{CompareDistributions.cpp@{CompareDistributions.cpp}!CompareDistributions@{CompareDistributions}}
+\index{CompareDistributions@{CompareDistributions}!CompareDistributions.cpp@{CompareDistributions.cpp}}
+\doxysubsubsection{\texorpdfstring{CompareDistributions()}{CompareDistributions()}}
+{\footnotesize\ttfamily double Compare\+Distributions (\begin{DoxyParamCaption}\item[{TString}]{f1,  }\item[{TString}]{f2,  }\item[{TString}]{path }\end{DoxyParamCaption})}
+
+
+
+This macro takes as input two root files containing hists, compares the distributions with a Kolmogorov Test and returns a plot with both the normalized distributions. 
+
+It returns a p-\/value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f1} & File containing the first distribution\\
+\hline
+{\em f2} & File containing the second distribution\\
+\hline
+{\em path} & Path where to print the pdf in which the two distributions are compared. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{CompareDistributions_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{CompareDistributions_8cpp_source}{Compare\+Distributions.\+cpp}}.
+
