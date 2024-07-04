@@ -38,5 +38,5 @@ jobs:
       - name : Test code on small sample of data
         run:  |
           cd source_dir
-          python -i Interface.py -i ${{test_dir}}/TestDataSample.lif -o Cluster -Clustering
+          python -i Interface.py -i ${{env.test_dir}}/TestDataSample.lif -o Cluster -Clustering
                
