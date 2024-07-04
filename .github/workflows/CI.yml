@@ -37,6 +37,6 @@ jobs:
         run: make -C ${{env.build_dir}} test
       - name : Test code on small sample of data
         run:  |
-          cd source_dir
+          cd ${{env.source_dir}}
           python -i Interface.py -i ${{env.test_dir}}/TestDataSample.lif -o Cluster -Clustering
                
