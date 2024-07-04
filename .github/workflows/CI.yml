@@ -40,6 +40,8 @@ jobs:
         run: make -C ${{env.build_dir}} test
       - name : Test code on small sample of data
         run:  |
+          pip install loguru
+          pip install multiprocess
           export PYTHONPATH=$PYTHONPATH:${{env.ROOTSYS}}/lib
           echo ${PYTHONPATH}
           cd ${{env.source_dir}}
