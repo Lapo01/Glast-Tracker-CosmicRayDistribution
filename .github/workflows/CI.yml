@@ -9,8 +9,8 @@ env:
   BUILD_TYPE: Release
   build_dir: ${{github.workspace}}/CMEPDA-GLAST/Core
   source_dir: ${{github.workspace}}/CMEPDA-GLAST
+  data_dir :  ${{github.workspace}}/Data
   test_dir: ${{github.workspace}}/tests
-  docker_dir: ${{github.workspace}}/ubuntu22
   ROOTSYS: ${{github.workspace}}/root
   
 
@@ -35,3 +35,8 @@ jobs:
         run: cmake --build ${{env.build_dir}} --config ${{env.BUILD_TYPE}} 
       - name: Test
         run: make -C ${{env.build_dir}} test
+      - name : Test code on small sample of data
+        run:  |
+          cd source_dir
+          python -i Interface.py -i ${{test_dir}}/TestDataSample.lif -o Cluster -Clustering
+               
