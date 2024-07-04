@@ -22,15 +22,16 @@ jobs:
         uses: actions/checkout@v2
       - name: install nlohmann-json3-dev
         run : sudo apt-get install nlohmann-json3-dev
+      - name : install python dependencies
+        run :  |
+          pip install loguru
+          pip install multiprocess
       - name: Install root
         run :  |
           sudo apt-get update 
           sudo apt-get install binutils cmake dpkg-dev g++ gcc libssl-dev git libx11-dev libxext-dev libxft-dev libxpm-dev python3 libtbb-dev
           wget https://root.cern/download/root_v6.30.06.Linux-ubuntu22.04-x86_64-gcc11.4.tar.gz
-          ls
           tar -xzf root_v6.30.06.Linux-ubuntu22.04-x86_64-gcc11.4.tar.gz
-          ls
-          echo ${{env.ROOTSYS}}
           source ${{env.ROOTSYS}}/bin/thisroot.sh
       - name: Configure source CMake
         run : cmake -S ${{env.source_dir}} -B ${{env.build_dir}} 
@@ -40,13 +41,10 @@ jobs:
         run: make -C ${{env.build_dir}} test
       - name : Test code on small sample of data
         run:  |
-          pip install loguru
-          pip install multiprocess
           export PYTHONPATH=$PYTHONPATH:${{env.ROOTSYS}}/lib
-          echo ${PYTHONPATH}
           cd ${{env.source_dir}}
           python Interface.py -i ${{env.test_dir}}/TestDataSample.lif -o Cluster -Clustering
-          python Interface.py -i TestDataSample.lif -o MCDistSample -MCDist
+          python Interface.py -i ${{env.test_dir}}/TestDataSample.lif -o MCDistSample -MCDist
           python Interface.py -i Cluster.root -o Tracks -Tracking
           python Interface.py -TestReconstruction
           python Interface.py -i Tracks.root -Results
