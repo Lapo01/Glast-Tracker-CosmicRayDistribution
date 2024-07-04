@@ -28,6 +28,7 @@ jobs:
           sudo apt-get install binutils cmake dpkg-dev g++ gcc libssl-dev git libx11-dev libxext-dev libxft-dev libxpm-dev python3 libtbb-dev
           wget https://root.cern/download/root_v6.30.06.Linux-ubuntu22.04-x86_64-gcc11.4.tar.gz
           tar -xzf root_v6.30.06.Linux-ubuntu22.04-x86_64-gcc11.4.tar.gz
+          echo ${{env.ROOTSYS}}
           source ${{env.ROOTSYS}}/bin/thisroot.sh
       - name: Configure source CMake
         run : cmake -S ${{env.source_dir}} -B ${{env.build_dir}} 
@@ -37,8 +38,6 @@ jobs:
         run: make -C ${{env.build_dir}} test
       - name : Test code on small sample of data
         run:  |
-          echo "export PYTHONPATH=$PYTHONPATH:$ROOTSYS/lib" >> $HOME/.bashrc
-          echo "export LD_LIBRARY_PATH=$ROOTSYS/lib:$PYTHONDIR/lib:$LD_LIBRARY_PATH:/opt/rh/python27/root/usr/lib64" >> $HOME/.bashrc
           cd ${{env.source_dir}}
           python -i Interface.py -i ${{env.test_dir}}/TestDataSample.lif -o Cluster -Clustering
                
