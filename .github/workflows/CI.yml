@@ -28,7 +28,7 @@ jobs:
           sudo apt-get install binutils cmake dpkg-dev g++ gcc libssl-dev git libx11-dev libxext-dev libxft-dev libxpm-dev python3 libtbb-dev
           wget https://root.cern/download/root_v6.30.06.Linux-ubuntu22.04-x86_64-gcc11.4.tar.gz
           tar -xzf root_v6.30.06.Linux-ubuntu22.04-x86_64-gcc11.4.tar.gz
-          source root/bin/thisroot.sh
+          source ${{env.ROOTSYS}}/bin/thisroot.sh
       - name: Configure source CMake
         run : cmake -S ${{env.source_dir}} -B ${{env.build_dir}} 
       - name: Build
