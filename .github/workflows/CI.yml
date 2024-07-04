@@ -37,7 +37,8 @@ jobs:
         run: make -C ${{env.build_dir}} test
       - name : Test code on small sample of data
         run:  |
-          sudo apt-get install python3-root
+          echo "export PYTHONPATH=$PYTHONPATH:$ROOTSYS/lib" >> $HOME/.bashrc
+          echo "export LD_LIBRARY_PATH=$ROOTSYS/lib:$PYTHONDIR/lib:$LD_LIBRARY_PATH:/opt/rh/python27/root/usr/lib64" >> $HOME/.bashrc
           cd ${{env.source_dir}}
           python -i Interface.py -i ${{env.test_dir}}/TestDataSample.lif -o Cluster -Clustering
                
