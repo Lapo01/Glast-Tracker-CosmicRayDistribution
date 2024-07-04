@@ -7,3 +7,4 @@ Per ora questo progetto è stato testato su piattaforme Linux-Mint o Fedora, non
 Fare riferimento alla documentazione [qui](https://lapo01.github.io/Glast-Tracker-CosmicRayDistribution/html/index.html) per informazioni su dependencies, come installare il codice e informazioni utili su principali workflow, in particolare si faccia riferimento alla pagina principale.
 
 
+Inoltre, per ulteriori informazioni sul formato dati .lif e sull'apparato, fare riferimento [qui][https://docs.google.com/document/d/1vizlW9KQsAPcLd8c2kGcYXq61NNNFOEo/edit?pli=1]
