@@ -45,5 +45,10 @@ jobs:
           export PYTHONPATH=$PYTHONPATH:${{env.ROOTSYS}}/lib
           echo ${PYTHONPATH}
           cd ${{env.source_dir}}
-          python -i Interface.py -i ${{env.test_dir}}/TestDataSample.lif -o Cluster -Clustering
+          python Interface.py -i ${{env.test_dir}}/TestDataSample.lif -o Cluster -Clustering
+          python Interface.py -i TestDataSample.lif -o MCDistSample -MCDist
+          python Interface.py -i Cluster.root -o Tracks -Tracking
+          python Interface.py -TestReconstruction
+          python Interface.py -i Tracks.root -Results
+          python Interface.py -i Tracks.root -nx 1 -ny 1 -TrackSee
                
