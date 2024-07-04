@@ -167,7 +167,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d60/Interface_8py_source.html#l00246">246</a> of file <a class="el" href="../../d9/d60/Interface_8py_source.html">Interface.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d60/Interface_8py_source.html#l00248">248</a> of file <a class="el" href="../../d9/d60/Interface_8py_source.html">Interface.py</a>.</p>
 
 </div>
 </div>
@@ -191,7 +191,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Docs for doing MC simulation This function call the c++ macro MonteCarlo.cpp that runs a MC simulation of 3D tracks that goes through the tracker. </p>
-<p>The generated numbers are four: (x0,y0) point on the plane of the top layer, zenith angle theta and azimuth angle phi. From this four numbers the projections are generated on the vision XZ and YZ, then the hits are generated and if a track satisfy the trigger condition the angles zenith and azimuth are inserted into a histogram</p>
+<p>The generated numbers are four: (x0,y0) point on the plane of the top layer, zenith angle theta and azimuth angle phi. From this four numbers the projections are generated on the vision XZ and YZ, then the hits are generated and if a track satisfy the trigger condition the angles zenith and azimuth are inserted into a histogram. The MC simulation does keep account of muted strips and mean efficiency of the tracker.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fileinput</td><td>Name of the input file with extension .lif, the path is not necessary. This input is used to keep account of muted strips in the simulation.</td></tr>
@@ -201,7 +201,7 @@ Functions</h2></td></tr>
 </dl>
 <p>The MC distributions are saved into the Data/MCSimulations folder. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d60/Interface_8py_source.html#l00193">193</a> of file <a class="el" href="../../d9/d60/Interface_8py_source.html">Interface.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d60/Interface_8py_source.html#l00195">195</a> of file <a class="el" href="../../d9/d60/Interface_8py_source.html">Interface.py</a>.</p>
 
 </div>
 </div>
@@ -234,7 +234,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d60/Interface_8py_source.html#l00218">218</a> of file <a class="el" href="../../d9/d60/Interface_8py_source.html">Interface.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d60/Interface_8py_source.html#l00220">220</a> of file <a class="el" href="../../d9/d60/Interface_8py_source.html">Interface.py</a>.</p>
 
 </div>
 </div>
@@ -257,7 +257,7 @@ Functions</h2></td></tr>
 <p>The generated distribution takes into account only the trigger condition, it is compared with a KolmogGorov Test with the reconstructed distribution by the tracking algorithm. One would expect a p-value of 1 for an optimal reconstruction</p>
 <p>The results are saved into the folder Data/MCSimulations/TestingRetinaAlgorithm </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d60/Interface_8py_source.html#l00118">118</a> of file <a class="el" href="../../d9/d60/Interface_8py_source.html">Interface.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d60/Interface_8py_source.html#l00120">120</a> of file <a class="el" href="../../d9/d60/Interface_8py_source.html">Interface.py</a>.</p>
 
 </div>
 </div>

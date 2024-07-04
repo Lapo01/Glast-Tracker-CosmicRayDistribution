@@ -1,0 +1,79 @@
+\doxysection{Plot\+Cluster\+Results.\+cpp}
+\hypertarget{PlotClusterResults_8cpp_source}{}\label{PlotClusterResults_8cpp_source}\index{CMEPDA-\/GLAST/Core/CreateTree/PlotClusterResults.cpp@{CMEPDA-\/GLAST/Core/CreateTree/PlotClusterResults.cpp}}
+\mbox{\hyperlink{PlotClusterResults_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GeneralUtils_8h}{GeneralUtils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{UtilsCreateTree_8h}{UtilsCreateTree.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00017}00017\ \textcolor{keywordtype}{void}\ PlotClusterResults(TString\ fileinput)\{}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00018}00018\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ \ \ Load\ tree}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00024}00024\ \ \ \ \ \mbox{\hyperlink{classEvento}{Evento}}\ e;}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{classEvento}{Evento}}\ *p\ =\ \&e;}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00026}00026\ \ \ \ \ TFile\ *input\ =\ \textcolor{keyword}{new}\ TFile(fileinput,\ \textcolor{stringliteral}{"{}read"{}});}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00027}00027\ \ \ \ \ TTree\ *tree\ =\ (TTree*)input-\/>Get(\textcolor{stringliteral}{"{}tree"{}});}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00028}00028\ \ \ \ \ tree-\/>SetBranchAddress(\textcolor{stringliteral}{"{}evento"{}},\ \&p);\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordtype}{int}\ entries\ =\ tree-\/>GetEntries();}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ \ \ Define\ Histograms}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00037}00037\ \ \ \ \ TH1F\ *PositionDistribution\ =\ \textcolor{keyword}{new}\ TH1F(\textcolor{stringliteral}{"{}hist"{}},\ \textcolor{stringliteral}{"{}Cluster\ Position\ Distribution\ of\ Layer\ X2"{}},\ 2000,\ 0,\ 35);}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00039}00039\ \ \ \ \ TH1F\ *ClusterDim\ =\ \textcolor{keyword}{new}\ TH1F(\textcolor{stringliteral}{"{}hist"{}},\ \textcolor{stringliteral}{"{}Cluster\ Dimension\ Distribution"{}},\ 100,\ 0,\ 100);}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00041}00041\ \ \ \ \ TH1F\ *ClusterNumber\ =\ \textcolor{keyword}{new}\ TH1F(\textcolor{stringliteral}{"{}hist"{}},\ \textcolor{stringliteral}{"{}Cluster\ Number\ Distribution"{}},\ 100,0,\ 100);}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//\ \ \ Fill\ Histograms}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//for\ all\ events}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i<entries;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ tree-\/>GetEntry(i);\textcolor{comment}{//get\ i-\/th\ entry}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ ClusterNumber-\/>Fill(e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}.size());\ \textcolor{comment}{//fill\ the\ distribution\ of\ the\ number\ of\ clusters\ with\ the\ number\ of\ clusters\ in\ the\ event.}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{//for\ all\ clusters\ of\ the\ layer\ 12...\ fill\ the\ position\ distribution\ histogram\ with\ their\ positions.}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j<\ e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}.size();\ j++)\{}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(e.\mbox{\hyperlink{classEvento_a0ada3ef828172cea3dc7bb1245c5907e}{ClusterLayer}}[j]\ ==\ 12)\{}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PositionDistribution-\/>Fill(e.\mbox{\hyperlink{classEvento_aa733d2a7be4256ce5fa2ea50d272640b}{ClusterPosizione}}[j]);}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//for\ all\ clusters\ fill\ the\ dimension\ distribution\ with\ the\ clusters'\ dimensions.}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ x:e.ClusterDimension)\{}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ ClusterDim-\/>Fill(x);}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ \ \ Plot\ histograms}}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00071}00071\ \ \ \ \ PositionDistribution-\/>GetXaxis()-\/>SetTitle(\textcolor{stringliteral}{"{}Position\ [cm]"{}});}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00072}00072\ \ \ \ \ PositionDistribution-\/>GetYaxis()-\/>SetTitle(\textcolor{stringliteral}{"{}Counts"{}});}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00073}00073\ \ \ \ \ TCanvas\ *c1\ =\ \textcolor{keyword}{new}\ TCanvas();}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00074}00074\ \ \ \ \ PositionDistribution-\/>Draw(\textcolor{stringliteral}{"{}HISTSame"{}});}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00077}00077\ \ \ \ \ ClusterDim-\/>GetXaxis()-\/>SetTitle(\textcolor{stringliteral}{"{}Number\ of\ Hits"{}});}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00078}00078\ \ \ \ \ ClusterDim-\/>GetYaxis()-\/>SetTitle(\textcolor{stringliteral}{"{}Counts"{}});}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00079}00079\ \ \ \ \ TCanvas\ *c2\ =\ \textcolor{keyword}{new}\ TCanvas();}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00080}00080\ \ \ \ \ c2-\/>SetLogy();}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00081}00081\ \ \ \ \ ClusterDim-\/>Draw(\textcolor{stringliteral}{"{}HISTSame"{}});}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00083}00083\ \ \ \ \ ClusterNumber-\/>GetXaxis()-\/>SetTitle(\textcolor{stringliteral}{"{}Number\ of\ Clusters"{}});}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00084}00084\ \ \ \ \ ClusterNumber-\/>GetYaxis()-\/>SetTitle(\textcolor{stringliteral}{"{}Counts"{}});}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00085}00085\ \ \ \ \ TCanvas\ *c3\ =\ \textcolor{keyword}{new}\ TCanvas();}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00086}00086\ \ \ \ \ c3-\/>SetLogy();}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00087}00087\ \ \ \ \ ClusterNumber-\/>Draw(\textcolor{stringliteral}{"{}HISTSame"{}});}
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{PlotClusterResults_8cpp_source_l00089}00089\ \}}
+
+\end{DoxyCode}

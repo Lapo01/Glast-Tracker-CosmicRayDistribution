@@ -64,14 +64,14 @@ def Tracking(fileinput, fileoutput) :
     ROOT.gROOT.LoadMacro(os.path.join("Core", "TrackingRetina", "Retina.cpp++O"))
     ROOT.gROOT.LoadMacro(os.path.join("Core", "TrackingRetina", "UnifyTree.cpp"))
     ROOT.gROOT.LoadMacro(os.path.join("Core", "TrackingRetina", "RectifyTracks.cpp"))
-
+    ROOT.gROOT.LoadMacro(os.path.join("Core", "UtilsMacros", "Plot.cpp"))
 
 
 
     ##################################
     # IMPORTANT COMMENT:
     # This may seem (and i would be very happy to find a solution) a very silly thing to do, this function is defined inside and used multiple times around the code,
-    # one would expect it to be rational to define it outside this function. However, there are some problems with loading the macros, this solution makes the code work.
+    # one would expect it to be rational to define it outside this function. However, there are some problems with loading the macros from pyroot, this solution makes the code work.
     #
     #################################
     def AnalysePartOfData(j):
@@ -83,13 +83,13 @@ def Tracking(fileinput, fileoutput) :
 
     #warning: might be a slow process....
     if os.cpu_count()<2:
-        logger.warning("Attenzione: Il pc che stai utilizzando sembrerebbe avere meno di due core disponibili, potrebbe volerci un pò di tempo... Sui dataset forniti fino ad un massimo di 2 ore nel caso peggiore.")
+        logger.warning("WARNING: Number of Cores detected on the cpu is less than 2, this process may take up a lot of time, maybe 1-2 hours.")
 
 
 
     #start multicore data analysis: divide the events in bunches each to be analyzed by a single core.
     Iterations = range(os.cpu_count())
-    logger.warning("Tracking abstraction phase started: it is advised to not touch the PC as it may slow down this phase.")
+    logger.warning("Tracking abstraction phase started: it is advised to not touch the PC as it may slow down this phase. This process may take up some time depending on the pc.")
     pool = mp.Pool(processes = os.cpu_count())
     results = pool.map(AnalysePartOfData, Iterations)
     pool.close() #boh non la chiude da sola! bug DI PYTHON!!!!!!
@@ -114,6 +114,7 @@ def Tracking(fileinput, fileoutput) :
     logger.info("FATTO! Effettuata seconda fase di astrazione dati, il file è stato salvato nel path")
     logger.info(os.path.join("Data", "Dataroot", "TrackingAbstractionData", fileoutput + ".root"))
     logger.info(strOut)
+    ROOT.Plot(os.path.join("Data","Dataroot","TrackingAbstractionData","oldchi2Dist.root"), os.path.join("Data","Dataroot","TrackingAbstractionData","chi2Dist.root"))
 
 
 def TestReconstruction():
@@ -331,15 +332,17 @@ def Interface_parse():
     if args.TestReconstruction:
         #run some checks on the input file and on folders.
 
-        if not(os.path.exists(os.path.join("Data", "MCSimulations","TestingRetinaAlgorithm",))):
+        if not(os.path.exists(os.path.join("Data", "MCSimulations"))):
             os.mkdir((os.path.join("Data", "MCSimulations")))  
+        if not(os.path.exists(os.path.join("Data", "MCSimulations","TestingRetinaAlgorithm",))):
             os.mkdir((os.path.join("Data", "MCSimulations","TestingRetinaAlgorithm",)))  
         TestReconstruction()
          
 
     if args.MCDist:
         #run some checks on the input file and on folders.
-
+        if not(os.path.exists(os.path.join("Data", "MCSimulations"))):
+            os.mkdir((os.path.join("Data", "MCSimulations"))) 
         if not args.infile:
             logger.error("INSERISCI UN FILE DA ANALIZZARE USANDO LA FLAG -i DALLA CARTELLA DEI DATI .LIF, E' FONDAMENTALE PER LA SIMULAZIONE AL FINE DI TROVARE LE STRIP INEFFICIENTI/MORTE/MUTATE")
             raise Exception("NON HAI INSERITO UN FILE DA ANALIZZARE.")

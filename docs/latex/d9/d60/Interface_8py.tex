@@ -68,7 +68,7 @@ Definition at line \mbox{\hyperlink{Interface_8py_source_l00030}{30}} of file \m
 
 
 
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00246}{246}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00248}{248}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
 
 \Hypertarget{Interface_8py_a0fb5da7971754ec9fc962a11eff21420}\label{Interface_8py_a0fb5da7971754ec9fc962a11eff21420} 
 \index{Interface.py@{Interface.py}!Montecarlo@{Montecarlo}}
@@ -80,7 +80,7 @@ Definition at line \mbox{\hyperlink{Interface_8py_source_l00246}{246}} of file \
 
 Docs for doing MC simulation This function call the c++ macro Monte\+Carlo.\+cpp that runs a MC simulation of 3D tracks that goes through the tracker. 
 
-The generated numbers are four\+: (x0,y0) point on the plane of the top layer, zenith angle theta and azimuth angle phi. From this four numbers the projections are generated on the vision XZ and YZ, then the hits are generated and if a track satisfy the trigger condition the angles zenith and azimuth are inserted into a histogram
+The generated numbers are four\+: (x0,y0) point on the plane of the top layer, zenith angle theta and azimuth angle phi. From this four numbers the projections are generated on the vision XZ and YZ, then the hits are generated and if a track satisfy the trigger condition the angles zenith and azimuth are inserted into a histogram. The MC simulation does keep account of muted strips and mean efficiency of the tracker.
 
 
 \begin{DoxyParams}{Parameters}
@@ -91,7 +91,7 @@ The generated numbers are four\+: (x0,y0) point on the plane of the top layer, z
 \end{DoxyParams}
 The MC distributions are saved into the Data/\+MCSimulations folder. 
 
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00193}{193}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00195}{195}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
 
 \Hypertarget{Interface_8py_a6c70ecdabc46a3a1f89e4416b325008a}\label{Interface_8py_a6c70ecdabc46a3a1f89e4416b325008a} 
 \index{Interface.py@{Interface.py}!Results@{Results}}
@@ -114,7 +114,7 @@ This function calls the c++ macros Compare\+Distributions.\+cpp and Extract\+Dis
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00218}{218}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00220}{220}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
 
 \Hypertarget{Interface_8py_a01d16339d60381f45520e5bc1427f1db}\label{Interface_8py_a01d16339d60381f45520e5bc1427f1db} 
 \index{Interface.py@{Interface.py}!TestReconstruction@{TestReconstruction}}
@@ -130,7 +130,7 @@ The generated distribution takes into account only the trigger condition, it is 
 
 The results are saved into the folder Data/\+MCSimulations/\+Testing\+Retina\+Algorithm 
 
-Definition at line \mbox{\hyperlink{Interface_8py_source_l00118}{118}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
+Definition at line \mbox{\hyperlink{Interface_8py_source_l00120}{120}} of file \mbox{\hyperlink{Interface_8py_source}{Interface.\+py}}.
 
 \Hypertarget{Interface_8py_ab2eda89ccc82925973832210275a7aa0}\label{Interface_8py_ab2eda89ccc82925973832210275a7aa0} 
 \index{Interface.py@{Interface.py}!Tracking@{Tracking}}

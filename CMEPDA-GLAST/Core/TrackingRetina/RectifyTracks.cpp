@@ -272,11 +272,11 @@ void RectifyTracks(TString file, TString fileoutput){
 	oldchi2XHist->SaveAs("Data/Dataroot/TrackingAbstractionData/oldchi2Dist.root");
 	chi2XHist->SaveAs("Data/Dataroot/TrackingAbstractionData/chi2Dist.root");
 	
-	TCanvas *c1 = new TCanvas();
+	/*TCanvas *c1 = new TCanvas();
 	oldchi2XHist->Draw();
 
 	TCanvas *c2 = new TCanvas();
-	chi2XHist->Draw();
+	chi2XHist->Draw();*/
 
 	output->Write();
 	output->Close();
