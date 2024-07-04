@@ -74,11 +74,11 @@ Generates MC expected measured distributions for the zenith and azimuth angles s
 * This option prints out the simulated Hits distributions for all layers, the generated pdf’s and the expected measured zenith and azimuth angle distributions. The MC assumes a distribution sin(theta)cos^3(theta) for the zenith angle theta and a uniform distribution between -180 and 180 deg for the azimuth angle.\n  
  *- $ python -i Interface.py -i outfileCluster.root -o outfileTracks -Tracking\n 
 Performs the second abstraction of data from clusters to tracks, prints out the chisquare distribution with dof = 3 before and after correcting the systematics.
-As said, at the end of the script a file with a cut in chisquare is made. \n 
-A note: this part of the code is the most intensive one: time tests have been run on 2 PCs with a 100k events sample data: \n 
--) i7 11th gen 8-core , clockspeed 2.50 GHz time elapsed about 400s \n 
--) i3 6th gen 4-core, clockspeed 2.30 GHz, time elapsed about 900s \n 
-One may use those to calculate an “expected” time run.
+*As said, at the end of the script a file with a cut in chisquare is made. \n 
+*A note: this part of the code is the most intensive one: time tests have been *run on 2 PCs with a 100k events sample data: \n 
+*-) i7 11th gen 8-core , clockspeed 2.50 GHz time elapsed about 400s \n 
+*-) i3 6th gen 4-core, clockspeed 2.30 GHz, time elapsed about 900s \n 
+*One may use those to calculate an “expected” time run.
  *- $ python -i Interface.py -i outfileTracks.root -Results\n 
  *Display the results and returns the p-value from a kolmogorov tests between \n  measured distributions and Montecarlo simulated ones. \n 
  *Other options are 
