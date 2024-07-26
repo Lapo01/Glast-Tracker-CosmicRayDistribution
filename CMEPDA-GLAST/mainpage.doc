@@ -95,7 +95,7 @@ The called macros for this option are the ExtractDistributions.cpp which creates
  * The -i option after python is put to keep alive the processes containing the produced TH1F and TCanvas instances.
  * Tests the reconstruction made by the tracking algorithm by feeding it a generated distribution of events that have one projection per vision XZ and YZ. The number of identified projection is reported and compared with the expected one, the efficiency of the algorithm is calculated dividing the number of events that have 1 reconstructed track per layer by the total number of generated events. After this first steps a kolmogorov tests is taken and the zenith and azimuth angle reconstructed distributions are compared to the generated ones, a p-value is returned for both comparisons. \n 
  * Here firstly the macro MonteCarloGenerazioneDati.cpp is called, then the produced distribution is fed to the Retina.cpp macro again in multi-core analysis, the outputs are unified by the UnifyTree.cpp macro and the reconstructed distributions are extracted using the ExtractDistributions.cpp  macro and compared to the simulated distributions by using the  CompareDistributions.cpp macro .
- * - $ python -i Interface.py -i outfileTracks.root -nx N -ny M \n 
+ * - $ python -i Interface.py -i outfileTracks.root -nx N -ny M -TrackSee \n 
  * Displays an event with N projections on the XZ vision and M projections on the YZ vision. The called macro is TrackSee.cpp 
  *
  *

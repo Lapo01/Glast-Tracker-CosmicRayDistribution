@@ -7,7 +7,7 @@
 \DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00020}\mbox{\hyperlink{TrackSee_8cpp_ad2ccaecd344c9f312154cbc1c5efc61e}{00020}}\ TGraphErrors\ *\mbox{\hyperlink{TrackSee_8cpp_ad2ccaecd344c9f312154cbc1c5efc61e}{TrackXZ}}(\mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ \&e)\{}
 \DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00021}00021\ \ \ \ \ TGraphErrors\ *XZ\ =\textcolor{keyword}{new}\ TGraphErrors();\ \textcolor{comment}{//initialize\ TGraphErrors}}
 \DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{int}\ n;\ \textcolor{comment}{//initialize\ util\ variable\ to\ fill\ TGraphErrors\ instance}}
-\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00023}00023\ \ \ \ \ TString\ Title\ =\ \textcolor{stringliteral}{"{}Track\ XZ\ \ Event\ ID:\ "{}}+\ to\_string(e.\mbox{\hyperlink{classEventoTrack_a3eaf59c48347453e9e15173b29239c99}{NEvento}})\ +\ \ \textcolor{stringliteral}{"{};\ X\ [cm];\ Y\ [cm]\ "{}}\ ;\ \textcolor{comment}{//TGraphErrors\ title.}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00023}00023\ \ \ \ \ TString\ Title\ =\ \textcolor{stringliteral}{"{}Track\ XZ\ \ Event\ ID:\ "{}}+\ to\_string(e.\mbox{\hyperlink{classEventoTrack_a3eaf59c48347453e9e15173b29239c99}{NEvento}})\ +\ \ \textcolor{stringliteral}{"{};\ Z\ [cm];\ X\ [cm]\ "{}}\ ;\ \textcolor{comment}{//TGraphErrors\ title.}}
 \DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00024}00024\ \ \ \ \ XZ-\/>SetTitle(Title);\ }
 \DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00025}00025\ }
 \DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00026}00026\ }
@@ -28,7 +28,7 @@
 \DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00048}\mbox{\hyperlink{TrackSee_8cpp_a58b3b13f803b5a1d3428de4dd267a680}{00048}}\ TGraphErrors\ *\mbox{\hyperlink{TrackSee_8cpp_a58b3b13f803b5a1d3428de4dd267a680}{TrackYZ}}(\mbox{\hyperlink{classEventoTrack}{EventoTrack}}\ \&e)\{}
 \DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00049}00049\ \ \ \ \ TGraphErrors\ *YZ\ =\textcolor{keyword}{new}\ TGraphErrors();\textcolor{comment}{//initialize\ TGraphErrors}}
 \DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{int}\ n;\textcolor{comment}{//initialize\ util\ variable\ to\ fill\ TGraphErrors\ instance}}
-\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00051}00051\ \ \ \ \ TString\ Title\ =\ \textcolor{stringliteral}{"{}Track\ YZ\ Event\ ID:\ "{}}\ +\ to\_string(e.\mbox{\hyperlink{classEventoTrack_a3eaf59c48347453e9e15173b29239c99}{NEvento}})\ +\ \textcolor{stringliteral}{"{};\ Y\ [cm];\ Y\ [cm]\ "{}};\textcolor{comment}{//TGraphErrors\ title.}}
+\DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00051}00051\ \ \ \ \ TString\ Title\ =\ \textcolor{stringliteral}{"{}Track\ YZ\ Event\ ID:\ "{}}\ +\ to\_string(e.\mbox{\hyperlink{classEventoTrack_a3eaf59c48347453e9e15173b29239c99}{NEvento}})\ +\ \textcolor{stringliteral}{"{};\ Z\ [cm];\ Y\ [cm]\ "{}};\textcolor{comment}{//TGraphErrors\ title.}}
 \DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00052}00052\ \ \ \ \ YZ-\/>SetTitle(Title);}
 \DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00053}00053\ }
 \DoxyCodeLine{\Hypertarget{TrackSee_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//for\ all\ YZ\ projections\ fill\ the\ TGraphErrors\ with\ their\ cluster\ info.}}
