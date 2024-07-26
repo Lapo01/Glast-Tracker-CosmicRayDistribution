@@ -20,7 +20,7 @@
 TGraphErrors *TrackXZ(EventoTrack &e){
     TGraphErrors *XZ =new TGraphErrors(); //initialize TGraphErrors
     int n; //initialize util variable to fill TGraphErrors instance
-    TString Title = "Track XZ  Event ID: "+ to_string(e.NEvento) +  "; X [cm]; Y [cm] " ; //TGraphErrors title.
+    TString Title = "Track XZ  Event ID: "+ to_string(e.NEvento) +  "; Z [cm]; X [cm] " ; //TGraphErrors title.
     XZ->SetTitle(Title); 
 
 
@@ -48,7 +48,7 @@ TGraphErrors *TrackXZ(EventoTrack &e){
 TGraphErrors *TrackYZ(EventoTrack &e){
     TGraphErrors *YZ =new TGraphErrors();//initialize TGraphErrors
     int n;//initialize util variable to fill TGraphErrors instance
-    TString Title = "Track YZ Event ID: " + to_string(e.NEvento) + "; Y [cm]; Y [cm] ";//TGraphErrors title.
+    TString Title = "Track YZ Event ID: " + to_string(e.NEvento) + "; Z [cm]; Y [cm] ";//TGraphErrors title.
     YZ->SetTitle(Title);
 
     //for all YZ projections fill the TGraphErrors with their cluster info.
